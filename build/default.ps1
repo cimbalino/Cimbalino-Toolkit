@@ -17,7 +17,13 @@ properties {
   $vstest = "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
   
   $projects = @(
-    @{Name = "Cimbalino.Toolkit.Portable"}
+    @{Name = "Cimbalino.Toolkit.Portable"},
+    @{Name = "Cimbalino.Toolkit (WP8)"},
+    @{Name = "Cimbalino.Toolkit (WP81)"},
+    @{Name = "Cimbalino.Toolkit (Win81)"},
+    @{Name = "Cimbalino.Toolkit.Background (WP8)"},
+    @{Name = "Cimbalino.Toolkit.Background (WP81)"},
+    @{Name = "Cimbalino.Toolkit.Background (Win81)"}
   )
   $configurations = @(
     @{Name = "WP71"; Folder = "sl4-wp71"},
@@ -50,6 +56,7 @@ task Headers -description "Updates the headers in *.cs files" {
 
   $projects | % {
     $projectName = $_.Name
+    $project = ($projectName -Replace "\s\(.*$", "")
     $fullProjectName = "$projectName"
     $projectDir = "$sourceDir\$fullProjectName\"
     
@@ -59,7 +66,7 @@ task Headers -description "Updates the headers in *.cs files" {
       
       $oldContent = [System.IO.File]::ReadAllText($fullFilename)
       
-      $newContent = ($headerTemplate -f $projectName, $filename) + ($oldContent -Replace "(?s)^.*// \*+\r\n\r\n", "")
+      $newContent = ($headerTemplate -f $project, $filename) + ($oldContent -Replace "(?s)^.*// \*+\r\n\r\n", "")
       
       if ($newContent -ne $oldContent) {
         [System.IO.File]::WriteAllText($fullFilename, $newContent, [System.Text.Encoding]::UTF8)
@@ -100,5 +107,5 @@ task Version -description "Updates the version entries in AssemblyInfo.cs files"
 }
 
 task ? -description "Show the help screen" {
-  Write-Documentation
+  WriteDocumentation
 }
