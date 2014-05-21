@@ -134,9 +134,12 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async Task<bool> FileExistsAsync(string path)
         {
+#if WINDOWS_APP
+            return await Storage.TryGetItemAsync(path) != null;
+#else
             try
             {
-                var file = await Storage.GetFileAsync(path);
+                var file = await Storage.GetItemAsync(path);
 
                 return file != null;
             }
@@ -144,6 +147,7 @@ namespace Cimbalino.Toolkit.Services
             {
                 return false;
             }
+#endif
         }
 
         /// <summary>
