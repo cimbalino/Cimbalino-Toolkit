@@ -120,6 +120,12 @@
     <Compile Include="..\cimbalino.toolkit.background %28wp8%29\extensions\StreamExtensions.cs">
       <Link>Extensions\StreamExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background %28WP8%29\Services\LocationService.cs">
+      <Link>Services\LocationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background %28WP8%29\Services\LocationServiceExtensions.cs">
+      <Link>Services\LocationServiceExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.background %28wp8%29\services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
     </Compile>
