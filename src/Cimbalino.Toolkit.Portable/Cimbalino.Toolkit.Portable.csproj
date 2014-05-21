@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Extensions\EventHandlerExtensions.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
+    <Compile Include="Extensions\IComparableExtensions.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\IFormattableExtensions.cs" />
@@ -48,6 +49,8 @@
     <Compile Include="Extensions\StreamReaderExtensions.cs" />
     <Compile Include="Extensions\StreamWriterExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="Extensions\WebRequestExtensions.cs" />
     <Compile Include="Extensions\XmlReaderExtensions.cs" />
     <Compile Include="Helpers\OptimizedObservableCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
