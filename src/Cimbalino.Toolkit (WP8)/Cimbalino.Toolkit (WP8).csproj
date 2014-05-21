@@ -103,6 +103,7 @@
     <Compile Include="Extensions\FrameworkElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailComposeService.cs" />
+    <Compile Include="Services\LauncherService.cs" />
     <Compile Include="Services\PhoneCallService.cs" />
     <Compile Include="Services\SmsComposeService.cs" />
   </ItemGroup>
