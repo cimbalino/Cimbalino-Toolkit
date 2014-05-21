@@ -51,7 +51,10 @@
     <Compile Include="Extensions\XmlReaderExtensions.cs" />
     <Compile Include="Helpers\OptimizedObservableCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IEmailComposeService.cs" />
     <Compile Include="Services\ILocationService.cs" />
+    <Compile Include="Services\IPhoneCallService.cs" />
+    <Compile Include="Services\ISmsComposeService.cs" />
     <Compile Include="Services\IStorageService.cs" />
     <Compile Include="Services\LocationServiceAccuracy.cs" />
     <Compile Include="Services\LocationServicePosition.cs" />

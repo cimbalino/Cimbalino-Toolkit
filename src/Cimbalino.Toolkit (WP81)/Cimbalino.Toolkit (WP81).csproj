@@ -101,6 +101,15 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Extensions\FrameworkElementExtensions.cs">
       <Link>Extensions\FrameworkElementExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\EmailComposeService.cs">
+      <Link>Services\EmailComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\PhoneCallService.cs">
+      <Link>Services\PhoneCallService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\SmsComposeService.cs">
+      <Link>Services\SmsComposeService.cs</Link>
+    </Compile>
     <Compile Include="Microsoft\Xaml\Interactivity\BehaviorOfT.cs" />
     <Compile Include="Microsoft\Xaml\Interactivity\Behavior.cs" />
     <Compile Include="Windows\UI\Xaml\DependencyObjectCollectionOfT.cs" />
@@ -111,9 +120,7 @@
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

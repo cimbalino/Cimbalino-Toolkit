@@ -102,6 +102,9 @@
     <Compile Include="Behaviors\ScreenCaptureBehavior.cs" />
     <Compile Include="Extensions\FrameworkElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailComposeService.cs" />
+    <Compile Include="Services\PhoneCallService.cs" />
+    <Compile Include="Services\SmsComposeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cimbalino.Toolkit.Background %28WP8%29\Cimbalino.Toolkit.Background %28WP8%29.csproj">
@@ -116,9 +119,7 @@
   <ItemGroup>
     <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />
