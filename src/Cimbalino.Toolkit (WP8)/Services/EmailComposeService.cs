@@ -19,6 +19,8 @@ using System;
 using Windows.ApplicationModel.Email;
 #else
 using System;
+using System.Net;
+using Windows.System;
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -92,7 +94,34 @@ namespace Cimbalino.Toolkit.Services
 
             EmailManager.ShowComposeNewEmailAsync(emailMessage);
 #else
-            throw new NotSupportedException("This method is not supported in Windows Store Apps");
+            var emailUri = "mailto:?";
+
+            if (!string.IsNullOrEmpty(to))
+            {
+                emailUri += "&to=" + WebUtility.UrlEncode(to);
+            }
+
+            if (!string.IsNullOrEmpty(cc))
+            {
+                emailUri += "&cc=" + WebUtility.UrlEncode(cc);
+            }
+
+            if (!string.IsNullOrEmpty(bcc))
+            {
+                emailUri += "&bcc=" + WebUtility.UrlEncode(bcc);
+            }
+
+            if (!string.IsNullOrEmpty(subject))
+            {
+                emailUri += "&subject=" + WebUtility.UrlEncode(subject);
+            }
+
+            if (!string.IsNullOrEmpty(body))
+            {
+                emailUri += "&body=" + WebUtility.UrlEncode(body);
+            }
+
+            Launcher.LaunchUriAsync(new Uri(emailUri));
 #endif
         }
     }
