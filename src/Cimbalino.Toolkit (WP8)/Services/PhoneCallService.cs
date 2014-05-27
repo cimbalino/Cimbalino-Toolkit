@@ -18,6 +18,7 @@ using Microsoft.Phone.Tasks;
 using Windows.ApplicationModel.Calls;
 #else
 using System;
+using Windows.System;
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -52,7 +53,9 @@ namespace Cimbalino.Toolkit.Services
 #elif WINDOWS_PHONE_APP
             PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
 #else
-            throw new NotSupportedException("This method is not supported in Windows Store Apps");
+            var phoneCallUrl = "tel:" + Uri.EscapeDataString(phoneNumber);
+
+            Launcher.LaunchUriAsync(new Uri(phoneCallUrl, UriKind.Absolute));
 #endif
         }
     }

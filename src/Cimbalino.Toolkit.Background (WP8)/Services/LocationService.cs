@@ -235,7 +235,7 @@ namespace Cimbalino.Toolkit.Services
         {
             _geolocator.DesiredAccuracy = desiredAccuracy.ToPositionAccuracy();
 
-            var position = await _geolocator.GetGeopositionAsync().AsTask().ConfigureAwait(false);
+            var position = await _geolocator.GetGeopositionAsync();
 
             return position.Coordinate.ToLocationServicePosition();
         }

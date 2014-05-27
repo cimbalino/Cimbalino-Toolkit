@@ -94,34 +94,34 @@ namespace Cimbalino.Toolkit.Services
 
             EmailManager.ShowComposeNewEmailAsync(emailMessage);
 #else
-            var emailUri = "mailto:?";
+            var emailUrl = "mailto:?";
 
             if (!string.IsNullOrEmpty(to))
             {
-                emailUri += "&to=" + WebUtility.UrlEncode(to);
+                emailUrl += "&to=" + Uri.EscapeDataString(to);
             }
 
             if (!string.IsNullOrEmpty(cc))
             {
-                emailUri += "&cc=" + WebUtility.UrlEncode(cc);
+                emailUrl += "&cc=" + Uri.EscapeDataString(cc);
             }
 
             if (!string.IsNullOrEmpty(bcc))
             {
-                emailUri += "&bcc=" + WebUtility.UrlEncode(bcc);
+                emailUrl += "&bcc=" + Uri.EscapeDataString(bcc);
             }
 
             if (!string.IsNullOrEmpty(subject))
             {
-                emailUri += "&subject=" + WebUtility.UrlEncode(subject);
+                emailUrl += "&subject=" + Uri.EscapeDataString(subject);
             }
 
             if (!string.IsNullOrEmpty(body))
             {
-                emailUri += "&body=" + WebUtility.UrlEncode(body);
+                emailUrl += "&body=" + Uri.EscapeDataString(body);
             }
 
-            Launcher.LaunchUriAsync(new Uri(emailUri));
+            Launcher.LaunchUriAsync(new Uri(emailUrl, UriKind.Absolute));
 #endif
         }
     }
