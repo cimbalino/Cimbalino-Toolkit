@@ -135,11 +135,11 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Microsoft\Xaml\Interactivity\Behavior.cs">
       <Link>Microsoft\Xaml\Interactivity\Behavior.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Microsoft\Xaml\Interactivity\BehaviorOfT.cs">
-      <Link>Microsoft\Xaml\Interactivity\BehaviorOfT.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Microsoft\Xaml\Interactivity\Behavior{T}.cs">
+      <Link>Microsoft\Xaml\Interactivity\Behavior{T}.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Windows\UI\Xaml\DependencyObjectCollectionOfT.cs">
-      <Link>Windows\UI\Xaml\DependencyObjectCollectionOfT.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Windows\UI\Xaml\DependencyObjectCollection{T}.cs">
+      <Link>Windows\UI\Xaml\DependencyObjectCollection{T}.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
