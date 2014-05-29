@@ -48,6 +48,11 @@ namespace Windows.UI.Xaml
             switch (e.CollectionChange)
             {
                 case CollectionChange.Reset:
+                    foreach (var item in this)
+                    {
+                        VerifyType(item);
+                    }
+
                     OnNotifyPropertyChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
 
                     _oldItems.Clear();
@@ -55,6 +60,8 @@ namespace Windows.UI.Xaml
                     break;
 
                 case CollectionChange.ItemInserted:
+                    VerifyType(this[index]);
+
                     OnNotifyPropertyChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, this[index], index));
 
                     _oldItems.Insert(index, (T)this[index]);
@@ -69,6 +76,8 @@ namespace Windows.UI.Xaml
                     break;
 
                 case CollectionChange.ItemChanged:
+                    VerifyType(this[index]);
+
                     OnNotifyPropertyChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, this[index], _oldItems[index]));
 
                     _oldItems[index] = (T)this[index];
@@ -87,6 +96,14 @@ namespace Windows.UI.Xaml
             if (eventHandler != null)
             {
                 eventHandler(this, e);
+            }
+        }
+
+        private void VerifyType(DependencyObject item)
+        {
+            if (!(item is T))
+            {
+                throw new InvalidOperationException("Invalid item type added to collection");
             }
         }
     }
