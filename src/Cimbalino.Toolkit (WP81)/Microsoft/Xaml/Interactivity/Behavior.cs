@@ -19,7 +19,7 @@ namespace Microsoft.Xaml.Interactivity
     /// <summary>
     /// Behavior is the base class for providing attachable state and commands to an object.
     /// </summary>
-    public class Behavior : DependencyObject, IBehavior
+    public abstract class Behavior : DependencyObject, IBehavior
     {
         private DependencyObject _associatedObject;
 
