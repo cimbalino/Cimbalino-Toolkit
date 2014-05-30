@@ -20,15 +20,18 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Cimbalino.Toolkit.Extensions;
+using KeyRoutedEventArgs = System.Windows.Input.KeyEventArgs;
+using VirtualKey = System.Windows.Input.Key;
 #else
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Cimbalino.Toolkit.Extensions;
-using Windows.UI.Core;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 #endif
 
 namespace Cimbalino.Toolkit.Behaviors
@@ -112,9 +115,9 @@ namespace Cimbalino.Toolkit.Behaviors
         public static readonly DependencyProperty AfterAutoFocusCommandProperty =
             DependencyProperty.Register("AfterAutoFocusCommand", typeof(ICommand), typeof(AutoFocusBehavior), null);
 
-        private void AssociatedObjectKeyUp(object sender, KeyEventArgs e)
+        private void AssociatedObjectKeyUp(object sender, KeyRoutedEventArgs e)
         {
-            if (e.Key == Key.Enter && (e.OriginalSource is TextBox || e.OriginalSource is PasswordBox))
+            if (e.Key == VirtualKey.Enter && (e.OriginalSource is TextBox || e.OriginalSource is PasswordBox))
             {
                 var originalSourceTextBox = e.OriginalSource as TextBox;
 
@@ -147,12 +150,20 @@ namespace Cimbalino.Toolkit.Behaviors
 
                 if (page != null)
                 {
+#if WINDOWS_PHONE
                     page.Focus();
+#else
+                    page.Focus(FocusState.Programmatic);
+#endif
                 }
             }
             else
             {
+#if WINDOWS_PHONE
                 toControl.Focus();
+#else
+                toControl.Focus(FocusState.Programmatic);
+#endif
 
                 if (SelectAllOnFocus)
                 {

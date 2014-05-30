@@ -12,8 +12,13 @@
 // </license>
 // ****************************************************************************
 
+#if WINDOWS_PHONE
 using System;
 using System.Windows.Controls;
+#else
+using System;
+using Windows.UI.Xaml.Controls;
+#endif
 
 namespace Cimbalino.Toolkit.Behaviors
 {

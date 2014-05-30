@@ -112,6 +112,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AfterAutoFocusEventArgs.cs">
+      <Link>Behaviors\AfterAutoFocusEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AutoFocusBehavior.cs">
+      <Link>Behaviors\AutoFocusBehavior.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingBehavior.cs">
       <Link>Behaviors\MultiBindingBehavior.cs</Link>
     </Compile>
