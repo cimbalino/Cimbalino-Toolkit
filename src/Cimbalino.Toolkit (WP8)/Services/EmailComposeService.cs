@@ -13,13 +13,16 @@
 // ****************************************************************************
 
 #if WINDOWS_PHONE
+using System.Threading.Tasks;
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
 using System;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Email;
 #else
 using System;
 using System.Net;
+using System.Threading.Tasks;
 using Windows.System;
 #endif
 
@@ -35,9 +38,10 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
-        public void Show(string subject, string body)
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public Task ShowAsync(string subject, string body)
         {
-            Show(string.Empty, string.Empty, string.Empty, subject, body);
+            return ShowAsync(string.Empty, string.Empty, string.Empty, subject, body);
         }
 
         /// <summary>
@@ -46,9 +50,10 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="to">The e-mail recipients.</param>
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
-        public void Show(string to, string subject, string body)
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public Task ShowAsync(string to, string subject, string body)
         {
-            Show(to, string.Empty, string.Empty, subject, body);
+            return ShowAsync(to, string.Empty, string.Empty, subject, body);
         }
 
         /// <summary>
@@ -59,7 +64,8 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="bcc">The e-mail BCC recipients.</param>
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
-        public void Show(string to, string cc, string bcc, string subject, string body)
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
 #if WINDOWS_PHONE
             new EmailComposeTask()
@@ -70,6 +76,8 @@ namespace Cimbalino.Toolkit.Services
                 Subject = subject,
                 Body = body
             }.Show();
+
+            await Task.FromResult(0);
 #elif WINDOWS_PHONE_APP
             var emailMessage = new EmailMessage
             {
@@ -92,7 +100,7 @@ namespace Cimbalino.Toolkit.Services
                 emailMessage.To.Add(new EmailRecipient(bcc));
             }
 
-            EmailManager.ShowComposeNewEmailAsync(emailMessage);
+            await EmailManager.ShowComposeNewEmailAsync(emailMessage);
 #else
             var emailUrl = "mailto:?";
 
@@ -121,7 +129,7 @@ namespace Cimbalino.Toolkit.Services
                 emailUrl += "&body=" + Uri.EscapeDataString(body);
             }
 
-            Launcher.LaunchUriAsync(new Uri(emailUrl, UriKind.Absolute));
+            await Launcher.LaunchUriAsync(new Uri(emailUrl, UriKind.Absolute));
 #endif
         }
     }

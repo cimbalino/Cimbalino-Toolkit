@@ -13,11 +13,14 @@
 // ****************************************************************************
 
 #if WINDOWS_PHONE
+using System.Threading.Tasks;
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Calls;
 #else
 using System;
+using System.Threading.Tasks;
 using Windows.System;
 #endif
 
@@ -32,9 +35,10 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Phone application, using the specified phone number.
         /// </summary>
         /// <param name="phoneNumber">The phone number.</param>
-        public void Show(string phoneNumber)
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public Task ShowAsync(string phoneNumber)
         {
-            Show(phoneNumber, null);
+            return ShowAsync(phoneNumber, null);
         }
 
         /// <summary>
@@ -42,7 +46,8 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="displayName">The display name.</param>
-        public void Show(string phoneNumber, string displayName)
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async Task ShowAsync(string phoneNumber, string displayName)
         {
 #if WINDOWS_PHONE
             new PhoneCallTask()
@@ -50,12 +55,16 @@ namespace Cimbalino.Toolkit.Services
                 PhoneNumber = phoneNumber,
                 DisplayName = displayName
             }.Show();
+
+            await Task.FromResult(0);
 #elif WINDOWS_PHONE_APP
             PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
+
+            await Task.FromResult(0);
 #else
             var phoneCallUrl = "tel:" + Uri.EscapeDataString(phoneNumber);
 
-            Launcher.LaunchUriAsync(new Uri(phoneCallUrl, UriKind.Absolute));
+            await Launcher.LaunchUriAsync(new Uri(phoneCallUrl, UriKind.Absolute));
 #endif
         }
     }

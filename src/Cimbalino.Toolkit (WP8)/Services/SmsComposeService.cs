@@ -13,11 +13,16 @@
 // ****************************************************************************
 
 #if WINDOWS_PHONE
+using System.Threading.Tasks;
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
+using System;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Chat;
 #else
 using System;
+using System.Threading.Tasks;
+using Windows.System;
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -31,9 +36,10 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Messaging application, using the specified recipient list.
         /// </summary>
         /// <param name="recipient">The recipient.</param>
-        public void Show(string recipient)
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public Task ShowAsync(string recipient)
         {
-            Show(recipient, null);
+            return ShowAsync(recipient, null);
         }
 
         /// <summary>
@@ -41,7 +47,8 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="recipient">The recipient list for the new SMS message.</param>
         /// <param name="body">The body text of the new SMS message.</param>
-        public void Show(string recipient, string body)
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async Task ShowAsync(string recipient, string body)
         {
 #if WINDOWS_PHONE
             new SmsComposeTask()
@@ -49,6 +56,8 @@ namespace Cimbalino.Toolkit.Services
                 To = recipient,
                 Body = body
             }.Show();
+
+            await Task.FromResult(0);
 #elif WINDOWS_PHONE_APP
             var chatMessage = new ChatMessage
             {
@@ -57,9 +66,16 @@ namespace Cimbalino.Toolkit.Services
 
             chatMessage.Recipients.Add(recipient);
 
-            ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage);
+            await ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage);
 #else
-            throw new NotSupportedException("This method is not supported in Windows Store Apps");
+            var smsUrl = "sms:" + Uri.EscapeDataString(recipient);
+
+            if (!string.IsNullOrEmpty(body))
+            {
+                smsUrl += "?body=" + Uri.EscapeDataString(body);
+            }
+
+            await Launcher.LaunchUriAsync(new Uri(smsUrl, UriKind.Absolute));
 #endif
         }
     }

@@ -12,6 +12,8 @@
 // </license>
 // ****************************************************************************
 
+using System.Threading.Tasks;
+
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
@@ -23,13 +25,15 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Phone application, using the specified phone number.
         /// </summary>
         /// <param name="phoneNumber">The phone number.</param>
-        void Show(string phoneNumber);
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowAsync(string phoneNumber);
 
         /// <summary>
         /// Shows the Phone application, using the specified phone number and display name.
         /// </summary>
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="displayName">The display name.</param>
-        void Show(string phoneNumber, string displayName);
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowAsync(string phoneNumber, string displayName);
     }
 }

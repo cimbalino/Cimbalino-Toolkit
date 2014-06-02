@@ -12,6 +12,8 @@
 // </license>
 // ****************************************************************************
 
+using System.Threading.Tasks;
+
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
@@ -23,13 +25,15 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Messaging application, using the specified recipient list.
         /// </summary>
         /// <param name="recipient">The recipient.</param>
-        void Show(string recipient);
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowAsync(string recipient);
 
         /// <summary>
         /// Shows the Messaging application, using the specified recipient list and message body.
         /// </summary>
         /// <param name="recipient">The recipient list for the new SMS message.</param>
         /// <param name="body">The body text of the new SMS message.</param>
-        void Show(string recipient, string body);
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowAsync(string recipient, string body);
     }
 }

@@ -12,6 +12,8 @@
 // </license>
 // ****************************************************************************
 
+using System.Threading.Tasks;
+
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
@@ -24,7 +26,8 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
-        void Show(string subject, string body);
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowAsync(string subject, string body);
 
         /// <summary>
         /// Shows the e-mail compose screen with the specified recipients, subject and message body.
@@ -32,7 +35,8 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="to">The e-mail recipients.</param>
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
-        void Show(string to, string subject, string body);
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowAsync(string to, string subject, string body);
 
         /// <summary>
         /// Shows the e-mail compose screen with the specified recipients, CC recipients, BCC recipients, subject and message body.
@@ -42,6 +46,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="bcc">The e-mail BCC recipients.</param>
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
-        void Show(string to, string cc, string bcc, string subject, string body);
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowAsync(string to, string cc, string bcc, string subject, string body);
     }
 }
