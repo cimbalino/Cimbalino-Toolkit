@@ -78,6 +78,7 @@ namespace Cimbalino.Toolkit.Services
 
         public static LocationServicePosition ToLocationServicePosition(this Geocoordinate coordinate)
         {
+#if WINDOWS_PHONE
             return new LocationServicePosition(
                 coordinate.Timestamp,
                 coordinate.Latitude,
@@ -87,6 +88,20 @@ namespace Cimbalino.Toolkit.Services
                 coordinate.AltitudeAccuracy,
                 coordinate.Heading,
                 coordinate.Speed);
+#else
+            var point = coordinate.Point;
+            var position = point.Position;
+
+            return new LocationServicePosition(
+                coordinate.Timestamp,
+                position.Latitude,
+                position.Longitude,
+                coordinate.Accuracy,
+                position.Altitude,
+                coordinate.AltitudeAccuracy,
+                coordinate.Heading,
+                coordinate.Speed);
+#endif
         }
 
         public static LocationServicePositionChangedEventArgs ToLocationServicePositionChangedEventArgs(this PositionChangedEventArgs eventArgs)
