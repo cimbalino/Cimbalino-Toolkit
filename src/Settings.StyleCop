@@ -7,6 +7,7 @@
       <Value>namescope</Value>
       <Value>nullable</Value>
       <Value>tombstoned</Value>
+      <Value>zlib</Value>
     </CollectionProperty>
   </GlobalSettings>
   <Parsers>
