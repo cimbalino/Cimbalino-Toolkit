@@ -135,6 +135,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Extensions\FrameworkElementExtensions.cs">
       <Link>Extensions\FrameworkElementExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DeviceSettingsService.cs">
+      <Link>Services\DeviceSettingsService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\EmailComposeService.cs">
       <Link>Services\EmailComposeService.cs</Link>
     </Compile>
