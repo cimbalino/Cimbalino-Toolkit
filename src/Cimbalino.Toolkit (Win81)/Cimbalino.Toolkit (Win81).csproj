@@ -147,6 +147,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\SmsComposeService.cs">
       <Link>Services\SmsComposeService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\StoreService.cs">
+      <Link>Services\StoreService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Microsoft\Xaml\Interactivity\Behavior.cs">
       <Link>Microsoft\Xaml\Interactivity\Behavior.cs</Link>
     </Compile>

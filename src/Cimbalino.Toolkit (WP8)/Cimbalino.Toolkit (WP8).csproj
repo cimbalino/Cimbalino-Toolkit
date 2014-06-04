@@ -106,6 +106,7 @@
     <Compile Include="Services\LauncherService.cs" />
     <Compile Include="Services\PhoneCallService.cs" />
     <Compile Include="Services\SmsComposeService.cs" />
+    <Compile Include="Services\StoreService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cimbalino.Toolkit.Background %28WP8%29\Cimbalino.Toolkit.Background %28WP8%29.csproj">
