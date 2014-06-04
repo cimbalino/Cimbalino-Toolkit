@@ -20,7 +20,7 @@ using System.Linq;
 using System.Reflection;
 #endif
 
-namespace Cimbalino.Phone.Toolkit.Extensions
+namespace Cimbalino.Toolkit.Extensions
 {
     /// <summary>
     /// Provides a set of static (Shared in Visual Basic) methods for <see cref="object"/> instances.
