@@ -116,6 +116,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DeviceSettingsService.cs">
       <Link>Services\DeviceSettingsService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DisplayPropertiesService.cs">
+      <Link>Services\DisplayPropertiesService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\EmailComposeService.cs">
       <Link>Services\EmailComposeService.cs</Link>
     </Compile>

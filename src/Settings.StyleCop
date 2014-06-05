@@ -6,6 +6,7 @@
       <Value>databinding</Value>
       <Value>namescope</Value>
       <Value>nullable</Value>
+      <Value>rect</Value>
       <Value>tombstoned</Value>
       <Value>zlib</Value>
     </CollectionProperty>
