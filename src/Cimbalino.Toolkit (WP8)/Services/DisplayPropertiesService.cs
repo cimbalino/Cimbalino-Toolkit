@@ -15,6 +15,7 @@
 #if WINDOWS_PHONE
 using System;
 using System.Windows;
+using Microsoft.Phone.Info;
 using Windows.Graphics.Display;
 using Rect = Cimbalino.Toolkit.Foundation.Rect;
 #else
@@ -74,42 +75,28 @@ namespace Cimbalino.Toolkit.Services
             get
             {
 #if WINDOWS_PHONE
-                var resolutionScale = DisplayProperties.ResolutionScale;
-#else
-                var resolutionScale = DisplayInformation.GetForCurrentView().ResolutionScale;
-#endif
+                var resolutionScale = Application.Current.Host.Content.ScaleFactor;
 
-                switch (resolutionScale)
+                object physicalScreenResolutionObject;
+
+                if (DeviceExtendedProperties.TryGetValue("PhysicalScreenResolution", out physicalScreenResolutionObject))
                 {
-                    case Windows.Graphics.Display.ResolutionScale.Invalid:
-                        return DisplayPropertiesServiceResolutionScale.Invalid;
+                    var physicalScreenResolution = (Size)physicalScreenResolutionObject;
 
-                    case Windows.Graphics.Display.ResolutionScale.Scale100Percent:
-                        return DisplayPropertiesServiceResolutionScale.Scale100Percent;
-
-                    case Windows.Graphics.Display.ResolutionScale.Scale140Percent:
-                        return DisplayPropertiesServiceResolutionScale.Scale140Percent;
-
-                    case Windows.Graphics.Display.ResolutionScale.Scale150Percent:
-                        return DisplayPropertiesServiceResolutionScale.Scale150Percent;
-
-                    case Windows.Graphics.Display.ResolutionScale.Scale160Percent:
-                        return DisplayPropertiesServiceResolutionScale.Scale160Percent;
-
-                    case Windows.Graphics.Display.ResolutionScale.Scale180Percent:
-                        return DisplayPropertiesServiceResolutionScale.Scale180Percent;
-
-#if WINDOWS_APP
-                    case Windows.Graphics.Display.ResolutionScale.Scale120Percent:
-                        return DisplayPropertiesServiceResolutionScale.Scale120Percent;
-
-                    case Windows.Graphics.Display.ResolutionScale.Scale225Percent:
-                        return DisplayPropertiesServiceResolutionScale.Scale225Percent;
+                    resolutionScale = (int)(physicalScreenResolution.Width / 4.8);
+                }
+#elif WINDOWS_PHONE_APP
+                var resolutionScale = (int)DisplayInformation.GetForCurrentView().ResolutionScale;
+#else
+                var resolutionScale = (int)DisplayInformation.GetForCurrentView().ResolutionScale;
 #endif
 
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                if (Enum.IsDefined(typeof(DisplayPropertiesServiceResolutionScale), resolutionScale))
+                {
+                    return (DisplayPropertiesServiceResolutionScale)resolutionScale;
                 }
+
+                return DisplayPropertiesServiceResolutionScale.Invalid;
             }
         }
     }
