@@ -133,7 +133,7 @@
     <Compile Include="..\cimbalino.toolkit.background %28wp8%29\services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Background %28WP81%29\Extensions\RenderTargetBitmapExtensions.cs">
+    <Compile Include="..\Cimbalino.Toolkit.Background %28WPA81%29\Extensions\RenderTargetBitmapExtensions.cs">
       <Link>Extensions\RenderTargetBitmapExtensions.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

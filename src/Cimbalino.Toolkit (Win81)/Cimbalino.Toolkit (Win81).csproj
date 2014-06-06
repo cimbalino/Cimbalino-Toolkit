@@ -195,16 +195,16 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\StoreService.cs">
       <Link>Services\StoreService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Microsoft\Xaml\Interactivity\Behavior.cs">
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Microsoft\Xaml\Interactivity\Behavior.cs">
       <Link>Microsoft\Xaml\Interactivity\Behavior.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Microsoft\Xaml\Interactivity\Behavior{T}.cs">
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Microsoft\Xaml\Interactivity\Behavior{T}.cs">
       <Link>Microsoft\Xaml\Interactivity\Behavior{T}.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Services\NavigationService.cs">
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\NavigationService.cs">
       <Link>Services\NavigationService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Windows\UI\Xaml\DependencyObjectCollection{T}.cs">
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Windows\UI\Xaml\DependencyObjectCollection{T}.cs">
       <Link>Windows\UI\Xaml\DependencyObjectCollection{T}.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
