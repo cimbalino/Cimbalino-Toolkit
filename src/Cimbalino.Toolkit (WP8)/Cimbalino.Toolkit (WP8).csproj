@@ -119,6 +119,7 @@
     <Compile Include="Services\DisplayPropertiesService.cs" />
     <Compile Include="Services\EmailComposeService.cs" />
     <Compile Include="Services\LauncherService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\PhoneCallService.cs" />
     <Compile Include="Services\SmsComposeService.cs" />
     <Compile Include="Services\StoreService.cs" />

@@ -65,6 +65,7 @@
     <Compile Include="Services\IEmailComposeService.cs" />
     <Compile Include="Services\ILauncherService.cs" />
     <Compile Include="Services\ILocationService.cs" />
+    <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\IPhoneCallService.cs" />
     <Compile Include="Services\ISmsComposeService.cs" />
     <Compile Include="Services\IStorageService.cs" />

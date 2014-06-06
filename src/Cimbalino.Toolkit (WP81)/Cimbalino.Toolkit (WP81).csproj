@@ -175,6 +175,7 @@
     </Compile>
     <Compile Include="Microsoft\Xaml\Interactivity\Behavior{T}.cs" />
     <Compile Include="Microsoft\Xaml\Interactivity\Behavior.cs" />
+    <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Windows\UI\Xaml\DependencyObjectCollection{T}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
