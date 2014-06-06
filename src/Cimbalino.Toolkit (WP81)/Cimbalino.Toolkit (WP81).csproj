@@ -110,6 +110,45 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\SafeBehavior.cs">
       <Link>Behaviors\SafeBehavior.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToBrushConverter.cs">
+      <Link>Converters\BooleanToBrushConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToIntConverter.cs">
+      <Link>Converters\BooleanToIntConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToStringConverter.cs">
+      <Link>Converters\BooleanToStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToValueConverterBase.cs">
+      <Link>Converters\BooleanToValueConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToVisibilityConverter.cs">
+      <Link>Converters\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\ColorToBrushConverter.cs">
+      <Link>Converters\ColorToBrushConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\MultiValueConverterBase.cs">
+      <Link>Converters\MultiValueConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringFormatConverter.cs">
+      <Link>Converters\StringFormatConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringRegexConverter.cs">
+      <Link>Converters\StringRegexConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringToLowercaseConverter.cs">
+      <Link>Converters\StringToLowercaseConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringToUppercaseConverter.cs">
+      <Link>Converters\StringToUppercaseConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringToVisibilityConverter.cs">
+      <Link>Converters\StringToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\ValueConverterBase.cs">
+      <Link>Converters\ValueConverterBase.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Extensions\FrameworkElementExtensions.cs">
       <Link>Extensions\FrameworkElementExtensions.cs</Link>
     </Compile>
