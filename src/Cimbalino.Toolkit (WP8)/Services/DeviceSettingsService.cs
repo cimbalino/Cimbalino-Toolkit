@@ -109,13 +109,16 @@ namespace Cimbalino.Toolkit.Services
             await LaunchUrlAsync("ms-settings-wifi:");
         }
 
+#if WINDOWS_PHONE || WINDOWS_PHONE_APP
         private async Task LaunchUrlAsync(string url)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP
             await Launcher.LaunchUriAsync(new Uri(url, UriKind.Absolute));
-#else
-            throw new NotSupportedException();
-#endif
         }
+#else
+        private Task LaunchUrlAsync(string url)
+        {
+            throw new NotSupportedException();
+        }
+#endif
     }
 }
