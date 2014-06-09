@@ -26,7 +26,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 #endif
 
-
 namespace Cimbalino.Toolkit.Converters
 {
     /// <summary>

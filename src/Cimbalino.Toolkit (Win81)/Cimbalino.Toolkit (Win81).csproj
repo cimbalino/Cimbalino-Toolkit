@@ -187,6 +187,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\LauncherService.cs">
       <Link>Services\LauncherService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\MessageBoxService.cs">
+      <Link>Services\MessageBoxService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\PhoneCallService.cs">
       <Link>Services\PhoneCallService.cs</Link>
     </Compile>
