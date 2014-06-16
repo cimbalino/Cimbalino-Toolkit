@@ -4,8 +4,8 @@
     <id>Cimbalino.Toolkit.Portable</id>
     <version>$version$</version>
     <authors>Pedro Lamas</authors>
-    <title>Cimbalino Windows Toolkit - Portable Components</title>
-    <description>Cimbalino Windows Toolkit is a set of useful and powerful items that will help you build your Windows applications. This is the Portable Library (PCL) component.</description>
+    <title>Cimbalino Toolkit - Portable Components</title>
+    <description>Cimbalino Toolkit is a set of useful and powerful items that will help you build your Windows applications. This is the Portable Library (PCL) component.</description>
     <language>en-US</language>
     <projectUrl>http://cimbalino.org</projectUrl>
     <licenseUrl>https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/LICENSE.txt</licenseUrl>
