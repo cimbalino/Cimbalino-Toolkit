@@ -90,6 +90,7 @@
     <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Extensions\WriteableBitmapExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApplicationDataService.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\LocationServiceExtensions.cs" />
     <Compile Include="Services\NetworkInformationService.cs" />

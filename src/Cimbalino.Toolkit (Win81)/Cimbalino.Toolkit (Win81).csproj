@@ -212,6 +212,7 @@
       <Link>Windows\UI\Xaml\DependencyObjectCollection{T}.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LocalizationString.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
