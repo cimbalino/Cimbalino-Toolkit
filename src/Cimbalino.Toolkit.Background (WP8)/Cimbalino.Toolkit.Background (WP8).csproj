@@ -84,10 +84,124 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="..\Cimbalino.Toolkit.Background %28Portable%29\Extensions\ByteArrayExtensions.cs">
+      <Link>Extensions\ByteArrayExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background %28Portable%29\Extensions\ObjectExtensions.cs">
+      <Link>Extensions\ObjectExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background %28Portable%29\Extensions\StreamExtensions.cs">
+      <Link>Extensions\StreamExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\compression\Adler32.generated.cs">
+      <Link>Compression\Adler32.generated.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\compression\Crc32.generated.cs">
+      <Link>Compression\Crc32.generated.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\compression\ZlibStream.cs">
+      <Link>Compression\ZlibStream.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\EventHandlerExtensions.cs">
+      <Link>Extensions\EventHandlerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\ICollectionExtensions.cs">
+      <Link>Extensions\ICollectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\IComparableExtensions.cs">
+      <Link>Extensions\IComparableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\IDictionaryExtensions.cs">
+      <Link>Extensions\IDictionaryExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\IEnumerableExtensions.cs">
+      <Link>Extensions\IEnumerableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\IFormattableExtensions.cs">
+      <Link>Extensions\IFormattableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\IntExtensions.cs">
+      <Link>Extensions\IntExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\StreamReaderExtensions.cs">
+      <Link>Extensions\StreamReaderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\StreamWriterExtensions.cs">
+      <Link>Extensions\StreamWriterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\StringExtensions.cs">
+      <Link>Extensions\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\UriExtensions.cs">
+      <Link>Extensions\UriExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\WebRequestExtensions.cs">
+      <Link>Extensions\WebRequestExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Extensions\XmlReaderExtensions.cs">
+      <Link>Extensions\XmlReaderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\foundation\Rect.cs">
+      <Link>Foundation\Rect.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\helpers\ChunkedStream.cs">
+      <Link>Helpers\ChunkedStream.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\helpers\OptimizedObservableCollection.cs">
+      <Link>Helpers\OptimizedObservableCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\DisplayPropertiesServiceResolutionScale.cs">
+      <Link>Services\DisplayPropertiesServiceResolutionScale.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\IDeviceSettingsService.cs">
+      <Link>Services\IDeviceSettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\IDisplayPropertiesService.cs">
+      <Link>Services\IDisplayPropertiesService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\IEmailComposeService.cs">
+      <Link>Services\IEmailComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\ILauncherService.cs">
+      <Link>Services\ILauncherService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\ILocationService.cs">
+      <Link>Services\ILocationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\IMessageBoxService.cs">
+      <Link>Services\IMessageBoxService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\INavigationService.cs">
+      <Link>Services\INavigationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\IPhoneCallService.cs">
+      <Link>Services\IPhoneCallService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\ISmsComposeService.cs">
+      <Link>Services\ISmsComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\IStorageService.cs">
+      <Link>Services\IStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\IStoreService.cs">
+      <Link>Services\IStoreService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\LocationServiceAccuracy.cs">
+      <Link>Services\LocationServiceAccuracy.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\LocationServicePosition.cs">
+      <Link>Services\LocationServicePosition.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\LocationServicePositionChangedEventArgs.cs">
+      <Link>Services\LocationServicePositionChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\LocationServiceStatus.cs">
+      <Link>Services\LocationServiceStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Background (Portable)\Services\LocationServiceStatusChangedEventArgs.cs">
+      <Link>Services\LocationServiceStatusChangedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Extensions\WriteableBitmapExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocationService.cs" />
@@ -96,13 +210,6 @@
     <Compile Include="System\Security\Cryptography\HMACMD5.Generated.cs" />
     <Compile Include="System\Security\Cryptography\MD5.Generated.cs" />
     <Compile Include="System\Security\Cryptography\MD5Managed.Generated.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cimbalino.Toolkit.Portable\Cimbalino.Toolkit.Portable.csproj">
-      <Project>{df37406d-0261-4f84-9576-35387a3de8c5}</Project>
-      <Name>Cimbalino.Toolkit.Portable</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

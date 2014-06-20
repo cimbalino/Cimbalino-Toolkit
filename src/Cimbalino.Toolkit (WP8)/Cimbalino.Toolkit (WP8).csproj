@@ -132,11 +132,6 @@
       <Name>Cimbalino.Toolkit.Background %28WP8%29</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Cimbalino.Toolkit.Portable\Cimbalino.Toolkit.Portable.csproj">
-      <Project>{df37406d-0261-4f84-9576-35387a3de8c5}</Project>
-      <Name>Cimbalino.Toolkit.Portable</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.IO.Compression, Version=3.9.83.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">

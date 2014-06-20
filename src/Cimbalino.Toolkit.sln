@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Portable", "Cimbalino.Toolkit.Portable\Cimbalino.Toolkit.Portable.csproj", "{DF37406D-0261-4F84-9576-35387A3DE8C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Background (Portable)", "Cimbalino.Toolkit.Background (Portable)\Cimbalino.Toolkit.Background (Portable).csproj", "{DF37406D-0261-4F84-9576-35387A3DE8C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit (WP8)", "Cimbalino.Toolkit (WP8)\Cimbalino.Toolkit (WP8).csproj", "{1C6E97D3-7D3F-486F-AC01-869210F657C5}"
 EndProject
