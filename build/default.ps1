@@ -17,16 +17,15 @@ properties {
   $vstest = "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
   
   $configurations = @{
-    "Portable" = @{Suffix = ""; Folder="portable-net45+wp8+win8+wpa81"};
+    "Portable" = @{Suffix = " (Portable)"; Folder="portable-net45+wp8+win8+wpa81"};
     "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
     "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
     "Win81" = @{Suffix = " (Win81)"; Folder="win81"}
   }
   
   $projects = @(
-    @{Name = "Cimbalino.Toolkit.Portable"; Configurations = @("Portable")},
     @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81")},
-    @{Name = "Cimbalino.Toolkit.Background"; Configurations = @("WP8", "WPA81", "Win81")}
+    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81")}
   )
 }
 

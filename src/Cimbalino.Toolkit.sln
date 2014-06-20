@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Background (Portable)", "Cimbalino.Toolkit.Background (Portable)\Cimbalino.Toolkit.Background (Portable).csproj", "{DF37406D-0261-4F84-9576-35387A3DE8C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Core (Portable)", "Cimbalino.Toolkit.Core (Portable)\Cimbalino.Toolkit.Core (Portable).csproj", "{DF37406D-0261-4F84-9576-35387A3DE8C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit (WP8)", "Cimbalino.Toolkit (WP8)\Cimbalino.Toolkit (WP8).csproj", "{1C6E97D3-7D3F-486F-AC01-869210F657C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Background (WP8)", "Cimbalino.Toolkit.Background (WP8)\Cimbalino.Toolkit.Background (WP8).csproj", "{1EBC84F2-9C7A-4BAC-93C5-C1DFEFFE1173}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Core (WP8)", "Cimbalino.Toolkit.Core (WP8)\Cimbalino.Toolkit.Core (WP8).csproj", "{1EBC84F2-9C7A-4BAC-93C5-C1DFEFFE1173}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Background (WPA81)", "Cimbalino.Toolkit.Background (WPA81)\Cimbalino.Toolkit.Background (WPA81).csproj", "{28E175B2-884C-40D2-AEDE-D8C01994761B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Core (WPA81)", "Cimbalino.Toolkit.Core (WPA81)\Cimbalino.Toolkit.Core (WPA81).csproj", "{28E175B2-884C-40D2-AEDE-D8C01994761B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Background (Win81)", "Cimbalino.Toolkit.Background (Win81)\Cimbalino.Toolkit.Background (Win81).csproj", "{1B367D74-A161-4C0E-9DD7-905843ECDDDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit.Core (Win81)", "Cimbalino.Toolkit.Core (Win81)\Cimbalino.Toolkit.Core (Win81).csproj", "{1B367D74-A161-4C0E-9DD7-905843ECDDDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cimbalino.Toolkit (Win81)", "Cimbalino.Toolkit (Win81)\Cimbalino.Toolkit (Win81).csproj", "{2B2685A3-A932-494C-8D5A-802CCC1996CB}"
 EndProject

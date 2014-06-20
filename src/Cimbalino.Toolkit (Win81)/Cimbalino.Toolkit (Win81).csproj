@@ -103,9 +103,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Cimbalino.Toolkit.Background %28Win81%29\Cimbalino.Toolkit.Background %28Win81%29.csproj">
+    <ProjectReference Include="..\Cimbalino.Toolkit.Core %28Win81%29\Cimbalino.Toolkit.Core %28Win81%29.csproj">
       <Project>{1b367d74-a161-4c0e-9dd7-905843ecdddf}</Project>
-      <Name>Cimbalino.Toolkit.Background %28Win81%29</Name>
+      <Name>Cimbalino.Toolkit.Core %28Win81%29</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

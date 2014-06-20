@@ -127,9 +127,9 @@
     <Compile Include="Services\StoreService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cimbalino.Toolkit.Background %28WP8%29\Cimbalino.Toolkit.Background %28WP8%29.csproj">
+    <ProjectReference Include="..\Cimbalino.Toolkit.Core %28WP8%29\Cimbalino.Toolkit.Core %28WP8%29.csproj">
       <Project>{1ebc84f2-9c7a-4bac-93c5-c1dfeffe1173}</Project>
-      <Name>Cimbalino.Toolkit.Background %28WP8%29</Name>
+      <Name>Cimbalino.Toolkit.Core %28WP8%29</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
