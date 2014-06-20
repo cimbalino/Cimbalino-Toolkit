@@ -111,6 +111,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StreamExtensions.cs">
       <Link>Extensions\StreamExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
+      <Link>Services\INetworkInformationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\DependencyObjectExtensions.cs">
       <Link>Extensions\DependencyObjectExtensions.cs</Link>
     </Compile>
@@ -123,7 +126,10 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\LocationServiceExtensions.cs">
       <Link>Services\LocationServiceExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\cimbalino.toolkit.Core %28wp8%29\services\StorageService.cs">
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\NetworkInformationService.cs">
+      <Link>Services\NetworkInformationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28wp8%29\Services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Extensions\RenderTargetBitmapExtensions.cs">

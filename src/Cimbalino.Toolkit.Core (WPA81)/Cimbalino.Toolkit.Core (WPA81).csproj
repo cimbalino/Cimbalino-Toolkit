@@ -89,6 +89,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StreamExtensions.cs">
       <Link>Extensions\StreamExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
+      <Link>Services\INetworkInformationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HashAlgorithmBase.cs">
       <Link>System\Security\Cryptography\HashAlgorithmBase.cs</Link>
     </Compile>
@@ -124,6 +127,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\LocationServiceExtensions.cs">
       <Link>Services\LocationServiceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\NetworkInformationService.cs">
+      <Link>Services\NetworkInformationService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
