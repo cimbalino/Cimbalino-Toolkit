@@ -51,7 +51,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA1Hash(this Stream input)
         {
 #if PORTABLE
-            throw NotImplementedInReferenceAssembly.CreateException();
+            return null;
 #else
             using (var hash = new SHA1Managed())
             {
@@ -68,7 +68,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA256Hash(this Stream input)
         {
 #if PORTABLE
-            throw NotImplementedInReferenceAssembly.CreateException();
+            return null;
 #else
             using (var hash = new SHA256Managed())
             {
@@ -85,7 +85,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeMD5Hash(this Stream input)
         {
 #if PORTABLE
-            throw NotImplementedInReferenceAssembly.CreateException();
+            return null;
 #else
             using (var hash = new MD5Managed())
             {
@@ -103,7 +103,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA1Hash(this Stream input, byte[] key)
         {
 #if PORTABLE
-            throw NotImplementedInReferenceAssembly.CreateException();
+            return null;
 #else
             using (var hash = new HMACSHA1())
             {
@@ -123,7 +123,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA256Hash(this Stream input, byte[] key)
         {
 #if PORTABLE
-            throw NotImplementedInReferenceAssembly.CreateException();
+            return null;
 #else
             using (var hash = new HMACSHA256())
             {
@@ -144,7 +144,7 @@ namespace Cimbalino.Toolkit.Extensions
 #if PORTABLE
             await Task.FromResult(0);
 
-            throw NotImplementedInReferenceAssembly.CreateException();
+            return null;
 #else
             var memoryStream = input as MemoryStream;
 

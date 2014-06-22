@@ -46,7 +46,7 @@ task Clean -description "Clean the output folder" {
 }
 
 task Setup -description "Setup environment" {
-  #Exec { .$nuget install $packagesConfig -solutionDir $sourceDir } "Error pre-installing NuGet packages"
+  Exec { .$nuget restore $packagesConfig "$sourceDir\Cimbalino.Toolkit.sln" } "Error pre-installing NuGet packages"
 }
 
 task Headers -description "Updates the headers in *.cs files" {
