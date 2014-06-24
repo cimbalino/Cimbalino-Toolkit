@@ -1,3 +1,5 @@
+#pragma warning disable 1591
+
 using System;
 
 namespace Cimbalino.Toolkit.Compression
@@ -61,3 +63,5 @@ namespace Cimbalino.Toolkit.Compression
         }
     }
 }
+
+#pragma warning restore 1591

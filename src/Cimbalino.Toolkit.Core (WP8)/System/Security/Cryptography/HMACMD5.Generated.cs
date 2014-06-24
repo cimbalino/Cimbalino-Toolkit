@@ -5,6 +5,8 @@
 // <author>Sebastien Warin</author>
 // ****************************************************************************
 
+#pragma warning disable 1591
+
 using System.Linq;
 
 namespace System.Security.Cryptography
@@ -26,7 +28,6 @@ namespace System.Security.Cryptography
         /// <summary>
         /// Initializes a new instance of the <see cref="HMACMD5"/> class the supplied key.
         /// </summary>
-        /// <param name="key">The key.</param>
         public HMACMD5()
         {
         }
@@ -206,3 +207,5 @@ namespace System.Security.Cryptography
         }
     }
 }
+
+#pragma warning restore 1591

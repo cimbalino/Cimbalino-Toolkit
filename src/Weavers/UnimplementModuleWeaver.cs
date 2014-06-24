@@ -29,7 +29,7 @@ public class UnimplementModuleWeaver
                 .ToArray();
 
             foreach (var methodDefinition in methodDefinitions)
-            {   
+            {
                 if (methodDefinition.HasCustomAttributes && methodDefinition.CustomAttributes != null)
                 {
                     var asyncStateMachineAttribute = methodDefinition.CustomAttributes.FirstOrDefault(x => x.AttributeType.FullName == "System.Runtime.CompilerServices.AsyncStateMachineAttribute");
