@@ -59,7 +59,9 @@
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="Extensions\WebRequestExtensions.cs" />
     <Compile Include="Extensions\XmlReaderExtensions.cs" />
+    <Compile Include="Foundation\Point.cs" />
     <Compile Include="Foundation\Rect.cs" />
+    <Compile Include="Foundation\Size.cs" />
     <Compile Include="Helpers\ChunkedStream.cs" />
     <Compile Include="Helpers\OptimizedObservableCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

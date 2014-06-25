@@ -93,6 +93,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StreamExtensions.cs">
       <Link>Extensions\StreamExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Point.cs">
+      <Link>Foundation\Point.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Size.cs">
+      <Link>Foundation\Size.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
     </Compile>
