@@ -19,7 +19,6 @@ using Microsoft.Phone.Info;
 using Windows.Graphics.Display;
 using Rect = Cimbalino.Toolkit.Foundation.Rect;
 #else
-using System;
 using Cimbalino.Toolkit.Foundation;
 using Windows.Graphics.Display;
 using Windows.UI.Xaml;
@@ -49,6 +48,52 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Gets the raw dots per inch (DPI) along the x axis of the display monitor.
+        /// </summary>
+        /// <value>The raw dots per inch (DPI) along the x axis of the display monitor.</value>
+        public float RawDpiX
+        {
+            get
+            {
+#if WINDOWS_PHONE
+                object value;
+
+                if (DeviceExtendedProperties.TryGetValue("RawDpiX", out value))
+                {
+                    return (float)value;
+                }
+
+                return 1.0f;
+#else
+                return DisplayInformation.GetForCurrentView().RawDpiX;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Gets the raw dots per inch (DPI) along the y axis of the display monitor.
+        /// </summary>
+        /// <value>The raw dots per inch (DPI) along the y axis of the display monitor.</value>
+        public float RawDpiY
+        {
+            get
+            {
+#if WINDOWS_PHONE
+                object value;
+
+                if (DeviceExtendedProperties.TryGetValue("RawDpiY", out value))
+                {
+                    return (float)value;
+                }
+
+                return 1.0f;
+#else
+                return DisplayInformation.GetForCurrentView().RawDpiY;
+#endif
+            }
+        }
+
+        /// <summary>
         /// Gets the height and width of the application window, as a Rect value.
         /// </summary>
         /// <value>A value that reports the height and width of the application window.</value>
@@ -67,36 +112,20 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets the scale factor of the immersive environment.
+        /// Gets the number of raw (physical) pixels for each view (layout) pixel.
         /// </summary>
-        /// <value>The scale factor of the immersive environment.</value>
-        public DisplayPropertiesServiceResolutionScale ResolutionScale
+        /// <value>The number of raw (physical) pixels for each view (layout) pixel.</value>
+        public double RawPixelsPerViewPixel
         {
             get
             {
 #if WINDOWS_PHONE
-                var resolutionScale = Application.Current.Host.Content.ScaleFactor;
-
-                object physicalScreenResolutionObject;
-
-                if (DeviceExtendedProperties.TryGetValue("PhysicalScreenResolution", out physicalScreenResolutionObject))
-                {
-                    var physicalScreenResolution = (Size)physicalScreenResolutionObject;
-
-                    resolutionScale = (int)(physicalScreenResolution.Width / 4.8);
-                }
+                return 1.0;
 #elif WINDOWS_PHONE_APP
-                var resolutionScale = (int)DisplayInformation.GetForCurrentView().ResolutionScale;
+                return DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
 #else
-                var resolutionScale = (int)DisplayInformation.GetForCurrentView().ResolutionScale;
+                return DisplayInformation.GetForCurrentView().LogicalDpi / 96.0;
 #endif
-
-                if (Enum.IsDefined(typeof(DisplayPropertiesServiceResolutionScale), resolutionScale))
-                {
-                    return (DisplayPropertiesServiceResolutionScale)resolutionScale;
-                }
-
-                return DisplayPropertiesServiceResolutionScale.Invalid;
             }
         }
     }

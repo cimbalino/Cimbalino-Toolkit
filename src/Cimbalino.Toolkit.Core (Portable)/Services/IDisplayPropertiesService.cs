@@ -28,15 +28,27 @@ namespace Cimbalino.Toolkit.Services
         float LogicalDpi { get; }
 
         /// <summary>
+        /// Gets the raw dots per inch (DPI) along the x axis of the display monitor.
+        /// </summary>
+        /// <value>The raw dots per inch (DPI) along the x axis of the display monitor.</value>
+        float RawDpiX { get; }
+
+        /// <summary>
+        /// Gets the raw dots per inch (DPI) along the y axis of the display monitor.
+        /// </summary>
+        /// <value>The raw dots per inch (DPI) along the y axis of the display monitor.</value>
+        float RawDpiY { get; }
+
+        /// <summary>
         /// Gets the height and width of the application window, as a Rect value.
         /// </summary>
         /// <value>A value that reports the height and width of the application window.</value>
         Rect Bounds { get; }
 
         /// <summary>
-        /// Gets the scale factor of the immersive environment.
+        /// Gets the number of raw (physical) pixels for each view (layout) pixel.
         /// </summary>
-        /// <value>The scale factor of the immersive environment.</value>
-        DisplayPropertiesServiceResolutionScale ResolutionScale { get; }
+        /// <value>The number of raw (physical) pixels for each view (layout) pixel.</value>
+        double RawPixelsPerViewPixel { get; }
     }
 }

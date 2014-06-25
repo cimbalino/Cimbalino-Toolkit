@@ -159,9 +159,6 @@
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\helpers\OptimizedObservableCollection.cs">
       <Link>Helpers\OptimizedObservableCollection.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\DisplayPropertiesServiceResolutionScale.cs">
-      <Link>Services\DisplayPropertiesServiceResolutionScale.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IDeviceSettingsService.cs">
       <Link>Services\IDeviceSettingsService.cs</Link>
     </Compile>
