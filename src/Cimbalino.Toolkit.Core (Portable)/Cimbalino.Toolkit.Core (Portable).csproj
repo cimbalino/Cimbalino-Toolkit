@@ -77,6 +77,7 @@
     <Compile Include="Services\ISmsComposeService.cs" />
     <Compile Include="Services\IStorageService.cs" />
     <Compile Include="Services\IStoreService.cs" />
+    <Compile Include="Services\IVibrationService.cs" />
     <Compile Include="Services\LocationServiceAccuracy.cs" />
     <Compile Include="Services\LocationServicePosition.cs" />
     <Compile Include="Services\LocationServicePositionChangedEventArgs.cs" />

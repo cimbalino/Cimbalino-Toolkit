@@ -103,6 +103,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
+      <Link>Services\IVibrationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
     </Compile>

@@ -173,6 +173,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\StoreService.cs">
       <Link>Services\StoreService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\VibrationService.cs">
+      <Link>Services\VibrationService.cs</Link>
+    </Compile>
     <Compile Include="Microsoft\Xaml\Interactivity\Behavior{T}.cs" />
     <Compile Include="Microsoft\Xaml\Interactivity\Behavior.cs" />
     <Compile Include="Services\NavigationService.cs" />
