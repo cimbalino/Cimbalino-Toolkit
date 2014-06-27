@@ -15,6 +15,7 @@
 #if WINDOWS_PHONE
 using System;
 using System.Linq;
+using System.Reflection;
 #else
 using System.Linq;
 using System.Reflection;
@@ -37,11 +38,7 @@ namespace Cimbalino.Toolkit.Extensions
         {
             var t = obj.GetType();
 
-#if WINDOWS_PHONE
-            return t.GetProperty(propertyName).GetValue(obj, null);
-#else
             return t.GetRuntimeProperty(propertyName).GetValue(obj, null);
-#endif
         }
 
         /// <summary>
@@ -55,11 +52,7 @@ namespace Cimbalino.Toolkit.Extensions
         {
             var t = obj.GetType();
 
-#if WINDOWS_PHONE
-            return (TObject)t.GetProperty(propertyName).GetValue(obj, null);
-#else
             return (TObject)t.GetRuntimeProperty(propertyName).GetValue(obj, null);
-#endif
         }
 
         /// <summary>
@@ -73,11 +66,7 @@ namespace Cimbalino.Toolkit.Extensions
         {
             var t = obj.GetType();
 
-#if WINDOWS_PHONE
-            t.GetProperty(propertyName).SetValue(obj, value, null);
-#else
             t.GetRuntimeProperty(propertyName).SetValue(obj, value, null);
-#endif
         }
 
         /// <summary>
@@ -94,11 +83,7 @@ namespace Cimbalino.Toolkit.Extensions
 
             var t = obj.GetType();
 
-#if WINDOWS_PHONE
-            t.GetMethod(methodName, argumentTypes).Invoke(obj, args);
-#else
             t.GetRuntimeMethod(methodName, argumentTypes).Invoke(obj, args);
-#endif
         }
 
         /// <summary>
@@ -117,11 +102,7 @@ namespace Cimbalino.Toolkit.Extensions
 
             var t = obj.GetType();
 
-#if WINDOWS_PHONE
-            return (TObject)t.GetMethod(methodName, argumentTypes).Invoke(obj, args);
-#else
             return (TObject)t.GetRuntimeMethod(methodName, argumentTypes).Invoke(obj, args);
-#endif
         }
 
 #if WINDOWS_PHONE
