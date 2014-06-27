@@ -158,66 +158,6 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="locationResult">The current location.</param>
-        public void GetPosition(Action<LocationServicePosition, Exception> locationResult)
-        {
-            GetPosition(LocationServiceAccuracy.Default, locationResult);
-        }
-
-        /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="desiredAccuracy">The desired accuracy.</param>
-        /// <param name="locationResult">The current location.</param>
-        public async void GetPosition(LocationServiceAccuracy desiredAccuracy, Action<LocationServicePosition, Exception> locationResult)
-        {
-            try
-            {
-                var position = await GetPositionAsync(desiredAccuracy).ConfigureAwait(false);
-
-                locationResult(position, null);
-            }
-            catch (Exception ex)
-            {
-                locationResult(null, ex);
-            }
-        }
-
-        /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
-        /// <param name="timeout">The timeout.</param>
-        /// <param name="locationResult">The current location.</param>
-        public void GetPosition(TimeSpan maximumAge, TimeSpan timeout, Action<LocationServicePosition, Exception> locationResult)
-        {
-            GetPosition(LocationServiceAccuracy.Default, maximumAge, timeout, locationResult);
-        }
-
-        /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="desiredAccuracy">The desired accuracy.</param>
-        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
-        /// <param name="timeout">The timeout.</param>
-        /// <param name="locationResult">The current location.</param>
-        public async void GetPosition(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout, Action<LocationServicePosition, Exception> locationResult)
-        {
-            try
-            {
-                var position = await GetPositionAsync(desiredAccuracy, maximumAge, timeout).ConfigureAwait(false);
-
-                locationResult(position, null);
-            }
-            catch (Exception ex)
-            {
-                locationResult(null, ex);
-            }
-        }
-
-        /// <summary>
         /// Starts an asynchronous operation to retrieve the current location.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>

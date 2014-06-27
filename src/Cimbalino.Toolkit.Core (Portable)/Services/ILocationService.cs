@@ -85,36 +85,6 @@ namespace Cimbalino.Toolkit.Services
         void Stop();
 
         /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="locationResult">The current location.</param>
-        void GetPosition(Action<LocationServicePosition, Exception> locationResult);
-
-        /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="desiredAccuracy">The desired accuracy.</param>
-        /// <param name="locationResult">The current location.</param>
-        void GetPosition(LocationServiceAccuracy desiredAccuracy, Action<LocationServicePosition, Exception> locationResult);
-
-        /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
-        /// <param name="timeout">The timeout.</param>
-        /// <param name="locationResult">The current location.</param>
-        void GetPosition(TimeSpan maximumAge, TimeSpan timeout, Action<LocationServicePosition, Exception> locationResult);
-
-        /// <summary>
-        /// Retrieves the current location.
-        /// </summary>
-        /// <param name="desiredAccuracy">The desired accuracy.</param>
-        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
-        /// <param name="timeout">The timeout.</param>
-        /// <param name="locationResult">The current location.</param>
-        void GetPosition(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout, Action<LocationServicePosition, Exception> locationResult);
-
-        /// <summary>
         /// Starts an asynchronous operation to retrieve the current location.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
