@@ -161,6 +161,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\LauncherService.cs">
       <Link>Services\LauncherService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\MapManagerService.cs">
+      <Link>Services\MapManagerService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\MessageBoxService.cs">
       <Link>Services\MessageBoxService.cs</Link>
     </Compile>

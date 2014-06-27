@@ -70,6 +70,7 @@
     <Compile Include="Services\IEmailComposeService.cs" />
     <Compile Include="Services\ILauncherService.cs" />
     <Compile Include="Services\ILocationService.cs" />
+    <Compile Include="Services\IMapManagerService.cs" />
     <Compile Include="Services\IMessageBoxService.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\INetworkInformationService.cs" />
