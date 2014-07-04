@@ -64,6 +64,12 @@
     <Compile Include="Foundation\Size.cs" />
     <Compile Include="Helpers\ChunkedStream.cs" />
     <Compile Include="Helpers\OptimizedObservableCollection.cs" />
+    <Compile Include="Helpers\WeakAction.cs" />
+    <Compile Include="Helpers\WeakAction{T}.cs" />
+    <Compile Include="Helpers\WeakEventHandler{T}.cs" />
+    <Compile Include="Helpers\WeakEventHandler.cs" />
+    <Compile Include="Helpers\WeakFunc{TResult}.cs" />
+    <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IDeviceSettingsService.cs" />
     <Compile Include="Services\IDisplayPropertiesService.cs" />
