@@ -118,6 +118,15 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakFunc{TResult}.cs">
       <Link>Helpers\WeakFunc{TResult}.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileService.cs">
+      <Link>Services\ApplicationProfileService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
+      <Link>Services\ApplicationProfileServiceMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationProfileService.cs">
+      <Link>Services\IApplicationProfileService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IMapManagerService.cs">
       <Link>Services\IMapManagerService.cs</Link>
     </Compile>
