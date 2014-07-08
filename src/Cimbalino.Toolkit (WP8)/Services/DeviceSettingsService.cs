@@ -47,6 +47,15 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Shows the Photos+Camera settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async Task ShowCameraSettingsAsync()
+        {
+            await LaunchUrlAsync("ms-settings-camera:");
+        }
+
+        /// <summary>
         /// Shows the Cellular settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
@@ -83,12 +92,30 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Shows the Notifications+Actions settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async Task ShowNotificationSettingsAsync()
+        {
+            await LaunchUrlAsync("ms-settings-notifications:");
+        }
+
+        /// <summary>
         /// Shows the Power settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async Task ShowPowerSettingsAsync()
         {
             await LaunchUrlAsync("ms-settings-power:");
+        }
+
+        /// <summary>
+        /// Shows the NFC settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async Task ShowProximitySettingsAsync()
+        {
+            await LaunchUrlAsync("ms-settings-proximity:");
         }
 
         /// <summary>
@@ -107,6 +134,15 @@ namespace Cimbalino.Toolkit.Services
         public async Task ShowWiFiSettingsAsync()
         {
             await LaunchUrlAsync("ms-settings-wifi:");
+        }
+
+        /// <summary>
+        /// Shows the Workplace settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async Task ShowWorkplaceSettingsAsync()
+        {
+            await LaunchUrlAsync("ms-settings-workplace:");
         }
 
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP

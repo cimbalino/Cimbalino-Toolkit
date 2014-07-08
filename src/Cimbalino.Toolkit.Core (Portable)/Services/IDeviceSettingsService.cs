@@ -34,6 +34,12 @@ namespace Cimbalino.Toolkit.Services
         Task ShowBluetoothSettingsAsync();
 
         /// <summary>
+        /// Shows the Photos+Camera settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowCameraSettingsAsync();
+
+        /// <summary>
         /// Shows the Cellular settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
@@ -58,10 +64,22 @@ namespace Cimbalino.Toolkit.Services
         Task ShowLockScreenSettingsAsync();
 
         /// <summary>
+        /// Shows the Notifications+Actions settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowNotificationSettingsAsync();
+
+        /// <summary>
         /// Shows the Power settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowPowerSettingsAsync();
+
+        /// <summary>
+        /// Shows the NFC settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowProximitySettingsAsync();
 
         /// <summary>
         /// Shows the Screen Rotation settings dialog.
@@ -74,5 +92,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowWiFiSettingsAsync();
+
+        /// <summary>
+        /// Shows the Workplace settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowWorkplaceSettingsAsync();
     }
 }
