@@ -124,11 +124,11 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakAction{T}.cs">
       <Link>Helpers\WeakAction{T}.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakEventHandler.cs">
-      <Link>Helpers\WeakEventHandler.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakEventSubscription.cs">
+      <Link>Helpers\WeakEventSubscription.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakEventHandler{T}.cs">
-      <Link>Helpers\WeakEventHandler{T}.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakEventSubscription{T}.cs">
+      <Link>Helpers\WeakEventSubscription{T}.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakFunc{T,TResult}.cs">
       <Link>Helpers\WeakFunc{T,TResult}.cs</Link>
