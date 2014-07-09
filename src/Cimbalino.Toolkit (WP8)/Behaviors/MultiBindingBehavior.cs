@@ -18,9 +18,11 @@ using System.Globalization;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Interactivity;
 #else
 using System;
 using System.Reflection;
+using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 #endif
@@ -35,7 +37,7 @@ namespace Cimbalino.Toolkit.Behaviors
 #else
     [Windows.UI.Xaml.Markup.ContentProperty(Name = "Items")]
 #endif
-    public class MultiBindingBehavior : SafeBehavior<FrameworkElement>
+    public class MultiBindingBehavior : Behavior<FrameworkElement>
     {
         /// <summary>
         /// Gets the <see cref="MultiBindingItem"/> collection within this <see cref="MultiBindingBehavior"/> instance.

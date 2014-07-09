@@ -100,7 +100,6 @@
     <Compile Include="Behaviors\MultiBindingBehavior.cs" />
     <Compile Include="Behaviors\MultiBindingItem.cs" />
     <Compile Include="Behaviors\MultiBindingItemCollection.cs" />
-    <Compile Include="Behaviors\SafeBehavior.cs" />
     <Compile Include="Behaviors\ScreenCaptureBehavior.cs" />
     <Compile Include="Converters\BooleanToBrushConverter.cs" />
     <Compile Include="Converters\BooleanToIntConverter.cs" />

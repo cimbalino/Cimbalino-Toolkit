@@ -14,6 +14,7 @@
 
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Interactivity;
 using Microsoft.Phone.Controls;
 
 namespace Cimbalino.Toolkit.Behaviors
@@ -21,7 +22,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that controls the screen capture feature on Windows Phone.
     /// </summary>
-    public class ScreenCaptureBehavior : SafeBehavior<PhoneApplicationPage>
+    public class ScreenCaptureBehavior : Behavior<PhoneApplicationPage>
     {
         /// <summary>
         /// Gets or sets a value indicating whether the screen capture functionality is enabled.

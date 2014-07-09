@@ -19,6 +19,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interactivity;
 using Cimbalino.Toolkit.Extensions;
 using KeyRoutedEventArgs = System.Windows.Input.KeyEventArgs;
 using VirtualKey = System.Windows.Input.Key;
@@ -28,6 +29,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Cimbalino.Toolkit.Extensions;
+using Microsoft.Xaml.Interactivity;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -39,7 +41,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that enables automatic control focus.
     /// </summary>
-    public class AutoFocusBehavior : SafeBehavior<FrameworkElement>
+    public class AutoFocusBehavior : Behavior<FrameworkElement>
     {
         /// <summary>
         /// Occurs when the focus automatically moves from one control to the next.
@@ -60,11 +62,11 @@ namespace Cimbalino.Toolkit.Behaviors
         /// <summary>
         /// Releases all resources used by this instance.
         /// </summary>
-        protected override void CleanUp()
+        protected override void OnDetaching()
         {
             AssociatedObject.KeyUp -= AssociatedObjectKeyUp;
 
-            base.CleanUp();
+            base.OnDetaching();
         }
 
         /// <summary>

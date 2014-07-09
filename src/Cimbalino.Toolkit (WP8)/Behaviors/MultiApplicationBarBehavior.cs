@@ -15,6 +15,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Interactivity;
 using Microsoft.Phone.Controls;
 
 namespace Cimbalino.Toolkit.Behaviors
@@ -23,7 +24,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// The behavior that creates a collection of bindable <see cref="Microsoft.Phone.Shell.ApplicationBar" /> controls.
     /// </summary>
     [System.Windows.Markup.ContentProperty("ApplicationBars")]
-    public class MultiApplicationBarBehavior : SafeBehavior<FrameworkElement>
+    public class MultiApplicationBarBehavior : Behavior<FrameworkElement>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiApplicationBarBehavior" /> class.

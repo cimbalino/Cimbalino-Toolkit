@@ -16,6 +16,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interactivity;
 using System.Windows.Media;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -26,7 +27,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// The behavior that creates a bindable <see cref="Microsoft.Phone.Shell.ApplicationBar" />.
     /// </summary>
     [System.Windows.Markup.ContentProperty("Buttons")]
-    public class ApplicationBarBehavior : SafeBehavior<FrameworkElement>
+    public class ApplicationBarBehavior : Behavior<FrameworkElement>
     {
         internal readonly IApplicationBar InternalApplicationBar;
 
