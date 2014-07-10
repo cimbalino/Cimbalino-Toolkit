@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-namespace Cimbalino.Phone.Toolkit.Services
+namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
     /// Describes the application profile mode.

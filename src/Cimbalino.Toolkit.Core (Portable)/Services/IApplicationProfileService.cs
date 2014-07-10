@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-namespace Cimbalino.Phone.Toolkit.Services
+namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
     /// Represents a service capable of providing profile information about an app.

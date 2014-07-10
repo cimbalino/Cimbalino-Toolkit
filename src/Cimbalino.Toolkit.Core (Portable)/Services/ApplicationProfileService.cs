@@ -18,7 +18,7 @@ using Windows.Phone.ApplicationModel;
 using System;
 #endif
 
-namespace Cimbalino.Phone.Toolkit.Services
+namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
     /// Represents an implementation of the <see cref="IApplicationProfileService"/>.
