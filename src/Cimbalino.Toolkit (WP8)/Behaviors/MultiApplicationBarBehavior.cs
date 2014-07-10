@@ -24,7 +24,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// The behavior that creates a collection of bindable <see cref="Microsoft.Phone.Shell.ApplicationBar" /> controls.
     /// </summary>
     [System.Windows.Markup.ContentProperty("ApplicationBars")]
-    public class MultiApplicationBarBehavior : Behavior<FrameworkElement>
+    public class MultiApplicationBarBehavior : Behavior<PhoneApplicationPage>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiApplicationBarBehavior" /> class.
@@ -151,18 +151,11 @@ namespace Cimbalino.Toolkit.Behaviors
                 return;
             }
 
-            var page = AssociatedObject as PhoneApplicationPage ?? AssociatedObject.Parent as PhoneApplicationPage;
-
-            if (page == null)
-            {
-                throw new Exception("This MultiApplicationBarBehavior element can only be attached to the Page or LayoutRoot elements");
-            }
-
             var applicationBar = SelectedItem;
 
             if (applicationBar == null)
             {
-                page.ApplicationBar = null;
+                AssociatedObject.ApplicationBar = null;
             }
             else
             {
@@ -171,7 +164,7 @@ namespace Cimbalino.Toolkit.Behaviors
 
                 internalApplicationBar.IsVisible = applicationBar.IsVisible;
 
-                page.ApplicationBar = internalApplicationBar;
+                AssociatedObject.ApplicationBar = internalApplicationBar;
             }
         }
     }

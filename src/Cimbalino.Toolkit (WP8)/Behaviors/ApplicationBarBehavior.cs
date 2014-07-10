@@ -27,7 +27,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// The behavior that creates a bindable <see cref="Microsoft.Phone.Shell.ApplicationBar" />.
     /// </summary>
     [System.Windows.Markup.ContentProperty("Buttons")]
-    public class ApplicationBarBehavior : Behavior<FrameworkElement>
+    public class ApplicationBarBehavior : Behavior<PhoneApplicationPage>
     {
         internal readonly IApplicationBar InternalApplicationBar;
 
@@ -356,14 +356,7 @@ namespace Cimbalino.Toolkit.Behaviors
                 return;
             }
 
-            var page = AssociatedObject as PhoneApplicationPage ?? AssociatedObject.Parent as PhoneApplicationPage;
-
-            if (page == null)
-            {
-                throw new Exception("This ApplicationBarBehavior element can only be attached to the Page or LayoutRoot element");
-            }
-
-            page.ApplicationBar = InternalApplicationBar;
+            AssociatedObject.ApplicationBar = InternalApplicationBar;
         }
     }
 }
