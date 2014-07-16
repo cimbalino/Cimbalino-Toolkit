@@ -12,17 +12,26 @@
 // </license>
 // ****************************************************************************
 
+#if WINDOWS_PHONE
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Interactivity;
 using Microsoft.Phone.Controls;
+using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
+#else
+using Microsoft.Xaml.Interactivity;
+using Windows.ApplicationModel;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+#endif
 
 namespace Cimbalino.Toolkit.Behaviors
 {
     /// <summary>
     /// The behavior that controls the screen capture feature on Windows Phone.
     /// </summary>
-    public class ScreenCaptureBehavior : Behavior<PhoneApplicationPage>
+    public class ScreenCaptureBehavior : Behavior<Page>
     {
         /// <summary>
         /// Gets or sets a value indicating whether the screen capture functionality is enabled.
@@ -44,11 +53,22 @@ namespace Cimbalino.Toolkit.Behaviors
         {
             var screenCaptureBehavior = (ScreenCaptureBehavior)d;
 
-            screenCaptureBehavior.SetIsScreenCaptureEnabled((bool)e.NewValue);
+            screenCaptureBehavior.Update();
         }
 
-        private void SetIsScreenCaptureEnabled(bool enabled)
+        /// <summary>
+        /// Called after the behavior is attached to an AssociatedObject.
+        /// </summary>
+        protected override void OnAttached()
         {
+            base.OnAttached();
+
+            Update();
+        }
+
+        private void Update()
+        {
+#if WINDOWS_PHONE
             if (DesignerProperties.IsInDesignTool || AssociatedObject == null)
             {
                 return;
@@ -58,8 +78,16 @@ namespace Cimbalino.Toolkit.Behaviors
 
             if (propertyInfo != null)
             {
-                propertyInfo.SetValue(AssociatedObject, enabled, null);
+                propertyInfo.SetValue(AssociatedObject, IsEnabled, null);
             }
+#else
+            if (DesignMode.DesignModeEnabled || AssociatedObject == null)
+            {
+                return;
+            }
+
+            ApplicationView.GetForCurrentView().IsScreenCaptureEnabled = IsEnabled;
+#endif
         }
     }
 }

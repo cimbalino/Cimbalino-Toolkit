@@ -104,6 +104,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingItemCollection.cs">
       <Link>Behaviors\MultiBindingItemCollection.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\ScreenCaptureBehavior.cs">
+      <Link>Behaviors\ScreenCaptureBehavior.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToBrushConverter.cs">
       <Link>Converters\BooleanToBrushConverter.cs</Link>
     </Compile>
