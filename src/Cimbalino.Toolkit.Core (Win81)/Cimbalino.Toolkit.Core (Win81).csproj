@@ -118,6 +118,36 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Size.cs">
       <Link>Foundation\Size.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifest.cs">
+      <Link>Helpers\ApplicationManifest.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestAppNode.cs">
+      <Link>Helpers\ApplicationManifestAppNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestBackgroundServiceAgentNode.cs">
+      <Link>Helpers\ApplicationManifestBackgroundServiceAgentNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestDefaultTaskNode.cs">
+      <Link>Helpers\ApplicationManifestDefaultTaskNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestExtendedTaskNode.cs">
+      <Link>Helpers\ApplicationManifestExtendedTaskNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestIconPathNode.cs">
+      <Link>Helpers\ApplicationManifestIconPathNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestLanguageNode.cs">
+      <Link>Helpers\ApplicationManifestLanguageNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestNamedNode.cs">
+      <Link>Helpers\ApplicationManifestNamedNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestTaskNodeBase.cs">
+      <Link>Helpers\ApplicationManifestTaskNodeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestTokenNode.cs">
+      <Link>Helpers\ApplicationManifestTokenNode.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakAction.cs">
       <Link>Helpers\WeakAction.cs</Link>
     </Compile>
@@ -136,11 +166,17 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakFunc{TResult}.cs">
       <Link>Helpers\WeakFunc{TResult}.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationManifestService.cs">
+      <Link>Services\ApplicationManifestService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileService.cs">
       <Link>Services\ApplicationProfileService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationManifestService.cs">
+      <Link>Services\IApplicationManifestService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationProfileService.cs">
       <Link>Services\IApplicationProfileService.cs</Link>
