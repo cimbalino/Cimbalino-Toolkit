@@ -187,6 +187,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
+      <Link>Services\IStorageServiceHandler.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
     </Compile>
@@ -207,6 +210,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28wp8%29\Services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageServiceHandler.cs">
+      <Link>Services\StorageServiceHandler.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Extensions\RenderTargetBitmapExtensions.cs">
       <Link>Extensions\RenderTargetBitmapExtensions.cs</Link>

@@ -169,6 +169,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
+      <Link>Services\IStorageServiceHandler.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
     </Compile>
@@ -284,6 +287,7 @@
     <Compile Include="Services\LocationServiceExtensions.cs" />
     <Compile Include="Services\NetworkInformationService.cs" />
     <Compile Include="Services\StorageService.cs" />
+    <Compile Include="Services\StorageServiceHandler.cs" />
     <Compile Include="System\Security\Cryptography\HMACMD5.Generated.cs" />
     <Compile Include="System\Security\Cryptography\MD5.Generated.cs" />
     <Compile Include="System\Security\Cryptography\MD5Managed.Generated.cs" />
