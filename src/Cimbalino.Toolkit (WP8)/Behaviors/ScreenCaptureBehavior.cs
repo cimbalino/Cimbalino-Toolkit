@@ -19,7 +19,6 @@ using System.Windows.Interactivity;
 using Microsoft.Phone.Controls;
 using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
 #else
-using Microsoft.Xaml.Interactivity;
 using Windows.ApplicationModel;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;

@@ -204,17 +204,17 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\VibrationService.cs">
       <Link>Services\VibrationService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Microsoft\Xaml\Interactivity\Behavior.cs">
-      <Link>Microsoft\Xaml\Interactivity\Behavior.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Behaviors\Behavior.cs">
+      <Link>Behaviors\Behavior.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Microsoft\Xaml\Interactivity\Behavior{T}.cs">
-      <Link>Microsoft\Xaml\Interactivity\Behavior{T}.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Behaviors\Behavior{T}.cs">
+      <Link>Behaviors\Behavior{T}.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Helpers\DependencyObjectCollection{T}.cs">
+      <Link>Helpers\DependencyObjectCollection{T}.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\NavigationService.cs">
       <Link>Services\NavigationService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Windows\UI\Xaml\DependencyObjectCollection{T}.cs">
-      <Link>Windows\UI\Xaml\DependencyObjectCollection{T}.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

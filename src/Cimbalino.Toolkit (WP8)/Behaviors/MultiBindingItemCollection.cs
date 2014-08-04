@@ -19,6 +19,7 @@ using System.Windows;
 #else
 using System.Collections.Specialized;
 using System.Linq;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Xaml;
 #endif
 

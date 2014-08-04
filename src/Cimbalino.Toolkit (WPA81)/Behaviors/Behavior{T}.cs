@@ -14,7 +14,7 @@
 
 using Windows.UI.Xaml;
 
-namespace Microsoft.Xaml.Interactivity
+namespace Cimbalino.Toolkit.Behaviors
 {
     /// <summary>
     /// Behavior is the base class for providing attachable state and commands to an object.

@@ -16,8 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
 
-namespace Windows.UI.Xaml
+namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
     /// Represents a collection of <see cref="DependencyObject"/> instances of a specified type.

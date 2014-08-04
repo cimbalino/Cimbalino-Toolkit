@@ -20,6 +20,7 @@ using TriggerBase = System.Windows.Interactivity.TriggerBase;
 using TriggerCollection = System.Windows.Interactivity.TriggerCollection;
 #else
 using System.Linq;
+using Cimbalino.Toolkit.Behaviors;
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 #endif

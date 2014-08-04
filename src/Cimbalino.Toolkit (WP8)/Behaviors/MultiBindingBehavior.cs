@@ -22,7 +22,6 @@ using System.Windows.Interactivity;
 #else
 using System;
 using System.Reflection;
-using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 #endif
@@ -177,8 +176,13 @@ namespace Cimbalino.Toolkit.Behaviors
             {
                 var propertyNameParts = targetProperty.Split('.');
 
+#if WINDOWS_PHONE
                 targetType = Type.GetType(string.Format("System.Windows.Controls.{0}, System.Windows",
                     propertyNameParts[0]));
+#else
+                targetType = Type.GetType(string.Format("Windows.UI.Xaml.Controls.{0}, Windows",
+                    propertyNameParts[0]));
+#endif
 
                 targetProperty = propertyNameParts[1];
             }
@@ -190,7 +194,16 @@ namespace Cimbalino.Toolkit.Behaviors
 #if WINDOWS_PHONE
             var targetDependencyPropertyField = targetType.GetField(targetProperty + "Property", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 #else
-            var targetDependencyPropertyField = targetType.GetTypeInfo().GetDeclaredField(targetProperty + "Property");
+            PropertyInfo targetDependencyPropertyField = null;
+
+            while (targetDependencyPropertyField == null && targetType != null)
+            {
+                var targetTypeInfo = targetType.GetTypeInfo();
+
+                targetDependencyPropertyField = targetTypeInfo.GetDeclaredProperty(targetProperty + "Property");
+
+                targetType = targetTypeInfo.BaseType;
+            }
 #endif
             var targetDependencyProperty = (DependencyProperty)targetDependencyPropertyField.GetValue(null);
 
