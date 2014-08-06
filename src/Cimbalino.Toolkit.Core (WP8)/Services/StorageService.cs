@@ -12,7 +12,19 @@
 // </license>
 // ****************************************************************************
 
+#if WINDOWS_PHONE
+using System;
+using System.Reflection;
+using System.Windows;
 using Windows.Storage;
+#elif WINDOWS_PHONE_APP
+using System;
+using System.Reflection;
+using Windows.Storage;
+#else
+using System;
+using Windows.Storage;
+#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -21,61 +33,113 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class StorageService : IStorageService
     {
-        private static readonly IStorageServiceHandler LocalStorageServiceHandler, RoamingStorageServiceHandler, TemporaryStorageServiceHandler;
+        private static readonly IStorageServiceHandler LocalStorageServiceHandlerStatic, RoamingStorageServiceHandlerStatic, TemporaryStorageServiceHandlerStatic;
+#if WINDOWS_PHONE || WINDOWS_PHONE_APP
+        private static readonly IStorageServiceHandler LocalCacheStorageServiceHandlerStatic;
+#endif
 
         static StorageService()
         {
             var applicationData = ApplicationData.Current;
 
-            if (applicationData.LocalFolder != null)
-            {
-                LocalStorageServiceHandler = new StorageServiceHandler(applicationData.LocalFolder);
-            }
+            LocalStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.LocalFolder);
 
-            if (applicationData.RoamingFolder != null)
+#if WINDOWS_PHONE
+            if (Version.Parse(Deployment.Current.RuntimeVersion).Major >= 6)
             {
-                RoamingStorageServiceHandler = new StorageServiceHandler(applicationData.RoamingFolder);
-            }
+                RoamingStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.RoamingFolder);
+                TemporaryStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.TemporaryFolder);
 
-            if (applicationData.TemporaryFolder != null)
-            {
-                TemporaryStorageServiceHandler = new StorageServiceHandler(applicationData.TemporaryFolder);
+                var localCacheFolderPropertyInfo = applicationData.GetType().GetRuntimeProperty("LocalCacheFolder");
+
+                if (localCacheFolderPropertyInfo != null)
+                {
+                    LocalCacheStorageServiceHandlerStatic = new StorageServiceHandler((StorageFolder)localCacheFolderPropertyInfo.GetValue(applicationData));
+                }
             }
+#else
+            RoamingStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.RoamingFolder);
+            TemporaryStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.TemporaryFolder);
+#endif
+
+#if WINDOWS_PHONE_APP
+            var localCacheFolderPropertyInfo = applicationData.GetType().GetRuntimeProperty("LocalCacheFolder");
+
+            if (localCacheFolderPropertyInfo != null)
+            {
+                LocalCacheStorageServiceHandlerStatic = new StorageServiceHandler((StorageFolder)localCacheFolderPropertyInfo.GetValue(applicationData));
+            }
+#endif
         }
 
         /// <summary>
-        /// Gets the local storage controller instance.
+        /// Gets the storage controller instance for the root folder in the local app data store.
         /// </summary>
-        /// <value>The local storage controller instance.</value>
+        /// <value>The storage controller instance for the root folder in the local app data store.</value>
         public IStorageServiceHandler Local
         {
             get
             {
-                return LocalStorageServiceHandler;
+                return LocalStorageServiceHandlerStatic;
             }
         }
 
         /// <summary>
-        /// Gets the roaming storage controller instance.
+        /// Gets the storage controller instance for the root folder in the roaming app data store.
         /// </summary>
-        /// <value>The roaming storage controller instance.</value>
+        /// <value>The storage controller instance for the root folder in the roaming app data store.</value>
         public IStorageServiceHandler Roaming
         {
             get
             {
-                return RoamingStorageServiceHandler;
+#if WINDOWS_PHONE
+                if (RoamingStorageServiceHandlerStatic == null)
+                {
+                    throw new NotSupportedException();
+                }
+#endif
+
+                return RoamingStorageServiceHandlerStatic;
             }
         }
 
         /// <summary>
-        /// Gets the temporary storage controller instance.
+        /// Gets the storage controller instance for the root folder in the temporary app data store.
         /// </summary>
-        /// <value>The temporary storage controller instance.</value>
+        /// <value>The storage controller instance for the root folder in the temporary app data store.</value>
         public IStorageServiceHandler Temporary
         {
             get
             {
-                return TemporaryStorageServiceHandler;
+#if WINDOWS_PHONE
+                if (TemporaryStorageServiceHandlerStatic == null)
+                {
+                    throw new NotSupportedException();
+                }
+#endif
+
+                return TemporaryStorageServiceHandlerStatic;
+            }
+        }
+
+        /// <summary>
+        /// Gets the storage controller instance for the root folder in the local app data store where you can save files that are not included in backup and restore.
+        /// </summary>
+        /// <value>The storage controller instance for the root folder in the local app data store where you can save files that are not included in backup and restore.</value>
+        public IStorageServiceHandler LocalCache
+        {
+            get
+            {
+#if WINDOWS_PHONE || WINDOWS_PHONE_APP
+                if (LocalCacheStorageServiceHandlerStatic == null)
+                {
+                    throw new NotSupportedException();
+                }
+
+                return LocalCacheStorageServiceHandlerStatic;
+#else
+                throw new NotSupportedException();
+#endif
             }
         }
     }
