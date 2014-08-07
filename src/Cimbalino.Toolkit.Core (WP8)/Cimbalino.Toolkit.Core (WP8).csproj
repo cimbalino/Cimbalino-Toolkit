@@ -148,12 +148,6 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakFunc{TResult}.cs">
       <Link>Helpers\WeakFunc{TResult}.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationManifestService.cs">
-      <Link>Services\ApplicationManifestService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileService.cs">
-      <Link>Services\ApplicationProfileService.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
     </Compile>
@@ -283,6 +277,8 @@
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\WriteableBitmapExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApplicationManifestService.cs" />
+    <Compile Include="Services\ApplicationProfileService.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\LocationServiceExtensions.cs" />
     <Compile Include="Services\NetworkInformationService.cs" />
