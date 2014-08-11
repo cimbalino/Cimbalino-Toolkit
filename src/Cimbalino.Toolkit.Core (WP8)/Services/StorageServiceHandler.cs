@@ -25,12 +25,16 @@ using Windows.Storage;
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
-    /// Represents an implementation of the <see cref="IStorageService"/>.
+    /// Represents an implementation of the <see cref="IStorageServiceHandler"/>.
     /// </summary>
-    internal class StorageServiceHandler : IStorageServiceHandler
+    public class StorageServiceHandler : IStorageServiceHandler
     {
         private readonly StorageFolder _storageFolder;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageServiceHandler"/> class.
+        /// </summary>
+        /// <param name="storageFolder">The root <see cref="StorageFolder"/> instance.</param>
         public StorageServiceHandler(StorageFolder storageFolder)
         {
             _storageFolder = storageFolder;

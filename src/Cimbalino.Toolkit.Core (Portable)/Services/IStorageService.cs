@@ -20,27 +20,27 @@ namespace Cimbalino.Toolkit.Services
     public interface IStorageService
     {
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the local app data store.
+        /// Gets the storage handler instance for the root folder in the local app data store.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the local app data store.</value>
+        /// <value>The storage handler instance for the root folder in the local app data store.</value>
         IStorageServiceHandler Local { get; }
 
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the roaming app data store.
+        /// Gets the storage handler instance for the root folder in the roaming app data store.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the roaming app data store.</value>
+        /// <value>The storage handler instance for the root folder in the roaming app data store.</value>
         IStorageServiceHandler Roaming { get; }
 
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the temporary app data store.
+        /// Gets the storage handler instance for the root folder in the temporary app data store.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the temporary app data store.</value>
+        /// <value>The storage handler instance for the root folder in the temporary app data store.</value>
         IStorageServiceHandler Temporary { get; }
 
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the local app data store where you can save files that are not included in backup and restore.
+        /// Gets the storage handler instance for the root folder in the local app data store where you can save files that are not included in backup and restore.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the local app data store where you can save files that are not included in backup and restore.</value>
+        /// <value>The storage handler instance for the root folder in the local app data store where you can save files that are not included in backup and restore.</value>
         IStorageServiceHandler LocalCache { get; }
     }
 }

@@ -73,9 +73,9 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the local app data store.
+        /// Gets the storage handler instance for the root folder in the local app data store.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the local app data store.</value>
+        /// <value>The storage handler instance for the root folder in the local app data store.</value>
         public IStorageServiceHandler Local
         {
             get
@@ -85,9 +85,9 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the roaming app data store.
+        /// Gets the storage handler instance for the root folder in the roaming app data store.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the roaming app data store.</value>
+        /// <value>The storage handler instance for the root folder in the roaming app data store.</value>
         public IStorageServiceHandler Roaming
         {
             get
@@ -104,9 +104,9 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the temporary app data store.
+        /// Gets the storage handler instance for the root folder in the temporary app data store.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the temporary app data store.</value>
+        /// <value>The storage handler instance for the root folder in the temporary app data store.</value>
         public IStorageServiceHandler Temporary
         {
             get
@@ -123,9 +123,9 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets the storage controller instance for the root folder in the local app data store where you can save files that are not included in backup and restore.
+        /// Gets the storage handler instance for the root folder in the local app data store where you can save files that are not included in backup and restore.
         /// </summary>
-        /// <value>The storage controller instance for the root folder in the local app data store where you can save files that are not included in backup and restore.</value>
+        /// <value>The storage handler instance for the root folder in the local app data store where you can save files that are not included in backup and restore.</value>
         public IStorageServiceHandler LocalCache
         {
             get
