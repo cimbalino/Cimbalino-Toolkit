@@ -159,6 +159,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ISettingsService.cs">
+      <Link>Services\ISettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ISettingsServiceHandler.cs">
+      <Link>Services\ISettingsServiceHandler.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
       <Link>Services\IStorageServiceHandler.cs</Link>
     </Compile>
@@ -209,6 +215,12 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\NetworkInformationService.cs">
       <Link>Services\NetworkInformationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\SettingsService.cs">
+      <Link>Services\SettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\SettingsServiceHandler.cs">
+      <Link>Services\SettingsServiceHandler.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
@@ -323,6 +335,7 @@
     </Compile>
     <Compile Include="Extensions\RenderTargetBitmapExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LegacySettingsServiceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

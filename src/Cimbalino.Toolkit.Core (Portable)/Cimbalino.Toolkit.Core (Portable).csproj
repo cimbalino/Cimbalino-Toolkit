@@ -94,6 +94,8 @@
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\INetworkInformationService.cs" />
     <Compile Include="Services\IPhoneCallService.cs" />
+    <Compile Include="Services\ISettingsService.cs" />
+    <Compile Include="Services\ISettingsServiceHandler.cs" />
     <Compile Include="Services\ISmsComposeService.cs" />
     <Compile Include="Services\IStorageService.cs" />
     <Compile Include="Services\IStorageServiceHandler.cs" />

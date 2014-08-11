@@ -27,6 +27,9 @@ namespace Cimbalino.Toolkit.Services
     /// <summary>
     /// Represents an implementation of the <see cref="IStorageServiceHandler"/>.
     /// </summary>
+#if !NETFX_CORE
+    [CLSCompliant(false)]
+#endif
     public class StorageServiceHandler : IStorageServiceHandler
     {
         private readonly StorageFolder _storageFolder;
