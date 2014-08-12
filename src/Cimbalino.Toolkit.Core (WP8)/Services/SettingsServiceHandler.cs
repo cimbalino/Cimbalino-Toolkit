@@ -39,6 +39,18 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Determines if the application settings contains the specified key.
+        /// </summary>
+        /// <param name="key">The key for the entry to be located.</param>
+        /// <returns>true if the settings contains the specified key; otherwise, false.</returns>
+        public bool Contains(string key)
+        {
+            var container = GetContainer(key, out key);
+
+            return container != null && container.Values.ContainsKey(key);
+        }
+
+        /// <summary>
         /// Gets the value associated with the specified key.
         /// </summary>
         /// <param name="key">The key whose value to get.</param>
@@ -92,7 +104,7 @@ namespace Cimbalino.Toolkit.Services
         /// Removes the specified key and associated value.
         /// </summary>
         /// <param name="key">The key whose value to clear.</param>
-        public void Clear(string key)
+        public void Remove(string key)
         {
             var container = GetContainer(key, out key);
 

@@ -23,6 +23,13 @@ namespace Cimbalino.Toolkit.Services
     public interface ISettingsServiceHandler
     {
         /// <summary>
+        /// Determines if the application settings contains the specified key.
+        /// </summary>
+        /// <param name="key">The key for the entry to be located.</param>
+        /// <returns>true if the settings contains the specified key; otherwise, false.</returns>
+        bool Contains(string key);
+
+        /// <summary>
         /// Gets the value associated with the specified key.
         /// </summary>
         /// <param name="key">The key whose value to get.</param>
@@ -51,7 +58,7 @@ namespace Cimbalino.Toolkit.Services
         /// Removes the specified key and associated value.
         /// </summary>
         /// <param name="key">The key whose value to clear.</param>
-        void Clear(string key);
+        void Remove(string key);
 
         /// <summary>
         /// Gets an object that represents all the settings in this <see cref="ISettingsServiceHandler"/> instance.
