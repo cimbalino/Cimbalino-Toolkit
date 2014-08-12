@@ -28,6 +28,11 @@ namespace Cimbalino.Toolkit.Services
         private System.Windows.Navigation.NavigationService _navigationService;
 
         /// <summary>
+        /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
+        /// </summary>
+        public event EventHandler Navigated;
+
+        /// <summary>
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
         /// </summary>
         /// <value>Returns a value that represents the <see cref="Uri"/> of content that is currently displayed.</value>
@@ -40,6 +45,18 @@ namespace Cimbalino.Toolkit.Services
                     return _mainFrame.CurrentSource;
                 }
 
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets any parameter object passed to the target page for the navigation.
+        /// </summary>
+        /// <value>Any parameter object passed to the target page for the navigation.</value>
+        public object CurrentParameter
+        {
+            get
+            {
                 return null;
             }
         }
@@ -156,12 +173,17 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Removes the most recent available entry from the back stack.
         /// </summary>
-        public void RemoveBackEntry()
+        /// <returns>true if successfully removed the most recent available entry from the back stack; otherwise, false.</returns>
+        public bool RemoveBackEntry()
         {
             if (EnsureNavigationService() && _navigationService.CanGoBack)
             {
                 _navigationService.RemoveBackEntry();
+
+                return true;
             }
+
+            return false;
         }
 
         private bool EnsureNavigationService()
@@ -182,6 +204,13 @@ namespace Cimbalino.Toolkit.Services
                         if (_navigationService == null)
                         {
                             GetNavigationServiceFromPage(e.Content as PhoneApplicationPage);
+                        }
+
+                        var eventHandler = Navigated;
+
+                        if (eventHandler != null)
+                        {
+                            eventHandler(this, null);
                         }
                     };
 

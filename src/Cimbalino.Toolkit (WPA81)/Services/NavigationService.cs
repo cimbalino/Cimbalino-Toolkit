@@ -12,11 +12,20 @@
 // </license>
 // ****************************************************************************
 
+#if WINDOWS_PHONE_APP
+using System;
+using System.Collections.Generic;
+using Cimbalino.Toolkit.Extensions;
+using Windows.Phone.UI.Input;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+#else
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -26,6 +35,11 @@ namespace Cimbalino.Toolkit.Services
     public class NavigationService : INavigationService
     {
         private Frame _mainFrame;
+
+        /// <summary>
+        /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
+        /// </summary>
+        public event EventHandler Navigated;
 
         /// <summary>
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
@@ -43,6 +57,12 @@ namespace Cimbalino.Toolkit.Services
                 return null;
             }
         }
+
+        /// <summary>
+        /// Gets any parameter object passed to the target page for the navigation.
+        /// </summary>
+        /// <value>Any parameter object passed to the target page for the navigation.</value>
+        public object CurrentParameter { get; private set; }
 
         /// <summary>
         /// Gets a collection of query string values.
@@ -151,12 +171,17 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Removes the most recent available entry from the back stack.
         /// </summary>
-        public void RemoveBackEntry()
+        /// <returns>true if successfully removed the most recent available entry from the back stack; otherwise, false.</returns>
+        public bool RemoveBackEntry()
         {
             if (EnsureMainFrame() && _mainFrame.CanGoBack)
             {
                 _mainFrame.BackStack.RemoveAt(_mainFrame.BackStackDepth - 1);
+
+                return true;
             }
+
+            return false;
         }
 
         private bool EnsureMainFrame()
@@ -168,7 +193,40 @@ namespace Cimbalino.Toolkit.Services
 
             _mainFrame = Window.Current.Content as Frame;
 
-            return _mainFrame != null;
+            if (_mainFrame != null)
+            {
+                _mainFrame.Navigated += (s, e) =>
+                {
+                    CurrentParameter = e.Parameter;
+
+                    var eventHandler = Navigated;
+
+                    if (eventHandler != null)
+                    {
+                        eventHandler(this, null);
+                    }
+                };
+
+#if WINDOWS_PHONE_APP
+                HardwareButtons.BackPressed += HardwareButtonsBackPressed;
+#endif
+
+                return true;
+            }
+
+            return false;
         }
+
+#if WINDOWS_PHONE_APP
+        private void HardwareButtonsBackPressed(object sender, BackPressedEventArgs e)
+        {
+            if (_mainFrame.CanGoBack)
+            {
+                _mainFrame.GoBack();
+
+                e.Handled = true;
+            }
+        }
+#endif
     }
 }

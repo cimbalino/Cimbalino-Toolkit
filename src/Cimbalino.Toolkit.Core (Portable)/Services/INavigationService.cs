@@ -23,6 +23,11 @@ namespace Cimbalino.Toolkit.Services
     public interface INavigationService
     {
         /// <summary>
+        /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
+        /// </summary>
+        event EventHandler Navigated;
+
+        /// <summary>
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
         /// </summary>
         /// <value>Returns a value that represents the <see cref="Uri"/> of content that is currently displayed.</value>
@@ -33,6 +38,12 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <value>Returns a <see cref="IDictionary{String,String}"/> collection that contains the query string values.</value>
         IDictionary<string, string> QueryString { get; }
+
+        /// <summary>
+        /// Gets any parameter object passed to the target page for the navigation.
+        /// </summary>
+        /// <value>Any parameter object passed to the target page for the navigation.</value>
+        object CurrentParameter { get; }
 
         /// <summary>
         /// Navigates to the content specified by the uniform resource identifier (URI).
@@ -88,6 +99,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Removes the most recent available entry from the back stack.
         /// </summary>
-        void RemoveBackEntry();
+        /// <returns>true if successfully removed the most recent available entry from the back stack; otherwise, false.</returns>
+        bool RemoveBackEntry();
     }
 }
