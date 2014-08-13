@@ -151,11 +151,17 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\DeviceStatusServicePowerSource.cs">
+      <Link>Services\DeviceStatusServicePowerSource.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationManifestService.cs">
       <Link>Services\IApplicationManifestService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationProfileService.cs">
       <Link>Services\IApplicationProfileService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceStatusService.cs">
+      <Link>Services\IDeviceStatusService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IMapManagerService.cs">
       <Link>Services\IMapManagerService.cs</Link>
@@ -285,6 +291,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationManifestService.cs" />
     <Compile Include="Services\ApplicationProfileService.cs" />
+    <Compile Include="Services\DeviceStatusService.cs" />
     <Compile Include="Services\LegacySettingsServiceHandler.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\LocationServiceExtensions.cs" />

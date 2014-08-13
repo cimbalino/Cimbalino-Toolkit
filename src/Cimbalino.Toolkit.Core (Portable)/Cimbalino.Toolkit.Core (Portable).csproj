@@ -82,9 +82,11 @@
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
+    <Compile Include="Services\DeviceStatusServicePowerSource.cs" />
     <Compile Include="Services\IApplicationManifestService.cs" />
     <Compile Include="Services\IApplicationProfileService.cs" />
     <Compile Include="Services\IDeviceSettingsService.cs" />
+    <Compile Include="Services\IDeviceStatusService.cs" />
     <Compile Include="Services\IDisplayPropertiesService.cs" />
     <Compile Include="Services\IEmailComposeService.cs" />
     <Compile Include="Services\ILauncherService.cs" />

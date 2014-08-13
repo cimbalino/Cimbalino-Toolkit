@@ -169,11 +169,17 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\DeviceStatusServicePowerSource.cs">
+      <Link>Services\DeviceStatusServicePowerSource.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationManifestService.cs">
       <Link>Services\IApplicationManifestService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationProfileService.cs">
       <Link>Services\IApplicationProfileService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceStatusService.cs">
+      <Link>Services\IDeviceStatusService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IMapManagerService.cs">
       <Link>Services\IMapManagerService.cs</Link>
@@ -228,6 +234,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Extensions\RenderTargetBitmapExtensions.cs">
       <Link>Extensions\RenderTargetBitmapExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\DeviceStatusService.cs">
+      <Link>Services\DeviceStatusService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
