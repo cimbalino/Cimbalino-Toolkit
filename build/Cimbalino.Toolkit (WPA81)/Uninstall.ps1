@@ -1,0 +1,2 @@
+param($installPath, $toolsPath, $package, $project)
+  Write-Host "Cimbalino Toolkit was removed, however Blend SDK (XAML) was not as it may be a dependent reference on other things in your project. If you do not need it, manually remove it."

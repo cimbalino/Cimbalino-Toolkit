@@ -158,23 +158,24 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
           % { $_ -Replace '\$version\$', $version }
         } | Set-Content -Path $projectNugetFolder\$projectNuspec -Encoding UTF8
     
-    $projectBuildFolder = "$projectNugetFolder\build"
+    $projectToolsFolder = "$projectNugetFolder\tools"
     $projectLibFolder = "$projectNugetFolder\lib"
     
     $_.Configurations | % {
-      $configurationName = $_
       $configuration = $configurations[$_]
       $configurationFolder = $configuration.Folder
+      $configurationSuffix = $configuration.Suffix
+      $fullProjectName = "$projectName$configurationSuffix"
       
-      $projectTargets = "$buildDir\$configurationName\$projectName.targets"
+      $projectTools = "$buildDir\$fullProjectName"
       
-      if (Test-Path $projectTargets)
+      if (Test-Path $projectTools)
       {
-        $projectBuildConfigurationFolder = "$projectBuildFolder\$configurationFolder"
+        $projectToolsConfigurationFolder = "$projectToolsFolder\$configurationFolder"
         
-        New-Item -Path $projectBuildConfigurationFolder -ItemType Directory | Out-Null
+        New-Item -Path $projectToolsConfigurationFolder -ItemType Directory | Out-Null
         
-        Copy-Item -Path $projectTargets -Destination $projectBuildConfigurationFolder\ -Recurse
+        Copy-Item -Path $projectTools\* -Destination $projectToolsConfigurationFolder\ -Recurse
       }
     }
     
