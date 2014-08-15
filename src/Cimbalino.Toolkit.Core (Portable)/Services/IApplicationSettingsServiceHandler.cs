@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="LegacySettingsServiceHandler.cs" company="Pedro Lamas">
+// <copyright file="IApplicationSettingsServiceHandler.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -13,28 +13,21 @@
 // ****************************************************************************
 
 using System.Collections.Generic;
-using System.IO.IsolatedStorage;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
-    /// Represents an implementation of the <see cref="ISettingsServiceHandler"/>.
+    /// Represents a service capable of handling the application settings.
     /// </summary>
-    public class LegacySettingsServiceHandler : ISettingsServiceHandler
+    public interface IApplicationSettingsServiceHandler
     {
-        private static readonly IsolatedStorageSettings ApplicationSettings = IsolatedStorageSettings.ApplicationSettings;
-
         /// <summary>
         /// Determines if the application settings contains the specified key.
         /// </summary>
         /// <param name="key">The key for the entry to be located.</param>
         /// <returns>true if the settings contains the specified key; otherwise, false.</returns>
-        public bool Contains(string key)
-        {
-            return ApplicationSettings.Contains(key);
-        }
+        bool Contains(string key);
 
         /// <summary>
         /// Gets the value associated with the specified key.
@@ -42,10 +35,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="key">The key whose value to get.</param>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter.</returns>
         /// <typeparam name="T">The type of value to get.</typeparam>
-        public T Get<T>(string key)
-        {
-            return Get(key, default(T));
-        }
+        T Get<T>(string key);
 
         /// <summary>
         /// Gets the value associated with the specified key.
@@ -54,15 +44,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="defaultValue">The default value to return if the key does not exist.</param>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the specified default value.</returns>
         /// <typeparam name="T">The type of value to get.</typeparam>
-        public T Get<T>(string key, T defaultValue)
-        {
-            if (ApplicationSettings.Contains(key))
-            {
-                return (T)ApplicationSettings[key];
-            }
-
-            return defaultValue;
-        }
+        T Get<T>(string key, T defaultValue);
 
         /// <summary>
         /// Sets the value for the specified key. If the entry does not exist, a new one will be added.
@@ -70,44 +52,18 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="key">The key whose value to set.</param>
         /// <param name="value">The value for the specified key.</param>
         /// <typeparam name="T">The type of value to set.</typeparam>
-        public void Set<T>(string key, T value)
-        {
-            if (ApplicationSettings.Contains(key))
-            {
-                ApplicationSettings[key] = value;
-            }
-            else
-            {
-                ApplicationSettings.Add(key, value);
-            }
-
-            ApplicationSettings.Save();
-        }
+        void Set<T>(string key, T value);
 
         /// <summary>
         /// Removes the specified key and associated value.
         /// </summary>
         /// <param name="key">The key whose value to clear.</param>
-        public void Remove(string key)
-        {
-            if (ApplicationSettings.Contains(key))
-            {
-                ApplicationSettings.Remove(key);
-            }
-
-            ApplicationSettings.Save();
-        }
+        void Remove(string key);
 
         /// <summary>
-        /// Gets an object that represents all the settings in this <see cref="ISettingsServiceHandler"/> instance.
+        /// Gets an object that represents all the settings in this <see cref="IApplicationSettingsServiceHandler"/> instance.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
-        {
-            var values = ApplicationSettings
-                .ToArray();
-
-            return Task.FromResult((IEnumerable<KeyValuePair<string, object>>)values);
-        }
+        Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync();
     }
 }

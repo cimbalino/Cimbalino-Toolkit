@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="SettingsService.cs" company="Pedro Lamas">
+// <copyright file="ApplicationSettingsService.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -26,32 +26,32 @@ using Windows.Storage;
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
-    /// Represents an implementation of the <see cref="ISettingsService"/>.
+    /// Represents an implementation of the <see cref="IApplicationSettingsService"/>.
     /// </summary>
-    public class SettingsService : ISettingsService
+    public class ApplicationSettingsService : IApplicationSettingsService
     {
-        private static readonly ISettingsServiceHandler LocalSettingsServiceHandlerStatic, RoamingSettingsServiceHandlerStatic;
+        private static readonly IApplicationSettingsServiceHandler LocalSettingsServiceHandlerStatic, RoamingSettingsServiceHandlerStatic;
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
-        private static readonly ISettingsServiceHandler LegacySettingsServiceHandlerStatic;
+        private static readonly IApplicationSettingsServiceHandler LegacySettingsServiceHandlerStatic;
 #endif
 
-        static SettingsService()
+        static ApplicationSettingsService()
         {
             var applicationData = ApplicationData.Current;
 
-            LocalSettingsServiceHandlerStatic = new SettingsServiceHandler(applicationData.LocalSettings);
+            LocalSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.LocalSettings);
 
 #if WINDOWS_PHONE
             if (Version.Parse(Deployment.Current.RuntimeVersion).Major >= 6)
             {
-                RoamingSettingsServiceHandlerStatic = new SettingsServiceHandler(applicationData.RoamingSettings);
+                RoamingSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.RoamingSettings);
             }
 #else
-            RoamingSettingsServiceHandlerStatic = new SettingsServiceHandler(applicationData.RoamingSettings);
+            RoamingSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.RoamingSettings);
 #endif
 
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
-            LegacySettingsServiceHandlerStatic = new LegacySettingsServiceHandler();
+            LegacySettingsServiceHandlerStatic = new LegacyApplicationSettingsServiceHandler();
 #endif
         }
 
@@ -59,7 +59,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the local settings handler instance for the app.
         /// </summary>
         /// <value>The local settings handler instance for the app.</value>
-        public ISettingsServiceHandler Local
+        public IApplicationSettingsServiceHandler Local
         {
             get
             {
@@ -71,7 +71,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the roaming settings handler instance for the app.
         /// </summary>
         /// <value>The roaming settings handler instance for the app.</value>
-        public ISettingsServiceHandler Roaming
+        public IApplicationSettingsServiceHandler Roaming
         {
             get
             {
@@ -90,7 +90,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the legacy settings handler instance for the app.
         /// </summary>
         /// <value>The legacy settings handler instance for the app.</value>
-        public ISettingsServiceHandler Legacy
+        public IApplicationSettingsServiceHandler Legacy
         {
             get
             {

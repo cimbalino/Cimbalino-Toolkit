@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="LegacySettingsServiceHandler.cs" company="Pedro Lamas">
+// <copyright file="LegacyApplicationSettingsServiceHandler.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -23,9 +23,9 @@ using Windows.Storage;
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
-    /// Represents an implementation of the <see cref="ISettingsServiceHandler"/>.
+    /// Represents an implementation of the <see cref="IApplicationSettingsServiceHandler"/>.
     /// </summary>
-    public class LegacySettingsServiceHandler : ISettingsServiceHandler
+    public class LegacyApplicationSettingsServiceHandler : IApplicationSettingsServiceHandler
     {
         /// <summary>
         /// Determines if the application settings contains the specified key.
@@ -81,7 +81,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets an object that represents all the settings in this <see cref="ISettingsServiceHandler"/> instance.
+        /// Gets an object that represents all the settings in this <see cref="IApplicationSettingsServiceHandler"/> instance.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()

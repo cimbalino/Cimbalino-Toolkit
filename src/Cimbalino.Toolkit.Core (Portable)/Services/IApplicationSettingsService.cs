@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="ISettingsService.cs" company="Pedro Lamas">
+// <copyright file="IApplicationSettingsService.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -17,24 +17,24 @@ namespace Cimbalino.Toolkit.Services
     /// <summary>
     /// Represents a service capable of handling the application settings.
     /// </summary>
-    public interface ISettingsService
+    public interface IApplicationSettingsService
     {
         /// <summary>
         /// Gets the local settings handler instance for the app.
         /// </summary>
         /// <value>The local settings handler instance for the app.</value>
-        ISettingsServiceHandler Local { get; }
+        IApplicationSettingsServiceHandler Local { get; }
 
         /// <summary>
         /// Gets the roaming settings handler instance for the app.
         /// </summary>
         /// <value>The roaming settings handler instance for the app.</value>
-        ISettingsServiceHandler Roaming { get; }
+        IApplicationSettingsServiceHandler Roaming { get; }
 
         /// <summary>
         /// Gets the legacy settings handler instance for the app.
         /// </summary>
         /// <value>The legacy settings handler instance for the app.</value>
-        ISettingsServiceHandler Legacy { get; }
+        IApplicationSettingsServiceHandler Legacy { get; }
     }
 }

@@ -160,6 +160,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationProfileService.cs">
       <Link>Services\IApplicationProfileService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationSettingsService.cs">
+      <Link>Services\IApplicationSettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationSettingsServiceHandler.cs">
+      <Link>Services\IApplicationSettingsServiceHandler.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceStatusService.cs">
       <Link>Services\IDeviceStatusService.cs</Link>
     </Compile>
@@ -168,12 +174,6 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ISettingsService.cs">
-      <Link>Services\ISettingsService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ISettingsServiceHandler.cs">
-      <Link>Services\ISettingsServiceHandler.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
       <Link>Services\IStorageServiceHandler.cs</Link>
@@ -292,12 +292,12 @@
     <Compile Include="Services\ApplicationManifestService.cs" />
     <Compile Include="Services\ApplicationProfileService.cs" />
     <Compile Include="Services\DeviceStatusService.cs" />
-    <Compile Include="Services\LegacySettingsServiceHandler.cs" />
+    <Compile Include="Services\LegacyApplicationSettingsServiceHandler.cs" />
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\LocationServiceExtensions.cs" />
     <Compile Include="Services\NetworkInformationService.cs" />
-    <Compile Include="Services\SettingsService.cs" />
-    <Compile Include="Services\SettingsServiceHandler.cs" />
+    <Compile Include="Services\ApplicationSettingsService.cs" />
+    <Compile Include="Services\ApplicationSettingsServiceHandler.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Services\StorageServiceHandler.cs" />
     <Compile Include="System\Security\Cryptography\HMACMD5.Generated.cs" />

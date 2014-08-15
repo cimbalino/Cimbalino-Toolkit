@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="SettingsServiceHandler.cs" company="Pedro Lamas">
+// <copyright file="LegacyApplicationSettingsServiceHandler.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -13,30 +13,18 @@
 // ****************************************************************************
 
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Storage;
 
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
-    /// Represents an implementation of the <see cref="ISettingsServiceHandler"/>.
+    /// Represents an implementation of the <see cref="IApplicationSettingsServiceHandler"/>.
     /// </summary>
-#if !NETFX_CORE
-    [System.CLSCompliant(false)]
-#endif
-    public class SettingsServiceHandler : ISettingsServiceHandler
+    public class LegacyApplicationSettingsServiceHandler : IApplicationSettingsServiceHandler
     {
-        private readonly ApplicationDataContainer _applicationDataContainer;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SettingsServiceHandler"/> class.
-        /// </summary>
-        /// <param name="applicationDataContainer">The root <see cref="ApplicationDataContainer"/> instance.</param>
-        public SettingsServiceHandler(ApplicationDataContainer applicationDataContainer)
-        {
-            _applicationDataContainer = applicationDataContainer;
-        }
+        private static readonly IsolatedStorageSettings ApplicationSettings = IsolatedStorageSettings.ApplicationSettings;
 
         /// <summary>
         /// Determines if the application settings contains the specified key.
@@ -45,9 +33,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if the settings contains the specified key; otherwise, false.</returns>
         public bool Contains(string key)
         {
-            var container = GetContainer(key, out key);
-
-            return container != null && container.Values.ContainsKey(key);
+            return ApplicationSettings.Contains(key);
         }
 
         /// <summary>
@@ -70,11 +56,9 @@ namespace Cimbalino.Toolkit.Services
         /// <typeparam name="T">The type of value to get.</typeparam>
         public T Get<T>(string key, T defaultValue)
         {
-            var container = GetContainer(key, out key);
-
-            if (container != null && container.Values.ContainsKey(key))
+            if (ApplicationSettings.Contains(key))
             {
-                return (T)container.Values[key];
+                return (T)ApplicationSettings[key];
             }
 
             return defaultValue;
@@ -88,16 +72,16 @@ namespace Cimbalino.Toolkit.Services
         /// <typeparam name="T">The type of value to set.</typeparam>
         public void Set<T>(string key, T value)
         {
-            var container = GetContainer(key, out key, true);
-
-            if (container.Values.ContainsKey(key))
+            if (ApplicationSettings.Contains(key))
             {
-                container.Values[key] = value;
+                ApplicationSettings[key] = value;
             }
             else
             {
-                container.Values.Add(key, value);
+                ApplicationSettings.Add(key, value);
             }
+
+            ApplicationSettings.Save();
         }
 
         /// <summary>
@@ -106,58 +90,24 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="key">The key whose value to clear.</param>
         public void Remove(string key)
         {
-            var container = GetContainer(key, out key);
-
-            if (container != null && container.Values.ContainsKey(key))
+            if (ApplicationSettings.Contains(key))
             {
-                container.Values.Remove(key);
+                ApplicationSettings.Remove(key);
             }
+
+            ApplicationSettings.Save();
         }
 
         /// <summary>
-        /// Gets an object that represents all the settings in this <see cref="ISettingsServiceHandler"/> instance.
+        /// Gets an object that represents all the settings in this <see cref="IApplicationSettingsServiceHandler"/> instance.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
         {
-            return Task.FromResult(GetValues(_applicationDataContainer));
-        }
+            var values = ApplicationSettings
+                .ToArray();
 
-        private IEnumerable<KeyValuePair<string, object>> GetValues(ApplicationDataContainer container, string parentKey = null)
-        {
-            return container.Containers
-                .SelectMany(x => GetValues(x.Value, parentKey + x.Key + "."))
-                .Concat(container.Values
-                    .Select(x => new KeyValuePair<string, object>(parentKey + x.Key, x.Value)));
-        }
-
-        private ApplicationDataContainer GetContainer(string fullPath, out string key, bool create = false)
-        {
-            var containerNames = fullPath.Split(new[] { '.', '\\', '/' });
-
-            key = containerNames[containerNames.Length - 1];
-
-            var container = _applicationDataContainer;
-
-            for (var containerIndex = 0; containerIndex < containerNames.Length - 1; containerIndex++)
-            {
-                var containerName = containerNames[containerIndex];
-
-                if (container.Containers.ContainsKey(containerName))
-                {
-                    container = container.Containers[containerName];
-                }
-                else if (create)
-                {
-                    container = container.CreateContainer(containerName, ApplicationDataCreateDisposition.Always);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-
-            return container;
+            return Task.FromResult((IEnumerable<KeyValuePair<string, object>>)values);
         }
     }
 }

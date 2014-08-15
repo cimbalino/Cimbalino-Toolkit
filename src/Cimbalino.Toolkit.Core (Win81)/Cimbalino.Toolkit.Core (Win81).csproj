@@ -178,6 +178,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationProfileService.cs">
       <Link>Services\IApplicationProfileService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationSettingsService.cs">
+      <Link>Services\IApplicationSettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationSettingsServiceHandler.cs">
+      <Link>Services\IApplicationSettingsServiceHandler.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceStatusService.cs">
       <Link>Services\IDeviceStatusService.cs</Link>
     </Compile>
@@ -186,12 +192,6 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ISettingsService.cs">
-      <Link>Services\ISettingsService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ISettingsServiceHandler.cs">
-      <Link>Services\ISettingsServiceHandler.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
       <Link>Services\IStorageServiceHandler.cs</Link>
@@ -211,6 +211,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\ApplicationProfileService.cs">
       <Link>Services\ApplicationProfileService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\ApplicationSettingsService.cs">
+      <Link>Services\ApplicationSettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\ApplicationSettingsServiceHandler.cs">
+      <Link>Services\ApplicationSettingsServiceHandler.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\LocationService.cs">
       <Link>Services\LocationService.cs</Link>
     </Compile>
@@ -219,12 +225,6 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\NetworkInformationService.cs">
       <Link>Services\NetworkInformationService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\SettingsService.cs">
-      <Link>Services\SettingsService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\SettingsServiceHandler.cs">
-      <Link>Services\SettingsServiceHandler.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28wp8%29\Services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
