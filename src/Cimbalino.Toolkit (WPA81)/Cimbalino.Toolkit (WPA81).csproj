@@ -131,6 +131,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\NegativeBooleanConverter.cs">
       <Link>Converters\NegativeBooleanConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\NullToVisibilityConverter.cs">
+      <Link>Converters\NullToVisibilityConverter.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringFormatConverter.cs">
       <Link>Converters\StringFormatConverter.cs</Link>
     </Compile>
