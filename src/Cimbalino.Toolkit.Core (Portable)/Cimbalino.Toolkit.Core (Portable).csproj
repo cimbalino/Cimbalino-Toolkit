@@ -98,6 +98,7 @@
     <Compile Include="Services\IPhoneCallService.cs" />
     <Compile Include="Services\IApplicationSettingsService.cs" />
     <Compile Include="Services\IApplicationSettingsServiceHandler.cs" />
+    <Compile Include="Services\IRuntimeInformationService.cs" />
     <Compile Include="Services\ISmsComposeService.cs" />
     <Compile Include="Services\IStorageService.cs" />
     <Compile Include="Services\IStorageServiceHandler.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Services\LocationServicePositionChangedEventArgs.cs" />
     <Compile Include="Services\LocationServiceStatus.cs" />
     <Compile Include="Services\LocationServiceStatusChangedEventArgs.cs" />
+    <Compile Include="Services\RuntimeInformationServiceProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.IO.Compression">

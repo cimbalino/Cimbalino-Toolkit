@@ -175,11 +175,17 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IRuntimeInformationService.cs">
+      <Link>Services\IRuntimeInformationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
       <Link>Services\IStorageServiceHandler.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\RuntimeInformationServiceProfile.cs">
+      <Link>Services\RuntimeInformationServiceProfile.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
@@ -298,6 +304,7 @@
     <Compile Include="Services\NetworkInformationService.cs" />
     <Compile Include="Services\ApplicationSettingsService.cs" />
     <Compile Include="Services\ApplicationSettingsServiceHandler.cs" />
+    <Compile Include="Services\RuntimeInformationService.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Services\StorageServiceHandler.cs" />
     <Compile Include="System\Security\Cryptography\HMACMD5.Generated.cs" />

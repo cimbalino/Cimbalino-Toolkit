@@ -193,11 +193,17 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IRuntimeInformationService.cs">
+      <Link>Services\IRuntimeInformationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
       <Link>Services\IStorageServiceHandler.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\RuntimeInformationServiceProfile.cs">
+      <Link>Services\RuntimeInformationServiceProfile.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\DependencyObjectExtensions.cs">
       <Link>Extensions\DependencyObjectExtensions.cs</Link>
@@ -225,6 +231,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\NetworkInformationService.cs">
       <Link>Services\NetworkInformationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\RuntimeInformationService.cs">
+      <Link>Services\RuntimeInformationService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28wp8%29\Services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
