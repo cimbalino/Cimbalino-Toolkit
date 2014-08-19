@@ -17,7 +17,7 @@ using System;
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
-    /// Represents a service capable of providing network information for a specific Windows Phone device.
+    /// Represents a service capable of providing network information for a specific device.
     /// </summary>
     public interface INetworkInformationService
     {
