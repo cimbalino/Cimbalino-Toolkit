@@ -33,7 +33,7 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class StorageService : IStorageService
     {
-        private static readonly IStorageServiceHandler LocalStorageServiceHandlerStatic, RoamingStorageServiceHandlerStatic, TemporaryStorageServiceHandlerStatic;
+        private static readonly IStorageServiceHandler LocalStorageServiceHandlerStatic, RoamingStorageServiceHandlerStatic, TemporaryStorageServiceHandlerStatic, PackageStorageServiceHandlerStatic;
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
         private static readonly IStorageServiceHandler LocalCacheStorageServiceHandlerStatic;
 #endif
@@ -43,6 +43,7 @@ namespace Cimbalino.Toolkit.Services
             var applicationData = ApplicationData.Current;
 
             LocalStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.LocalFolder);
+            PackageStorageServiceHandlerStatic = new StorageServiceHandler(Windows.ApplicationModel.Package.Current.InstalledLocation);
 
 #if WINDOWS_PHONE
             if (Version.Parse(Deployment.Current.RuntimeVersion).Major >= 6)
@@ -60,6 +61,7 @@ namespace Cimbalino.Toolkit.Services
 #else
             RoamingStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.RoamingFolder);
             TemporaryStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.TemporaryFolder);
+            PackageStorageServiceHandlerStatic = new StorageServiceHandler(Windows.ApplicationModel.Package.Current.InstalledLocation);
 #endif
 
 #if WINDOWS_PHONE_APP
@@ -140,6 +142,18 @@ namespace Cimbalino.Toolkit.Services
 #else
                 throw new NotSupportedException();
 #endif
+            }
+        }
+
+        /// <summary>
+        /// Gets the storage handler instance for the root folder in the package installation data store.
+        /// </summary>
+        /// <value>The storage handler instance for the root folder in the package installation data store.</value>
+        public IStorageServiceHandler Package
+        {
+            get
+            {
+                return PackageStorageServiceHandlerStatic;
             }
         }
     }

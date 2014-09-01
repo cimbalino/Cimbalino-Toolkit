@@ -42,5 +42,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <value>The storage handler instance for the root folder in the local app data store where you can save files that are not included in backup and restore.</value>
         IStorageServiceHandler LocalCache { get; }
+
+        /// <summary>
+        /// Gets the storage handler instance for the root folder in the package installation data store.
+        /// </summary>
+        /// <value>The storage handler instance for the root folder in the package installation data store.</value>
+        IStorageServiceHandler Package { get; }
     }
 }
