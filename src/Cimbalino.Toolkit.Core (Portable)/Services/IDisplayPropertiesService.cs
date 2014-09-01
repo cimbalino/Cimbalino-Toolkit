@@ -46,6 +46,18 @@ namespace Cimbalino.Toolkit.Services
         Rect Bounds { get; }
 
         /// <summary>
+        /// Gets the height and width of the physical screen, as a Rect value.
+        /// </summary>
+        /// <value>A value that reports the height and width of the physical screen window.</value>
+        Rect PhysicalBounds { get; }
+
+        /// <summary>
+        /// Gets the physical screen diagonal size.
+        /// </summary>
+        /// <value>The physical screen diagonal size.</value>
+        float ScreenDiagonal { get; }
+
+        /// <summary>
         /// Gets the number of raw (physical) pixels for each view (layout) pixel.
         /// </summary>
         /// <value>The number of raw (physical) pixels for each view (layout) pixel.</value>

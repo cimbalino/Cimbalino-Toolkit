@@ -19,6 +19,7 @@ using Microsoft.Phone.Info;
 using Windows.Graphics.Display;
 using Rect = Cimbalino.Toolkit.Foundation.Rect;
 #else
+using System;
 using Cimbalino.Toolkit.Foundation;
 using Windows.Graphics.Display;
 using Windows.UI.Xaml;
@@ -60,7 +61,7 @@ namespace Cimbalino.Toolkit.Services
 
                 if (DeviceExtendedProperties.TryGetValue("RawDpiX", out value))
                 {
-                    return (float)value;
+                    return (float)(double)value;
                 }
 
                 return 1.0f;
@@ -83,7 +84,7 @@ namespace Cimbalino.Toolkit.Services
 
                 if (DeviceExtendedProperties.TryGetValue("RawDpiY", out value))
                 {
-                    return (float)value;
+                    return (float)(double)value;
                 }
 
                 return 1.0f;
@@ -108,6 +109,48 @@ namespace Cimbalino.Toolkit.Services
 
                 return new Rect(bounds.X, bounds.Y, bounds.Width, bounds.Height);
 #endif
+            }
+        }
+
+        /// <summary>
+        /// Gets the height and width of the physical screen, as a Rect value.
+        /// </summary>
+        /// <value>A value that reports the height and width of the physical screen window.</value>
+        public Rect PhysicalBounds
+        {
+            get
+            {
+#if WINDOWS_PHONE
+                object value;
+
+                if (DeviceExtendedProperties.TryGetValue("PhysicalScreenResolution", out value))
+                {
+                    var size = (Size)value;
+
+                    return new Rect(0, 0, size.Width, size.Height);
+                }
+
+                return Bounds;
+#else
+                var bounds = Bounds;
+                var rawPixelsPerViewPixel = RawPixelsPerViewPixel;
+
+                return new Rect(0, 0, bounds.Width * rawPixelsPerViewPixel, bounds.Height * rawPixelsPerViewPixel);
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Gets the physical screen diagonal size.
+        /// </summary>
+        /// <value>The physical screen diagonal size.</value>
+        public float ScreenDiagonal
+        {
+            get
+            {
+                var physicalBounds = PhysicalBounds;
+
+                return (float)Math.Sqrt(Math.Pow(physicalBounds.Width / RawDpiX, 2) + Math.Pow(physicalBounds.Height / RawDpiY, 2));
             }
         }
 
