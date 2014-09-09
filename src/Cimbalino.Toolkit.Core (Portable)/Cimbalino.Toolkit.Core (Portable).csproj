@@ -73,6 +73,10 @@
     <Compile Include="Helpers\ApplicationManifestTaskNodeBase.cs" />
     <Compile Include="Helpers\ApplicationManifestTokenNode.cs" />
     <Compile Include="Helpers\ChunkedStream.cs" />
+    <Compile Include="Helpers\ObservableBase.cs" />
+    <Compile Include="Helpers\ObservableTask.cs" />
+    <Compile Include="Helpers\ObservableTaskBase.cs" />
+    <Compile Include="Helpers\ObservableTask{T}.cs" />
     <Compile Include="Helpers\OptimizedObservableCollection.cs" />
     <Compile Include="Helpers\WeakAction.cs" />
     <Compile Include="Helpers\WeakAction{T}.cs" />

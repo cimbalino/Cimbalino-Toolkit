@@ -148,6 +148,18 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestTokenNode.cs">
       <Link>Helpers\ApplicationManifestTokenNode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ObservableBase.cs">
+      <Link>Helpers\ObservableBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ObservableTask.cs">
+      <Link>Helpers\ObservableTask.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ObservableTaskBase.cs">
+      <Link>Helpers\ObservableTaskBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ObservableTask{T}.cs">
+      <Link>Helpers\ObservableTask{T}.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakAction.cs">
       <Link>Helpers\WeakAction.cs</Link>
     </Compile>
