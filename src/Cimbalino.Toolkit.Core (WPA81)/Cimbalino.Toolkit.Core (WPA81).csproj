@@ -192,6 +192,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedBehavior.cs">
+      <Link>Services\NavigationServiceBackKeyPressedBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedEventArgs.cs">
+      <Link>Services\NavigationServiceBackKeyPressedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\RuntimeInformationServiceProfile.cs">
       <Link>Services\RuntimeInformationServiceProfile.cs</Link>
     </Compile>

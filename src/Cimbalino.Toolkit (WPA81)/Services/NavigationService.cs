@@ -42,6 +42,24 @@ namespace Cimbalino.Toolkit.Services
         public event EventHandler Navigated;
 
         /// <summary>
+        /// Occurs when the user presses the hardware Back button.
+        /// </summary>
+#if WINDOWS_PHONE_APP
+        public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
+#else
+        public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed
+        {
+            add
+            {
+                throw new NotSupportedException();
+            }
+            remove
+            {
+            }
+        }
+#endif
+
+        /// <summary>
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
         /// </summary>
         /// <value>Returns a value that represents the <see cref="Uri"/> of content that is currently displayed.</value>
@@ -208,7 +226,43 @@ namespace Cimbalino.Toolkit.Services
                 };
 
 #if WINDOWS_PHONE_APP
-                HardwareButtons.BackPressed += HardwareButtonsBackPressed;
+                HardwareButtons.BackPressed += (s, e) =>
+                {
+                    var eventHandler = BackKeyPressed;
+                    var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+
+                    if (eventHandler != null)
+                    {
+                        eventHandler(this, eventArgs);
+                    }
+
+                    switch (eventArgs.Behavior)
+                    {
+                        case NavigationServiceBackKeyPressedBehavior.GoBack:
+                            if (_mainFrame.CanGoBack)
+                            {
+                                _mainFrame.GoBack();
+
+                                e.Handled = true;
+                            }
+                            break;
+
+                        case NavigationServiceBackKeyPressedBehavior.HideApp:
+                            break;
+
+                        case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                            e.Handled = true;
+                            Application.Current.Exit();
+                            break;
+
+                        case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                            e.Handled = true;
+                            break;
+
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                };
 #endif
 
                 return true;
@@ -216,17 +270,5 @@ namespace Cimbalino.Toolkit.Services
 
             return false;
         }
-
-#if WINDOWS_PHONE_APP
-        private void HardwareButtonsBackPressed(object sender, BackPressedEventArgs e)
-        {
-            if (_mainFrame.CanGoBack)
-            {
-                _mainFrame.GoBack();
-
-                e.Handled = true;
-            }
-        }
-#endif
     }
 }

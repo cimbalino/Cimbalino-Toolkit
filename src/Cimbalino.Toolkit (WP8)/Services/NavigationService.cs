@@ -33,6 +33,11 @@ namespace Cimbalino.Toolkit.Services
         public event EventHandler Navigated;
 
         /// <summary>
+        /// Occurs when the user presses the hardware Back button.
+        /// </summary>
+        public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
+
+        /// <summary>
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
         /// </summary>
         /// <value>Returns a value that represents the <see cref="Uri"/> of content that is currently displayed.</value>
@@ -211,6 +216,38 @@ namespace Cimbalino.Toolkit.Services
                         if (eventHandler != null)
                         {
                             eventHandler(this, null);
+                        }
+                    };
+
+                    _mainFrame.BackKeyPress += (s, e) =>
+                    {
+                        var eventHandler = BackKeyPressed;
+                        var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+
+                        if (eventHandler != null)
+                        {
+                            eventHandler(this, eventArgs);
+                        }
+
+                        switch (eventArgs.Behavior)
+                        {
+                            case NavigationServiceBackKeyPressedBehavior.GoBack:
+                                break;
+
+                            case NavigationServiceBackKeyPressedBehavior.HideApp:
+                                throw new NotSupportedException();
+
+                            case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                                e.Cancel = true;
+                                Application.Current.Terminate();
+                                break;
+
+                            case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                                e.Cancel = true;
+                                break;
+
+                            default:
+                                throw new ArgumentOutOfRangeException();
                         }
                     };
 

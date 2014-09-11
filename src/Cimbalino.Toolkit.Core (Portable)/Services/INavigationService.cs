@@ -28,6 +28,11 @@ namespace Cimbalino.Toolkit.Services
         event EventHandler Navigated;
 
         /// <summary>
+        /// Occurs when the user presses the hardware Back button.
+        /// </summary>
+        event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
+
+        /// <summary>
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
         /// </summary>
         /// <value>Returns a value that represents the <see cref="Uri"/> of content that is currently displayed.</value>
