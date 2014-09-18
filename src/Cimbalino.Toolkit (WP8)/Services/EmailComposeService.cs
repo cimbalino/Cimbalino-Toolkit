@@ -92,12 +92,12 @@ namespace Cimbalino.Toolkit.Services
 
             if (!string.IsNullOrEmpty(cc))
             {
-                emailMessage.To.Add(new EmailRecipient(cc));
+                emailMessage.CC.Add(new EmailRecipient(cc));
             }
 
             if (!string.IsNullOrEmpty(bcc))
             {
-                emailMessage.To.Add(new EmailRecipient(bcc));
+                emailMessage.Bcc.Add(new EmailRecipient(bcc));
             }
 
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
