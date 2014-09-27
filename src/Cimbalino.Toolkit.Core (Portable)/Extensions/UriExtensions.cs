@@ -29,7 +29,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// </summary>
         /// <param name="uri">The current uri.</param>
         /// <returns>A collection that contains the query string values.</returns>
-        public static IDictionary<string, string> QueryString(this Uri uri)
+        public static IEnumerable<KeyValuePair<string, string>> QueryString(this Uri uri)
         {
             var uriString = uri.IsAbsoluteUri ? uri.AbsoluteUri : uri.OriginalString;
 
@@ -37,7 +37,7 @@ namespace Cimbalino.Toolkit.Extensions
 
             if (queryIndex == -1)
             {
-                return new Dictionary<string, string>();
+                return Enumerable.Empty<KeyValuePair<string, string>>();
             }
 
             var query = uriString.Substring(queryIndex + 1);
@@ -45,7 +45,7 @@ namespace Cimbalino.Toolkit.Extensions
             return query.Split('&')
                 .Where(x => !string.IsNullOrEmpty(x))
                 .Select(x => x.Split('='))
-                .ToDictionary(x => WebUtility.UrlDecode(x[0]), x => x.Length == 2 && !string.IsNullOrEmpty(x[1]) ? WebUtility.UrlDecode(x[1]) : null);
+                .Select(x => new KeyValuePair<string, string>(WebUtility.UrlDecode(x[0]), x.Length == 2 && !string.IsNullOrEmpty(x[1]) ? WebUtility.UrlDecode(x[1]) : null));
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a collection of query string values.
         /// </summary>
         /// <value>Returns a <see cref="IDictionary{TKey,TValue}"/> collection that contains the query string values.</value>
-        public IDictionary<string, string> QueryString
+        public IEnumerable<KeyValuePair<string, string>> QueryString
         {
             get
             {

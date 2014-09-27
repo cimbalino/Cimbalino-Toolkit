@@ -42,7 +42,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a collection of query string values.
         /// </summary>
         /// <value>Returns a <see cref="IDictionary{String,String}"/> collection that contains the query string values.</value>
-        IDictionary<string, string> QueryString { get; }
+        IEnumerable<KeyValuePair<string, string>> QueryString { get; }
 
         /// <summary>
         /// Gets any parameter object passed to the target page for the navigation.
