@@ -21,8 +21,8 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Email;
 #else
 using System;
-using System.Net;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Extensions;
 using Windows.System;
 #endif
 
@@ -102,34 +102,15 @@ namespace Cimbalino.Toolkit.Services
 
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
 #else
-            var emailUrl = "mailto:?";
+            var emailUri = new UriBuilder("mailto:")
+                .SetPath(to)
+                .AppendQueryParameterIfValueNotEmpty("cc", cc)
+                .AppendQueryParameterIfValueNotEmpty("bcc", bcc)
+                .AppendQueryParameterIfValueNotEmpty("subject", subject)
+                .AppendQueryParameterIfValueNotEmpty("body", body)
+                .Uri;
 
-            if (!string.IsNullOrEmpty(to))
-            {
-                emailUrl += "&to=" + Uri.EscapeDataString(to);
-            }
-
-            if (!string.IsNullOrEmpty(cc))
-            {
-                emailUrl += "&cc=" + Uri.EscapeDataString(cc);
-            }
-
-            if (!string.IsNullOrEmpty(bcc))
-            {
-                emailUrl += "&bcc=" + Uri.EscapeDataString(bcc);
-            }
-
-            if (!string.IsNullOrEmpty(subject))
-            {
-                emailUrl += "&subject=" + Uri.EscapeDataString(subject);
-            }
-
-            if (!string.IsNullOrEmpty(body))
-            {
-                emailUrl += "&body=" + Uri.EscapeDataString(body);
-            }
-
-            await Launcher.LaunchUriAsync(new Uri(emailUrl, UriKind.Absolute));
+            await Launcher.LaunchUriAsync(emailUri);
 #endif
         }
     }

@@ -21,6 +21,7 @@ using Windows.ApplicationModel.Calls;
 #else
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Extensions;
 using Windows.System;
 #endif
 
@@ -62,9 +63,11 @@ namespace Cimbalino.Toolkit.Services
 
             await Task.FromResult(0);
 #else
-            var phoneCallUrl = "tel:" + Uri.EscapeDataString(phoneNumber);
+            var phoneCallUri = new UriBuilder("tel:")
+                .SetPath(phoneNumber)
+                .Uri;
 
-            await Launcher.LaunchUriAsync(new Uri(phoneCallUrl, UriKind.Absolute));
+            await Launcher.LaunchUriAsync(phoneCallUri);
 #endif
         }
     }

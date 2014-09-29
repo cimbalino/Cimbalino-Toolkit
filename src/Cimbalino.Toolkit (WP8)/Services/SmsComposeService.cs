@@ -22,6 +22,7 @@ using Windows.ApplicationModel.Chat;
 #else
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Extensions;
 using Windows.System;
 #endif
 
@@ -64,18 +65,19 @@ namespace Cimbalino.Toolkit.Services
                 Body = body
             };
 
-            chatMessage.Recipients.Add(recipient);
+            if (!string.IsNullOrEmpty(recipient))
+            {
+                chatMessage.Recipients.Add(recipient);
+            }
 
             await ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage);
 #else
-            var smsUrl = "sms:" + Uri.EscapeDataString(recipient);
+            var smsUri = new UriBuilder("sms:")
+                .SetPath(recipient)
+                .AppendQueryParameterIfValueNotEmpty("body", body)
+                .Uri;
 
-            if (!string.IsNullOrEmpty(body))
-            {
-                smsUrl += "?body=" + Uri.EscapeDataString(body);
-            }
-
-            await Launcher.LaunchUriAsync(new Uri(smsUrl, UriKind.Absolute));
+            await Launcher.LaunchUriAsync(smsUri);
 #endif
         }
     }
