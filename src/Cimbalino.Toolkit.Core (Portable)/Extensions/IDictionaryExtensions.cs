@@ -14,6 +14,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace Cimbalino.Toolkit.Extensions
 {
@@ -29,7 +31,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="action">The action to apply.</param>
         /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
         /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
-        public static void Apply<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, Action<KeyValuePair<TKey, TValue>> action)
+        public static void Apply<TKey, TValue>(this IEnumerable<KeyValuePair<TKey, TValue>> dictionary, Action<KeyValuePair<TKey, TValue>> action)
         {
             foreach (var item in dictionary)
             {
@@ -84,6 +86,29 @@ namespace Cimbalino.Toolkit.Extensions
             {
                 dictionary.Add(key, value);
             }
+        }
+
+        /// <summary>
+        /// Creates a proper query string for the values in the dictionary.
+        /// </summary>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <returns>A proper query string.</returns>
+        public static string ToQueryString(this IEnumerable<KeyValuePair<string, string>> dictionary)
+        {
+            return dictionary.ToQueryString(false);
+        }
+
+        /// <summary>
+        /// Creates a proper query string for the values in the dictionary, with or without empty values included.
+        /// </summary>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="includeEmptyValues">If the empty values should be included in the resulting query string.</param>
+        /// <returns>A proper query string.</returns>
+        public static string ToQueryString(this IEnumerable<KeyValuePair<string, string>> dictionary, bool includeEmptyValues)
+        {
+            return string.Join("&", dictionary
+                .Where(x => includeEmptyValues || !string.IsNullOrEmpty(x.Value))
+                .Select(x => WebUtility.UrlEncode(x.Key) + "=" + WebUtility.UrlEncode(x.Value ?? string.Empty)));
         }
     }
 }
