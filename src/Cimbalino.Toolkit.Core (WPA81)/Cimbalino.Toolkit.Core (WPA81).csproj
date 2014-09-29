@@ -90,6 +90,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StreamExtensions.cs">
       <Link>Extensions\StreamExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\UriBuilderExtensions.cs">
+      <Link>Extensions\UriBuilderExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Point.cs">
       <Link>Foundation\Point.cs</Link>
     </Compile>
