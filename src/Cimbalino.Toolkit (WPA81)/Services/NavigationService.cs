@@ -99,17 +99,28 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-        /// <summary>
-        /// Navigates to the content specified by the uniform resource identifier (URI).
-        /// </summary>
-        /// <param name="source">The URI for the desired content.</param>
-        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+		  /// <summary>
+		  /// Navigates to the content specified by the full name of a type
+		  /// </summary>
+		  /// <param name="source">The full path of the Type.</param>
+		  /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool Navigate(string source)
         {
             return EnsureMainFrame() && _mainFrame.Navigate(Type.GetType(source));
         }
 
-        /// <summary>
+		  /// <summary>
+		  /// Navigates to the content specified by a type
+		  /// </summary>
+		  /// <param name="source">The type for the desired content.</param>
+		  /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+		  /// <exception cref="System.NotImplementedException"></exception>
+	    public bool Navigate(Type source)
+	    {
+			 return EnsureMainFrame() && _mainFrame.Navigate(source);
+	    }
+
+	    /// <summary>
         /// Navigates to the content specified by the uniform resource identifier (URI).
         /// </summary>
         /// <param name="source">A <see cref="Uri"/> initialized with the URI for the desired content.</param>

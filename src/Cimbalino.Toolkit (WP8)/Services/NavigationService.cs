@@ -98,7 +98,17 @@ namespace Cimbalino.Toolkit.Services
             return Navigate(new Uri(source, UriKind.Relative));
         }
 
-        /// <summary>
+		  /// <summary>
+		  /// Navigates to the content specified by a type
+		  /// </summary>
+		  /// <param name="source">The type for the desired content.</param>
+		  /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+	    public bool Navigate(Type source)
+	    {
+		    throw new NotImplementedException();
+	    }
+
+	    /// <summary>
         /// Navigates to the content specified by the uniform resource identifier (URI).
         /// </summary>
         /// <param name="source">A <see cref="Uri"/> initialized with the URI for the desired content.</param>
