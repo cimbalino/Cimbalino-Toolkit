@@ -126,7 +126,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool Navigate<T>()
         {
-            return EnsureMainFrame() && _mainFrame.Navigate(typeof(T));
+            return Navigate(typeof(T));
         }
 
         /// <summary>
@@ -137,7 +137,28 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool Navigate<T>(object parameter)
         {
-            return EnsureMainFrame() && _mainFrame.Navigate(typeof(T), parameter);
+            return Navigate(typeof(T), parameter);
+        }
+
+        /// <summary>
+        /// Navigates to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(Type type)
+        {
+            return EnsureMainFrame() && _mainFrame.Navigate(type);
+        }
+
+        /// <summary>
+        /// Navigates to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(Type type, object parameter)
+        {
+            return EnsureMainFrame() && _mainFrame.Navigate(type, parameter);
         }
 
         /// <summary>

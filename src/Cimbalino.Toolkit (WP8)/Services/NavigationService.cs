@@ -130,6 +130,27 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Navigates to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(Type type)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Navigates to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(Type type, object parameter)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
         /// Gets a value indicating whether there is at least one entry in back navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>
