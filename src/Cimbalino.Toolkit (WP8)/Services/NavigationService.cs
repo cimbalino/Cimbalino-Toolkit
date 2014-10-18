@@ -98,17 +98,7 @@ namespace Cimbalino.Toolkit.Services
             return Navigate(new Uri(source, UriKind.Relative));
         }
 
-		  /// <summary>
-		  /// Navigates to the content specified by a type
-		  /// </summary>
-		  /// <param name="source">The type for the desired content.</param>
-		  /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-	    public bool Navigate(Type source)
-	    {
-		    throw new NotImplementedException();
-	    }
-
-	    /// <summary>
+        /// <summary>
         /// Navigates to the content specified by the uniform resource identifier (URI).
         /// </summary>
         /// <param name="source">A <see cref="Uri"/> initialized with the URI for the desired content.</param>
@@ -135,6 +125,27 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool Navigate<T>(object parameter)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Navigates to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(Type type)
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Navigates to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool Navigate(Type type, object parameter)
         {
             throw new NotSupportedException();
         }
