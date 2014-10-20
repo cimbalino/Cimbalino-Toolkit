@@ -20,6 +20,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 using Cimbalino.Toolkit.Compression;
 using Cimbalino.Toolkit.Helpers;
@@ -69,19 +70,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static async Task SavePngAsync(this WriteableBitmap writeableBitmap, Stream outputStream)
         {
 #if WINDOWS_PHONE
-            WriteHeader(outputStream, writeableBitmap);
-
-            WritePhysics(outputStream);
-
-            ////WriteGamma(outputStream);
-
-            WriteDataChunks(outputStream, writeableBitmap);
-
-            WriteFooter(outputStream);
-
-            outputStream.Flush();
-
-            await Task.FromResult(0);
+            await SavePngAsync(writeableBitmap, outputStream, new Size(writeableBitmap.PixelWidth, writeableBitmap.PixelHeight));
 #else
             var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, outputStream.AsRandomAccessStream());
             var pixels = writeableBitmap.PixelBuffer.ToArray();
@@ -91,6 +80,44 @@ namespace Cimbalino.Toolkit.Extensions
             await encoder.FlushAsync();
 #endif
         }
+
+#if WINDOWS_PHONE
+        /// <summary>
+        /// Encodes a WriteableBitmap object into a PNG stream.
+        /// </summary>
+        /// <param name="writeableBitmap">The writeable bitmap.</param>
+        /// <param name="outputStream">The image data stream.</param>
+        /// <param name="desiredSize">The desired output size of the png. Must be equal to or smaller than the WriteableBitmap.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public static async Task SavePngAsync(this WriteableBitmap writeableBitmap, Stream outputStream, Size desiredSize)
+        {
+            if (desiredSize.Width > writeableBitmap.PixelWidth) throw new InvalidOperationException("HorizontalResolution must be smaller that PixleWidth");
+            if (desiredSize.Height > writeableBitmap.PixelHeight) throw new InvalidOperationException("VerticalResolution must be smaller that PixleHeight");
+
+            WriteHeader(outputStream, desiredSize);
+
+            WritePhysics(outputStream);
+
+            ////WriteGamma(outputStream);
+
+            WriteDataChunks(outputStream, writeableBitmap, desiredSize);
+
+            WriteFooter(outputStream);
+
+            outputStream.Flush();
+
+            await Task.FromResult(0);
+        }
+
+        public static void ResetPixels(this WriteableBitmap writeableBitmap)
+        {
+            for (int i = 0; i < writeableBitmap.Pixels.Length; i++)
+            {
+                writeableBitmap.Pixels[i] = 0;
+            }
+        }
+
+#endif
 
         /// <summary>
         /// Encodes a WriteableBitmap object into a JPEG stream, with parameters for setting the target quality of the JPEG file.
@@ -121,13 +148,13 @@ namespace Cimbalino.Toolkit.Extensions
         }
 
 #if WINDOWS_PHONE
-        private static void WriteHeader(Stream outputStream, WriteableBitmap writeableBitmap)
+        private static void WriteHeader(Stream outputStream, Size desiredSize)
         {
             outputStream.Write(new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }, 0, 8);
 
             var chunkData = CreateChunk(
-                writeableBitmap.PixelWidth,
-                writeableBitmap.PixelHeight,
+                desiredSize.Width,
+                desiredSize.Height,
                 PngHeaderBitDepth,
                 PngHeaderColorType,
                 PngHeaderCompressionMethod,
@@ -156,15 +183,15 @@ namespace Cimbalino.Toolkit.Extensions
         ////    WriteChunk(outputStream, PngChunkTypeGamma, chunkData);
         ////}
 
-        private static void WriteDataChunks(Stream outputStream, WriteableBitmap writeableBitmap)
+        private static void WriteDataChunks(Stream outputStream, WriteableBitmap writeableBitmap, Size desiredSize)
         {
             using (var chunkedStream = new ChunkedStream(MaximumChunkSize, data => WriteChunk(outputStream, PngChunkTypeData, data)))
             {
                 using (var zlibStream = new ZlibStream(chunkedStream, CompressionMode.Compress, true))
                 {
                     var pixels = writeableBitmap.Pixels;
-                    var width = writeableBitmap.PixelWidth;
-                    var height = writeableBitmap.PixelHeight;
+                    var width = (int)desiredSize.Width;
+                    var height = (int)desiredSize.Height;
                     var index = 0;
 
                     var dataRowLength = width * 4;
@@ -172,6 +199,9 @@ namespace Cimbalino.Toolkit.Extensions
 
                     for (var y = 0; y < height; y++)
                     {
+                        // shift pixels due to requested size
+                        index = writeableBitmap.PixelWidth * y;
+
                         zlibStream.WriteByte(0);
 
                         for (var x = 0; x < width; x++)
