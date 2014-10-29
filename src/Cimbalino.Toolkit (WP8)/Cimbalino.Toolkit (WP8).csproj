@@ -129,6 +129,7 @@
     <Compile Include="Services\PhoneCallService.cs" />
     <Compile Include="Services\SmsComposeService.cs" />
     <Compile Include="Services\StoreService.cs" />
+    <Compile Include="Services\StatusBarService.cs" />
     <Compile Include="Services\VibrationService.cs" />
   </ItemGroup>
   <ItemGroup>
