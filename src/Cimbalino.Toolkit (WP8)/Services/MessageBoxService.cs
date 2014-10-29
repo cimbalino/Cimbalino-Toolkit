@@ -36,18 +36,21 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="text">The message to display.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowAsync(string text)
-        {
 #if WINDOWS_PHONE
+        public Task ShowAsync(string text)
+        {
             MessageBox.Show(text);
 
-            await Task.FromResult(0);
+            return Task.FromResult(0);
+        }
 #else
+        public async Task ShowAsync(string text)
+        {
             var message = new MessageDialog(text);
 
             await message.ShowAsync();
-#endif
         }
+#endif
 
         /// <summary>
         /// Displays a message box that contains the specified text, title bar caption, and an OK button.
@@ -55,19 +58,21 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The message to display.</param>
         /// <param name="caption">The title of the message box.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowAsync(string text, string caption)
-        {
 #if WINDOWS_PHONE
+        public Task ShowAsync(string text, string caption)
+        {
             MessageBox.Show(text, caption, MessageBoxButton.OK);
 
-            await Task.FromResult(0);
+            return Task.FromResult(0);
+        }
 #else
+        public async Task ShowAsync(string text, string caption)
+        {
             var message = new MessageDialog(text, caption);
 
             await message.ShowAsync();
-
-#endif
         }
+#endif
 
         /// <summary>
         /// Displays a message box that contains the specified text, title bar caption, and response buttons.
@@ -76,9 +81,9 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="caption">The title of the message box.</param>
         /// <param name="buttons">The captions for message box buttons. The maximum number of buttons is two.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
-        {
 #if WINDOWS_PHONE
+        public Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
+        {
             var taskCompletionSource = new TaskCompletionSource<int>();
 
             Guide.BeginShowMessageBox(caption, text, buttons, 0, MessageBoxIcon.None, ar =>
@@ -88,8 +93,11 @@ namespace Cimbalino.Toolkit.Services
                 Deployment.Current.Dispatcher.BeginInvoke(() => taskCompletionSource.SetResult(buttonIndex.GetValueOrDefault(-1)));
             }, null);
 
-            return await taskCompletionSource.Task;
+            return taskCompletionSource.Task;
+        }
 #else
+        public async Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
+        {
             var message = new MessageDialog(text, caption);
 
             foreach (var button in buttons)
@@ -105,7 +113,7 @@ namespace Cimbalino.Toolkit.Services
             }
 
             return -1;
-#endif
         }
+#endif
     }
 }

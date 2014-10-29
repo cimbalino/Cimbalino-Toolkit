@@ -66,9 +66,9 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="writeableBitmap">The writeable bitmap.</param>
         /// <param name="outputStream">The image data stream.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public static async Task SavePngAsync(this WriteableBitmap writeableBitmap, Stream outputStream)
-        {
 #if WINDOWS_PHONE
+        public static Task SavePngAsync(this WriteableBitmap writeableBitmap, Stream outputStream)
+        {
             WriteHeader(outputStream, writeableBitmap);
 
             WritePhysics(outputStream);
@@ -81,16 +81,19 @@ namespace Cimbalino.Toolkit.Extensions
 
             outputStream.Flush();
 
-            await Task.FromResult(0);
+            return Task.FromResult(0);
+        }
 #else
+        public static async Task SavePngAsync(this WriteableBitmap writeableBitmap, Stream outputStream)
+        {
             var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, outputStream.AsRandomAccessStream());
             var pixels = writeableBitmap.PixelBuffer.ToArray();
 
             encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, (uint)writeableBitmap.PixelWidth, (uint)writeableBitmap.PixelHeight, ResolutionDpi, ResolutionDpi, pixels);
 
             await encoder.FlushAsync();
-#endif
         }
+#endif
 
         /// <summary>
         /// Encodes a WriteableBitmap object into a JPEG stream, with parameters for setting the target quality of the JPEG file.
@@ -99,13 +102,16 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="outputStream">The image data stream.</param>
         /// <param name="quality">This parameter represents the quality of the JPEG photo with a range between 0 and 100, with 100 being the best photo quality. We recommend that you do not fall lower than a value of 70. because JPEG picture quality diminishes significantly below that level. </param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public static async Task SaveJpegAsync(this WriteableBitmap writeableBitmap, Stream outputStream, int quality)
-        {
 #if WINDOWS_PHONE
+        public static Task SaveJpegAsync(this WriteableBitmap writeableBitmap, Stream outputStream, int quality)
+        {
             writeableBitmap.SaveJpeg(outputStream, writeableBitmap.PixelWidth, writeableBitmap.PixelHeight, 0, quality);
 
-            await Task.FromResult(0);
+            return Task.FromResult(0);
+        }
 #else
+        public static async Task SaveJpegAsync(this WriteableBitmap writeableBitmap, Stream outputStream, int quality)
+        {
             var propertySet = new BitmapPropertySet
             {
                 { "ImageQuality", new BitmapTypedValue(quality, PropertyType.Single) }
@@ -117,8 +123,8 @@ namespace Cimbalino.Toolkit.Extensions
             encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)writeableBitmap.PixelWidth, (uint)writeableBitmap.PixelHeight, ResolutionDpi, ResolutionDpi, pixels);
 
             await encoder.FlushAsync();
-#endif
         }
+#endif
 
 #if WINDOWS_PHONE
         private static void WriteHeader(Stream outputStream, WriteableBitmap writeableBitmap)

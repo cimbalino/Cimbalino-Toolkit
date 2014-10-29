@@ -139,13 +139,14 @@ namespace Cimbalino.Toolkit.Extensions
         /// </summary>
         /// <param name="input">The input stream.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+#if PORTABLE
+        public static Task<byte[]> ToArrayAsync(this Stream input)
+        {
+            return Task.FromResult<byte[]>(null);
+        }
+#else
         public static async Task<byte[]> ToArrayAsync(this Stream input)
         {
-#if PORTABLE
-            await Task.FromResult(0);
-
-            return null;
-#else
             var memoryStream = input as MemoryStream;
 
             if (memoryStream != null)
@@ -159,7 +160,7 @@ namespace Cimbalino.Toolkit.Extensions
 
                 return memoryStream.ToArray();
             }
-#endif
         }
+#endif
     }
 }

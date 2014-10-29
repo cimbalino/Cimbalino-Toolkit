@@ -48,27 +48,33 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="displayName">The display name.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowAsync(string phoneNumber, string displayName)
-        {
 #if WINDOWS_PHONE
+        public Task ShowAsync(string phoneNumber, string displayName)
+        {
             new PhoneCallTask()
             {
                 PhoneNumber = phoneNumber,
                 DisplayName = displayName
             }.Show();
 
-            await Task.FromResult(0);
+            return Task.FromResult(0);
+        }
 #elif WINDOWS_PHONE_APP
+        public Task ShowAsync(string phoneNumber, string displayName)
+        {
             PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
 
-            await Task.FromResult(0);
+            return Task.FromResult(0);
+        }
 #else
+        public async Task ShowAsync(string phoneNumber, string displayName)
+        {
             var phoneCallUri = new UriBuilder("tel:")
                 .SetPath(phoneNumber)
                 .Uri;
 
             await Launcher.LaunchUriAsync(phoneCallUri);
-#endif
         }
+#endif
     }
 }

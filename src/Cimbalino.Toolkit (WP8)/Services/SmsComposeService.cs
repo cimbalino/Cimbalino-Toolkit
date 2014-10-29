@@ -49,17 +49,20 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="recipient">The recipient list for the new SMS message.</param>
         /// <param name="body">The body text of the new SMS message.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowAsync(string recipient, string body)
-        {
 #if WINDOWS_PHONE
+        public Task ShowAsync(string recipient, string body)
+        {
             new SmsComposeTask()
             {
                 To = recipient,
                 Body = body
             }.Show();
 
-            await Task.FromResult(0);
+            return Task.FromResult(0);
+        }
 #elif WINDOWS_PHONE_APP
+        public async Task ShowAsync(string recipient, string body)
+        {
             var chatMessage = new ChatMessage
             {
                 Body = body
@@ -71,14 +74,17 @@ namespace Cimbalino.Toolkit.Services
             }
 
             await ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage);
+        }
 #else
+        public async Task ShowAsync(string recipient, string body)
+        {
             var smsUri = new UriBuilder("sms:")
                 .SetPath(recipient)
                 .AppendQueryParameterIfValueNotEmpty("body", body)
                 .Uri;
 
             await Launcher.LaunchUriAsync(smsUri);
-#endif
         }
+#endif
     }
 }

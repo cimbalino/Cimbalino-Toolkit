@@ -32,117 +32,117 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Airplane Mode settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowAirplaneModeSettingsAsync()
+        public Task ShowAirplaneModeSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-airplanemode:");
+            return LaunchUrlAsync("ms-settings-airplanemode:");
         }
 
         /// <summary>
         /// Shows the Bluetooth settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowBluetoothSettingsAsync()
+        public Task ShowBluetoothSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-bluetooth:");
+            return LaunchUrlAsync("ms-settings-bluetooth:");
         }
 
         /// <summary>
         /// Shows the Photos+Camera settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowCameraSettingsAsync()
+        public Task ShowCameraSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-camera:");
+            return LaunchUrlAsync("ms-settings-camera:");
         }
 
         /// <summary>
         /// Shows the Cellular settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowCellularSettingsAsync()
+        public Task ShowCellularSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-cellular:");
+            return LaunchUrlAsync("ms-settings-cellular:");
         }
 
         /// <summary>
         /// Shows the Email and Accounts settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowEmailAndAccountsSettingsAsync()
+        public Task ShowEmailAndAccountsSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-emailandaccounts:");
+            return LaunchUrlAsync("ms-settings-emailandaccounts:");
         }
 
         /// <summary>
         /// Shows the Location settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowLocationSettingsAsync()
+        public Task ShowLocationSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-location:");
+            return LaunchUrlAsync("ms-settings-location:");
         }
 
         /// <summary>
         /// Shows the Lock Screen settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowLockScreenSettingsAsync()
+        public Task ShowLockScreenSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-lock:");
+            return LaunchUrlAsync("ms-settings-lock:");
         }
 
         /// <summary>
         /// Shows the Notifications+Actions settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowNotificationSettingsAsync()
+        public Task ShowNotificationSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-notifications:");
+            return LaunchUrlAsync("ms-settings-notifications:");
         }
 
         /// <summary>
         /// Shows the Power settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowPowerSettingsAsync()
+        public Task ShowPowerSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-power:");
+            return LaunchUrlAsync("ms-settings-power:");
         }
 
         /// <summary>
         /// Shows the NFC settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowProximitySettingsAsync()
+        public Task ShowProximitySettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-proximity:");
+            return LaunchUrlAsync("ms-settings-proximity:");
         }
 
         /// <summary>
         /// Shows the Screen Rotation settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowScreenRotationSettingsAsync()
+        public Task ShowScreenRotationSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-screenrotation:");
+            return LaunchUrlAsync("ms-settings-screenrotation:");
         }
 
         /// <summary>
         /// Shows the Wi-Fi settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowWiFiSettingsAsync()
+        public Task ShowWiFiSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-wifi:");
+            return LaunchUrlAsync("ms-settings-wifi:");
         }
 
         /// <summary>
         /// Shows the Workplace settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task ShowWorkplaceSettingsAsync()
+        public Task ShowWorkplaceSettingsAsync()
         {
-            await LaunchUrlAsync("ms-settings-workplace:");
+            return LaunchUrlAsync("ms-settings-workplace:");
         }
 
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
