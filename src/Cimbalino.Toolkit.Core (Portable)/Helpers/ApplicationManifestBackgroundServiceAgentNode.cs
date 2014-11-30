@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WP8
+#if WINDOWS_PHONE
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 #else
@@ -55,7 +55,7 @@ namespace Cimbalino.Toolkit.Helpers
 
         #endregion
 
-#if WP8
+#if WINDOWS_PHONE
         internal static ApplicationManifestBackgroundServiceAgentNode ParseXml(XmlReader reader)
         {
             var node = new ApplicationManifestBackgroundServiceAgentNode()

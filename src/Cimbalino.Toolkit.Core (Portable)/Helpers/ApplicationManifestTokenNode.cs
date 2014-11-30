@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WP8
+#if WINDOWS_PHONE
 using System.Xml;
 #endif
 
@@ -39,7 +39,7 @@ namespace Cimbalino.Toolkit.Helpers
 
         #endregion
 
-#if WP8
+#if WINDOWS_PHONE
         internal static ApplicationManifestTokenNode ParseXml(XmlReader reader)
         {
             var node = new ApplicationManifestTokenNode()

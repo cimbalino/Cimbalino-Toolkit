@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WP8
+#if WINDOWS_PHONE
 using System.Xml;
 using Cimbalino.Toolkit.Extensions;
 #endif
@@ -46,7 +46,7 @@ namespace Cimbalino.Toolkit.Helpers
 
         #endregion
 
-#if WP8
+#if WINDOWS_PHONE
         internal static ApplicationManifestIconPathNode ParseXml(XmlReader reader)
         {
             return new ApplicationManifestIconPathNode()
