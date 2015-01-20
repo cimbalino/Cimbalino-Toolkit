@@ -40,7 +40,7 @@ namespace Cimbalino.Toolkit.Services
         {
             if (_deviceCollection == null)
             {
-                _deviceCollection = await DeviceInformation.FindAllAsync();
+                _deviceCollection = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
             }
 
             var panel = cameraType == CameraType.FrontFacing ? Panel.Front : Panel.Back;
