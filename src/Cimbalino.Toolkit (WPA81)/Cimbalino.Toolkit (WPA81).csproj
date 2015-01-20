@@ -158,6 +158,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Helpers\NamescopeBinding.cs">
       <Link>Helpers\NamescopeBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\CameraInfoService.cs">
+      <Link>Services\CameraInfoService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DeviceSettingsService.cs">
       <Link>Services\DeviceSettingsService.cs</Link>
     </Compile>

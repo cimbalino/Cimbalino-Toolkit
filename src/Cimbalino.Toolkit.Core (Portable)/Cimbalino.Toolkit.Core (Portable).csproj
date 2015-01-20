@@ -87,6 +87,7 @@
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
+    <Compile Include="Services\ICameraInfoService.cs" />
     <Compile Include="Services\NavigationServiceBackKeyPressedBehavior.cs" />
     <Compile Include="Services\NavigationServiceBackKeyPressedEventArgs.cs" />
     <Compile Include="Services\DeviceStatusServicePowerSource.cs" />
