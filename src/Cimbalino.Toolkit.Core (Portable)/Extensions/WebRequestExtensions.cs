@@ -31,9 +31,16 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="request">The web request.</param>
         public static void SetNoCacheHeaders(this WebRequest request)
         {
-            request.Headers[HttpRequestHeader.CacheControl] = NoCacheHeaderValue;
-            request.Headers[HttpRequestHeader.Pragma] = NoCacheHeaderValue;
-            request.Headers[HttpRequestHeader.IfModifiedSince] = DateTime.UtcNow.ToString(CultureInfo.InvariantCulture);
+            try
+            {
+                request.Headers[HttpRequestHeader.CacheControl] = NoCacheHeaderValue;
+                request.Headers[HttpRequestHeader.Pragma] = NoCacheHeaderValue;
+                request.Headers[HttpRequestHeader.IfModifiedSince] = DateTime.UtcNow.ToString(CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                // ignored
+            }
         }
     }
 }

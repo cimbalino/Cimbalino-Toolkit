@@ -43,14 +43,14 @@ namespace Cimbalino.Toolkit.Extensions
         /// <returns>The element content converted to the requested nullable typed object.</returns>
         public static T? ReadElementContentAsNullable<T>(this XmlReader reader) where T : struct
         {
-            if (reader.HasValue)
+            if (reader.IsEmptyElement)
             {
-                return (T)reader.ReadElementContentAs(typeof(T), null);
+                reader.Skip();
+
+                return null;
             }
 
-            reader.Skip();
-
-            return null;
+            return (T)reader.ReadElementContentAs(typeof(T), null);
         }
 
         /// <summary>
@@ -62,6 +62,13 @@ namespace Cimbalino.Toolkit.Extensions
         /// <returns>An array containing the deserialized items.</returns>
         public static T[] ReadElementContentAsArray<T>(this XmlReader reader, Func<XmlReader, T> deserialize)
         {
+            if (reader.IsEmptyElement)
+            {
+                reader.Skip();
+
+                return null;
+            }
+
             var items = new List<T>();
 
             reader.ReadStartElement();

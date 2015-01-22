@@ -202,6 +202,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IWindowsPhoneStoreService.cs">
+      <Link>Services\IWindowsPhoneStoreService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IWindowsStoreService.cs">
+      <Link>Services\IWindowsStoreService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedBehavior.cs">
       <Link>Services\NavigationServiceBackKeyPressedBehavior.cs</Link>
     </Compile>
@@ -210,6 +216,51 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\RuntimeInformationServiceProfile.cs">
       <Link>Services\RuntimeInformationServiceProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppCapabilityNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppCapabilityNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppCategoryNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppCategoryNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppContentNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppContentNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppEntryNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppEntryNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppHwCapabilityNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppHwCapabilityNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppImageNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppImageNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppOfferNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppOfferNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppRatingsDistributionsNode.cs">
+      <Link>Services\WindowsPhoneStoreServiceAppRatingsDistributionsNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppArchitectureNode.cs">
+      <Link>Services\WindowsStoreServiceAppArchitectureNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppCategoryNode.cs">
+      <Link>Services\WindowsStoreServiceAppCategoryNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppNode.cs">
+      <Link>Services\WindowsStoreServiceAppNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppPackageNode.cs">
+      <Link>Services\WindowsStoreServiceAppPackageNode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppScreenshotNode.cs">
+      <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
@@ -331,6 +382,7 @@
     <Compile Include="Services\RuntimeInformationService.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Services\StorageServiceHandler.cs" />
+    <Compile Include="Services\WindowsPhoneStoreService.cs" />
     <Compile Include="System\Security\Cryptography\HMACMD5.Generated.cs" />
     <Compile Include="System\Security\Cryptography\MD5.Generated.cs" />
     <Compile Include="System\Security\Cryptography\MD5Managed.Generated.cs" />

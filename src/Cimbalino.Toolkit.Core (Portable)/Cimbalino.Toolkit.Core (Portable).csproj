@@ -87,6 +87,17 @@
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
+    <Compile Include="Services\IWindowsPhoneStoreService.cs" />
+    <Compile Include="Services\IWindowsStoreService.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppCapabilityNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppCategoryNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppContentNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppEntryNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppHwCapabilityNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppImageNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppNode.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppOfferNode.cs" />
     <Compile Include="Services\NavigationServiceBackKeyPressedBehavior.cs" />
     <Compile Include="Services\NavigationServiceBackKeyPressedEventArgs.cs" />
     <Compile Include="Services\DeviceStatusServicePowerSource.cs" />
@@ -118,6 +129,12 @@
     <Compile Include="Services\LocationServiceStatus.cs" />
     <Compile Include="Services\LocationServiceStatusChangedEventArgs.cs" />
     <Compile Include="Services\RuntimeInformationServiceProfile.cs" />
+    <Compile Include="Services\WindowsPhoneStoreServiceAppRatingsDistributionsNode.cs" />
+    <Compile Include="Services\WindowsStoreServiceAppArchitectureNode.cs" />
+    <Compile Include="Services\WindowsStoreServiceAppCategoryNode.cs" />
+    <Compile Include="Services\WindowsStoreServiceAppNode.cs" />
+    <Compile Include="Services\WindowsStoreServiceAppPackageNode.cs" />
+    <Compile Include="Services\WindowsStoreServiceAppScreenshotNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.IO.Compression">
