@@ -108,5 +108,86 @@ namespace Cimbalino.Toolkit.Extensions
         {
             return first.Range(last - first + 1);
         }
+
+        /// <summary>
+        /// Indicates whether the value is a prime number.
+        /// </summary>
+        /// <param name="input">The number to test.</param>
+        /// <returns>true if the value is a prime number; otherwise, false.</returns>
+        public static bool IsPrime(this int input)
+        {
+            if (input <= 3)
+            {
+                return input > 1;
+            }
+
+            if (input % 2 == 0 || input % 3 == 0)
+            {
+                return false;
+            }
+
+            for (var divider = 5; divider * divider <= input; divider += 6)
+            {
+                if (input % divider == 0 || input % (divider + 2) == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Generates a list with all the prime factors for the input number.
+        /// </summary>
+        /// <param name="input">The number.</param>
+        /// <returns>A list with all the prime factors for the input number.</returns>
+        public static IEnumerable<int> PrimeFactors(this int input)
+        {
+            if (input == 1)
+            {
+                yield return 1;
+            }
+
+            while (input > 1)
+            {
+                var factor = 1;
+
+                if (input % 2 == 0)
+                {
+                    factor = 2;
+                }
+                else if (input % 3 == 0)
+                {
+                    factor = 3;
+                }
+                else
+                {
+                    for (var divider = 5; divider <= input; divider += 6)
+                    {
+                        if (input % divider == 0)
+                        {
+                            factor = divider;
+
+                            break;
+                        }
+
+                        if (input % (divider + 2) == 0)
+                        {
+                            factor = divider + 2;
+
+                            break;
+                        }
+                    }
+                }
+
+                if (factor != 1)
+                {
+                    yield return factor;
+
+                    input = input / factor;
+                }
+            }
+        }
     }
 }
