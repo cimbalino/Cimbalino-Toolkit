@@ -44,6 +44,8 @@
     <Compile Include="Compression\Crc32.generated.cs" />
     <Compile Include="Compression\ZlibStream.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DateTimeOffsetExtensions.cs" />
     <Compile Include="Extensions\EventHandlerExtensions.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\IComparableExtensions.cs" />

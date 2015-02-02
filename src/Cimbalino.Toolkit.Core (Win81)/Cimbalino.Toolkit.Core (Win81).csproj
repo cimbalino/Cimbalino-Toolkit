@@ -106,6 +106,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ByteArrayExtensions.cs">
       <Link>Extensions\ByteArrayExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\DateTimeExtensions.cs">
+      <Link>Extensions\DateTimeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\DateTimeOffsetExtensions.cs">
+      <Link>Extensions\DateTimeOffsetExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ObjectExtensions.cs">
       <Link>Extensions\ObjectExtensions.cs</Link>
     </Compile>
