@@ -47,7 +47,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value indicating whether the network is available.
         /// </summary>
         /// <value>true if the network is available; otherwise, false.</value>
-        public bool IsNetworkAvailable
+        public virtual bool IsNetworkAvailable
         {
             get
             {

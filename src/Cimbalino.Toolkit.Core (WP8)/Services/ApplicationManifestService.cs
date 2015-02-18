@@ -25,7 +25,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the application manifest for the active app.
         /// </summary>
         /// <returns>The application manifest for the active app.</returns>
-        public ApplicationManifest GetApplicationManifest()
+        public virtual ApplicationManifest GetApplicationManifest()
         {
             return ApplicationManifest.Current;
         }

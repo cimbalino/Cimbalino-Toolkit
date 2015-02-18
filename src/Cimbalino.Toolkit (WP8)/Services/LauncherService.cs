@@ -29,7 +29,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="uri">The <see cref="Uri"/> to start.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task LaunchUriAsync(Uri uri)
+        public async virtual Task LaunchUriAsync(Uri uri)
         {
             await Launcher.LaunchUriAsync(uri);
         }
@@ -39,7 +39,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="file">The file to start.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task LaunchFileAsync(string file)
+        public async virtual Task LaunchFileAsync(string file)
         {
             var storageFile = await ApplicationData.Current.LocalFolder.GetFileAsync(file);
 

@@ -30,7 +30,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Displays the UI that lets users download maps for offline use.
         /// </summary>
-        public void ShowDownloadedMapsUI()
+        public virtual void ShowDownloadedMapsUI()
         {
 #if WINDOWS_PHONE
             new MapDownloaderTask().Show();
@@ -44,7 +44,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Displays the UI that lets users update maps that were previously downloaded for offline use.
         /// </summary>
-        public void ShowMapsUpdateUI()
+        public virtual void ShowMapsUpdateUI()
         {
 #if WINDOWS_PHONE
             new MapUpdaterTask().Show();

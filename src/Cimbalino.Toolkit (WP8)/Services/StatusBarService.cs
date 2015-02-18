@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="text">The text to display in the status bar.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string text)
+        public virtual Task ShowAsync(string text)
         {
             return ShowAsync(text, 0, false);
         }
@@ -52,7 +52,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The text to display in the status bar.</param>
         /// <param name="isIndeterminate">true if the progress indicator is indeterminate; otherwise, false.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string text, bool isIndeterminate)
+        public virtual Task ShowAsync(string text, bool isIndeterminate)
         {
             return ShowAsync(text, 0, isIndeterminate);
         }
@@ -63,7 +63,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The text to display in the status bar.</param>
         /// <param name="value">The progress indicator value.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string text, double value)
+        public virtual Task ShowAsync(string text, double value)
         {
             return ShowAsync(text, value, false);
         }
@@ -72,7 +72,7 @@ namespace Cimbalino.Toolkit.Services
         /// Hides the status bar.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task HideAsync()
+        public virtual Task HideAsync()
         {
             _progressIndicator.IsVisible = false;
 

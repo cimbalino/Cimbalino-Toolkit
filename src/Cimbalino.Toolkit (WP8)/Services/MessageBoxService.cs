@@ -37,14 +37,14 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The message to display.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_PHONE
-        public Task ShowAsync(string text)
+        public virtual Task ShowAsync(string text)
         {
             MessageBox.Show(text);
 
             return Task.FromResult(0);
         }
 #else
-        public async Task ShowAsync(string text)
+        public async virtual Task ShowAsync(string text)
         {
             var message = new MessageDialog(text);
 
@@ -59,14 +59,14 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="caption">The title of the message box.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_PHONE
-        public Task ShowAsync(string text, string caption)
+        public virtual Task ShowAsync(string text, string caption)
         {
             MessageBox.Show(text, caption, MessageBoxButton.OK);
 
             return Task.FromResult(0);
         }
 #else
-        public async Task ShowAsync(string text, string caption)
+        public async virtual Task ShowAsync(string text, string caption)
         {
             var message = new MessageDialog(text, caption);
 
@@ -82,7 +82,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="buttons">The captions for message box buttons. The maximum number of buttons is two.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_PHONE
-        public Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
+        public virtual Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
         {
             var taskCompletionSource = new TaskCompletionSource<int>();
 
@@ -96,7 +96,7 @@ namespace Cimbalino.Toolkit.Services
             return taskCompletionSource.Task;
         }
 #else
-        public async Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
+        public async virtual Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
         {
             var message = new MessageDialog(text, caption);
 

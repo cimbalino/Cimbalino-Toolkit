@@ -78,7 +78,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the storage handler instance for the root folder in the local app data store.
         /// </summary>
         /// <value>The storage handler instance for the root folder in the local app data store.</value>
-        public IStorageServiceHandler Local
+        public virtual IStorageServiceHandler Local
         {
             get
             {
@@ -90,7 +90,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the storage handler instance for the root folder in the roaming app data store.
         /// </summary>
         /// <value>The storage handler instance for the root folder in the roaming app data store.</value>
-        public IStorageServiceHandler Roaming
+        public virtual IStorageServiceHandler Roaming
         {
             get
             {
@@ -109,7 +109,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the storage handler instance for the root folder in the temporary app data store.
         /// </summary>
         /// <value>The storage handler instance for the root folder in the temporary app data store.</value>
-        public IStorageServiceHandler Temporary
+        public virtual IStorageServiceHandler Temporary
         {
             get
             {
@@ -128,7 +128,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the storage handler instance for the root folder in the local app data store where you can save files that are not included in backup and restore.
         /// </summary>
         /// <value>The storage handler instance for the root folder in the local app data store where you can save files that are not included in backup and restore.</value>
-        public IStorageServiceHandler LocalCache
+        public virtual IStorageServiceHandler LocalCache
         {
             get
             {
@@ -149,7 +149,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the storage handler instance for the root folder in the package installation data store.
         /// </summary>
         /// <value>The storage handler instance for the root folder in the package installation data store.</value>
-        public IStorageServiceHandler Package
+        public virtual IStorageServiceHandler Package
         {
             get
             {

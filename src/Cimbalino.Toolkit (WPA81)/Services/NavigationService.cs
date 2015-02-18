@@ -63,7 +63,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
         /// </summary>
         /// <value>Returns a value that represents the <see cref="Uri"/> of content that is currently displayed.</value>
-        public Uri CurrentSource
+        public virtual Uri CurrentSource
         {
             get
             {
@@ -86,7 +86,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a collection of query string values.
         /// </summary>
         /// <value>Returns a <see cref="IDictionary{TKey,TValue}"/> collection that contains the query string values.</value>
-        public IEnumerable<KeyValuePair<string, string>> QueryString
+        public virtual IEnumerable<KeyValuePair<string, string>> QueryString
         {
             get
             {
@@ -104,7 +104,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="source">The URI for the desired content.</param>
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        public bool Navigate(string source)
+        public virtual bool Navigate(string source)
         {
             return EnsureMainFrame() && _mainFrame.Navigate(Type.GetType(source));
         }
@@ -114,7 +114,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="source">A <see cref="Uri"/> initialized with the URI for the desired content.</param>
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        public bool Navigate(Uri source)
+        public virtual bool Navigate(Uri source)
         {
             throw new NotSupportedException();
         }
@@ -124,7 +124,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        public bool Navigate<T>()
+        public virtual bool Navigate<T>()
         {
             return Navigate(typeof(T));
         }
@@ -135,7 +135,7 @@ namespace Cimbalino.Toolkit.Services
         /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
         /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        public bool Navigate<T>(object parameter)
+        public virtual bool Navigate<T>(object parameter)
         {
             return Navigate(typeof(T), parameter);
         }
@@ -145,7 +145,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        public bool Navigate(Type type)
+        public virtual bool Navigate(Type type)
         {
             return EnsureMainFrame() && _mainFrame.Navigate(type);
         }
@@ -156,7 +156,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
         /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        public bool Navigate(Type type, object parameter)
+        public virtual bool Navigate(Type type, object parameter)
         {
             return EnsureMainFrame() && _mainFrame.Navigate(type, parameter);
         }
@@ -165,7 +165,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value indicating whether there is at least one entry in back navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>
-        public bool CanGoBack
+        public virtual bool CanGoBack
         {
             get
             {
@@ -176,7 +176,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Navigates to the most recent item in back navigation history.
         /// </summary>
-        public void GoBack()
+        public virtual void GoBack()
         {
             if (EnsureMainFrame() && _mainFrame.CanGoBack)
             {
@@ -188,7 +188,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value indicating whether there is at least one entry in forward navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in forward navigation history; false if there are no entries in forward navigation history.</value>
-        public bool CanGoForward
+        public virtual bool CanGoForward
         {
             get
             {
@@ -199,7 +199,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Navigates to the most recent item in forward navigation history.
         /// </summary>
-        public void GoForward()
+        public virtual void GoForward()
         {
             if (EnsureMainFrame() && _mainFrame.CanGoForward)
             {
@@ -211,7 +211,7 @@ namespace Cimbalino.Toolkit.Services
         /// Removes the most recent available entry from the back stack.
         /// </summary>
         /// <returns>true if successfully removed the most recent available entry from the back stack; otherwise, false.</returns>
-        public bool RemoveBackEntry()
+        public virtual bool RemoveBackEntry()
         {
             if (EnsureMainFrame() && _mainFrame.CanGoBack)
             {
