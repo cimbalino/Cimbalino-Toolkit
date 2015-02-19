@@ -39,7 +39,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string subject, string body)
+        public virtual Task ShowAsync(string subject, string body)
         {
             return ShowAsync(string.Empty, string.Empty, string.Empty, subject, body);
         }
@@ -51,7 +51,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string to, string subject, string body)
+        public virtual Task ShowAsync(string to, string subject, string body)
         {
             return ShowAsync(to, string.Empty, string.Empty, subject, body);
         }
@@ -66,7 +66,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="body">The e-mail message body.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_PHONE
-        public Task ShowAsync(string to, string cc, string bcc, string subject, string body)
+        public virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
             new EmailComposeTask()
             {
@@ -80,7 +80,7 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 #elif WINDOWS_PHONE_APP
-        public async Task ShowAsync(string to, string cc, string bcc, string subject, string body)
+        public async virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
             var emailMessage = new EmailMessage
             {
@@ -106,7 +106,7 @@ namespace Cimbalino.Toolkit.Services
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
         }
 #else
-        public async Task ShowAsync(string to, string cc, string bcc, string subject, string body)
+        public async virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
             var emailUri = new UriBuilder("mailto:")
                 .SetPath(to)

@@ -59,7 +59,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the local settings handler instance for the app.
         /// </summary>
         /// <value>The local settings handler instance for the app.</value>
-        public IApplicationSettingsServiceHandler Local
+        public virtual IApplicationSettingsServiceHandler Local
         {
             get
             {
@@ -71,7 +71,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the roaming settings handler instance for the app.
         /// </summary>
         /// <value>The roaming settings handler instance for the app.</value>
-        public IApplicationSettingsServiceHandler Roaming
+        public virtual IApplicationSettingsServiceHandler Roaming
         {
             get
             {
@@ -90,7 +90,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the legacy settings handler instance for the app.
         /// </summary>
         /// <value>The legacy settings handler instance for the app.</value>
-        public IApplicationSettingsServiceHandler Legacy
+        public virtual IApplicationSettingsServiceHandler Legacy
         {
             get
             {

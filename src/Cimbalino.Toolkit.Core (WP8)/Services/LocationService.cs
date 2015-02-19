@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the accuracy level at which the location service provides location updates.
         /// </summary>
         /// <value>The accuracy level at which the location service provides location updates.</value>
-        public LocationServiceAccuracy DesiredAccuracy
+        public virtual LocationServiceAccuracy DesiredAccuracy
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the desired accuracy in meters for data returned from the location service.
         /// </summary>
         /// <value>The desired accuracy in meters for data returned from the location service.</value>
-        public int? DesiredAccuracyInMeters
+        public virtual int? DesiredAccuracyInMeters
         {
             get
             {
@@ -65,7 +65,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the status that indicates the ability of the location service to provide location updates.
         /// </summary>
         /// <value>The status that indicates the ability of the location service to provide location updates.</value>
-        public LocationServiceStatus Status
+        public virtual LocationServiceStatus Status
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets or sets the distance of movement, in meters, relative to the coordinate from the last <see cref="ILocationService.PositionChanged"/> event, that is required for the location service to raise a <see cref="ILocationService.PositionChanged"/> event.
         /// </summary>
         /// <value>The distance of movement, in meters, relative to the coordinate from the last <see cref="ILocationService.PositionChanged"/> event, that is required for the location service to raise a <see cref="ILocationService.PositionChanged"/> event.</value>
-        public double MovementThreshold
+        public virtual double MovementThreshold
         {
             get
             {
@@ -93,7 +93,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets or sets the requested minimum time interval between location updates, in milliseconds. If your application requires updates infrequently, set this value so that the location provider can conserve power by calculating location only when needed.
         /// </summary>
         /// <value>The requested minimum time interval between location updates, in milliseconds.</value>
-        public int ReportInterval
+        public virtual int ReportInterval
         {
             get
             {
@@ -118,7 +118,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Starts the acquisition of data from the location service.
         /// </summary>
-        public void Start()
+        public virtual void Start()
         {
             Start(LocationServiceAccuracy.Default);
         }
@@ -127,7 +127,7 @@ namespace Cimbalino.Toolkit.Services
         /// Starts the acquisition of data from the location service.
         /// </summary>
         /// <param name="desiredAccuracy">The desired accuracy.</param>
-        public void Start(LocationServiceAccuracy desiredAccuracy)
+        public virtual void Start(LocationServiceAccuracy desiredAccuracy)
         {
             _geolocator.DesiredAccuracy = desiredAccuracy.ToPositionAccuracy();
             _geolocator.DesiredAccuracyInMeters = null;
@@ -140,7 +140,7 @@ namespace Cimbalino.Toolkit.Services
         /// Starts the acquisition of data from the location service.
         /// </summary>
         /// <param name="desiredAccuracyInMeters">The desired accuracy in meters for data returned from the location service.</param>
-        public void Start(int desiredAccuracyInMeters)
+        public virtual void Start(int desiredAccuracyInMeters)
         {
             _geolocator.DesiredAccuracyInMeters = (uint)desiredAccuracyInMeters;
 
@@ -151,7 +151,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Stops the acquisition of data from the location service.
         /// </summary>
-        public void Stop()
+        public virtual void Stop()
         {
             _geolocator.PositionChanged -= GeolocatorPositionChanged;
             _geolocator.StatusChanged -= GeolocatorStatusChanged;
@@ -161,7 +161,7 @@ namespace Cimbalino.Toolkit.Services
         /// Starts an asynchronous operation to retrieve the current location.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task<LocationServicePosition> GetPositionAsync()
+        public virtual Task<LocationServicePosition> GetPositionAsync()
         {
             return GetPositionAsync(LocationServiceAccuracy.Default);
         }
@@ -171,7 +171,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="desiredAccuracy">The desired accuracy.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy)
+        public async virtual Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy)
         {
             _geolocator.DesiredAccuracy = desiredAccuracy.ToPositionAccuracy();
 
@@ -186,7 +186,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task<LocationServicePosition> GetPositionAsync(TimeSpan maximumAge, TimeSpan timeout)
+        public virtual Task<LocationServicePosition> GetPositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
             return GetPositionAsync(LocationServiceAccuracy.Default, maximumAge, timeout);
         }
@@ -198,7 +198,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout)
+        public async virtual Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout)
         {
             _geolocator.DesiredAccuracy = desiredAccuracy.ToPositionAccuracy();
 

@@ -38,7 +38,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="recipient">The recipient.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string recipient)
+        public virtual Task ShowAsync(string recipient)
         {
             return ShowAsync(recipient, null);
         }
@@ -50,7 +50,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="body">The body text of the new SMS message.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_PHONE
-        public Task ShowAsync(string recipient, string body)
+        public virtual Task ShowAsync(string recipient, string body)
         {
             new SmsComposeTask()
             {
@@ -61,7 +61,7 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 #elif WINDOWS_PHONE_APP
-        public async Task ShowAsync(string recipient, string body)
+        public async virtual Task ShowAsync(string recipient, string body)
         {
             var chatMessage = new ChatMessage
             {
@@ -76,7 +76,7 @@ namespace Cimbalino.Toolkit.Services
             await ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage);
         }
 #else
-        public async Task ShowAsync(string recipient, string body)
+        public async virtual Task ShowAsync(string recipient, string body)
         {
             var smsUri = new UriBuilder("sms:")
                 .SetPath(recipient)

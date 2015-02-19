@@ -29,7 +29,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value that indicates the mode that an app is running in.
         /// </summary>
         /// <value>A value that indicates the mode that an app is running in.</value>
-        public ApplicationProfileServiceMode Mode
+        public virtual ApplicationProfileServiceMode Mode
         {
             get
             {

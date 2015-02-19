@@ -35,7 +35,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="text">The text to display in the status bar.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string text)
+        public virtual Task ShowAsync(string text)
         {
 #if WINDOWS_APP
             throw new NotSupportedException();
@@ -50,7 +50,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The text to display in the status bar.</param>
         /// <param name="isIndeterminate">true if the progress indicator is indeterminate; otherwise, false.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string text, bool isIndeterminate)
+        public virtual Task ShowAsync(string text, bool isIndeterminate)
         {
 #if WINDOWS_APP
             throw new NotSupportedException();
@@ -65,7 +65,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The text to display in the status bar.</param>
         /// <param name="value">The progress indicator value.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string text, double value)
+        public virtual Task ShowAsync(string text, double value)
         {
 #if WINDOWS_APP
             throw new NotSupportedException();
@@ -79,7 +79,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_APP
-        public Task HideAsync()
+        public virtual Task HideAsync()
         {
             throw new NotSupportedException();
         }
