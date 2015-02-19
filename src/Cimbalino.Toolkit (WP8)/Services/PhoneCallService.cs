@@ -37,7 +37,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="phoneNumber">The phone number.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAsync(string phoneNumber)
+        public virtual Task ShowAsync(string phoneNumber)
         {
             return ShowAsync(phoneNumber, null);
         }
@@ -49,7 +49,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="displayName">The display name.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_PHONE
-        public Task ShowAsync(string phoneNumber, string displayName)
+        public virtual Task ShowAsync(string phoneNumber, string displayName)
         {
             new PhoneCallTask()
             {
@@ -60,14 +60,14 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 #elif WINDOWS_PHONE_APP
-        public Task ShowAsync(string phoneNumber, string displayName)
+        public virtual Task ShowAsync(string phoneNumber, string displayName)
         {
             PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
 
             return Task.FromResult(0);
         }
 #else
-        public async Task ShowAsync(string phoneNumber, string displayName)
+        public async virtual Task ShowAsync(string phoneNumber, string displayName)
         {
             var phoneCallUri = new UriBuilder("tel:")
                 .SetPath(phoneNumber)

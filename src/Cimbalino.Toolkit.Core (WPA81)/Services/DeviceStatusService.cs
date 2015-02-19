@@ -46,7 +46,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the memory usage of the current application in bytes.
         /// </summary>
         /// <value>The memory usage of the current application in bytes.</value>
-        public long ApplicationCurrentMemoryUsage
+        public virtual long ApplicationCurrentMemoryUsage
         {
             get
             {
@@ -64,7 +64,7 @@ namespace Cimbalino.Toolkit.Services
         /// <value>
         /// The maximum amount of memory that your application process can allocate.
         /// </value>
-        public long ApplicationMemoryUsageLimit
+        public virtual long ApplicationMemoryUsageLimit
         {
             get
             {
@@ -80,7 +80,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the peak memory usage of the current application in bytes.
         /// </summary>
         /// <value>The peak memory usage of the current application in bytes.</value>
-        public long ApplicationPeakMemoryUsage
+        public virtual long ApplicationPeakMemoryUsage
         {
             get
             {
@@ -92,7 +92,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the firmware version running on the device.
         /// </summary>
         /// <value>The firmware version running on the device.</value>
-        public string DeviceFirmwareVersion
+        public virtual string DeviceFirmwareVersion
         {
             get
             {
@@ -108,7 +108,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the hardware version running on the device.
         /// </summary>
         /// <value>The hardware version running on the device.</value>
-        public string DeviceHardwareVersion
+        public virtual string DeviceHardwareVersion
         {
             get
             {
@@ -124,7 +124,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the device manufacturer name.
         /// </summary>
         /// <value>The device manufacturer name.</value>
-        public string DeviceManufacturer
+        public virtual string DeviceManufacturer
         {
             get
             {
@@ -136,7 +136,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the device name.
         /// </summary>
         /// <value>The device name.</value>
-        public string DeviceName
+        public virtual string DeviceName
         {
             get
             {
@@ -148,7 +148,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the physical RAM size of the device in bytes.
         /// </summary>
         /// <value>The physical RAM size of the device in bytes.</value>
-        public long DeviceTotalMemory
+        public virtual long DeviceTotalMemory
         {
             get
             {
@@ -162,7 +162,7 @@ namespace Cimbalino.Toolkit.Services
         /// <value>
         /// true if the device is a low memory device (less than 256 MB of memory installed); otherwise, false.
         /// </value>
-        public bool IsLowMemoryDevice
+        public virtual bool IsLowMemoryDevice
         {
             get
             {
@@ -202,7 +202,7 @@ namespace Cimbalino.Toolkit.Services
         /// <value>
         /// true if the device is currently running on battery power or is plugged in to an external power supply; otherwise, false.
         /// </value>
-        public DeviceStatusServicePowerSource PowerSource
+        public virtual DeviceStatusServicePowerSource PowerSource
         {
             get
             {

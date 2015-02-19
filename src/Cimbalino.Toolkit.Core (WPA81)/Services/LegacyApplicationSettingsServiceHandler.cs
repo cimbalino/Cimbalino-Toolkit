@@ -32,7 +32,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="key">The key for the entry to be located.</param>
         /// <returns>true if the settings contains the specified key; otherwise, false.</returns>
-        public bool Contains(string key)
+        public virtual bool Contains(string key)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +43,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="key">The key whose value to get.</param>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter.</returns>
         /// <typeparam name="T">The type of value to get.</typeparam>
-        public T Get<T>(string key)
+        public virtual T Get<T>(string key)
         {
             throw new NotImplementedException();
         }
@@ -55,7 +55,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="defaultValue">The default value to return if the key does not exist.</param>
         /// <returns>The value associated with the specified key, if the key is found; otherwise, the specified default value.</returns>
         /// <typeparam name="T">The type of value to get.</typeparam>
-        public T Get<T>(string key, T defaultValue)
+        public virtual T Get<T>(string key, T defaultValue)
         {
             throw new NotImplementedException();
         }
@@ -66,7 +66,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="key">The key whose value to set.</param>
         /// <param name="value">The value for the specified key.</param>
         /// <typeparam name="T">The type of value to set.</typeparam>
-        public void Set<T>(string key, T value)
+        public virtual void Set<T>(string key, T value)
         {
             throw new NotImplementedException();
         }
@@ -75,7 +75,7 @@ namespace Cimbalino.Toolkit.Services
         /// Removes the specified key and associated value.
         /// </summary>
         /// <param name="key">The key whose value to clear.</param>
-        public void Remove(string key)
+        public virtual void Remove(string key)
         {
             throw new NotImplementedException();
         }
@@ -84,7 +84,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets an object that represents all the settings in this <see cref="IApplicationSettingsServiceHandler"/> instance.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
+        public async virtual Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
         {
             try
             {

@@ -30,7 +30,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the device runtime profile.
         /// </summary>
         /// <value>The device runtime profile.</value>
-        public RuntimeInformationServiceProfile Profile
+        public virtual RuntimeInformationServiceProfile Profile
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the device runtime version.
         /// </summary>
         /// <value>The device runtime version.</value>
-        public Version Version
+        public virtual Version Version
         {
             get
             {

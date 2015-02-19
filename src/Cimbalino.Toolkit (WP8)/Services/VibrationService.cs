@@ -32,7 +32,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Vibrates the device for 200 milliseconds.
         /// </summary>
-        public void Vibrate()
+        public virtual void Vibrate()
         {
             Vibrate(200);
         }
@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Services
         /// Vibrates the device for the specified duration (from 0 to 5000 milliseconds).
         /// </summary>
         /// <param name="duration">The duration (from 0 to 5000 milliseconds) for which the device vibrates.</param>
-        public void Vibrate(double duration)
+        public virtual void Vibrate(double duration)
         {
             Vibrate(TimeSpan.FromMilliseconds(duration));
         }
@@ -50,7 +50,7 @@ namespace Cimbalino.Toolkit.Services
         /// Vibrates the device for the specified duration (from 0 to 5000 milliseconds).
         /// </summary>
         /// <param name="duration">The duration (from 0 to 5000 milliseconds) for which the device vibrates.</param>
-        public void Vibrate(TimeSpan duration)
+        public virtual void Vibrate(TimeSpan duration)
         {
 #if WINDOWS_PHONE
             VibrateController.Default.Start(duration);
@@ -64,7 +64,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Stops the vibration of the device.
         /// </summary>
-        public void Cancel()
+        public virtual void Cancel()
         {
 #if WINDOWS_PHONE
             VibrateController.Default.Stop();

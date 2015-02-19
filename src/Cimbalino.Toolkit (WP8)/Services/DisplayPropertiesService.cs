@@ -36,7 +36,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the pixels per logical inch of the current environment.
         /// </summary>
         /// <value>The pixels per logical inch of the current environment.</value>
-        public float LogicalDpi
+        public virtual float LogicalDpi
         {
             get
             {
@@ -52,7 +52,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the raw dots per inch (DPI) along the x axis of the display monitor.
         /// </summary>
         /// <value>The raw dots per inch (DPI) along the x axis of the display monitor.</value>
-        public float RawDpiX
+        public virtual float RawDpiX
         {
             get
             {
@@ -75,7 +75,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the raw dots per inch (DPI) along the y axis of the display monitor.
         /// </summary>
         /// <value>The raw dots per inch (DPI) along the y axis of the display monitor.</value>
-        public float RawDpiY
+        public virtual float RawDpiY
         {
             get
             {
@@ -98,7 +98,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the height and width of the application window, as a Rect value.
         /// </summary>
         /// <value>A value that reports the height and width of the application window.</value>
-        public Rect Bounds
+        public virtual Rect Bounds
         {
             get
             {
@@ -116,7 +116,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the height and width of the physical screen, as a Rect value.
         /// </summary>
         /// <value>A value that reports the height and width of the physical screen window.</value>
-        public Rect PhysicalBounds
+        public virtual Rect PhysicalBounds
         {
             get
             {
@@ -144,7 +144,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the physical screen diagonal size.
         /// </summary>
         /// <value>The physical screen diagonal size.</value>
-        public float ScreenDiagonal
+        public virtual float ScreenDiagonal
         {
             get
             {
@@ -158,7 +158,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the number of raw (physical) pixels for each view (layout) pixel.
         /// </summary>
         /// <value>The number of raw (physical) pixels for each view (layout) pixel.</value>
-        public double RawPixelsPerViewPixel
+        public virtual double RawPixelsPerViewPixel
         {
             get
             {

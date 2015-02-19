@@ -32,7 +32,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Airplane Mode settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowAirplaneModeSettingsAsync()
+        public virtual Task ShowAirplaneModeSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-airplanemode:");
         }
@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Bluetooth settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowBluetoothSettingsAsync()
+        public virtual Task ShowBluetoothSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-bluetooth:");
         }
@@ -50,7 +50,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Photos+Camera settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowCameraSettingsAsync()
+        public virtual Task ShowCameraSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-camera:");
         }
@@ -59,7 +59,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Cellular settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowCellularSettingsAsync()
+        public virtual Task ShowCellularSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-cellular:");
         }
@@ -68,7 +68,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Email and Accounts settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowEmailAndAccountsSettingsAsync()
+        public virtual Task ShowEmailAndAccountsSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-emailandaccounts:");
         }
@@ -77,7 +77,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Location settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowLocationSettingsAsync()
+        public virtual Task ShowLocationSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-location:");
         }
@@ -86,7 +86,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Lock Screen settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowLockScreenSettingsAsync()
+        public virtual Task ShowLockScreenSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-lock:");
         }
@@ -95,7 +95,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Notifications+Actions settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowNotificationSettingsAsync()
+        public virtual Task ShowNotificationSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-notifications:");
         }
@@ -104,7 +104,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Power settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowPowerSettingsAsync()
+        public virtual Task ShowPowerSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-power:");
         }
@@ -113,7 +113,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the NFC settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowProximitySettingsAsync()
+        public virtual Task ShowProximitySettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-proximity:");
         }
@@ -122,7 +122,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Screen Rotation settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowScreenRotationSettingsAsync()
+        public virtual Task ShowScreenRotationSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-screenrotation:");
         }
@@ -131,7 +131,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Wi-Fi settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowWiFiSettingsAsync()
+        public virtual Task ShowWiFiSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-wifi:");
         }
@@ -140,7 +140,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Workplace settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowWorkplaceSettingsAsync()
+        public virtual Task ShowWorkplaceSettingsAsync()
         {
             return LaunchUrlAsync("ms-settings-workplace:");
         }

@@ -31,7 +31,7 @@ namespace Cimbalino.Toolkit.Services
         /// Retrieves store information about the running application.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task<WindowsPhoneStoreServiceAppNode> GetAppInformationAsync()
+        public virtual Task<WindowsPhoneStoreServiceAppNode> GetAppInformationAsync()
         {
             return GetAppInformationAsync(ApplicationManifest.Current.App.ProductId);
         }
@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="productId">The application Product ID.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task<WindowsPhoneStoreServiceAppNode> GetAppInformationAsync(string productId)
+        public virtual Task<WindowsPhoneStoreServiceAppNode> GetAppInformationAsync(string productId)
         {
             var request = CreateWebRequest(productId);
 
