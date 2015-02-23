@@ -1,38 +1,28 @@
-﻿using System.Windows;
+﻿// ****************************************************************************
+// <copyright file="UpdatePasswordBindingOnPropertyChanged.cs" company="Pedro Lamas">
+// Copyright © Pedro Lamas 2014
+// </copyright>
+// ****************************************************************************
+// <author>Pedro Lamas</author>
+// <email>pedrolamas@gmail.com</email>
+// <project>Cimbalino.Toolkit</project>
+// <web>http://www.pedrolamas.com</web>
+// <license>
+// See license.txt in this solution or http://www.pedrolamas.com/license_MIT.txt
+// </license>
+// ****************************************************************************
+
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Interactivity;
-using System.Windows.Input;
 
 namespace Cimbalino.Toolkit.Behaviors
 {
     /// <summary>
-    /// Updates the Password binding when the text changes rather than when the PasswordBox loses focus
+    /// The behavior that updates a <see cref="PasswordBox.Password"/> binding when the text changes rather than when it loses focus.
     /// </summary>
     public class UpdatePasswordBindingOnPropertyChanged : Behavior<PasswordBox>
     {
-        /// <summary>
-        /// The enter hit command property
-        /// </summary>
-        public static readonly DependencyProperty EnterHitCommandProperty =
-            DependencyProperty.Register("EnterHitCommand", typeof (ICommand), typeof (UpdateTextBindingOnPropertyChanged), new PropertyMetadata(default(ICommand)));
-
-        /// <summary>
-        /// Gets or sets the enter hit command.
-        /// </summary>
-        /// <value>
-        /// The enter hit command.
-        /// </value>
-        public ICommand EnterHitCommand
-        {
-            get { return (ICommand) GetValue(EnterHitCommandProperty); }
-            set { SetValue(EnterHitCommandProperty, value); }
-        }
-
-        // Fields
-        private BindingExpression _expression;
-
-        // Methods
         /// <summary>
         /// Called after the behavior is attached to an AssociatedObject.
         /// </summary>
@@ -41,24 +31,9 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnAttached()
         {
-            base.OnAttached();
-            _expression = AssociatedObject.GetBindingExpression(TextBox.TextProperty);
-            AssociatedObject.PasswordChanged += OnTextChanged;
-            AssociatedObject.KeyUp += OnKeyUp;
-        }
+            AssociatedObject.PasswordChanged += AssociatedObjectPasswordChanged;
 
-        /// <summary>
-        /// Called when [key up].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="keyEventArgs">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
-        private void OnKeyUp(object sender, KeyEventArgs keyEventArgs)
-        {
-            if (keyEventArgs.Key != Key.Enter) return;
-            if (EnterHitCommand != null && EnterHitCommand.CanExecute(null))
-            {
-                EnterHitCommand.Execute(null);
-            }
+            base.OnAttached();
         }
 
         /// <summary>
@@ -69,19 +44,19 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnDetaching()
         {
+            AssociatedObject.PasswordChanged -= AssociatedObjectPasswordChanged;
+
             base.OnDetaching();
-            AssociatedObject.PasswordChanged -= OnTextChanged;
-            _expression = null;
         }
 
-        /// <summary>
-        /// Called when [text changed].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void OnTextChanged(object sender, RoutedEventArgs args)
+        private void AssociatedObjectPasswordChanged(object sender, RoutedEventArgs args)
         {
-            _expression.UpdateSource();
+            var binding = AssociatedObject.GetBindingExpression(TextBox.TextProperty);
+
+            if (binding != null)
+            {
+                binding.UpdateSource();
+            }
         }
     }
 }

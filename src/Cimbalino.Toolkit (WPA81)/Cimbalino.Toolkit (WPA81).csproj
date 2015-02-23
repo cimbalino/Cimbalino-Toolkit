@@ -95,8 +95,8 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AutoFocusBehavior.cs">
       <Link>Behaviors\AutoFocusBehavior.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\EnterKeyBehaviour.cs">
-      <Link>Behaviors\EnterKeyBehaviour.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\EnterKeyBehavior.cs">
+      <Link>Behaviors\EnterKeyBehavior.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingBehavior.cs">
       <Link>Behaviors\MultiBindingBehavior.cs</Link>

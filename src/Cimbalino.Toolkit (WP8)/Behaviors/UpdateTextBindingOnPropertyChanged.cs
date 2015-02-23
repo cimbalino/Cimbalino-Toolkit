@@ -1,48 +1,31 @@
-﻿#if !WINDOWS_PHONE
-using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-#else
-using System.Windows;
+﻿// ****************************************************************************
+// <copyright file="UpdateTextBindingOnPropertyChanged.cs" company="Pedro Lamas">
+// Copyright © Pedro Lamas 2014
+// </copyright>
+// ****************************************************************************
+// <author>Pedro Lamas</author>
+// <email>pedrolamas@gmail.com</email>
+// <project>Cimbalino.Toolkit</project>
+// <web>http://www.pedrolamas.com</web>
+// <license>
+// See license.txt in this solution or http://www.pedrolamas.com/license_MIT.txt
+// </license>
+// ****************************************************************************
+
+#if WINDOWS_PHONE
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Interactivity;
-using KeyRoutedEventArgs = System.Windows.Input.KeyEventArgs;
-using VirtualKey = System.Windows.Input.Key;
+#else
+using Windows.UI.Xaml.Controls;
 #endif
-using System.Windows.Input;
 
 namespace Cimbalino.Toolkit.Behaviors
 {
     /// <summary>
-    /// Updates the Text binding when the text changes rather than when the TextBox loses focus
+    /// The behavior that updates a <see cref="TextBox.Text"/> binding when the text changes rather than when it loses focus.
     /// </summary>
     public class UpdateTextBindingOnPropertyChanged : Behavior<TextBox>
     {
-        /// <summary>
-        /// The enter hit command property
-        /// </summary>
-        public static readonly DependencyProperty EnterHitCommandProperty =
-            DependencyProperty.Register("EnterHitCommand", typeof (ICommand), typeof (UpdateTextBindingOnPropertyChanged), new PropertyMetadata(default(ICommand)));
-
-        /// <summary>
-        /// Gets or sets the enter hit command.
-        /// </summary>
-        /// <value>
-        /// The enter hit command.
-        /// </value>
-        public ICommand EnterHitCommand
-        {
-            get { return (ICommand) GetValue(EnterHitCommandProperty); }
-            set { SetValue(EnterHitCommandProperty, value); }
-        }
-
-        // Fields
-        private BindingExpression _expression;
-
-        // Methods
         /// <summary>
         /// Called after the behavior is attached to an AssociatedObject.
         /// </summary>
@@ -51,23 +34,9 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnAttached()
         {
+            AssociatedObject.TextChanged += AssociatedObjectTextChanged;
+
             base.OnAttached();
-            _expression = AssociatedObject.GetBindingExpression(TextBox.TextProperty);
-            AssociatedObject.TextChanged += OnTextChanged;
-            AssociatedObject.KeyUp += OnKeyUp;
-        }
-        /// <summary>
-        /// Called when [key up].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="keyEventArgs">The <see cref="KeyRoutedEventArgs"/> instance containing the event data.</param>
-        private void OnKeyUp(object sender, KeyRoutedEventArgs keyEventArgs)
-        {
-            if (keyEventArgs.Key != VirtualKey.Enter) return;
-            if (EnterHitCommand != null && EnterHitCommand.CanExecute(null))
-            {
-                EnterHitCommand.Execute(null);
-            }
         }
 
         /// <summary>
@@ -78,19 +47,19 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnDetaching()
         {
+            AssociatedObject.TextChanged -= AssociatedObjectTextChanged;
+
             base.OnDetaching();
-            AssociatedObject.TextChanged -= OnTextChanged;
-            _expression = null;
         }
 
-        /// <summary>
-        /// Called when [text changed].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
-        private void OnTextChanged(object sender, TextChangedEventArgs args)
+        private void AssociatedObjectTextChanged(object sender, TextChangedEventArgs args)
         {
-            _expression.UpdateSource();
+            var binding = AssociatedObject.GetBindingExpression(TextBox.TextProperty);
+
+            if (binding != null)
+            {
+                binding.UpdateSource();
+            }
         }
     }
 }
