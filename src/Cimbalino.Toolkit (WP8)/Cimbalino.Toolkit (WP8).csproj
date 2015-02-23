@@ -96,11 +96,14 @@
     <Compile Include="Behaviors\ApplicationBarMenuItem.cs" />
     <Compile Include="Behaviors\ApplicationBarMenuItemCollection.cs" />
     <Compile Include="Behaviors\AutoFocusBehavior.cs" />
+    <Compile Include="Behaviors\EnterKeyBehavior.cs" />
     <Compile Include="Behaviors\MultiApplicationBarBehavior.cs" />
     <Compile Include="Behaviors\MultiBindingBehavior.cs" />
     <Compile Include="Behaviors\MultiBindingItem.cs" />
     <Compile Include="Behaviors\MultiBindingItemCollection.cs" />
     <Compile Include="Behaviors\ScreenCaptureBehavior.cs" />
+    <Compile Include="Behaviors\UpdatePasswordBindingOnPropertyChanged.cs" />
+    <Compile Include="Behaviors\UpdateTextBindingOnPropertyChanged.cs" />
     <Compile Include="Converters\BooleanToBrushConverter.cs" />
     <Compile Include="Converters\BooleanToIntConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />
