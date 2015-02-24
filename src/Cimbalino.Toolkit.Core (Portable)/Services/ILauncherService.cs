@@ -30,6 +30,13 @@ namespace Cimbalino.Toolkit.Services
         Task LaunchUriAsync(Uri uri);
 
         /// <summary>
+        /// Starts the default app associated with the URI scheme name for the specified <see cref="Uri"/>.
+        /// </summary>
+        /// <param name="url">The URI to start.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task LaunchUriAsync(string url);
+
+        /// <summary>
         /// Starts the default app associated with the specified file.
         /// </summary>
         /// <param name="file">The file to start.</param>
