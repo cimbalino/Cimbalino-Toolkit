@@ -34,6 +34,11 @@ namespace Cimbalino.Toolkit.Services
             await Launcher.LaunchUriAsync(uri);
         }
 
+        public async virtual Task LaunchUriAsync(string uri)
+        {
+            await LaunchUriAsync(new Uri(uri));
+        }
+
         /// <summary>
         /// Starts the default app associated with the specified file.
         /// </summary>
