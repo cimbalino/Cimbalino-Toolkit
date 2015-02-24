@@ -34,9 +34,14 @@ namespace Cimbalino.Toolkit.Services
             await Launcher.LaunchUriAsync(uri);
         }
 
-        public async virtual Task LaunchUriAsync(string uri)
+        /// <summary>
+        /// Starts the default app associated with the URI scheme name for the specified <see cref="Uri"/>.
+        /// </summary>
+        /// <param name="url">The URI to start.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public async virtual Task LaunchUriAsync(string url)
         {
-            await LaunchUriAsync(new Uri(uri));
+            await LaunchUriAsync(new Uri(url));
         }
 
         /// <summary>
