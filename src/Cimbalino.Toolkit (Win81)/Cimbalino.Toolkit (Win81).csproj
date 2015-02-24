@@ -117,6 +117,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AutoFocusBehavior.cs">
       <Link>Behaviors\AutoFocusBehavior.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\EnterKeyBehavior.cs">
+      <Link>Behaviors\EnterKeyBehavior.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingBehavior.cs">
       <Link>Behaviors\MultiBindingBehavior.cs</Link>
     </Compile>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\ScreenCaptureBehavior.cs">
       <Link>Behaviors\ScreenCaptureBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\UpdateTextBindingOnPropertyChanged.cs">
+      <Link>Behaviors\UpdateTextBindingOnPropertyChanged.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToBrushConverter.cs">
       <Link>Converters\BooleanToBrushConverter.cs</Link>
