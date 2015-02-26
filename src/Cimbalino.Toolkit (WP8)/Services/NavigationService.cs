@@ -58,7 +58,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets any parameter object passed to the target page for the navigation.
         /// </summary>
         /// <value>Any parameter object passed to the target page for the navigation.</value>
-        public object CurrentParameter
+        public virtual object CurrentParameter
         {
             get
             {

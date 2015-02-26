@@ -89,7 +89,10 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 
-        private void EnsureInitialization()
+        /// <summary>
+        /// Ensure that a <see cref="PhoneApplicationFrame"/> instance has been found.
+        /// </summary>
+        protected virtual void EnsureInitialization()
         {
             if (_initialized)
             {
@@ -111,7 +114,11 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-        private void SetPageProgressIndicator(PhoneApplicationPage page)
+        /// <summary>
+        /// Sets a <see cref="ProgressIndicator"/> in the specified <see cref="PhoneApplicationPage"/> instance.
+        /// </summary>
+        /// <param name="page">The <see cref="PhoneApplicationPage"/> instance.</param>
+        protected virtual void SetPageProgressIndicator(PhoneApplicationPage page)
         {
             if (page != null)
             {
