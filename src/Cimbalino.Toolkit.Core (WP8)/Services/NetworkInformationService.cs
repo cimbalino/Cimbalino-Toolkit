@@ -34,12 +34,7 @@ namespace Cimbalino.Toolkit.Services
         {
             NetworkInformation.NetworkStatusChanged += (sender) =>
             {
-                var eventHandler = NetworkStatusChanged;
-
-                if (eventHandler != null)
-                {
-                    eventHandler(this, null);
-                }
+                RaiseNetworkStatusChanged(null);
             };
         }
 
@@ -52,6 +47,20 @@ namespace Cimbalino.Toolkit.Services
             get
             {
                 return NetworkInformation.GetInternetConnectionProfile() != null;
+            }
+        }
+
+        /// <summary>
+        /// Raises the <see cref="NetworkStatusChanged"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected virtual void RaiseNetworkStatusChanged(EventArgs eventArgs)
+        {
+            var eventHandler = NetworkStatusChanged;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, eventArgs);
             }
         }
     }

@@ -218,21 +218,39 @@ namespace Cimbalino.Toolkit.Services
 
         private void GeolocatorPositionChanged(Geolocator sender, PositionChangedEventArgs args)
         {
+            RaisePositionChanged(args.ToLocationServicePositionChangedEventArgs());
+        }
+
+        private void GeolocatorStatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        {
+            RaiseStatusChanged(args.ToLocationServiceStatusChangedEventArgs());
+        }
+
+        /// <summary>
+        /// Raises the <see cref="PositionChanged"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected virtual void RaisePositionChanged(LocationServicePositionChangedEventArgs eventArgs)
+        {
             var eventHandler = PositionChanged;
 
             if (eventHandler != null)
             {
-                eventHandler(this, args.ToLocationServicePositionChangedEventArgs());
+                eventHandler(this, eventArgs);
             }
         }
 
-        private void GeolocatorStatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        /// <summary>
+        /// Raises the <see cref="StatusChanged"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected virtual void RaiseStatusChanged(LocationServiceStatusChangedEventArgs eventArgs)
         {
             var eventHandler = StatusChanged;
 
             if (eventHandler != null)
             {
-                eventHandler(this, args.ToLocationServiceStatusChangedEventArgs());
+                eventHandler(this, eventArgs);
             }
         }
     }

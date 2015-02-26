@@ -54,7 +54,7 @@ namespace Cimbalino.Toolkit.Helpers
                         VerifyType(item);
                     }
 
-                    OnNotifyPropertyChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                    RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
 
                     _oldItems.Clear();
 
@@ -63,14 +63,14 @@ namespace Cimbalino.Toolkit.Helpers
                 case CollectionChange.ItemInserted:
                     VerifyType(this[index]);
 
-                    OnNotifyPropertyChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, this[index], index));
+                    RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, this[index], index));
 
                     _oldItems.Insert(index, (T)this[index]);
 
                     break;
 
                 case CollectionChange.ItemRemoved:
-                    OnNotifyPropertyChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, _oldItems[index], index));
+                    RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, _oldItems[index], index));
 
                     _oldItems.RemoveAt(index);
 
@@ -79,7 +79,7 @@ namespace Cimbalino.Toolkit.Helpers
                 case CollectionChange.ItemChanged:
                     VerifyType(this[index]);
 
-                    OnNotifyPropertyChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, this[index], _oldItems[index]));
+                    RaiseCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, this[index], _oldItems[index]));
 
                     _oldItems[index] = (T)this[index];
 
@@ -90,13 +90,17 @@ namespace Cimbalino.Toolkit.Helpers
             }
         }
 
-        private void OnNotifyPropertyChanged(NotifyCollectionChangedEventArgs e)
+        /// <summary>
+        /// Raises the <see cref="CollectionChanged"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected void RaiseCollectionChanged(NotifyCollectionChangedEventArgs eventArgs)
         {
             var eventHandler = CollectionChanged;
 
             if (eventHandler != null)
             {
-                eventHandler(this, e);
+                eventHandler(this, eventArgs);
             }
         }
 

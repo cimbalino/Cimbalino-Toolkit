@@ -212,7 +212,11 @@ namespace Cimbalino.Toolkit.Services
             return false;
         }
 
-        private bool EnsureNavigationService()
+        /// <summary>
+        /// Ensure that a <see cref="System.Windows.Navigation.NavigationService"/> instance has been found.
+        /// </summary>
+        /// <returns>true if a <see cref="System.Windows.Navigation.NavigationService"/> instance has been found; otherwise, false.</returns>
+        protected virtual bool EnsureNavigationService()
         {
             if (_navigationService != null)
             {
@@ -232,23 +236,14 @@ namespace Cimbalino.Toolkit.Services
                             GetNavigationServiceFromPage(e.Content as PhoneApplicationPage);
                         }
 
-                        var eventHandler = Navigated;
-
-                        if (eventHandler != null)
-                        {
-                            eventHandler(this, null);
-                        }
+                        RaiseNavigated(null);
                     };
 
                     _mainFrame.BackKeyPress += (s, e) =>
                     {
-                        var eventHandler = BackKeyPressed;
                         var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
 
-                        if (eventHandler != null)
-                        {
-                            eventHandler(this, eventArgs);
-                        }
+                        RaiseBackKeyPressed(eventArgs);
 
                         switch (eventArgs.Behavior)
                         {
@@ -280,6 +275,34 @@ namespace Cimbalino.Toolkit.Services
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Raises the <see cref="Navigated"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected virtual void RaiseNavigated(EventArgs eventArgs)
+        {
+            var eventHandler = Navigated;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, eventArgs);
+            }
+        }
+
+        /// <summary>
+        /// Raises the <see cref="BackKeyPressed"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected virtual void RaiseBackKeyPressed(NavigationServiceBackKeyPressedEventArgs eventArgs)
+        {
+            var eventHandler = BackKeyPressed;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, eventArgs);
+            }
         }
 
         private bool GetNavigationServiceFromPage(PhoneApplicationPage page)

@@ -223,7 +223,11 @@ namespace Cimbalino.Toolkit.Services
             return false;
         }
 
-        private bool EnsureMainFrame()
+        /// <summary>
+        /// Ensure that a <see cref="Frame"/> instance has been found.
+        /// </summary>
+        /// <returns>true if a <see cref="Frame"/> instance has been found; otherwise, false.</returns>
+        protected virtual bool EnsureMainFrame()
         {
             if (_mainFrame != null)
             {
@@ -238,24 +242,15 @@ namespace Cimbalino.Toolkit.Services
                 {
                     CurrentParameter = e.Parameter;
 
-                    var eventHandler = Navigated;
-
-                    if (eventHandler != null)
-                    {
-                        eventHandler(this, null);
-                    }
+                    RaiseNavigated(null);
                 };
 
 #if WINDOWS_PHONE_APP
                 HardwareButtons.BackPressed += (s, e) =>
                 {
-                    var eventHandler = BackKeyPressed;
                     var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
 
-                    if (eventHandler != null)
-                    {
-                        eventHandler(this, eventArgs);
-                    }
+                    RaiseBackKeyPressed(eventArgs);
 
                     switch (eventArgs.Behavior)
                     {
@@ -291,5 +286,35 @@ namespace Cimbalino.Toolkit.Services
 
             return false;
         }
+
+        /// <summary>
+        /// Raises the <see cref="Navigated"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected virtual void RaiseNavigated(EventArgs eventArgs)
+        {
+            var eventHandler = Navigated;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, eventArgs);
+            }
+        }
+
+#if WINDOWS_PHONE_APP
+        /// <summary>
+        /// Raises the <see cref="BackKeyPressed"/> event with the provided event data.
+        /// </summary>
+        /// <param name="eventArgs">The event data.</param>
+        protected virtual void RaiseBackKeyPressed(NavigationServiceBackKeyPressedEventArgs eventArgs)
+        {
+            var eventHandler = BackKeyPressed;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, eventArgs);
+            }
+        }
+#endif
     }
 }
