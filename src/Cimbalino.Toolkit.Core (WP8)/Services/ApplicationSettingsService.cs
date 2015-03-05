@@ -17,6 +17,7 @@ using System;
 using System.Windows;
 using Windows.Storage;
 #elif WINDOWS_PHONE_APP
+using System;
 using Windows.Storage;
 #else
 using System;
@@ -30,16 +31,25 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class ApplicationSettingsService : IApplicationSettingsService
     {
+        private static bool SupportsLocalSettings = true;
         private static readonly IApplicationSettingsServiceHandler LocalSettingsServiceHandlerStatic, RoamingSettingsServiceHandlerStatic;
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
+        private const string AppManifestName = "AppxManifest.xml";
         private static readonly IApplicationSettingsServiceHandler LegacySettingsServiceHandlerStatic;
 #endif
 
         static ApplicationSettingsService()
         {
+#if WINDOWS_PHONE
+            var appManifestResourceInfo = Application.GetResourceStream(new Uri(AppManifestName, UriKind.Relative));
+            SupportsLocalSettings = appManifestResourceInfo != null;
+#endif
             var applicationData = ApplicationData.Current;
 
-            LocalSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.LocalSettings);
+            if (SupportsLocalSettings)
+            {
+                LocalSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.LocalSettings);
+            }
 
 #if WINDOWS_PHONE
             if (Version.Parse(Deployment.Current.RuntimeVersion).Major >= 6)
@@ -63,6 +73,11 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
+                if (!SupportsLocalSettings)
+                {
+                    throw new NotSupportedException();
+                }
+
                 return LocalSettingsServiceHandlerStatic;
             }
         }
