@@ -38,7 +38,7 @@ namespace Cimbalino.Toolkit.Services
         static ApplicationSettingsService()
         {
             var applicationData = ApplicationData.Current;
-            
+
 #if WINDOWS_PHONE
             if (Version.Parse(Deployment.Current.RuntimeVersion).Major >= 6)
             {
