@@ -38,15 +38,15 @@ namespace Cimbalino.Toolkit.Services
         static ApplicationSettingsService()
         {
             var applicationData = ApplicationData.Current;
-
-            LocalSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.LocalSettings);
-
+            
 #if WINDOWS_PHONE
             if (Version.Parse(Deployment.Current.RuntimeVersion).Major >= 6)
             {
+                LocalSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.LocalSettings);
                 RoamingSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.RoamingSettings);
             }
 #else
+            LocalSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.LocalSettings);
             RoamingSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.RoamingSettings);
 #endif
 
