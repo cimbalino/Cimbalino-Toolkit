@@ -84,7 +84,7 @@ namespace Cimbalino.Toolkit.Services
             throw new NotSupportedException();
         }
 #else
-        public async Task HideAsync()
+        public virtual async Task HideAsync()
         {
             var statusBar = StatusBar.GetForCurrentView();
 
