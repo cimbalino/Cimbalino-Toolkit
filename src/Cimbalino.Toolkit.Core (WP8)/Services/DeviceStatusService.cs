@@ -37,9 +37,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Gets the maximum amount of memory that your application process can allocate.
         /// </summary>
-        /// <value>
-        /// The maximum amount of memory that your application process can allocate.
-        /// </value>
+        /// <value>The maximum amount of memory that your application process can allocate.</value>
         public virtual long ApplicationMemoryUsageLimit
         {
             get
@@ -123,9 +121,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Gets a value indicating whether the device is a low memory device (less than 256 MB of memory installed).
         /// </summary>
-        /// <value>
-        /// true if the device is a low memory device (less than 256 MB of memory installed); otherwise, false.
-        /// </value>
+        /// <value>true if the device is a low memory device (less than 256 MB of memory installed); otherwise, false.</value>
         public virtual bool IsLowMemoryDevice
         {
             get
@@ -142,30 +138,26 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException("Please use DeviceStatusServiceWithKeyboard for this property.");
+                throw new NotSupportedException("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
             }
         }
 
         /// <summary>
         /// Gets a value indicating whether the device contains a physical hardware keyboard.
         /// </summary>
-        /// <value>
-        /// true if the device contains a physical hardware keyboard; otherwise, false.
-        /// </value>
+        /// <value>true if the device contains a physical hardware keyboard; otherwise, false.</value>
         public virtual bool IsKeyboardPresent
         {
             get
             {
-                throw new NotSupportedException("Please use DeviceStatusServiceWithKeyboard for this property.");
+                throw new NotSupportedException("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
             }
         }
 
         /// <summary>
         /// Gets the a value indicating whether the device is currently running on battery power or is plugged in to an external power supply.
         /// </summary>
-        /// <value>
-        /// true if the device is currently running on battery power or is plugged in to an external power supply; otherwise, false.
-        /// </value>
+        /// <value>true if the device is currently running on battery power or is plugged in to an external power supply; otherwise, false.</value>
         public virtual DeviceStatusServicePowerSource PowerSource
         {
             get
