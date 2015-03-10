@@ -123,6 +123,7 @@
     <Compile Include="Helpers\NamescopeBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DeviceSettingsService.cs" />
+    <Compile Include="Services\DeviceStatusServiceWithKeyboard.cs" />
     <Compile Include="Services\DisplayPropertiesService.cs" />
     <Compile Include="Services\EmailComposeService.cs" />
     <Compile Include="Services\LauncherService.cs" />

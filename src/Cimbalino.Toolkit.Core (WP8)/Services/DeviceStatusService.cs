@@ -142,7 +142,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                return DeviceStatus.IsKeyboardDeployed;
+                throw new NotSupportedException("Please use DeviceStatusServiceWithKeyboard for this property.");
             }
         }
 
@@ -156,7 +156,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                return DeviceStatus.IsKeyboardPresent;
+                throw new NotSupportedException("Please use DeviceStatusServiceWithKeyboard for this property.");
             }
         }
 
