@@ -46,6 +46,43 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
 #if WINDOWS_PHONE_APP
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
+
+         public NavigationService()
+        {
+            HardwareButtons.BackPressed += (s, e) =>
+            {
+                var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+
+                RaiseBackKeyPressed(eventArgs);
+
+                switch (eventArgs.Behavior)
+                {
+                    case NavigationServiceBackKeyPressedBehavior.GoBack:
+                        if (EnsureMainFrame() && _mainFrame.CanGoBack)
+                        {
+                            _mainFrame.GoBack();
+
+                            e.Handled = true;
+                        }
+                        break;
+
+                    case NavigationServiceBackKeyPressedBehavior.HideApp:
+                        break;
+
+                    case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                        e.Handled = true;
+                        Application.Current.Exit();
+                        break;
+
+                    case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                        e.Handled = true;
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            };
+        }
 #else
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed
         {
@@ -244,42 +281,6 @@ namespace Cimbalino.Toolkit.Services
 
                     RaiseNavigated(null);
                 };
-
-#if WINDOWS_PHONE_APP
-                HardwareButtons.BackPressed += (s, e) =>
-                {
-                    var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
-
-                    RaiseBackKeyPressed(eventArgs);
-
-                    switch (eventArgs.Behavior)
-                    {
-                        case NavigationServiceBackKeyPressedBehavior.GoBack:
-                            if (_mainFrame.CanGoBack)
-                            {
-                                _mainFrame.GoBack();
-
-                                e.Handled = true;
-                            }
-                            break;
-
-                        case NavigationServiceBackKeyPressedBehavior.HideApp:
-                            break;
-
-                        case NavigationServiceBackKeyPressedBehavior.ExitApp:
-                            e.Handled = true;
-                            Application.Current.Exit();
-                            break;
-
-                        case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                            e.Handled = true;
-                            break;
-
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                };
-#endif
 
                 return true;
             }
