@@ -42,6 +42,23 @@ namespace Cimbalino.Toolkit.Services
         Task CopyFileAsync(string sourceFileName, string destinationFileName, bool overwrite);
 
         /// <summary>
+        /// Moves an existing file to a new file.
+        /// </summary>
+        /// <param name="sourceFileName">The name of the file to move.</param>
+        /// <param name="destinationFileName">The name of the destination file. This cannot be a directory or an existing file.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task MoveFileAsync(string sourceFileName, string destinationFileName);
+
+        /// <summary>
+        /// Moves an existing file to a new file, and optionally overwrites an existing file.
+        /// </summary>
+        /// <param name="sourceFileName">The name of the file to move.</param>
+        /// <param name="destinationFileName">The name of the destination file. This cannot be a directory.</param>
+        /// <param name="overwrite">true if the destination file can be overwritten; otherwise, false.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task MoveFileAsync(string sourceFileName, string destinationFileName, bool overwrite);
+
+        /// <summary>
         /// Creates a directory in the storage scope.
         /// </summary>
         /// <param name="dir">The relative path of the directory to create within the storage.</param>

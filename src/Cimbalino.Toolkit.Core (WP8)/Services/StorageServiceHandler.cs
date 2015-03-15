@@ -76,6 +76,42 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Moves an existing file to a new file.
+        /// </summary>
+        /// <param name="sourceFileName">The name of the file to move.</param>
+        /// <param name="destinationFileName">The name of the destination file. This cannot be a directory or an existing file.</param>
+        /// <returns>
+        /// The <see cref="Task" /> object representing the asynchronous operation.
+        /// </returns>
+        public virtual Task MoveFileAsync(string sourceFileName, string destinationFileName)
+        {
+            return MoveFileAsync(sourceFileName, destinationFileName, false);
+        }
+
+        /// <summary>
+        /// Moves an existing file to a new file, and optionally overwrites an existing file.
+        /// </summary>
+        /// <param name="sourceFileName">The name of the file to move.</param>
+        /// <param name="destinationFileName">The name of the destination file. This cannot be a directory.</param>
+        /// <param name="overwrite">true if the destination file can be overwritten; otherwise, false.</param>
+        /// <returns>
+        /// The <see cref="Task" /> object representing the asynchronous operation.
+        /// </returns>
+        public async virtual Task MoveFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
+        {
+            var file = await _storageFolder.GetFileAsync(sourceFileName);
+
+            var destinationFolderName = Path.GetDirectoryName(destinationFileName);
+            var destinationFolder = await _storageFolder.GetFolderAsync(destinationFolderName);
+
+            destinationFileName = Path.GetFileName(destinationFileName);
+
+            var nameCollisionOption = overwrite ? NameCollisionOption.ReplaceExisting : NameCollisionOption.FailIfExists;
+
+            await file.MoveAsync(destinationFolder, destinationFileName, nameCollisionOption);
+        }
+
+        /// <summary>
         /// Creates a directory in the storage scope.
         /// </summary>
         /// <param name="dir">The relative path of the directory to create within the storage.</param>
