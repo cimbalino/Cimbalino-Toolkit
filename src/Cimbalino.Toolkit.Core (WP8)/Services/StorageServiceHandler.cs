@@ -80,9 +80,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="sourceFileName">The name of the file to move.</param>
         /// <param name="destinationFileName">The name of the destination file. This cannot be a directory or an existing file.</param>
-        /// <returns>
-        /// The <see cref="Task" /> object representing the asynchronous operation.
-        /// </returns>
+        /// <returns>The <see cref="Task" /> object representing the asynchronous operation.</returns>
         public virtual Task MoveFileAsync(string sourceFileName, string destinationFileName)
         {
             return MoveFileAsync(sourceFileName, destinationFileName, false);
@@ -94,9 +92,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="sourceFileName">The name of the file to move.</param>
         /// <param name="destinationFileName">The name of the destination file. This cannot be a directory.</param>
         /// <param name="overwrite">true if the destination file can be overwritten; otherwise, false.</param>
-        /// <returns>
-        /// The <see cref="Task" /> object representing the asynchronous operation.
-        /// </returns>
+        /// <returns>The <see cref="Task" /> object representing the asynchronous operation.</returns>
         public async virtual Task MoveFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
         {
             var file = await _storageFolder.GetFileAsync(sourceFileName);
