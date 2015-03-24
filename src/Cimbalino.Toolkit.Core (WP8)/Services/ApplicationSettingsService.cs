@@ -31,7 +31,7 @@ namespace Cimbalino.Toolkit.Services
     public class ApplicationSettingsService : IApplicationSettingsService
     {
         private static readonly IApplicationSettingsServiceHandler LocalSettingsServiceHandlerStatic, RoamingSettingsServiceHandlerStatic;
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP
+#if !WINDOWS_APP
         private static readonly IApplicationSettingsServiceHandler LegacySettingsServiceHandlerStatic;
 #endif
 
@@ -50,7 +50,7 @@ namespace Cimbalino.Toolkit.Services
             RoamingSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.RoamingSettings);
 #endif
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP
+#if !WINDOWS_APP
             LegacySettingsServiceHandlerStatic = new LegacyApplicationSettingsServiceHandler();
 #endif
         }
@@ -94,7 +94,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP
+#if !WINDOWS_APP
                 return LegacySettingsServiceHandlerStatic;
 #else
                 throw new NotSupportedException();

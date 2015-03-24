@@ -16,6 +16,8 @@
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
 using Windows.Services.Maps;
+#elif WINDOWS_UAP
+using Windows.Services.Maps;
 #else
 using System;
 #endif
@@ -34,7 +36,7 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_PHONE
             new MapDownloaderTask().Show();
-#elif WINDOWS_PHONE_APP
+#elif WINDOWS_PHONE_APP || WINDOWS_UAP
             MapManager.ShowDownloadedMapsUI();
 #else
             throw new NotSupportedException();
@@ -48,7 +50,7 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_PHONE
             new MapUpdaterTask().Show();
-#elif WINDOWS_PHONE_APP
+#elif WINDOWS_PHONE_APP || WINDOWS_UAP
             MapManager.ShowMapsUpdateUI();
 #else
             throw new NotSupportedException();

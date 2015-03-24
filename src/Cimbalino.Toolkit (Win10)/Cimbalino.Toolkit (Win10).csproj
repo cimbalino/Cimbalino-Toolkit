@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{539C4FDB-99BB-4481-95D9-5BE9B785D7D8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cimbalino.Toolkit</RootNamespace>
+    <AssemblyName>Cimbalino.Toolkit</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10030.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10030.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\Cimbalino.Toolkit.Core %28Win10%29\Cimbalino.Toolkit.Core %28Win10%29.csproj">
+      <Project>{a4a154f3-a724-4ddc-9761-e6ee0afe2374}</Project>
+      <Name>Cimbalino.Toolkit.Core %28Win10%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AfterAutoFocusEventArgs.cs">
+      <Link>Behaviors\AfterAutoFocusEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AutoFocusBehavior.cs">
+      <Link>Behaviors\AutoFocusBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\EnterKeyBehavior.cs">
+      <Link>Behaviors\EnterKeyBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingBehavior.cs">
+      <Link>Behaviors\MultiBindingBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingItem.cs">
+      <Link>Behaviors\MultiBindingItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingItemCollection.cs">
+      <Link>Behaviors\MultiBindingItemCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\ScreenCaptureBehavior.cs">
+      <Link>Behaviors\ScreenCaptureBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\UpdateTextBindingOnPropertyChanged.cs">
+      <Link>Behaviors\UpdateTextBindingOnPropertyChanged.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToBrushConverter.cs">
+      <Link>Converters\BooleanToBrushConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToIntConverter.cs">
+      <Link>Converters\BooleanToIntConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToStringConverter.cs">
+      <Link>Converters\BooleanToStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToValueConverterBase.cs">
+      <Link>Converters\BooleanToValueConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToVisibilityConverter.cs">
+      <Link>Converters\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\ColorToBrushConverter.cs">
+      <Link>Converters\ColorToBrushConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\MultiValueConverterBase.cs">
+      <Link>Converters\MultiValueConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\NegativeBooleanConverter.cs">
+      <Link>Converters\NegativeBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\NullToVisibilityConverter.cs">
+      <Link>Converters\NullToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringFormatConverter.cs">
+      <Link>Converters\StringFormatConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringRegexConverter.cs">
+      <Link>Converters\StringRegexConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringToLowercaseConverter.cs">
+      <Link>Converters\StringToLowercaseConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringToUppercaseConverter.cs">
+      <Link>Converters\StringToUppercaseConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\StringToVisibilityConverter.cs">
+      <Link>Converters\StringToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\ValueConverterBase.cs">
+      <Link>Converters\ValueConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Extensions\FrameworkElementExtensions.cs">
+      <Link>Extensions\FrameworkElementExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Helpers\NamescopeBinding.cs">
+      <Link>Helpers\NamescopeBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DeviceSettingsService.cs">
+      <Link>Services\DeviceSettingsService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DisplayPropertiesService.cs">
+      <Link>Services\DisplayPropertiesService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\EmailComposeService.cs">
+      <Link>Services\EmailComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\LauncherService.cs">
+      <Link>Services\LauncherService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\MapManagerService.cs">
+      <Link>Services\MapManagerService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\MessageBoxService.cs">
+      <Link>Services\MessageBoxService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\PhoneCallService.cs">
+      <Link>Services\PhoneCallService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\SmsComposeService.cs">
+      <Link>Services\SmsComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\StoreService.cs">
+      <Link>Services\StoreService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\VibrationService.cs">
+      <Link>Services\VibrationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Behaviors\Behavior.cs">
+      <Link>Behaviors\Behavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Behaviors\Behavior{T}.cs">
+      <Link>Behaviors\Behavior{T}.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Helpers\DependencyObjectCollection{T}.cs">
+      <Link>Helpers\DependencyObjectCollection{T}.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\NavigationService.cs">
+      <Link>Services\NavigationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\StatusBarService.cs">
+      <Link>Services\StatusBarService.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
+      <Name>Behaviors SDK %28XAML%29</Name>
+    </SDKReference>
+    <SDKReference Include="Windows Mobile, Version=10.0.0.1" />
+    <SDKReference Include="Windows Desktop, Version=10.0.10030.0" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -38,8 +38,10 @@ namespace Cimbalino.Toolkit.Services
                 return RuntimeInformationServiceProfile.WindowsPhoneSilverlight;
 #elif WINDOWS_PHONE_APP
                 return RuntimeInformationServiceProfile.WindowsPhoneApp;
-#else
+#elif WINDOWS
                 return RuntimeInformationServiceProfile.WindowsApp;
+#else
+                return RuntimeInformationServiceProfile.UniversalAppPlatform;
 #endif
             }
         }

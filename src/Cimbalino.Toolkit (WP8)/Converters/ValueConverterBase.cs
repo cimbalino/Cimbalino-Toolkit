@@ -51,7 +51,7 @@ namespace Cimbalino.Toolkit.Converters
         /// <returns>The value to be passed to the source object.</returns>
         public abstract object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
 
-#if WINDOWS_PHONE_APP || WINDOWS_APP
+#if WINDOWS_PHONE_APP || WINDOWS_APP || WINDOWS_UAP
         object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
         {
             var cultureInfo = !string.IsNullOrEmpty(language) ? new CultureInfo(language) : null;

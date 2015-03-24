@@ -1,45 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1B367D74-A161-4C0E-9DD7-905843ECDDDF}</ProjectGuid>
+    <ProjectGuid>{A4A154F3-A724-4DDC-9761-E6EE0AFE2374}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cimbalino.Toolkit</RootNamespace>
+    <RootNamespace>Cimbalino.Toolkit.Core</RootNamespace>
     <AssemblyName>Cimbalino.Toolkit.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
-    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10030.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10030.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <NuGetPackageImportStamp>6f22430c</NuGetPackageImportStamp>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Cimbalino.Toolkit.Core.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
@@ -48,8 +49,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
     <OutputPath>bin\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -59,9 +61,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -70,8 +73,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
     <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -81,9 +85,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -92,8 +97,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -103,6 +109,18 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\compression\Adler32.generated.cs">
+      <Link>Compression\Adler32.generated.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\compression\Crc32.generated.cs">
+      <Link>Compression\Crc32.generated.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\compression\ZlibStream.cs">
+      <Link>Compression\ZlibStream.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ByteArrayExtensions.cs">
       <Link>Extensions\ByteArrayExtensions.cs</Link>
     </Compile>
@@ -112,17 +130,59 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\DateTimeOffsetExtensions.cs">
       <Link>Extensions\DateTimeOffsetExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\EventHandlerExtensions.cs">
+      <Link>Extensions\EventHandlerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ICollectionExtensions.cs">
+      <Link>Extensions\ICollectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\IComparableExtensions.cs">
+      <Link>Extensions\IComparableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\IDictionaryExtensions.cs">
+      <Link>Extensions\IDictionaryExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\IEnumerableExtensions.cs">
+      <Link>Extensions\IEnumerableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\IFormattableExtensions.cs">
+      <Link>Extensions\IFormattableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\IntExtensions.cs">
+      <Link>Extensions\IntExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ObjectExtensions.cs">
       <Link>Extensions\ObjectExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StreamExtensions.cs">
       <Link>Extensions\StreamExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StreamReaderExtensions.cs">
+      <Link>Extensions\StreamReaderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StreamWriterExtensions.cs">
+      <Link>Extensions\StreamWriterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\StringExtensions.cs">
+      <Link>Extensions\StringExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\UriBuilderExtensions.cs">
       <Link>Extensions\UriBuilderExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\UriExtensions.cs">
+      <Link>Extensions\UriExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\WebRequestExtensions.cs">
+      <Link>Extensions\WebRequestExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\XmlReaderExtensions.cs">
+      <Link>Extensions\XmlReaderExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Point.cs">
       <Link>Foundation\Point.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\foundation\Rect.cs">
+      <Link>Foundation\Rect.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Size.cs">
       <Link>Foundation\Size.cs</Link>
@@ -157,6 +217,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestTokenNode.cs">
       <Link>Helpers\ApplicationManifestTokenNode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\helpers\ChunkedStream.cs">
+      <Link>Helpers\ChunkedStream.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ObservableBase.cs">
       <Link>Helpers\ObservableBase.cs</Link>
     </Compile>
@@ -168,6 +231,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ObservableTask{T}.cs">
       <Link>Helpers\ObservableTask{T}.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\helpers\OptimizedObservableCollection.cs">
+      <Link>Helpers\OptimizedObservableCollection.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakAction.cs">
       <Link>Helpers\WeakAction.cs</Link>
@@ -205,23 +271,56 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationSettingsServiceHandler.cs">
       <Link>Services\IApplicationSettingsServiceHandler.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceSettingsService.cs">
+      <Link>Services\IDeviceSettingsService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceStatusService.cs">
       <Link>Services\IDeviceStatusService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDisplayPropertiesService.cs">
+      <Link>Services\IDisplayPropertiesService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IEmailComposeService.cs">
+      <Link>Services\IEmailComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ILauncherService.cs">
+      <Link>Services\ILauncherService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ILocationService.cs">
+      <Link>Services\ILocationService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IMapManagerService.cs">
       <Link>Services\IMapManagerService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IMessageBoxService.cs">
+      <Link>Services\IMessageBoxService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INavigationService.cs">
+      <Link>Services\INavigationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\INetworkInformationService.cs">
       <Link>Services\INetworkInformationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IPhoneCallService.cs">
+      <Link>Services\IPhoneCallService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IRuntimeInformationService.cs">
       <Link>Services\IRuntimeInformationService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
-      <Link>Services\IStorageServiceHandler.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ISmsComposeService.cs">
+      <Link>Services\ISmsComposeService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStatusBarService.cs">
       <Link>Services\IStatusBarService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageService.cs">
+      <Link>Services\IStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStorageServiceHandler.cs">
+      <Link>Services\IStorageServiceHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStoreService.cs">
+      <Link>Services\IStoreService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
@@ -231,6 +330,21 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IWindowsStoreService.cs">
       <Link>Services\IWindowsStoreService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LocationServiceAccuracy.cs">
+      <Link>Services\LocationServiceAccuracy.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LocationServicePosition.cs">
+      <Link>Services\LocationServicePosition.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LocationServicePositionChangedEventArgs.cs">
+      <Link>Services\LocationServicePositionChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LocationServiceStatus.cs">
+      <Link>Services\LocationServiceStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LocationServiceStatusChangedEventArgs.cs">
+      <Link>Services\LocationServiceStatusChangedEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedBehavior.cs">
       <Link>Services\NavigationServiceBackKeyPressedBehavior.cs</Link>
@@ -286,8 +400,29 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppScreenshotNode.cs">
       <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Win10%29\Helpers\ApiHelper.cs">
-      <Link>Helpers\ApiHelper.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HashAlgorithmBase.cs">
+      <Link>System\Security\Cryptography\HashAlgorithmBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HmacHashAlgorithmBase.cs">
+      <Link>System\Security\Cryptography\HmacHashAlgorithmBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HMACMD5.cs">
+      <Link>System\Security\Cryptography\HMACMD5.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HMACSHA1.cs">
+      <Link>System\Security\Cryptography\HMACSHA1.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HMACSHA256.cs">
+      <Link>System\Security\Cryptography\HMACSHA256.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\MD5Managed.cs">
+      <Link>System\Security\Cryptography\MD5Managed.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\SHA1Managed.cs">
+      <Link>System\Security\Cryptography\SHA1Managed.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\SHA256Managed.cs">
+      <Link>System\Security\Cryptography\SHA256Managed.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\DependencyObjectExtensions.cs">
       <Link>Extensions\DependencyObjectExtensions.cs</Link>
@@ -319,7 +454,7 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\RuntimeInformationService.cs">
       <Link>Services\RuntimeInformationService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28wp8%29\Services\StorageService.cs">
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageService.cs">
       <Link>Services\StorageService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageServiceHandler.cs">
@@ -334,143 +469,23 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\DeviceStatusService.cs">
       <Link>Services\DeviceStatusService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\LegacyApplicationSettingsServiceHandler.cs">
+      <Link>Services\LegacyApplicationSettingsServiceHandler.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\WindowsStoreService.cs">
       <Link>Services\WindowsStoreService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Compression\Adler32.generated.cs">
-      <Link>Compression\Adler32.generated.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Compression\Crc32.generated.cs">
-      <Link>Compression\Crc32.generated.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Compression\ZlibStream.cs">
-      <Link>Compression\ZlibStream.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\EventHandlerExtensions.cs">
-      <Link>Extensions\EventHandlerExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\ICollectionExtensions.cs">
-      <Link>Extensions\ICollectionExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\IComparableExtensions.cs">
-      <Link>Extensions\IComparableExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\IDictionaryExtensions.cs">
-      <Link>Extensions\IDictionaryExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\IEnumerableExtensions.cs">
-      <Link>Extensions\IEnumerableExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\IFormattableExtensions.cs">
-      <Link>Extensions\IFormattableExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\IntExtensions.cs">
-      <Link>Extensions\IntExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\StreamReaderExtensions.cs">
-      <Link>Extensions\StreamReaderExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\StreamWriterExtensions.cs">
-      <Link>Extensions\StreamWriterExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\StringExtensions.cs">
-      <Link>Extensions\StringExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\UriExtensions.cs">
-      <Link>Extensions\UriExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\WebRequestExtensions.cs">
-      <Link>Extensions\WebRequestExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Extensions\XmlReaderExtensions.cs">
-      <Link>Extensions\XmlReaderExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Foundation\Rect.cs">
-      <Link>Foundation\Rect.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Helpers\ChunkedStream.cs">
-      <Link>Helpers\ChunkedStream.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Helpers\OptimizedObservableCollection.cs">
-      <Link>Helpers\OptimizedObservableCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IDeviceSettingsService.cs">
-      <Link>Services\IDeviceSettingsService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IDisplayPropertiesService.cs">
-      <Link>Services\IDisplayPropertiesService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IEmailComposeService.cs">
-      <Link>Services\IEmailComposeService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\ILauncherService.cs">
-      <Link>Services\ILauncherService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\ILocationService.cs">
-      <Link>Services\ILocationService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IMessageBoxService.cs">
-      <Link>Services\IMessageBoxService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\INavigationService.cs">
-      <Link>Services\INavigationService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IPhoneCallService.cs">
-      <Link>Services\IPhoneCallService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\ISmsComposeService.cs">
-      <Link>Services\ISmsComposeService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IStorageService.cs">
-      <Link>Services\IStorageService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\IStoreService.cs">
-      <Link>Services\IStoreService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\LocationServiceAccuracy.cs">
-      <Link>Services\LocationServiceAccuracy.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\LocationServicePosition.cs">
-      <Link>Services\LocationServicePosition.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\LocationServicePositionChangedEventArgs.cs">
-      <Link>Services\LocationServicePositionChangedEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\LocationServiceStatus.cs">
-      <Link>Services\LocationServiceStatus.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\LocationServiceStatusChangedEventArgs.cs">
-      <Link>Services\LocationServiceStatusChangedEventArgs.cs</Link>
-    </Compile>
+    <Compile Include="Helpers\ApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\Security\Cryptography\HashAlgorithmBase.cs" />
-    <Compile Include="System\Security\Cryptography\HmacHashAlgorithmBase.cs" />
-    <Compile Include="System\Security\Cryptography\HMACSHA1.cs" />
-    <Compile Include="System\Security\Cryptography\HMACMD5.cs" />
-    <Compile Include="System\Security\Cryptography\HMACSHA256.cs" />
-    <Compile Include="System\Security\Cryptography\SHA256Managed.cs" />
-    <Compile Include="System\Security\Cryptography\MD5Managed.cs" />
-    <Compile Include="System\Security\Cryptography\SHA1Managed.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <SDKReference Include="Windows Mobile, Version=10.0.0.1" />
+    <SDKReference Include="Windows Desktop, Version=10.0.10030.0" />
   </ItemGroup>
-  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
-    <VisualStudioVersion>12.0</VisualStudioVersion>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
-  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

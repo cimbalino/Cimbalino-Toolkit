@@ -19,6 +19,13 @@ using Microsoft.Phone.Tasks;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Chat;
+#elif WINDOWS_UAP
+using System;
+using System.Threading.Tasks;
+using Cimbalino.Toolkit.Core.Helpers;
+using Cimbalino.Toolkit.Extensions;
+using Windows.ApplicationModel.Chat;
+using Windows.System;
 #else
 using System;
 using System.Threading.Tasks;
@@ -61,7 +68,41 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 #elif WINDOWS_PHONE_APP
-        public async virtual Task ShowAsync(string recipient, string body)
+        public virtual Task ShowAsync(string recipient, string body)
+        {
+            return SendByChat(recipient, body);
+        }
+#elif WINDOWS_UAP
+        public virtual Task ShowAsync(string recipient, string body)
+        {
+            if (ApiHelper.SupportsChat)
+            {
+                return SendByChat(recipient, body);
+            }
+
+            return SendByUri(recipient, body);
+        }
+#else
+        public virtual Task ShowAsync(string recipient, string body)
+        {
+            return SendByUri(recipient, body);
+        }
+#endif
+
+#if WINDOWS_APP || WINDOWS_UAP
+        private async Task SendByUri(string recipient, string body)
+        {
+            var smsUri = new UriBuilder("sms:")
+                .SetPath(recipient)
+                .AppendQueryParameterIfValueNotEmpty("body", body)
+                .Uri;
+
+            await Launcher.LaunchUriAsync(smsUri);
+        }
+#endif
+
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
+        private async Task SendByChat(string recipient, string body)
         {
             var chatMessage = new ChatMessage
             {
@@ -74,16 +115,6 @@ namespace Cimbalino.Toolkit.Services
             }
 
             await ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage);
-        }
-#else
-        public async virtual Task ShowAsync(string recipient, string body)
-        {
-            var smsUri = new UriBuilder("sms:")
-                .SetPath(recipient)
-                .AppendQueryParameterIfValueNotEmpty("body", body)
-                .Uri;
-
-            await Launcher.LaunchUriAsync(smsUri);
         }
 #endif
     }

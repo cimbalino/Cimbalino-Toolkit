@@ -19,6 +19,15 @@ using Cimbalino.Toolkit.Extensions;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Cimbalino.Toolkit.Core.Helpers;
+#elif WINDOWS_UAP
+using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using System.Collections.Generic;
+using Cimbalino.Toolkit.Extensions;
+using Windows.Phone.UI.Input;
+using Cimbalino.Toolkit.Core.Helpers;
 #else
 using System;
 using System.Collections.Generic;
@@ -44,7 +53,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Occurs when the user presses the hardware Back button.
         /// </summary>
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
 #else
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed
@@ -99,45 +108,16 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationService"/> class.
         /// </summary>
         public NavigationService()
         {
-            HardwareButtons.BackPressed += (s, e) =>
+            if (ApiHelper.SupportsBackButton)
             {
-                var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
-
-                RaiseBackKeyPressed(eventArgs);
-
-                switch (eventArgs.Behavior)
-                {
-                    case NavigationServiceBackKeyPressedBehavior.GoBack:
-                        if (EnsureMainFrame() && _mainFrame.CanGoBack)
-                        {
-                            _mainFrame.GoBack();
-
-                            e.Handled = true;
-                        }
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.HideApp:
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.ExitApp:
-                        e.Handled = true;
-                        Application.Current.Exit();
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                        e.Handled = true;
-                        break;
-
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            };
+                HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            }
         }
 #endif
 
@@ -265,32 +245,31 @@ namespace Cimbalino.Toolkit.Services
             return false;
         }
 
-        /// <summary>
+        private bool backPressedHandlerSet;
+		/// <summary>
         /// Ensure that a <see cref="Frame"/> instance has been found.
         /// </summary>
         /// <returns>true if a <see cref="Frame"/> instance has been found; otherwise, false.</returns>
         protected virtual bool EnsureMainFrame()
         {
-            if (_mainFrame != null)
-            {
-                return true;
-            }
-
             _mainFrame = Window.Current.Content as Frame;
 
             if (_mainFrame != null)
             {
-                _mainFrame.Navigated += (s, e) =>
-                {
-                    CurrentParameter = e.Parameter;
-
-                    RaiseNavigated(null);
-                };
-
+                _mainFrame.Navigated -= Frame_Navigated;
+                _mainFrame.Navigated += Frame_Navigated;
+                
                 return true;
             }
 
             return false;
+        }
+
+        private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            CurrentParameter = e.Parameter;
+
+            RaiseNavigated(EventArgs.Empty);
         }
 
         /// <summary>
@@ -300,26 +279,45 @@ namespace Cimbalino.Toolkit.Services
         protected virtual void RaiseNavigated(EventArgs eventArgs)
         {
             var eventHandler = Navigated;
-
-            if (eventHandler != null)
-            {
-                eventHandler(this, eventArgs);
-            }
+            eventHandler?.Invoke(this, eventArgs);            
         }
 
-#if WINDOWS_PHONE_APP
-        /// <summary>
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+            RaiseBackKeyPressed(eventArgs);
+            switch (eventArgs.Behavior)
+            {
+                case NavigationServiceBackKeyPressedBehavior.GoBack:
+                    if (_mainFrame.CanGoBack)
+                    {
+                        _mainFrame.GoBack();
+                        e.Handled = true;
+                    }
+                    break;
+                case NavigationServiceBackKeyPressedBehavior.HideApp:
+                    break;
+                case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                    e.Handled = true;
+                    Application.Current.Exit();
+                    break;
+                case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                    e.Handled = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+		
+		/// <summary>
         /// Raises the <see cref="BackKeyPressed"/> event with the provided event data.
         /// </summary>
         /// <param name="eventArgs">The event data.</param>
         protected virtual void RaiseBackKeyPressed(NavigationServiceBackKeyPressedEventArgs eventArgs)
         {
             var eventHandler = BackKeyPressed;
-
-            if (eventHandler != null)
-            {
-                eventHandler(this, eventArgs);
-            }
+			eventHandler?.Invoke(this, eventArgs);
         }
 #endif
     }

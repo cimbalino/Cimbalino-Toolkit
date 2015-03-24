@@ -12,15 +12,24 @@
 // </license>
 // ****************************************************************************
 
+
+
 #if WINDOWS_PHONE_APP
+using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using Windows.Devices.Input;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
-#else
+#elif WINDOWS_APP
 using System;
 using Windows.Devices.Input;
 using Windows.Security.ExchangeActiveSyncProvisioning;
+#else
+using Cimbalino.Toolkit.Core.Helpers;
+using System;
+using Windows.Devices.Input;
+using Windows.Security.ExchangeActiveSyncProvisioning;
+using Windows.System;
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -50,7 +59,12 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
+                if (!ApiHelper.SupportsMemoryManager)
+                {
+                    return -1;
+                }
+
                 return (long)MemoryManager.AppMemoryUsage;
 #else
                 throw new NotSupportedException();
@@ -68,7 +82,12 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
+                if (!ApiHelper.SupportsMemoryManager)
+                {
+                    return -1;
+                }
+
                 return (long)MemoryManager.AppMemoryUsageLimit;
 #else
                 throw new NotSupportedException();
@@ -96,7 +115,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
                 return _easClientDeviceInformation.SystemFirmwareVersion;
 #else
                 throw new NotSupportedException();
@@ -112,7 +131,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
                 return _easClientDeviceInformation.SystemHardwareVersion;
 #else
                 throw new NotSupportedException();
@@ -128,7 +147,11 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
                 return _easClientDeviceInformation.SystemManufacturer;
+#else
+                return string.Empty;
+#endif
             }
         }
 
@@ -140,7 +163,11 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
                 return _easClientDeviceInformation.SystemProductName;
+#else
+                return string.Empty;
+#endif
             }
         }
 
