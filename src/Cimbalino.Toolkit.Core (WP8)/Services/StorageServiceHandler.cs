@@ -32,7 +32,7 @@ namespace Cimbalino.Toolkit.Services
 #endif
     public class StorageServiceHandler : IStorageServiceHandler
     {
-        private readonly StorageFolder _storageFolder;
+        protected readonly StorageFolder StorageFolder;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageServiceHandler"/> class.
@@ -40,7 +40,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="storageFolder">The root <see cref="StorageFolder"/> instance.</param>
         public StorageServiceHandler(StorageFolder storageFolder)
         {
-            _storageFolder = storageFolder;
+            StorageFolder = storageFolder;
         }
 
         /// <summary>
@@ -63,10 +63,10 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task CopyFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
         {
-            var file = await _storageFolder.GetFileAsync(sourceFileName);
+            var file = await StorageFolder.GetFileAsync(sourceFileName);
 
             var destinationFolderName = Path.GetDirectoryName(destinationFileName);
-            var destinationFolder = await _storageFolder.GetFolderAsync(destinationFolderName);
+            var destinationFolder = await StorageFolder.GetFolderAsync(destinationFolderName);
 
             destinationFileName = Path.GetFileName(destinationFileName);
 
@@ -95,10 +95,10 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task" /> object representing the asynchronous operation.</returns>
         public async virtual Task MoveFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
         {
-            var file = await _storageFolder.GetFileAsync(sourceFileName);
+            var file = await StorageFolder.GetFileAsync(sourceFileName);
 
             var destinationFolderName = Path.GetDirectoryName(destinationFileName);
-            var destinationFolder = await _storageFolder.GetFolderAsync(destinationFolderName);
+            var destinationFolder = await StorageFolder.GetFolderAsync(destinationFolderName);
 
             destinationFileName = Path.GetFileName(destinationFileName);
 
@@ -114,7 +114,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task CreateDirectoryAsync(string dir)
         {
-            await _storageFolder.CreateFolderAsync(dir);
+            await StorageFolder.CreateFolderAsync(dir);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<Stream> CreateFileAsync(string path)
         {
-            return _storageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.ReplaceExisting);
+            return StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.ReplaceExisting);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task DeleteDirectoryAsync(string dir)
         {
-            var folder = await _storageFolder.GetFolderAsync(dir);
+            var folder = await StorageFolder.GetFolderAsync(dir);
 
             await folder.DeleteAsync();
         }
@@ -146,7 +146,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task DeleteFileAsync(string path)
         {
-            var file = await _storageFolder.GetFileAsync(path);
+            var file = await StorageFolder.GetFileAsync(path);
 
             await file.DeleteAsync();
         }
@@ -160,11 +160,11 @@ namespace Cimbalino.Toolkit.Services
         public async virtual Task<bool> DirectoryExistsAsync(string dir)
         {
 #if WINDOWS_APP
-            return await _storageFolder.TryGetItemAsync(dir) is StorageFolder;
+            return await StorageFolder.TryGetItemAsync(dir) is StorageFolder;
 #else
             try
             {
-                var folder = await _storageFolder.GetFolderAsync(dir);
+                var folder = await StorageFolder.GetFolderAsync(dir);
 
                 return folder != null;
             }
@@ -183,11 +183,11 @@ namespace Cimbalino.Toolkit.Services
         public async virtual Task<bool> FileExistsAsync(string path)
         {
 #if WINDOWS_APP
-            return await _storageFolder.TryGetItemAsync(path) is StorageFile;
+            return await StorageFolder.TryGetItemAsync(path) is StorageFile;
 #else
             try
             {
-                var file = await _storageFolder.GetItemAsync(path);
+                var file = await StorageFolder.GetItemAsync(path);
 
                 return file != null;
             }
@@ -204,7 +204,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task<string[]> GetDirectoryNamesAsync()
         {
-            var folders = await _storageFolder.GetFoldersAsync();
+            var folders = await StorageFolder.GetFoldersAsync();
 
             return folders
                 .Select(x => x.Name)
@@ -219,7 +219,7 @@ namespace Cimbalino.Toolkit.Services
         public async virtual Task<string[]> GetDirectoryNamesAsync(string searchPattern)
         {
             var folderName = Path.GetDirectoryName(searchPattern);
-            var folder = string.IsNullOrEmpty(folderName) ? _storageFolder : await _storageFolder.GetFolderAsync(folderName);
+            var folder = string.IsNullOrEmpty(folderName) ? StorageFolder : await StorageFolder.GetFolderAsync(folderName);
 
             var folders = await folder.GetFoldersAsync();
 
@@ -246,7 +246,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task<string[]> GetFileNamesAsync()
         {
-            var files = await _storageFolder.GetFilesAsync();
+            var files = await StorageFolder.GetFilesAsync();
 
             return files
                 .Select(x => x.Name)
@@ -261,7 +261,7 @@ namespace Cimbalino.Toolkit.Services
         public async virtual Task<string[]> GetFileNamesAsync(string searchPattern)
         {
             var folderName = Path.GetDirectoryName(searchPattern);
-            var folder = string.IsNullOrEmpty(folderName) ? _storageFolder : await _storageFolder.GetFolderAsync(folderName);
+            var folder = string.IsNullOrEmpty(folderName) ? StorageFolder : await StorageFolder.GetFolderAsync(folderName);
 
             var files = await folder.GetFilesAsync();
 
@@ -289,7 +289,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<Stream> OpenFileForReadAsync(string path)
         {
-            return _storageFolder.OpenStreamForReadAsync(path);
+            return StorageFolder.OpenStreamForReadAsync(path);
         }
 
         /// <summary>
@@ -483,7 +483,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task AppendAllText(string path, string contents)
         {
-            using (var fileStream = await _storageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
+            using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {
                 using (var streamWriter = new StreamWriter(fileStream))
                 {
@@ -501,7 +501,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task AppendAllText(string path, string contents, Encoding encoding)
         {
-            using (var fileStream = await _storageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
+            using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {
                 using (var streamWriter = new StreamWriter(fileStream, encoding))
                 {
@@ -518,7 +518,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task AppendAllLines(string path, IEnumerable<string> contents)
         {
-            using (var fileStream = await _storageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
+            using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {
                 using (var streamWriter = new StreamWriter(fileStream))
                 {
@@ -539,7 +539,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task AppendAllLines(string path, IEnumerable<string> contents, Encoding encoding)
         {
-            using (var fileStream = await _storageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
+            using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {
                 using (var streamWriter = new StreamWriter(fileStream, encoding))
                 {
