@@ -24,7 +24,7 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class LegacyApplicationSettingsServiceHandler : IApplicationSettingsServiceHandler
     {
-        private static readonly IsolatedStorageSettings ApplicationSettings = IsolatedStorageSettings.ApplicationSettings;
+        protected static readonly IsolatedStorageSettings ApplicationSettings = IsolatedStorageSettings.ApplicationSettings;
 
         /// <summary>
         /// Determines if the application settings contains the specified key.

@@ -27,7 +27,7 @@ namespace Cimbalino.Toolkit.Services
 #endif
     public class ApplicationSettingsServiceHandler : IApplicationSettingsServiceHandler
     {
-        private readonly ApplicationDataContainer _applicationDataContainer;
+        protected readonly ApplicationDataContainer ApplicationDataContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationSettingsServiceHandler"/> class.
@@ -35,7 +35,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="applicationDataContainer">The root <see cref="ApplicationDataContainer"/> instance.</param>
         public ApplicationSettingsServiceHandler(ApplicationDataContainer applicationDataContainer)
         {
-            _applicationDataContainer = applicationDataContainer;
+            ApplicationDataContainer = applicationDataContainer;
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
         {
-            return Task.FromResult(GetValues(_applicationDataContainer));
+            return Task.FromResult(GetValues(ApplicationDataContainer));
         }
 
         private IEnumerable<KeyValuePair<string, object>> GetValues(ApplicationDataContainer container, string parentKey = null)
@@ -137,7 +137,7 @@ namespace Cimbalino.Toolkit.Services
 
             key = containerNames[containerNames.Length - 1];
 
-            var container = _applicationDataContainer;
+            var container = ApplicationDataContainer;
 
             for (var containerIndex = 0; containerIndex < containerNames.Length - 1; containerIndex++)
             {
