@@ -107,35 +107,38 @@ namespace Cimbalino.Toolkit.Services
         {
             HardwareButtons.BackPressed += (s, e) =>
             {
-                var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
-
-                RaiseBackKeyPressed(eventArgs);
-
-                switch (eventArgs.Behavior)
+                if (EnsureMainFrame())
                 {
-                    case NavigationServiceBackKeyPressedBehavior.GoBack:
-                        if (EnsureMainFrame() && _mainFrame.CanGoBack)
-                        {
-                            _mainFrame.GoBack();
+                    var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
 
+                    RaiseBackKeyPressed(eventArgs);
+
+                    switch (eventArgs.Behavior)
+                    {
+                        case NavigationServiceBackKeyPressedBehavior.GoBack:
+                            if (EnsureMainFrame() && _mainFrame.CanGoBack)
+                            {
+                                _mainFrame.GoBack();
+
+                                e.Handled = true;
+                            }
+                            break;
+
+                        case NavigationServiceBackKeyPressedBehavior.HideApp:
+                            break;
+
+                        case NavigationServiceBackKeyPressedBehavior.ExitApp:
                             e.Handled = true;
-                        }
-                        break;
+                            Application.Current.Exit();
+                            break;
 
-                    case NavigationServiceBackKeyPressedBehavior.HideApp:
-                        break;
+                        case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                            e.Handled = true;
+                            break;
 
-                    case NavigationServiceBackKeyPressedBehavior.ExitApp:
-                        e.Handled = true;
-                        Application.Current.Exit();
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                        e.Handled = true;
-                        break;
-
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
             };
         }
