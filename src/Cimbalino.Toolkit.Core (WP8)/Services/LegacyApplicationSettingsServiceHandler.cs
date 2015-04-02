@@ -24,6 +24,9 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class LegacyApplicationSettingsServiceHandler : IApplicationSettingsServiceHandler
     {
+        /// <summary>
+        /// The instance of <see cref="IsolatedStorageSettings"/> that contains the contents of the application's <see cref="IsolatedStorageFile"/>, scoped at the application level, or creates a new instance of <see cref="IsolatedStorageSettings"/> if one does not exist.
+        /// </summary>
         protected static readonly IsolatedStorageSettings ApplicationSettings = IsolatedStorageSettings.ApplicationSettings;
 
         /// <summary>
