@@ -100,6 +100,17 @@ namespace Cimbalino.Toolkit.Extensions
         }
 
         /// <summary>
+        /// Creates a new enumerable containing the specified element.
+        /// </summary>
+        /// <param name="element">A <typeparamref name="TResult"/> element to include in the sequence.</param>
+        /// <returns>A new enumerable containing the specified element.</returns>
+        /// <typeparam name="TResult">The type of items in the enumerable.</typeparam>
+        public static IEnumerable<TResult> ToEnumerable<TResult>(this TResult element)
+        {
+            yield return element;
+        }
+
+        /// <summary>
         /// Produces a sequence containing the current elements along with the specified element.
         /// </summary>
         /// <param name="source">The enumerable.</param>
@@ -195,6 +206,63 @@ namespace Cimbalino.Toolkit.Extensions
                 yield return buffer
                     .ToArray();
             }
+        }
+
+        /// <summary>
+        /// Produces a sequence containing all possible combinations of the current elements with the specified selection size.
+        /// </summary>
+        /// <param name="source">The enumerable.</param>
+        /// <param name="groupSize">The subset size.</param>
+        /// <param name="allowRepeat">true if the item can appear repeated in the subset; otherwise, false.</param>
+        /// <typeparam name="TResult">The type of items in the enumerable.</typeparam>
+        /// <returns>A sequence containing all possible combinations of the current elements with the specified selection size.</returns>
+        public static IEnumerable<IEnumerable<TResult>> Combinations<TResult>(this IEnumerable<TResult> source, int groupSize, bool allowRepeat)
+        {
+            var itemsArray = source.ToArray();
+
+            return Combinations(itemsArray.Length, groupSize, 0, allowRepeat)
+                .Select(x => x.Select(y => itemsArray[y]));
+        }
+
+        /// <summary>
+        /// Produces a sequence containing all possible permutations of the current elements with the specified selection size.
+        /// </summary>
+        /// <param name="source">The enumerable.</param>
+        /// <param name="groupSize">The subset size.</param>
+        /// <param name="allowRepeat">true if the item can appear repeated in the subset; otherwise, false.</param>
+        /// <typeparam name="TResult">The type of items in the enumerable.</typeparam>
+        /// <returns>A sequence containing all possible permutations of the current elements with the specified selection size.</returns>
+        public static IEnumerable<IEnumerable<TResult>> Permutations<TResult>(this IEnumerable<TResult> source, int groupSize, bool allowRepeat)
+        {
+            var itemsArray = source.ToArray();
+
+            return Permutations(itemsArray.Length, groupSize, allowRepeat ? null : new int[0])
+                .Select(x => x.Select(y => itemsArray[y]));
+        }
+
+        private static IEnumerable<IEnumerable<int>> Combinations(int count, int selectionCount, int startIndex, bool allowRepeat)
+        {
+            if (selectionCount == 0)
+            {
+                return new[] { new int[0] };
+            }
+
+            return Enumerable.Range(startIndex, count - startIndex)
+                .SelectMany(x => Combinations(count, selectionCount - 1, allowRepeat ? x : x + 1, allowRepeat)
+                    .Select(c => c.Concat(x)));
+        }
+
+        private static IEnumerable<IEnumerable<int>> Permutations(int count, int selectionCount, int[] exceptions)
+        {
+            if (selectionCount == 0)
+            {
+                return new[] { new int[0] };
+            }
+
+            return Enumerable.Range(0, count)
+                .Except(exceptions ?? new int[0])
+                .SelectMany(x => Permutations(count, selectionCount - 1, exceptions == null ? null : exceptions.Concat(x).ToArray())
+                    .Select(c => c.Concat(x)));
         }
     }
 }
