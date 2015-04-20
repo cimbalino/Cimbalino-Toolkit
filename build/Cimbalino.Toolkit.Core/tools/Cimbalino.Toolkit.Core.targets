@@ -1,0 +1,9 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="CimbalinoBuildValidateNugetPackageReferences"
+          BeforeTargets="BclBuildValidateNugetPackageReferences">
+    <ItemGroup>
+      <ValidatePackages Include="Cimbalino.Toolkit.Core"/>
+      <ValidatePackages Include="Cimbalino.Toolkit"/>
+    </ItemGroup>
+  </Target>
+</Project>
