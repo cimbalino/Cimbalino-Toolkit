@@ -4,6 +4,7 @@ properties {
   $sourceDir = "$baseDir\src"
   $toolsDir = "$baseDir\tools"
   $binDir = "$baseDir\bin"
+  $docSourceDir = "$baseDir\doc"
   
   $version = "1.2.6"
   
@@ -11,6 +12,7 @@ properties {
   $binariesDir = "$binDir\binaries"
   $zipDir = "$binDir\zip"
   $nupkgDir = "$binDir\nupkg"
+  $docDir = "$binDir\doc"
   
   $nuget = "$toolsDir\nuget\nuget.exe"
   $7zip = "$toolsDir\7zip\7za.exe"
@@ -182,6 +184,13 @@ task PublishNuget -depends PackNuGet -description "Publish the NuGet packages to
     Exec { .$nuget push $nupkg } "Error publishing $nupkg"
   }
 }
+
+task Document -depends Build -description "Build the documentation" {
+  New-Item -Path $docDir -ItemType Directory | Out-Null
+  
+  Exec { msbuild "/t:Clean;Build" /p:Configuration=Release /p:OutputPath=$docDir /m "$docSourceDir\doc.shfbproj" } "Error building documentation"
+}
+
 
 task ? -description "Show the help screen" {
   WriteDocumentation
