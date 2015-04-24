@@ -39,6 +39,7 @@ See the [LICENSE.txt](https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/
 ## More information
 
 * [Homepage](http://cimbalino.org)
+* [Documentation](http://cimbalino.org/help)
 * [@CimbalinoWP (Twitter)](http://twitter.com/CimbalinoWP)
 
 ## Acknowledgments
