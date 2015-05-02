@@ -106,7 +106,9 @@ namespace Cimbalino.Toolkit.Services
         public NavigationService()
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            {
                 return;
+            }
             HardwareButtons.BackPressed += (s, e) =>
             {
                 var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
