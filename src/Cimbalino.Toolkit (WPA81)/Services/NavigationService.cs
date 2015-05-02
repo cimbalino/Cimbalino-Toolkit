@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
+using Windows.ApplicationModel;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -105,7 +106,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public NavigationService()
         {
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            if (DesignMode.DesignModeEnabled)
             {
                 return;
             }
