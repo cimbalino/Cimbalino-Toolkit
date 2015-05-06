@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // <copyright file="NavigationService.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
@@ -110,6 +110,7 @@ namespace Cimbalino.Toolkit.Services
             {
                 return;
             }
+
             HardwareButtons.BackPressed += (s, e) =>
             {
                 var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
