@@ -6,7 +6,7 @@ properties {
   $binDir = "$baseDir\bin"
   $docSourceDir = "$baseDir\doc"
   
-  $version = "1.2.6"
+  $version = "1.2.7"
   
   $tempDir = "$binDir\temp"
   $binariesDir = "$binDir\binaries"
