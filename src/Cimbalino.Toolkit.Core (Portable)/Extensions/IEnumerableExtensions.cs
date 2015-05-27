@@ -78,6 +78,28 @@ namespace Cimbalino.Toolkit.Extensions
         }
 
         /// <summary>
+        /// Creates an <see cref="Queue{TResult}"/> from this enumerable.
+        /// </summary>
+        /// <param name="source">The enumerable.</param>
+        /// <returns>An <see cref="Queue{TResult}"/> that contains the elements from the input sequence.</returns>
+        /// <typeparam name="TResult">The type of items in the enumerable.</typeparam>
+        public static Queue<TResult> ToQueue<TResult>(this IEnumerable<TResult> source)
+        {
+            return new Queue<TResult>(source);
+        }
+
+        /// <summary>
+        /// Creates an <see cref="Stack{TResult}"/> from this enumerable.
+        /// </summary>
+        /// <param name="source">The enumerable.</param>
+        /// <returns>An <see cref="Stack{TResult}"/> that contains the elements from the input sequence.</returns>
+        /// <typeparam name="TResult">The type of items in the enumerable.</typeparam>
+        public static Stack<TResult> ToStack<TResult>(this IEnumerable<TResult> source)
+        {
+            return new Stack<TResult>(source);
+        }
+
+        /// <summary>
         /// Creates an <see cref="ObservableCollection{TResult}"/> from this enumerable.
         /// </summary>
         /// <param name="source">The enumerable.</param>
