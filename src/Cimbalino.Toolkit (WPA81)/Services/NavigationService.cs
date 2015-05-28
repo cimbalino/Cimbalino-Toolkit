@@ -27,6 +27,7 @@ using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
 using Windows.Phone.UI.Input;
+using Windows.UI.Core;
 using Cimbalino.Toolkit.Core.Helpers;
 #else
 using System;
@@ -118,8 +119,12 @@ namespace Cimbalino.Toolkit.Services
             {
                 HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             }
-        }
+
+#if WINDOWS_UAP
+            SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 #endif
+        }
 
         /// <summary>
         /// Navigates to the content specified by the uniform resource identifier (URI).
@@ -245,7 +250,6 @@ namespace Cimbalino.Toolkit.Services
             return false;
         }
 
-        private bool backPressedHandlerSet;
 		/// <summary>
         /// Ensure that a <see cref="Frame"/> instance has been found.
         /// </summary>
@@ -282,9 +286,22 @@ namespace Cimbalino.Toolkit.Services
             eventHandler?.Invoke(this, eventArgs);            
         }
 
+#if WINDOWS_UAP
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            e.Handled = HandleBackKeyPress();
+        }
+#endif
+
 #if WINDOWS_PHONE_APP || WINDOWS_UAP
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
+            e.Handled = HandleBackKeyPress();
+        }
+
+        private bool HandleBackKeyPress()
+        {
+            var handled = false;
             var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
             RaiseBackKeyPressed(eventArgs);
             switch (eventArgs.Behavior)
@@ -293,21 +310,23 @@ namespace Cimbalino.Toolkit.Services
                     if (_mainFrame.CanGoBack)
                     {
                         _mainFrame.GoBack();
-                        e.Handled = true;
+                        handled = true;
                     }
                     break;
                 case NavigationServiceBackKeyPressedBehavior.HideApp:
                     break;
                 case NavigationServiceBackKeyPressedBehavior.ExitApp:
-                    e.Handled = true;
+                    handled = true;
                     Application.Current.Exit();
                     break;
                 case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                    e.Handled = true;
+                    handled = true;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            return handled;
         }
 		
 		/// <summary>
