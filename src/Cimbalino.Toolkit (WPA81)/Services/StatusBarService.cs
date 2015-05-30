@@ -15,6 +15,8 @@
 #if WINDOWS_APP
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
+
 #else
 using Cimbalino.Toolkit.Core.Helpers;
 using System;
@@ -37,7 +39,7 @@ namespace Cimbalino.Toolkit.Services
         public virtual Task ShowAsync(string text)
         {
 #if WINDOWS_APP
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
 #else
             return ShowAsync(text, 0, false);
 #endif
@@ -52,7 +54,7 @@ namespace Cimbalino.Toolkit.Services
         public virtual Task ShowAsync(string text, bool isIndeterminate)
         {
 #if WINDOWS_APP
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
 #else
             return ShowAsync(text, 0, isIndeterminate);
 #endif
@@ -67,7 +69,7 @@ namespace Cimbalino.Toolkit.Services
         public virtual Task ShowAsync(string text, double value)
         {
 #if WINDOWS_APP
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
 #else
             if (ApiHelper.SupportsStatusBar)
             {
@@ -85,7 +87,7 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_APP
         public virtual Task HideAsync()
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
         }
 #else
         public virtual Task HideAsync()

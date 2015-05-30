@@ -13,10 +13,13 @@
 // ****************************************************************************
 
 #if WINDOWS_PHONE
+using Cimbalino.Toolkit.Helpers;
 using System;
 using System.Globalization;
 using System.Windows.Data;
+
 #else
+using Cimbalino.Toolkit.Helpers;
 using System;
 using System.Globalization;
 using Windows.UI.Xaml.Data;
@@ -66,7 +69,7 @@ namespace Cimbalino.Toolkit.Converters
         /// </returns>
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<object>();
         }
     }
 }

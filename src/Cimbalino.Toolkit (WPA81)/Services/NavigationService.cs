@@ -20,6 +20,8 @@ using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Cimbalino.Toolkit.Core.Helpers;
+using Cimbalino.Toolkit.Helpers;
+
 #elif WINDOWS_UAP
 using System;
 using Windows.UI.Xaml;
@@ -29,12 +31,16 @@ using Cimbalino.Toolkit.Extensions;
 using Windows.Phone.UI.Input;
 using Windows.UI.Core;
 using Cimbalino.Toolkit.Core.Helpers;
+using Cimbalino.Toolkit.Helpers;
+
 #else
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -61,7 +67,7 @@ namespace Cimbalino.Toolkit.Services
         {
             add
             {
-                throw new NotSupportedException();
+                ExceptionHelper.ThrowNotSupported();
             }
             remove
             {
@@ -125,6 +131,7 @@ namespace Cimbalino.Toolkit.Services
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 #endif
         }
+#endif
 
         /// <summary>
         /// Navigates to the content specified by the uniform resource identifier (URI).
@@ -143,7 +150,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(Uri source)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<bool>();
         }
 
         /// <summary>

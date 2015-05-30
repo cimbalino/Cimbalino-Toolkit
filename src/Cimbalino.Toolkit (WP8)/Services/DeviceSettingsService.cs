@@ -19,6 +19,8 @@ using Windows.System;
 #else
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -153,7 +155,7 @@ namespace Cimbalino.Toolkit.Services
 #else
         private Task LaunchUrlAsync(string url)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
         }
 #endif
     }

@@ -25,6 +25,8 @@ using System;
 using Windows.Phone.Devices.Notification;
 #else
 using System;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -65,7 +67,7 @@ namespace Cimbalino.Toolkit.Services
                 VibrationDevice.GetDefault().Vibrate(duration);
             }
 #else
-            throw new NotSupportedException();
+            ExceptionHelper.ThrowNotSupported();
 #endif
         }
 
@@ -82,7 +84,7 @@ namespace Cimbalino.Toolkit.Services
                 VibrationDevice.GetDefault().Cancel();
             }
 #else
-            throw new NotSupportedException();
+            ExceptionHelper.ThrowNotSupported();
 #endif
         }
     }

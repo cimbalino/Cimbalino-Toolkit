@@ -20,16 +20,22 @@ using System;
 using Windows.Devices.Input;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
+using Cimbalino.Toolkit.Helpers;
+
 #elif WINDOWS_APP
 using System;
 using Windows.Devices.Input;
 using Windows.Security.ExchangeActiveSyncProvisioning;
+using Cimbalino.Toolkit.Helpers;
+
 #else
 using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using Windows.Devices.Input;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -67,7 +73,7 @@ namespace Cimbalino.Toolkit.Services
 
                 return (long)MemoryManager.AppMemoryUsage;
 #else
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<long>();
 #endif
             }
         }
@@ -90,7 +96,7 @@ namespace Cimbalino.Toolkit.Services
 
                 return (long)MemoryManager.AppMemoryUsageLimit;
 #else
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<long>();
 #endif
             }
         }
@@ -103,7 +109,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<long>();
             }
         }
 
@@ -118,7 +124,7 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_PHONE_APP || WINDOWS_UAP
                 return _easClientDeviceInformation.SystemFirmwareVersion;
 #else
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<string>();
 #endif
             }
         }
@@ -134,7 +140,7 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_PHONE_APP || WINDOWS_UAP
                 return _easClientDeviceInformation.SystemHardwareVersion;
 #else
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<string>();
 #endif
             }
         }
@@ -179,7 +185,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<long>();
             }
         }
 
@@ -205,7 +211,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<bool>();
             }
         }
 
@@ -233,7 +239,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<DeviceStatusServicePowerSource>();
             }
         }
     }

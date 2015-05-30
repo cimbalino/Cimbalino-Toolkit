@@ -20,6 +20,8 @@ using Windows.Services.Maps;
 using Windows.Services.Maps;
 #else
 using System;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -39,7 +41,7 @@ namespace Cimbalino.Toolkit.Services
 #elif WINDOWS_PHONE_APP || WINDOWS_UAP
             MapManager.ShowDownloadedMapsUI();
 #else
-            throw new NotSupportedException();
+            ExceptionHelper.ThrowNotSupported();
 #endif
         }
 
@@ -53,7 +55,7 @@ namespace Cimbalino.Toolkit.Services
 #elif WINDOWS_PHONE_APP || WINDOWS_UAP
             MapManager.ShowMapsUpdateUI();
 #else
-            throw new NotSupportedException();
+            ExceptionHelper.ThrowNotSupported();
 #endif
         }
     }

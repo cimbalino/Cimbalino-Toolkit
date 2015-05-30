@@ -60,7 +60,7 @@ namespace Cimbalino.Toolkit.Helpers
 
                 return _current;
 #else
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<ApplicationManifest>();
 #endif
             }
         }

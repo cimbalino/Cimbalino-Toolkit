@@ -139,6 +139,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifestTokenNode.cs">
       <Link>Helpers\ApplicationManifestTokenNode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\DebugOptions.cs">
+      <Link>Helpers\DebugOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ExceptionHelper.cs">
+      <Link>Helpers\ExceptionHelper.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ObservableBase.cs">
       <Link>Helpers\ObservableBase.cs</Link>
     </Compile>

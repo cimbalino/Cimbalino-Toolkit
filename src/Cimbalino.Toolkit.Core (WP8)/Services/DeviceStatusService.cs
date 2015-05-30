@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Info;
 
 namespace Cimbalino.Toolkit.Services
@@ -138,7 +139,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
+                return ExceptionHelper.ThrowNotSupported<bool>("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
             }
         }
 
@@ -150,7 +151,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
+                return ExceptionHelper.ThrowNotSupported<bool>("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
             }
         }
 
