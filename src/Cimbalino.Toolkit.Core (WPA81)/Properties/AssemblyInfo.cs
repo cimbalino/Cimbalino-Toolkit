@@ -14,6 +14,7 @@
 
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Cimbalino.Toolkit.Core")]
@@ -30,3 +31,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.2.6.0")]
 
 [assembly: ComVisible(false)]
+[assembly: InternalsVisibleTo("Cimbalino.Toolkit")]

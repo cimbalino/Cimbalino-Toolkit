@@ -2,9 +2,9 @@
 
 namespace Cimbalino.Toolkit.Helpers
 {
-    public class ExceptionHelper
+    internal class ExceptionHelper
     {
-        public static void ThrowNotSupported(string message = "")
+        internal static void ThrowNotSupported(string message = "")
         {
             if (DebugOptions.ThrowNotSupportedExceptions)
             {
@@ -12,7 +12,7 @@ namespace Cimbalino.Toolkit.Helpers
             }
         }
 
-        public static T ThrowNotSupported<T>(string message = "")
+        internal static T ThrowNotSupported<T>(string message = "")
         {
             if (DebugOptions.ThrowNotSupportedExceptions)
             {
