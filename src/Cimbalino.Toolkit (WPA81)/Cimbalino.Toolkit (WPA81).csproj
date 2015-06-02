@@ -89,6 +89,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit %28Win10%29\Services\TitleBarService.cs">
+      <Link>Services\TitleBarService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AfterAutoFocusEventArgs.cs">
       <Link>Behaviors\AfterAutoFocusEventArgs.cs</Link>
     </Compile>

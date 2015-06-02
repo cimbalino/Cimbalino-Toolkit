@@ -211,6 +211,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IStatusBarService.cs">
       <Link>Services\IStatusBarService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ITitleBarService.cs">
+      <Link>Services\ITitleBarService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
     </Compile>
@@ -228,6 +231,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\RuntimeInformationServiceProfile.cs">
       <Link>Services\RuntimeInformationServiceProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\TitleBarIsVisibleChangedArgs.cs">
+      <Link>Services\TitleBarIsVisibleChangedArgs.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs">
       <Link>Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs</Link>
