@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
-    /// Represents a service capable of launching a Settings dialog that allows the user to change the device's settings.
+    /// Represents a service capable of launching a Settings dialog that allows the user to change the device's settings dialog.
     /// </summary>
     public interface IDeviceSettingsService
     {
@@ -98,5 +98,59 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowWorkplaceSettingsAsync();
+
+        /// <summary>
+        /// Shows the storage sense settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowStorageSenseSettingsAsync();
+
+        /// <summary>
+        /// Shows the maps settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowMapsSettingsAsync();
+
+        /// <summary>
+        /// Shows the data sense settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowDataSenseSettingsAsync();
+
+        /// <summary>
+        /// Shows the NFC transaction settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowNfcTransactionSettingsAsync();
+
+        /// <summary>
+        /// Shows the proxy settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowProxySettingsAsync();
+
+        /// <summary>
+        /// Shows the region and language settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowRegionAndLanguageSettingsAsync();
+
+        /// <summary>
+        /// Shows the webcam settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowWebcamSettingsAsync();
+
+        /// <summary>
+        /// Shows the microphone settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowMicrophoneSettingsAsync();
+
+        /// <summary>
+        /// Shows the custom devices settings dialog.
+        /// </summary>
+        /// <returns></returns>
+        Task ShowCustomDevicesSettingsAsync();
     }
 }
