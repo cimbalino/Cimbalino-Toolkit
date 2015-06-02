@@ -281,6 +281,8 @@ namespace Cimbalino.Toolkit.Services
             CurrentParameter = e.Parameter;
 
             RaiseNavigated(EventArgs.Empty);
+
+            ShowHideBackButtonVisibility();
         }
 
         /// <summary>
@@ -297,13 +299,28 @@ namespace Cimbalino.Toolkit.Services
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
+            ShowHideBackButtonVisibility();
         }
+
+        public static bool HandleBackButtonVisibility { get; set; } = true;
 #endif
+
+        private void ShowHideBackButtonVisibility()
+        {
+#if WINDOWS_UAP
+            if (HandleBackButtonVisibility)
+            {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = _mainFrame?.CanGoBack ?? false ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+            }
+#endif
+        }
 
 #if WINDOWS_PHONE_APP || WINDOWS_UAP
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
+
+            ShowHideBackButtonVisibility();
         }
 
         private bool HandleBackKeyPress()
