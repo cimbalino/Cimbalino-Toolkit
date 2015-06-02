@@ -102,55 +102,55 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Shows the storage sense settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowStorageSenseSettingsAsync();
 
         /// <summary>
         /// Shows the maps settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowMapsSettingsAsync();
 
         /// <summary>
         /// Shows the data sense settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowDataSenseSettingsAsync();
 
         /// <summary>
         /// Shows the NFC transaction settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowNfcTransactionSettingsAsync();
 
         /// <summary>
         /// Shows the proxy settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowProxySettingsAsync();
 
         /// <summary>
         /// Shows the region and language settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowRegionAndLanguageSettingsAsync();
 
         /// <summary>
         /// Shows the webcam settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowWebcamSettingsAsync();
 
         /// <summary>
         /// Shows the microphone settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowMicrophoneSettingsAsync();
 
         /// <summary>
         /// Shows the custom devices settings dialog.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowCustomDevicesSettingsAsync();
     }
 }

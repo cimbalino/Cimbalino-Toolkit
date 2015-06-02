@@ -202,6 +202,10 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the storage sense settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowStorageSenseSettingsAsync()
         {
 #if WINDOWS_UAP
@@ -211,6 +215,10 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the maps settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMapsSettingsAsync()
         {
 #if WINDOWS_UAP
@@ -220,6 +228,10 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the data sense settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowDataSenseSettingsAsync()
         {
 #if WINDOWS_UAP
@@ -229,6 +241,10 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the NFC transaction settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowNfcTransactionSettingsAsync()
         {
             if (ApiHelper.SupportsBackButton)
@@ -243,6 +259,10 @@ namespace Cimbalino.Toolkit.Services
             return ExceptionHelper.ThrowNotSupported<Task>();
         }
 
+        /// <summary>
+        /// Shows the proxy settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowProxySettingsAsync()
         {
             if (!ApiHelper.SupportsBackButton)
@@ -257,6 +277,10 @@ namespace Cimbalino.Toolkit.Services
             return ExceptionHelper.ThrowNotSupported<Task>();
         }
 
+        /// <summary>
+        /// Shows the region and language settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowRegionAndLanguageSettingsAsync()
         {
 #if WINDOWS_UAP
@@ -266,6 +290,10 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the webcam settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowWebcamSettingsAsync()
         {
 #if WINDOWS_UAP
@@ -275,6 +303,10 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the microphone settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMicrophoneSettingsAsync()
         {
 #if WINDOWS_UAP
@@ -284,6 +316,10 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the custom devices settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowCustomDevicesSettingsAsync()
         {
 #if WINDOWS_UAP
