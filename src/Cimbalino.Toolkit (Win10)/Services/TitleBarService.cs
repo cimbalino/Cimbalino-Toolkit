@@ -27,7 +27,7 @@ namespace Cimbalino.Toolkit.Services
         }
 #endif
 
-        public void SetExtendViewIntoTitleBar(bool extend)
+        public virtual void SetExtendViewIntoTitleBar(bool extend)
         {
 #if WINDOWS_UAP
             var titleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -62,7 +62,7 @@ namespace Cimbalino.Toolkit.Services
         }
 #endif
 
-        public double Height
+        public virtual double Height
         {
             get
             {
