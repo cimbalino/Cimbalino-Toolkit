@@ -251,6 +251,9 @@ namespace Cimbalino.Toolkit.Services
             {
                 _mainFrame.BackStack.RemoveAt(_mainFrame.BackStackDepth - 1);
 
+                // This is for Windows 10 apps
+                ShowHideBackButtonVisibility();
+
                 return true;
             }
 
