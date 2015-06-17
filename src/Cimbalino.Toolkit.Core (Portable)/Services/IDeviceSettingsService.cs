@@ -152,5 +152,23 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowCustomDevicesSettingsAsync();
+
+        /// <summary>
+        /// Shows the Contact settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowContactsSettingsAsync();
+
+        /// <summary>
+        /// Shows the calendar settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowCalendarSettingsAsync();
+
+        /// <summary>
+        /// Shows the messaging settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowMessagingSettingsAsync();
     }
 }

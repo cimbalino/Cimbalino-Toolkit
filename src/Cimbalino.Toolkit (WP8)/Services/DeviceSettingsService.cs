@@ -329,6 +329,45 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Shows the contacts settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public Task ShowContactsSettingsAsync()
+        {
+#if WINDOWS_UAP
+            return LaunchUrlAsync("ms-settings://privacy/contacts");
+#else
+            return ExceptionHelper.ThrowNotSupported<Task>();
+#endif
+        }
+
+        /// <summary>
+        /// Shows the calendar settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public Task ShowCalendarSettingsAsync()
+        {
+#if WINDOWS_UAP
+            return LaunchUrlAsync("ms-settings://privacy/calendar");
+#else
+            return ExceptionHelper.ThrowNotSupported<Task>();
+#endif
+        }
+
+        /// <summary>
+        /// Shows the messaging settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public Task ShowMessagingSettingsAsync()
+        {
+#if WINDOWS_UAP
+            return LaunchUrlAsync("ms-settings://privacy/messaging");
+#else
+            return ExceptionHelper.ThrowNotSupported<Task>();
+#endif
+        }
+
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UAP
         private async Task LaunchUrlAsync(string url)
         {
