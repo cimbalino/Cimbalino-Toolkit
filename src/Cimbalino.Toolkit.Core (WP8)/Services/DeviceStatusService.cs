@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using Windows.Phone.Devices.Power;
 using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Info;
 
@@ -23,6 +24,13 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class DeviceStatusService : IDeviceStatusService
     {
+        public DeviceStatusService()
+        {
+            Battery.GetDefault().RemainingChargePercentChanged += OnRemainingChargePercentChanged;
+        }
+
+        public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
+
         /// <summary>
         /// Gets the memory usage of the current application in bytes.
         /// </summary>
@@ -175,6 +183,23 @@ namespace Cimbalino.Toolkit.Services
                         throw new ArgumentOutOfRangeException();
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets the a value indicating the percent of the battery remaining on the device
+        /// </summary>
+        /// <value>null if the platform can't report this, otherwise, the battery percentage</value>
+        public int? RemainingChargePercent
+        {
+            get { return Battery.GetDefault().RemainingChargePercent; }
+        }
+
+        private void OnRemainingChargePercentChanged(object sender, object o)
+        {
+            var eventHandler = BatteryStatusChanged;
+            var args = new BatteryStatusChangedEventArgs(RemainingChargePercent);
+
+            eventHandler?.Invoke(this, args);
         }
     }
 }

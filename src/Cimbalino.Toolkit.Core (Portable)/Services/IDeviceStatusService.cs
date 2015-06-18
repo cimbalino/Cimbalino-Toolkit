@@ -12,6 +12,8 @@
 // </license>
 // ****************************************************************************
 
+using System;
+
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
@@ -19,6 +21,8 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public interface IDeviceStatusService
     {
+        event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
+         
         /// <summary>
         /// Gets the memory usage of the current application in bytes.
         /// </summary>
@@ -90,5 +94,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <value>true if the device is currently running on battery power or is plugged in to an external power supply; otherwise, false.</value>
         DeviceStatusServicePowerSource PowerSource { get; }
+
+        /// <summary>
+        /// Gets the a value indicating the percent of the battery remaining on the device
+        /// </summary>
+        /// <value>null if the platform can't report this, otherwise, the battery percentage</value>
+        int? RemainingChargePercent { get; }
     }
 }

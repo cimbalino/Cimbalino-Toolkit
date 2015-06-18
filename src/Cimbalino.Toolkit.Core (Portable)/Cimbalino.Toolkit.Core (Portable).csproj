@@ -91,6 +91,7 @@
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
+    <Compile Include="Services\BatteryStatusChangedEventArgs.cs" />
     <Compile Include="Services\ITitleBarService.cs" />
     <Compile Include="Services\IWindowsPhoneStoreService.cs" />
     <Compile Include="Services\IWindowsStoreService.cs" />

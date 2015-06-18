@@ -262,6 +262,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\BatteryStatusChangedEventArgs.cs">
+      <Link>Services\BatteryStatusChangedEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\DeviceStatusServicePowerSource.cs">
       <Link>Services\DeviceStatusServicePowerSource.cs</Link>
     </Compile>

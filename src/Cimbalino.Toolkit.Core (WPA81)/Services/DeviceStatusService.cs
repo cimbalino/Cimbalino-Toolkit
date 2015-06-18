@@ -12,12 +12,11 @@
 // </license>
 // ****************************************************************************
 
-
-
 #if WINDOWS_PHONE_APP
 using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using Windows.Devices.Input;
+using Windows.Phone.Devices.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
 using Cimbalino.Toolkit.Helpers;
@@ -32,6 +31,7 @@ using Cimbalino.Toolkit.Helpers;
 using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using Windows.Devices.Input;
+using Windows.Devices.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
 using Cimbalino.Toolkit.Helpers;
@@ -55,7 +55,30 @@ namespace Cimbalino.Toolkit.Services
         {
             _easClientDeviceInformation = new EasClientDeviceInformation();
             _keyboardCapabilities = new KeyboardCapabilities();
+
+#if WINDOWS_PHONE_APP
+            Battery.GetDefault().RemainingChargePercentChanged += OnRemainingChargePercentChanged;
+#elif WINDOWS_UAP
+            Battery.AggregateBattery.ReportUpdated += OnRemainingChargePercentChanged;
+#endif
         }
+
+#if WINDOWS_APP
+        public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged
+        {
+            add
+            {
+                ExceptionHelper.ThrowNotSupported();
+            }
+
+            remove
+            {
+                
+            }
+        }
+#else
+        public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
+#endif
 
         /// <summary>
         /// Gets the memory usage of the current application in bytes.
@@ -242,5 +265,41 @@ namespace Cimbalino.Toolkit.Services
                 return ExceptionHelper.ThrowNotSupported<DeviceStatusServicePowerSource>();
             }
         }
+
+        /// <summary>
+        /// Gets the a value indicating the percent of the battery remaining on the device
+        /// </summary>
+        /// <value>null if the platform can't report this, otherwise, the battery percentage</value>
+        public int? RemainingChargePercent
+        {
+            get
+            {
+#if WINDOWS_PHONE_APP
+                return Battery.GetDefault().RemainingChargePercent;
+#elif WINDOWS_UAP
+                var report = Battery.AggregateBattery.GetReport();
+                if (report.FullChargeCapacityInMilliwattHours.HasValue
+                    && report.RemainingCapacityInMilliwattHours.HasValue)
+                {
+                    return (report.RemainingCapacityInMilliwattHours.Value/
+                            report.FullChargeCapacityInMilliwattHours.Value)*100;
+                }
+
+                return null;
+#else
+                return ExceptionHelper.ThrowNotSupported<int?>();
+#endif
+            }
+        }
+
+#if WINDOWS_PHONE_APP || WINDOWS_UAP
+        private void OnRemainingChargePercentChanged(object sender, object o)
+        {
+            var eventHandler = BatteryStatusChanged;
+            var args = new BatteryStatusChangedEventArgs(RemainingChargePercent);
+
+            eventHandler?.Invoke(this, args);
+        }
+#endif
     }
 }
