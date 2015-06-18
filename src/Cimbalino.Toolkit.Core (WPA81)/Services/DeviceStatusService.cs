@@ -17,6 +17,7 @@ using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using Windows.Devices.Input;
 using Windows.Phone.Devices.Power;
+using Windows.Phone.System.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
 using Cimbalino.Toolkit.Helpers;
@@ -34,6 +35,7 @@ using Windows.Devices.Input;
 using Windows.Devices.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
+using Windows.System.Power;
 using Cimbalino.Toolkit.Helpers;
 
 #endif
@@ -294,6 +296,26 @@ namespace Cimbalino.Toolkit.Services
                 return null;
 #else
                 return ExceptionHelper.ThrowNotSupported<int?>();
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Gets the value indicating if the device is in power saver mode.
+        /// </summary>
+        /// <value>
+        /// Null if the platform can't report this, otherwise [true] if in power saver mode
+        /// </value>
+        public bool? IsInPowerSaverMode
+        {
+            get
+            {
+#if WINDOWS_PHONE_APP
+                return PowerManager.PowerSavingMode == PowerSavingMode.On;
+#elif WINDOWS_UAP
+                return PowerManager.EnergySaverStatus == EnergySaverStatus.On;
+#else
+                return null;
 #endif
             }
         }

@@ -100,5 +100,13 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <value>null if the platform can't report this, otherwise, the battery percentage</value>
         int? RemainingChargePercent { get; }
+
+        /// <summary>
+        /// Gets the value indicating if the device is in power saver mode.
+        /// </summary>
+        /// <value>
+        /// Null if the platform can't report this, otherwise [true] if in power saver mode
+        /// </value>
+        bool? IsInPowerSaverMode { get; }
     }
 }

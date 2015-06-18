@@ -14,6 +14,7 @@
 
 using System;
 using Windows.Phone.Devices.Power;
+using Windows.Phone.System.Power;
 using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Info;
 
@@ -198,6 +199,17 @@ namespace Cimbalino.Toolkit.Services
         public int? RemainingChargePercent
         {
             get { return Battery.GetDefault().RemainingChargePercent; }
+        }
+
+        /// <summary>
+        /// Gets the value indicating if the device is in power saver mode.
+        /// </summary>
+        /// <value>
+        /// Null if the platform can't report this, otherwise [true] if in power saver mode
+        /// </value>
+        public bool? IsInPowerSaverMode
+        {
+            get { return PowerManager.PowerSavingMode == PowerSavingMode.On; }
         }
 
         private void OnRemainingChargePercentChanged(object sender, object o)
