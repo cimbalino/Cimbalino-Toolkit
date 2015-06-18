@@ -30,13 +30,14 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public DeviceStatusService()
         {
-            Battery.GetDefault().RemainingChargePercentChanged += OnRemainingChargePercentChanged;
+            Battery.GetDefault().RemainingChargePercentChanged += OnPowerChanged;
+            PowerManager.PowerSavingModeChanged += OnPowerChanged;
         }
 
         /// <summary>
-        /// Occurs when the battery status has changed
+        /// Occurs when the power status has changed
         /// </summary>
-        public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
+        public event EventHandler<PowerStatusChangedEventArgs> PowerStatusChanged;
 
         /// <summary>
         /// Gets the memory usage of the current application in bytes.
@@ -212,10 +213,10 @@ namespace Cimbalino.Toolkit.Services
             get { return PowerManager.PowerSavingMode == PowerSavingMode.On; }
         }
 
-        private void OnRemainingChargePercentChanged(object sender, object o)
+        private void OnPowerChanged(object sender, object o)
         {
             var eventHandler = BatteryStatusChanged;
-            var args = new BatteryStatusChangedEventArgs(RemainingChargePercent);
+            var args = new BatteryStatusChangedEventArgs(RemainingChargePercent, IsInPowerSaverMode);
 
             eventHandler?.Invoke(this, args);
         }

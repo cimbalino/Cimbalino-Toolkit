@@ -174,9 +174,6 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\BatteryStatusChangedEventArgs.cs">
-      <Link>Services\BatteryStatusChangedEventArgs.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\DeviceStatusServicePowerSource.cs">
       <Link>Services\DeviceStatusServicePowerSource.cs</Link>
     </Compile>
@@ -227,6 +224,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedEventArgs.cs">
       <Link>Services\NavigationServiceBackKeyPressedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\PowerStatusChangedEventArgs.cs">
+      <Link>Services\PowerStatusChangedEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\RuntimeInformationServiceProfile.cs">
       <Link>Services\RuntimeInformationServiceProfile.cs</Link>

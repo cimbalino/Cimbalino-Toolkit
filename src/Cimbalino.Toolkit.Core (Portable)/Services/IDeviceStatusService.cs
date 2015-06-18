@@ -21,7 +21,10 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public interface IDeviceStatusService
     {
-        event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
+        /// <summary>
+        /// Occurs when the power status has changed
+        /// </summary>
+        event EventHandler<PowerStatusChangedEventArgs> PowerStatusChanged;
          
         /// <summary>
         /// Gets the memory usage of the current application in bytes.

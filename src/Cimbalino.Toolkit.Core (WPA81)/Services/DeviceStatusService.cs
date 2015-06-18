@@ -59,17 +59,19 @@ namespace Cimbalino.Toolkit.Services
             _keyboardCapabilities = new KeyboardCapabilities();
 
 #if WINDOWS_PHONE_APP
-            Battery.GetDefault().RemainingChargePercentChanged += OnRemainingChargePercentChanged;
+            Battery.GetDefault().RemainingChargePercentChanged += OnPowerChanged;
+            PowerManager.PowerSavingModeChanged += OnPowerChanged;
 #elif WINDOWS_UAP
-            Battery.AggregateBattery.ReportUpdated += OnRemainingChargePercentChanged;
+            Battery.AggregateBattery.ReportUpdated += OnPowerChanged;
+            PowerManager.EnergySaverStatusChanged += OnPowerChanged;
 #endif
         }
 
 #if WINDOWS_APP
         /// <summary>
-        /// Occurs when the battery status has changed
+        /// Occurs when the power status has changed
         /// </summary>
-        public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged
+        public event EventHandler<PowerStatusChangedEventArgs> PowerStatusChanged
         {
             add
             {
@@ -83,9 +85,9 @@ namespace Cimbalino.Toolkit.Services
         }
 #else
         /// <summary>
-        /// Occurs when the battery status has changed
+        /// Occurs when the power status has changed
         /// </summary>
-        public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
+        public event EventHandler<PowerStatusChangedEventArgs> PowerStatusChanged;
 #endif
 
         /// <summary>
@@ -321,10 +323,10 @@ namespace Cimbalino.Toolkit.Services
         }
 
 #if WINDOWS_PHONE_APP || WINDOWS_UAP
-        private void OnRemainingChargePercentChanged(object sender, object o)
+        private void OnPowerChanged(object sender, object o)
         {
             var eventHandler = BatteryStatusChanged;
-            var args = new BatteryStatusChangedEventArgs(RemainingChargePercent);
+            var args = new BatteryStatusChangedEventArgs(RemainingChargePercent, IsInPowerSaverMode);
 
             eventHandler?.Invoke(this, args);
         }
