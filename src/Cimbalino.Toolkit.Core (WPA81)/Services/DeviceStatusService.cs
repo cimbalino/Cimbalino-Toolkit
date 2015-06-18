@@ -272,7 +272,22 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
+#if WINDOWS_UAP
+                
+                var status = PowerManager.BatteryStatus;
+                switch (status)
+                {
+                    case BatteryStatus.Idle:
+                    case BatteryStatus.Discharging:
+                        return DeviceStatusServicePowerSource.Battery;
+                    case BatteryStatus.Charging:
+                        return DeviceStatusServicePowerSource.External;
+                    default:
+                        return ExceptionHelper.ThrowNotSupported<DeviceStatusServicePowerSource>();
+                }
+#else
                 return ExceptionHelper.ThrowNotSupported<DeviceStatusServicePowerSource>();
+#endif
             }
         }
 
