@@ -280,7 +280,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the a value indicating the percent of the battery remaining on the device
         /// </summary>
         /// <value>null if the platform can't report this, otherwise, the battery percentage</value>
-        public int? RemainingChargePercent
+        public virtual int? RemainingChargePercent
         {
             get
             {
@@ -308,7 +308,7 @@ namespace Cimbalino.Toolkit.Services
         /// <value>
         /// Null if the platform can't report this, otherwise [true] if in power saver mode
         /// </value>
-        public bool? IsInPowerSaverMode
+        public virtual bool? IsInPowerSaverMode
         {
             get
             {
@@ -325,8 +325,8 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_PHONE_APP || WINDOWS_UAP
         private void OnPowerChanged(object sender, object o)
         {
-            var eventHandler = BatteryStatusChanged;
-            var args = new BatteryStatusChangedEventArgs(RemainingChargePercent, IsInPowerSaverMode);
+            var eventHandler = PowerStatusChanged;
+            var args = new PowerStatusChangedEventArgs(RemainingChargePercent, IsInPowerSaverMode);
 
             eventHandler?.Invoke(this, args);
         }
