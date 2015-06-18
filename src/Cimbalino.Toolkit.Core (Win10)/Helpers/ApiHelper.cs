@@ -4,6 +4,9 @@ using Windows.Foundation.Metadata;
 
 namespace Cimbalino.Toolkit.Core.Helpers
 {
+    /// <summary>
+    /// Helper class to define what functionality is available on each platform
+    /// </summary>
     public static class ApiHelper
     {
 #if WINDOWS_UAP

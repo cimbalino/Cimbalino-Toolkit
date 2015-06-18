@@ -24,11 +24,17 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class DeviceStatusService : IDeviceStatusService
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeviceStatusService"/> class.
+        /// </summary>
         public DeviceStatusService()
         {
             Battery.GetDefault().RemainingChargePercentChanged += OnRemainingChargePercentChanged;
         }
 
+        /// <summary>
+        /// Occurs when the battery status has changed
+        /// </summary>
         public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
 
         /// <summary>

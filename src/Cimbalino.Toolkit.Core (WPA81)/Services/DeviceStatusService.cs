@@ -64,6 +64,9 @@ namespace Cimbalino.Toolkit.Services
         }
 
 #if WINDOWS_APP
+        /// <summary>
+        /// Occurs when the battery status has changed
+        /// </summary>
         public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged
         {
             add
@@ -77,6 +80,9 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 #else
+        /// <summary>
+        /// Occurs when the battery status has changed
+        /// </summary>
         public event EventHandler<BatteryStatusChangedEventArgs> BatteryStatusChanged;
 #endif
 
