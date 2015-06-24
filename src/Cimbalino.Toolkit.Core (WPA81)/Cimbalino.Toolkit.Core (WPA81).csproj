@@ -192,6 +192,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceStatusService.cs">
       <Link>Services\IDeviceStatusService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ILockScreenService.cs">
+      <Link>Services\ILockScreenService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IMapManagerService.cs">
       <Link>Services\IMapManagerService.cs</Link>
     </Compile>
@@ -218,6 +221,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IWindowsStoreService.cs">
       <Link>Services\IWindowsStoreService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LockScreenServiceRequestResult.cs">
+      <Link>Services\LockScreenServiceRequestResult.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedBehavior.cs">
       <Link>Services\NavigationServiceBackKeyPressedBehavior.cs</Link>
@@ -281,6 +287,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Win10%29\Helpers\ApiHelper.cs">
       <Link>Helpers\ApiHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Win10%29\Services\LockScreenService.cs">
+      <Link>Services\LockScreenService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HashAlgorithmBase.cs">
       <Link>System\Security\Cryptography\HashAlgorithmBase.cs</Link>

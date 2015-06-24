@@ -295,6 +295,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ILocationService.cs">
       <Link>Services\ILocationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ILockScreenService.cs">
+      <Link>Services\ILockScreenService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IMapManagerService.cs">
       <Link>Services\IMapManagerService.cs</Link>
     </Compile>
@@ -354,6 +357,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LocationServiceStatusChangedEventArgs.cs">
       <Link>Services\LocationServiceStatusChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LockScreenServiceRequestResult.cs">
+      <Link>Services\LockScreenServiceRequestResult.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedBehavior.cs">
       <Link>Services\NavigationServiceBackKeyPressedBehavior.cs</Link>
@@ -492,6 +498,7 @@
     </Compile>
     <Compile Include="Helpers\ApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LockScreenService.cs" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="WindowsDesktop, Version=10.0.10069.0">
