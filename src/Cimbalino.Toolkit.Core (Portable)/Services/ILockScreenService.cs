@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // <copyright file="ILockScreenService.cs" company="Pedro Lamas">
-// Copyright © Pedro Lamas 2015
+// Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
 // <author>Pedro Lamas</author>
