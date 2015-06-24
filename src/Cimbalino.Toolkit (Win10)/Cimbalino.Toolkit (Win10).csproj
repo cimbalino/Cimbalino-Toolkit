@@ -237,6 +237,7 @@
       <Link>Services\StatusBarService.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LockScreenWithRequestService.cs" />
     <Compile Include="Services\TitleBarService.cs" />
   </ItemGroup>
   <ItemGroup>

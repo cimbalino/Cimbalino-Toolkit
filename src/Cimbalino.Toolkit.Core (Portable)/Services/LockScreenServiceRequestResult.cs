@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
-// <copyright file="ITitleBarService.cs" company="Pedro Lamas">
-// Copyright © Pedro Lamas 2014
+// <copyright file="LockScreenServiceRequestResult.cs" company="Pedro Lamas">
+// Copyright © Pedro Lamas 2015
 // </copyright>
 // ****************************************************************************
 // <author>Pedro Lamas</author>
@@ -11,29 +11,21 @@
 // See license.txt in this solution or http://www.pedrolamas.com/license_MIT.txt
 // </license>
 // ****************************************************************************
-using System;
-
 namespace Cimbalino.Toolkit.Services
 {
-    public interface ITitleBarService
+    /// <summary>
+    /// Indicates if the app was successfully or unsuccessfully set as the lock screen background provider.
+    /// </summary>
+    public enum LockScreenServiceRequestResult
     {
         /// <summary>
-        /// Sets the extend view into title bar.
+        /// The app was not set as the lock screen background provider.
         /// </summary>
-        /// <param name="extend">if set to <c>true</c> [extend].</param>
-        void SetExtendViewIntoTitleBar(bool extend);
+        Denied,
 
         /// <summary>
-        /// Occurs when [is visible changed].
+        /// The app was set as the lock screen background provider.
         /// </summary>
-        event EventHandler<TitleBarIsVisibleChangedArgs> IsVisibleChanged;
-
-        /// <summary>
-        /// Gets the height.
-        /// </summary>
-        /// <value>
-        /// The height.
-        /// </value>
-        double Height { get; }
+        Granted
     }
 }
