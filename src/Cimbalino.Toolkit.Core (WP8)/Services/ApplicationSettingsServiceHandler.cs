@@ -27,6 +27,9 @@ namespace Cimbalino.Toolkit.Services
 #endif
     public class ApplicationSettingsServiceHandler : IApplicationSettingsServiceHandler
     {
+        /// <summary>
+        /// The root <see cref="ApplicationDataContainer"/> instance.
+        /// </summary>
         protected readonly ApplicationDataContainer ApplicationDataContainer;
 
         /// <summary>

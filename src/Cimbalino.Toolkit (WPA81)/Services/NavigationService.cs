@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
+using Windows.ApplicationModel;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -105,6 +106,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public NavigationService()
         {
+            if (DesignMode.DesignModeEnabled)
+            {
+                return;
+            }
+
             HardwareButtons.BackPressed += (s, e) =>
             {
                 var eventArgs = new NavigationServiceBackKeyPressedEventArgs();

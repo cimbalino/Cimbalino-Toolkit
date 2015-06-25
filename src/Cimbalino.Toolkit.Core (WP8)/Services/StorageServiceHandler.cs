@@ -32,6 +32,9 @@ namespace Cimbalino.Toolkit.Services
 #endif
     public class StorageServiceHandler : IStorageServiceHandler
     {
+        /// <summary>
+        /// The root <see cref="StorageFolder"/> instance.
+        /// </summary>
         protected readonly StorageFolder StorageFolder;
 
         /// <summary>

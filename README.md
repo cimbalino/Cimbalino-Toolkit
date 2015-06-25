@@ -1,8 +1,6 @@
 # Cimbalino Toolkit
 
-![Cimbalino Toolkit][3]
-
-### [Official Site][1] - [@CimbalinoWP][2]
+![Cimbalino Toolkit](https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/Cimbalino.Toolkit.png "Cimbalino Toolkit")
 
 Cimbalino Toolkit is a set of useful and powerful tools that will help you build your Windows Platform applications.
 
@@ -12,7 +10,10 @@ The toolkit is fully compatible with:
 * Windows Phone 8.1 apps (WPA81)
 * Windows Store 8.1 apps (Win81)
 
-## NuGet packages
+
+**Windows 10 UAP (Universal App Platform) support will soon be added!**
+
+## NuGet packages ![](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat)
 
 * [Cimbalino.Toolkit.Core](https://www.nuget.org/packages/Cimbalino.Toolkit.Core) - The PCL portion of the toolkit (compatible with background agents)
 * [Cimbalino.Toolkit](https://www.nuget.org/packages/Cimbalino.Toolkit) - The main component of the toolkit
@@ -33,7 +34,13 @@ Yes, there are some plans in the making, but that will still take some time... :
 
 ## License
 
-See the [LICENSE.txt][4] file for details.
+See the [LICENSE.txt](https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/LICENSE.txt) file for details.
+
+## More information
+
+* [Homepage](http://cimbalino.org)
+* [Documentation](http://cimbalino.org/help)
+* [@CimbalinoWP (Twitter)](http://twitter.com/CimbalinoWP)
 
 ## Acknowledgments
 
@@ -45,10 +52,4 @@ See the [LICENSE.txt][4] file for details.
 
 ## Sponsors
 
-* [JetBrains ReSharper][5] - The best C# & VB.NET refactoring plugin for Visual Studio!
-
-[1]: http://cimbalino.org
-[2]: http://twitter.com/CimbalinoWP
-[3]: https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/Cimbalino.Toolkit.png "Cimbalino Toolkit"
-[4]: https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/LICENSE.txt "Cimbalino Toolkit License"
-[5]: http://www.jetbrains.com/resharper
+* [JetBrains ReSharper](http://www.jetbrains.com/resharper) - The best C# & VB.NET refactoring plugin for Visual Studio!
