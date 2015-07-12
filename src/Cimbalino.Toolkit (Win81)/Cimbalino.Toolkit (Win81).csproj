@@ -234,6 +234,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\NavigationService.cs">
       <Link>Services\NavigationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\PersonalizationService.cs">
+      <Link>Services\PersonalizationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\StatusBarService.cs">
       <Link>Services\StatusBarService.cs</Link>
     </Compile>
