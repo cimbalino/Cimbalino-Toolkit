@@ -110,11 +110,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <SDKReference Include="WindowsDesktop, Version=10.0.10158.0">
-      <Name>Windows Desktop Extensions for the UWP</Name>
+    <SDKReference Include="WindowsDesktop, Version=10.0.10166.0">
+      <Name>Windows Desktop Extensions for the UWP %28WindowsDesktop, Version=10.0.10166.0%29</Name>
     </SDKReference>
-    <SDKReference Include="WindowsMobile, Version=10.0.10158.0">
-      <Name>Windows Mobile Extensions for the UWP</Name>
+    <SDKReference Include="WindowsMobile, Version=10.0.10166.0">
+      <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.10166.0%29</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
