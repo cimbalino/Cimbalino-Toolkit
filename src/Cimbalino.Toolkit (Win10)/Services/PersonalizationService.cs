@@ -26,7 +26,7 @@ namespace Cimbalino.Toolkit.Services
         /// <value>
         /// <c>true</c> if this instance is supported; otherwise, <c>false</c>.
         /// </value>
-        public bool IsSupported { get; } = UserProfilePersonalizationSettings.IsSupported();
+        public virtual bool IsSupported { get; } = UserProfilePersonalizationSettings.IsSupported();
 
         /// <summary>
         /// Sets the lock screen image.
@@ -34,7 +34,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="filePath">The file path.</param>
         /// <param name="fileIsInPackage">if set to <c>true</c> [file is in package].</param>
         /// <returns></returns>
-        public async Task<bool> SetLockScreenImageAsync(string filePath, bool fileIsInPackage = false)
+        public virtual async Task<bool> SetLockScreenImageAsync(string filePath, bool fileIsInPackage = false)
         {
             var file = await GetStorageFile(filePath, fileIsInPackage);
 
@@ -48,7 +48,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="filePath">The file path.</param>
         /// <param name="fileIsInPackage">if set to <c>true</c> [file is in package].</param>
         /// <returns></returns>
-        public async Task<bool> SetWallpaperImageAsync(string filePath, bool fileIsInPackage = false)
+        public virtual async Task<bool> SetWallpaperImageAsync(string filePath, bool fileIsInPackage = false)
         {
             var file = await GetStorageFile(filePath, fileIsInPackage);
 
