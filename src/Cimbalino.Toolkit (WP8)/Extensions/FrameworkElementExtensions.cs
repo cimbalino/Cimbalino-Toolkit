@@ -18,7 +18,7 @@ using System.Windows;
 using System.Windows.Interactivity;
 using TriggerBase = System.Windows.Interactivity.TriggerBase;
 using TriggerCollection = System.Windows.Interactivity.TriggerCollection;
-#elif WINDOWS_UAP
+#elif WINDOWS_UWP
 using Windows.UI.Xaml;
 using Cimbalino.Toolkit.Behaviors;
 using Microsoft.Xaml.Interactivity;
@@ -72,7 +72,7 @@ namespace Cimbalino.Toolkit.Extensions
 
             if (behaviorsCollection != null)
             {
-#if !WINDOWS_UAP
+#if !WINDOWS_UWP
                 return behaviorsCollection.OfType<T>().FirstOrDefault();
 #else
                 return (T)behaviorsCollection.FirstOrDefault(x => x.GetType() == typeof(T));

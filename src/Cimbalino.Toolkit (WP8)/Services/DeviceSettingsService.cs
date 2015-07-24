@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
 using Windows.System;
@@ -39,7 +39,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAirplaneModeSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://network/airplanemode");
 #else
             return LaunchUrlAsync("ms-settings-airplanemode:");
@@ -52,7 +52,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowBluetoothSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://bluetooth");
 #else
             return LaunchUrlAsync("ms-settings-bluetooth:");
@@ -74,7 +74,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowCellularSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://network/cellular");
 #else
             return LaunchUrlAsync("ms-settings-cellular:");
@@ -87,7 +87,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowEmailAndAccountsSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://emailandaccounts");
 #else
             return LaunchUrlAsync("ms-settings-emailandaccounts:");
@@ -100,7 +100,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowLocationSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://privacy/location");
 #else
             return LaunchUrlAsync("ms-settings-location:");
@@ -113,7 +113,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowLockScreenSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://lockscreen");
 #else
             return LaunchUrlAsync("ms-settings-lock:");
@@ -126,7 +126,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowNotificationSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://notifications");
 #else
             return LaunchUrlAsync("ms-settings-notifications:");
@@ -139,7 +139,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowPowerSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://batterysaver");
 #else
             return LaunchUrlAsync("ms-settings-power:");
@@ -154,7 +154,7 @@ namespace Cimbalino.Toolkit.Services
         {
             if (ApiHelper.SupportsBackButton)
             {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
                 return LaunchUrlAsync("ms-settings://proximity");
 #else
                 return LaunchUrlAsync("ms-settings-proximity:");
@@ -170,7 +170,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowScreenRotationSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://screenrotation");
 #else
             return LaunchUrlAsync("ms-settings-screenrotation:");
@@ -183,7 +183,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowWiFiSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://network/wifi");
 #else
             return LaunchUrlAsync("ms-settings-wifi:");
@@ -196,7 +196,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowWorkplaceSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://workplace");
 #else
             return LaunchUrlAsync("ms-settings-workplace:");
@@ -209,7 +209,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowStorageSenseSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://storagesense");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -222,7 +222,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMapsSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://maps");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -235,7 +235,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowDataSenseSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://datasense");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -250,7 +250,7 @@ namespace Cimbalino.Toolkit.Services
         {
             if (ApiHelper.SupportsBackButton)
             {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
                 return LaunchUrlAsync("ms-settings://nfctransactions");
 #else
                 return LaunchUrlAsync("ms-settings-nfctransactions:");
@@ -268,7 +268,7 @@ namespace Cimbalino.Toolkit.Services
         {
             if (!ApiHelper.SupportsBackButton)
             {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
                 return LaunchUrlAsync("ms-settings://proxy");
 #else
                 return ExceptionHelper.ThrowNotSupported<Task>();
@@ -284,7 +284,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowRegionAndLanguageSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://regionlanguage");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -297,7 +297,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowWebcamSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://privacy/webcam");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -310,7 +310,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMicrophoneSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://privacy/microphone");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -323,7 +323,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowCustomDevicesSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://privacy/customdevices");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -336,7 +336,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowContactsSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://privacy/contacts");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -349,7 +349,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowCalendarSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://privacy/calendar");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
@@ -362,14 +362,14 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMessagingSettingsAsync()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             return LaunchUrlAsync("ms-settings://privacy/messaging");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
 #endif
         }
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
         private async Task LaunchUrlAsync(string url)
         {
             await Launcher.LaunchUriAsync(new Uri(url, UriKind.Absolute));

@@ -11,7 +11,7 @@
 // See license.txt in this solution or http://www.pedrolamas.com/license_MIT.txt
 // </license>
 // ****************************************************************************
-#if !WINDOWS_UAP
+#if !WINDOWS_UWP
 using System;
 using System.Linq;
 using System.Reflection;
@@ -26,7 +26,7 @@ namespace Cimbalino.Toolkit.Services
 {
     public class TitleBarService : ITitleBarService
     {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
         public TitleBarService()
         {
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += TitleBarOnIsVisibleChanged;
@@ -42,7 +42,7 @@ namespace Cimbalino.Toolkit.Services
 
         public virtual void SetExtendViewIntoTitleBar(bool extend)
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             var titleBar = CoreApplication.GetCurrentView().TitleBar;
             titleBar.ExtendViewIntoTitleBar = extend;
 #elif WINDOWS_APP
@@ -59,7 +59,7 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
-#if WINDOWS_UAP
+#if WINDOWS_UWP
         public event EventHandler<TitleBarIsVisibleChangedArgs> IsVisibleChanged;
 #else
         public event EventHandler<TitleBarIsVisibleChangedArgs> IsVisibleChanged
@@ -79,7 +79,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
                 var titleBar = CoreApplication.GetCurrentView().TitleBar;
                 return titleBar.Height;
 #elif WINDOWS_APP

@@ -19,7 +19,7 @@ using Microsoft.Phone.Tasks;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Email;
-#elif WINDOWS_UAP
+#elif WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Email;
@@ -83,7 +83,7 @@ namespace Cimbalino.Toolkit.Services
 
             return Task.FromResult(0);
         }
-#elif WINDOWS_PHONE_APP || WINDOWS_UAP
+#elif WINDOWS_PHONE_APP || WINDOWS_UWP
         public async virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
             var emailMessage = new EmailMessage

@@ -22,7 +22,7 @@ using Windows.UI.Xaml.Controls;
 using Cimbalino.Toolkit.Core.Helpers;
 using Cimbalino.Toolkit.Helpers;
 
-#elif WINDOWS_UAP
+#elif WINDOWS_UWP
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -60,7 +60,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Occurs when the user presses the hardware Back button.
         /// </summary>
-#if WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
 #else
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed
@@ -115,7 +115,7 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-#if WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationService"/> class.
         /// </summary>
@@ -126,7 +126,7 @@ namespace Cimbalino.Toolkit.Services
                 HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             }
 
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 #endif
@@ -298,7 +298,7 @@ namespace Cimbalino.Toolkit.Services
             eventHandler?.Invoke(this, eventArgs);            
         }
 
-#if WINDOWS_UAP
+#if WINDOWS_UWP
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
@@ -310,7 +310,7 @@ namespace Cimbalino.Toolkit.Services
 
         private void ShowHideBackButtonVisibility()
         {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
             if (HandleBackButtonVisibility)
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = _mainFrame?.CanGoBack ?? false ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
@@ -318,7 +318,7 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
-#if WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();

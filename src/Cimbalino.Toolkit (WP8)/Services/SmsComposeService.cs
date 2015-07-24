@@ -19,7 +19,7 @@ using Microsoft.Phone.Tasks;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Chat;
-#elif WINDOWS_UAP
+#elif WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Core.Helpers;
@@ -72,7 +72,7 @@ namespace Cimbalino.Toolkit.Services
         {
             return SendByChat(recipient, body);
         }
-#elif WINDOWS_UAP
+#elif WINDOWS_UWP
         public virtual Task ShowAsync(string recipient, string body)
         {
             if (ApiHelper.SupportsChat)
@@ -89,7 +89,7 @@ namespace Cimbalino.Toolkit.Services
         }
 #endif
 
-#if WINDOWS_APP || WINDOWS_UAP
+#if WINDOWS_APP || WINDOWS_UWP
         private async Task SendByUri(string recipient, string body)
         {
             var smsUri = new UriBuilder("sms:")
@@ -101,7 +101,7 @@ namespace Cimbalino.Toolkit.Services
         }
 #endif
 
-#if WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
         private async Task SendByChat(string recipient, string body)
         {
             var chatMessage = new ChatMessage

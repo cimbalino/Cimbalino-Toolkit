@@ -97,7 +97,7 @@ namespace Cimbalino.Toolkit.Core.Services
         {
 #if WINDOWS_PHONE
             return new Uri(LockScreenImageUrl, UriKind.Absolute);
-#elif WINDOWS_UAP || WINDOWS_APP
+#elif WINDOWS_UWP || WINDOWS_APP
             return LockScreen.OriginalImageFile;
 #else
             return ExceptionHelper.ThrowNotSupported<Uri>();
@@ -119,7 +119,7 @@ namespace Cimbalino.Toolkit.Core.Services
 
             ImageUri = new Uri(LockScreenImageUrl, UriKind.RelativeOrAbsolute);
         }
-#elif WINDOWS_APP || WINDOWS_UAP
+#elif WINDOWS_APP || WINDOWS_UWP
         protected Task SaveStream(Stream stream)
         {
             return LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream()).AsTask();

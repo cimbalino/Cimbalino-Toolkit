@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_UAP
+#if WINDOWS_UWP
 using Windows.Foundation.Metadata;
 #endif
 
@@ -23,7 +23,7 @@ namespace Cimbalino.Toolkit.Core.Helpers
     /// </summary>
     public static class ApiHelper
     {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
         public static bool SupportsBackButton => ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons");
         public static bool SupportsMemoryManager => ApiInformation.IsTypePresent("Windows.System.MemoryManager");
         public static bool SupportsPhoneCalls => ApiInformation.IsTypePresent("Windows.ApplicationModel.Calls.PhoneCallManager");

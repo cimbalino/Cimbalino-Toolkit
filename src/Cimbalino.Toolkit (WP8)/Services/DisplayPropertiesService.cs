@@ -164,7 +164,7 @@ namespace Cimbalino.Toolkit.Services
             {
 #if WINDOWS_PHONE
                 return 1.0;
-#elif WINDOWS_PHONE_APP || WINDOWS_UAP
+#elif WINDOWS_PHONE_APP || WINDOWS_UWP
                 return DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
 #else
                 return DisplayInformation.GetForCurrentView().LogicalDpi / 96.0;

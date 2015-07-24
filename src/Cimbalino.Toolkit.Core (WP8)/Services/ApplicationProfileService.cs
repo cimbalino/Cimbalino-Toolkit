@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
 using Windows.Phone.ApplicationModel;
 #else
 using System;
@@ -34,7 +34,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UAP
+#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
                 switch (ApplicationProfile.Modes)
                 {
                     case ApplicationProfileModes.Default:
