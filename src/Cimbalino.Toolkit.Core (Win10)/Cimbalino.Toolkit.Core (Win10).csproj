@@ -11,8 +11,8 @@
     <AssemblyName>Cimbalino.Toolkit.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10166.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10069.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -108,15 +108,6 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <SDKReference Include="WindowsDesktop, Version=10.0.10166.0">
-      <Name>Windows Desktop Extensions for the UWP %28WindowsDesktop, Version=10.0.10166.0%29</Name>
-    </SDKReference>
-    <SDKReference Include="WindowsMobile, Version=10.0.10166.0">
-      <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.10166.0%29</Name>
-    </SDKReference>
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
@@ -508,6 +499,14 @@
     <Compile Include="Helpers\ApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LockScreenService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.10240.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
