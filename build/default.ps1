@@ -5,7 +5,7 @@ properties {
   $toolsDir = "$baseDir\tools"
   $binDir = "$baseDir\bin"
   
-  $version = "1.2.6"
+  $version = "2.0.0-beta"
   
   $tempDir = "$binDir\temp"
   $binariesDir = "$binDir\binaries"
@@ -20,12 +20,13 @@ properties {
     "Portable" = @{Suffix = " (Portable)"; Folder="portable-net45+wp8+win8+wpa81"};
     "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
     "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
-    "Win81" = @{Suffix = " (Win81)"; Folder="win81"}
+    "Win81" = @{Suffix = " (Win81)"; Folder="win81"};
+	"UWP" = @{Suffix = " (UWP)"; Folder="uap10.0"}
   }
   
   $projects = @(
-    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81")},
-    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81")}
+    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81", "UWP")},
+    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81", "UWP")}
   )
 }
 

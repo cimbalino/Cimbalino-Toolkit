@@ -16,6 +16,6 @@
     <dependencies>
       <dependency id="Cimbalino.Toolkit.Core" version="$version$" />
     </dependencies>
-    <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT Appbar ApplicationBar</tags>
+    <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT Appbar ApplicationBar UWP UAP</tags>
   </metadata>
 </package>
