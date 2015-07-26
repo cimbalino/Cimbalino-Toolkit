@@ -171,7 +171,7 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
     Write-Host -ForegroundColor Green "Packaging $projectName..."
     Write-Host
     
-    Exec { .$nuget pack $projectNuspec -Output $nupkgDir\ } "Error packaging $name"
+    Exec { .$nuget pack "$projectNuspec" -Output "$nupkgDir" } "Error packaging $name"
   }
 }
 

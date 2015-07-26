@@ -254,6 +254,7 @@
     <ProjectReference Include="..\Cimbalino.Toolkit.Core %28UWP%29\Cimbalino.Toolkit.Core %28UWP%29.csproj">
       <Project>{d79208c1-8c83-4d03-bbd8-208b52137627}</Project>
       <Name>Cimbalino.Toolkit.Core %28UWP%29</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
