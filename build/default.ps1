@@ -30,7 +30,7 @@ properties {
   )
 }
 
-Framework "4.5.1x86"
+Framework "4.6x86"
 
 task default -depends ?
 

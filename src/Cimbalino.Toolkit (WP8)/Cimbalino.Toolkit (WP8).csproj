@@ -85,10 +85,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Cimbalino.Toolkit %28Win10%29\Services\LockScreenWithRequestService.cs">
+    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\LockScreenWithRequestService.cs">
       <Link>Services\LockScreenWithRequestService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28Win10%29\Services\TitleBarService.cs">
+    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\TitleBarService.cs">
       <Link>Services\TitleBarService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\PersonalizationService.cs">

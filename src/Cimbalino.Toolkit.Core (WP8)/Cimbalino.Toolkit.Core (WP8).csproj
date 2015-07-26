@@ -292,10 +292,10 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppScreenshotNode.cs">
       <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Win10%29\Helpers\ApiHelper.cs">
+    <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Helpers\ApiHelper.cs">
       <Link>Helpers\ApiHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Win10%29\Services\LockScreenService.cs">
+    <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Services\LockScreenService.cs">
       <Link>Services\LockScreenService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\compression\Adler32.generated.cs">
