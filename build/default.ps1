@@ -136,10 +136,23 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
       
       $projectDir = "$binariesDir\$projectName"
       $configurationDir = "$projectDir\$configurationFolder"
+	  $propertiesDir = "$configurationDir\$projectName\Properties"
+      $tempPropertiesDir = "$tempBinariesDir\$fullProjectName\Properties\"
     
       New-Item -Path $configurationDir -ItemType Directory | Out-Null
+	  
+	  $tempPropertiesDirExists = Test-Path -PathType Container $tempPropertiesDir
+	  if($tempPropertiesDirExists -eq $true){
+
+            $propertiesDirExists = Test-Path -PathType Container $propertiesDir
+            if($propertiesDirExists -eq $false){
+                New-Item -Path $propertiesDir -ItemType Directory | Out-Null
+            }
+
+			Copy-Item -Path $tempPropertiesDir\* -Destination $propertiesDir\ -Recurse -force
+	  }
       
-      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse
+      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	  	  
     }
   }
 }
@@ -167,7 +180,7 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
     New-Item -Path $projectLibFolder -ItemType Directory | Out-Null
     
     Copy-Item -Path $binariesDir\$projectName\* -Destination $projectLibFolder\ -Recurse
-    
+	    
     Write-Host -ForegroundColor Green "Packaging $projectName..."
     Write-Host
     
