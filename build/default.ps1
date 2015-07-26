@@ -4,6 +4,7 @@ properties {
   $sourceDir = "$baseDir\src"
   $toolsDir = "$baseDir\tools"
   $binDir = "$baseDir\bin"
+  $docSourceDir = "$baseDir\doc"
   
   $version = "2.0.0-beta"
   
@@ -11,6 +12,7 @@ properties {
   $binariesDir = "$binDir\binaries"
   $zipDir = "$binDir\zip"
   $nupkgDir = "$binDir\nupkg"
+  $docDir = "$binDir\doc"
   
   $nuget = "$toolsDir\nuget\nuget.exe"
   $7zip = "$toolsDir\7zip\7za.exe"
@@ -151,34 +153,16 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
   $projects | % {
     $projectName = $_.Name
     $projectNugetFolder = "$tempNupkgDir\$projectName"
-    $projectNuspec = "$projectName.nuspec"
+    $projectLibFolder = "$projectNugetFolder\lib"
+    $projectNuspec = "$projectNugetFolder\$projectName.nuspec"
     
     New-Item -Path $projectNugetFolder -ItemType Directory | Out-Null
     
-    (Get-Content -Path $buildDir\$projectNuspec) | % {
+    Copy-Item -Path $buildDir\$projectName\* -Destination $projectNugetFolder\ -Recurse
+    
+    (Get-Content -Path $projectNuspec) | % {
           % { $_ -Replace '\$version\$', $version }
-        } | Set-Content -Path $projectNugetFolder\$projectNuspec -Encoding UTF8
-    
-    $projectToolsFolder = "$projectNugetFolder\tools"
-    $projectLibFolder = "$projectNugetFolder\lib"
-    
-    $_.Configurations | % {
-      $configuration = $configurations[$_]
-      $configurationFolder = $configuration.Folder
-      $configurationSuffix = $configuration.Suffix
-      $fullProjectName = "$projectName$configurationSuffix"
-      
-      $projectTools = "$buildDir\$fullProjectName"
-      
-      if (Test-Path $projectTools)
-      {
-        $projectToolsConfigurationFolder = "$projectToolsFolder\$configurationFolder"
-        
-        New-Item -Path $projectToolsConfigurationFolder -ItemType Directory | Out-Null
-        
-        Copy-Item -Path $projectTools\* -Destination $projectToolsConfigurationFolder\ -Recurse
-      }
-    }
+        } | Set-Content -Path $projectNuspec -Encoding UTF8
     
     New-Item -Path $projectLibFolder -ItemType Directory | Out-Null
     
@@ -187,7 +171,7 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
     Write-Host -ForegroundColor Green "Packaging $projectName..."
     Write-Host
     
-    Exec { .$nuget pack $projectNugetFolder\$projectNuspec -Output $nupkgDir\ } "Error packaging $name"
+    Exec { .$nuget pack $projectNuspec -Output $nupkgDir\ } "Error packaging $name"
   }
 }
 
@@ -201,6 +185,13 @@ task PublishNuget -depends PackNuGet -description "Publish the NuGet packages to
     Exec { .$nuget push $nupkg } "Error publishing $nupkg"
   }
 }
+
+task Document -depends Build -description "Build the documentation" {
+  New-Item -Path $docDir -ItemType Directory | Out-Null
+  
+  Exec { msbuild "/t:Clean;Build" /p:Configuration=Release /p:OutputPath=$docDir /m "$docSourceDir\doc.shfbproj" } "Error building documentation"
+}
+
 
 task ? -description "Show the help screen" {
   WriteDocumentation
