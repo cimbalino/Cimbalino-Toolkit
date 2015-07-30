@@ -17,13 +17,19 @@ using System;
 using System.Reflection;
 using System.Windows;
 using Windows.Storage;
+using Cimbalino.Toolkit.Helpers;
+
 #elif WINDOWS_PHONE_APP
 using System;
 using System.Reflection;
 using Windows.Storage;
+using Cimbalino.Toolkit.Helpers;
+
 #else
 using System;
 using Windows.Storage;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -97,7 +103,7 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_PHONE
                 if (RoamingStorageServiceHandlerStatic == null)
                 {
-                    throw new NotSupportedException();
+                    return ExceptionHelper.ThrowNotSupported<StorageServiceHandler>();
                 }
 #endif
 
@@ -116,7 +122,7 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_PHONE
                 if (TemporaryStorageServiceHandlerStatic == null)
                 {
-                    throw new NotSupportedException();
+                    return ExceptionHelper.ThrowNotSupported<StorageServiceHandler>();
                 }
 #endif
 
@@ -135,12 +141,12 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
                 if (LocalCacheStorageServiceHandlerStatic == null)
                 {
-                    throw new NotSupportedException();
+                    return ExceptionHelper.ThrowNotSupported<StorageServiceHandler>();
                 }
 
                 return LocalCacheStorageServiceHandlerStatic;
 #else
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<StorageServiceHandler>();
 #endif
             }
         }

@@ -16,8 +16,12 @@
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
 using Windows.Services.Maps;
+#elif WINDOWS_UWP
+using Windows.Services.Maps;
 #else
 using System;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -34,10 +38,10 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_PHONE
             new MapDownloaderTask().Show();
-#elif WINDOWS_PHONE_APP
+#elif WINDOWS_PHONE_APP || WINDOWS_UWP
             MapManager.ShowDownloadedMapsUI();
 #else
-            throw new NotSupportedException();
+            ExceptionHelper.ThrowNotSupported();
 #endif
         }
 
@@ -48,10 +52,10 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_PHONE
             new MapUpdaterTask().Show();
-#elif WINDOWS_PHONE_APP
+#elif WINDOWS_PHONE_APP || WINDOWS_UWP
             MapManager.ShowMapsUpdateUI();
 #else
-            throw new NotSupportedException();
+            ExceptionHelper.ThrowNotSupported();
 #endif
         }
     }

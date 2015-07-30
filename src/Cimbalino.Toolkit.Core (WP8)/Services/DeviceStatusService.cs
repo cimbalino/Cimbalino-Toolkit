@@ -13,6 +13,9 @@
 // ****************************************************************************
 
 using System;
+using Windows.Phone.Devices.Power;
+using Windows.Phone.System.Power;
+using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Info;
 
 namespace Cimbalino.Toolkit.Services
@@ -22,6 +25,20 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class DeviceStatusService : IDeviceStatusService
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeviceStatusService"/> class.
+        /// </summary>
+        public DeviceStatusService()
+        {
+            Battery.GetDefault().RemainingChargePercentChanged += OnPowerChanged;
+            PowerManager.PowerSavingModeChanged += OnPowerChanged;
+        }
+
+        /// <summary>
+        /// Occurs when the power status has changed
+        /// </summary>
+        public event EventHandler<PowerStatusChangedEventArgs> PowerStatusChanged;
+
         /// <summary>
         /// Gets the memory usage of the current application in bytes.
         /// </summary>
@@ -138,7 +155,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
+                return ExceptionHelper.ThrowNotSupported<bool>("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
             }
         }
 
@@ -150,7 +167,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                throw new NotSupportedException("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
+                return ExceptionHelper.ThrowNotSupported<bool>("To use this method, add Cimbalino.Toolkit assembly to the project and use the DeviceStatusWithKeyboardService instead. This method can't be called from a Background Agent.");
             }
         }
 
@@ -174,6 +191,34 @@ namespace Cimbalino.Toolkit.Services
                         throw new ArgumentOutOfRangeException();
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets the a value indicating the percent of the battery remaining on the device
+        /// </summary>
+        /// <value>null if the platform can't report this, otherwise, the battery percentage</value>
+        public virtual int? RemainingChargePercent
+        {
+            get { return Battery.GetDefault().RemainingChargePercent; }
+        }
+
+        /// <summary>
+        /// Gets the value indicating if the device is in power saver mode.
+        /// </summary>
+        /// <value>
+        /// Null if the platform can't report this, otherwise [true] if in power saver mode
+        /// </value>
+        public virtual bool? IsInPowerSaverMode
+        {
+            get { return PowerManager.PowerSavingMode == PowerSavingMode.On; }
+        }
+
+        private void OnPowerChanged(object sender, object o)
+        {
+            var eventHandler = PowerStatusChanged;
+            var args = new PowerStatusChangedEventArgs(RemainingChargePercent, IsInPowerSaverMode);
+
+            eventHandler?.Invoke(this, args);
         }
     }
 }

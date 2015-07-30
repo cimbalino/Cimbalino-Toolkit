@@ -13,6 +13,6 @@
     <dependencies>
       <dependency id="Microsoft.Bcl.Compression" version="3.9.83" />
     </dependencies>
-    <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT Core Background Agent</tags>
+    <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT Core Background Agent UWP UAP</tags>
   </metadata>
 </package>

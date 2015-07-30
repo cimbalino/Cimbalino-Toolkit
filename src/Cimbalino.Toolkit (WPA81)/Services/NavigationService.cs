@@ -16,16 +16,31 @@
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
-using Windows.ApplicationModel;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Cimbalino.Toolkit.Core.Helpers;
+using Cimbalino.Toolkit.Helpers;
+
+#elif WINDOWS_UWP
+using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using System.Collections.Generic;
+using Cimbalino.Toolkit.Extensions;
+using Windows.Phone.UI.Input;
+using Windows.UI.Core;
+using Cimbalino.Toolkit.Core.Helpers;
+using Cimbalino.Toolkit.Helpers;
+
 #else
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Cimbalino.Toolkit.Helpers;
+
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -45,14 +60,14 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Occurs when the user presses the hardware Back button.
         /// </summary>
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
 #else
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed
         {
             add
             {
-                throw new NotSupportedException();
+                ExceptionHelper.ThrowNotSupported();
             }
             remove
             {
@@ -100,50 +115,21 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-#if WINDOWS_PHONE_APP
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationService"/> class.
         /// </summary>
         public NavigationService()
         {
-            if (DesignMode.DesignModeEnabled)
+            if (ApiHelper.SupportsBackButton)
             {
-                return;
+                HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             }
 
-            HardwareButtons.BackPressed += (s, e) =>
-            {
-                var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
-
-                RaiseBackKeyPressed(eventArgs);
-
-                switch (eventArgs.Behavior)
-                {
-                    case NavigationServiceBackKeyPressedBehavior.GoBack:
-                        if (EnsureMainFrame() && _mainFrame.CanGoBack)
-                        {
-                            _mainFrame.GoBack();
-
-                            e.Handled = true;
-                        }
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.HideApp:
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.ExitApp:
-                        e.Handled = true;
-                        Application.Current.Exit();
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                        e.Handled = true;
-                        break;
-
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            };
+#if WINDOWS_UWP
+            SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+#endif
         }
 #endif
 
@@ -164,7 +150,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(Uri source)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<bool>();
         }
 
         /// <summary>
@@ -265,38 +251,41 @@ namespace Cimbalino.Toolkit.Services
             {
                 _mainFrame.BackStack.RemoveAt(_mainFrame.BackStackDepth - 1);
 
+                // This is for Windows 10 apps
+                ShowHideBackButtonVisibility();
+
                 return true;
             }
 
             return false;
         }
 
-        /// <summary>
+		/// <summary>
         /// Ensure that a <see cref="Frame"/> instance has been found.
         /// </summary>
         /// <returns>true if a <see cref="Frame"/> instance has been found; otherwise, false.</returns>
         protected virtual bool EnsureMainFrame()
         {
-            if (_mainFrame != null)
-            {
-                return true;
-            }
-
             _mainFrame = Window.Current.Content as Frame;
 
             if (_mainFrame != null)
             {
-                _mainFrame.Navigated += (s, e) =>
-                {
-                    CurrentParameter = e.Parameter;
-
-                    RaiseNavigated(null);
-                };
-
+                _mainFrame.Navigated -= Frame_Navigated;
+                _mainFrame.Navigated += Frame_Navigated;
+                
                 return true;
             }
 
             return false;
+        }
+
+        private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            CurrentParameter = e.Parameter;
+
+            RaiseNavigated(EventArgs.Empty);
+
+            ShowHideBackButtonVisibility();
         }
 
         /// <summary>
@@ -306,26 +295,75 @@ namespace Cimbalino.Toolkit.Services
         protected virtual void RaiseNavigated(EventArgs eventArgs)
         {
             var eventHandler = Navigated;
-
-            if (eventHandler != null)
-            {
-                eventHandler(this, eventArgs);
-            }
+            eventHandler?.Invoke(this, eventArgs);            
         }
 
-#if WINDOWS_PHONE_APP
-        /// <summary>
+#if WINDOWS_UWP
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            e.Handled = HandleBackKeyPress();
+            ShowHideBackButtonVisibility();
+        }
+
+        public static bool HandleBackButtonVisibility { get; set; } = true;
+#endif
+
+        private void ShowHideBackButtonVisibility()
+        {
+#if WINDOWS_UWP
+            if (HandleBackButtonVisibility)
+            {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = _mainFrame?.CanGoBack ?? false ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+            }
+#endif
+        }
+
+#if WINDOWS_PHONE_APP || WINDOWS_UWP
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            e.Handled = HandleBackKeyPress();
+
+            ShowHideBackButtonVisibility();
+        }
+
+        private bool HandleBackKeyPress()
+        {
+            var handled = false;
+            var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+            RaiseBackKeyPressed(eventArgs);
+            switch (eventArgs.Behavior)
+            {
+                case NavigationServiceBackKeyPressedBehavior.GoBack:
+                    if (_mainFrame.CanGoBack)
+                    {
+                        _mainFrame.GoBack();
+                        handled = true;
+                    }
+                    break;
+                case NavigationServiceBackKeyPressedBehavior.HideApp:
+                    break;
+                case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                    handled = true;
+                    Application.Current.Exit();
+                    break;
+                case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                    handled = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return handled;
+        }
+		
+		/// <summary>
         /// Raises the <see cref="BackKeyPressed"/> event with the provided event data.
         /// </summary>
         /// <param name="eventArgs">The event data.</param>
         protected virtual void RaiseBackKeyPressed(NavigationServiceBackKeyPressedEventArgs eventArgs)
         {
             var eventHandler = BackKeyPressed;
-
-            if (eventHandler != null)
-            {
-                eventHandler(this, eventArgs);
-            }
+			eventHandler?.Invoke(this, eventArgs);
         }
 #endif
     }

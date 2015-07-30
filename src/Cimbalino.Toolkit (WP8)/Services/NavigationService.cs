@@ -15,6 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Documents;
+using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Controls;
 
 namespace Cimbalino.Toolkit.Services
@@ -115,7 +117,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate<T>()
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<bool>();
         }
 
         /// <summary>
@@ -126,7 +128,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate<T>(object parameter)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<bool>();
         }
 
         /// <summary>
@@ -136,7 +138,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(Type type)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<bool>();
         }
 
         /// <summary>
@@ -147,7 +149,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(Type type, object parameter)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<bool>();
         }
 
         /// <summary>
@@ -251,8 +253,8 @@ namespace Cimbalino.Toolkit.Services
                                 break;
 
                             case NavigationServiceBackKeyPressedBehavior.HideApp:
-                                throw new NotSupportedException();
-
+                                ExceptionHelper.ThrowNotSupported();
+                                break;
                             case NavigationServiceBackKeyPressedBehavior.ExitApp:
                                 e.Cancel = true;
                                 Application.Current.Terminate();

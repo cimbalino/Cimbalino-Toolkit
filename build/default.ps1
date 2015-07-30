@@ -6,7 +6,7 @@ properties {
   $binDir = "$baseDir\bin"
   $docSourceDir = "$baseDir\doc"
   
-  $version = "1.2.7"
+  $version = "2.0.0-beta1"
   
   $tempDir = "$binDir\temp"
   $binariesDir = "$binDir\binaries"
@@ -22,16 +22,17 @@ properties {
     "Portable" = @{Suffix = " (Portable)"; Folder="portable-net45+wp8+win8+wpa81"};
     "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
     "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
-    "Win81" = @{Suffix = " (Win81)"; Folder="win81"}
+    "Win81" = @{Suffix = " (Win81)"; Folder="win81"};
+	"UWP" = @{Suffix = " (UWP)"; Folder="uap10.0"}
   }
   
   $projects = @(
-    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81")},
-    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81")}
+    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81", "UWP")},
+    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81", "UWP")}
   )
 }
 
-Framework "4.5.1x86"
+Framework "4.6x86"
 
 task default -depends ?
 
@@ -135,10 +136,23 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
       
       $projectDir = "$binariesDir\$projectName"
       $configurationDir = "$projectDir\$configurationFolder"
+	  $propertiesDir = "$configurationDir\$projectName\Properties"
+      $tempPropertiesDir = "$tempBinariesDir\$fullProjectName\Properties\"
     
       New-Item -Path $configurationDir -ItemType Directory | Out-Null
+	  
+	  $tempPropertiesDirExists = Test-Path -PathType Container $tempPropertiesDir
+	  if($tempPropertiesDirExists -eq $true){
+
+            $propertiesDirExists = Test-Path -PathType Container $propertiesDir
+            if($propertiesDirExists -eq $false){
+                New-Item -Path $propertiesDir -ItemType Directory | Out-Null
+            }
+
+			Copy-Item -Path $tempPropertiesDir\* -Destination $propertiesDir\ -Recurse -force
+	  }
       
-      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse
+      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	  	  
     }
   }
 }
@@ -166,11 +180,11 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
     New-Item -Path $projectLibFolder -ItemType Directory | Out-Null
     
     Copy-Item -Path $binariesDir\$projectName\* -Destination $projectLibFolder\ -Recurse
-    
+	    
     Write-Host -ForegroundColor Green "Packaging $projectName..."
     Write-Host
     
-    Exec { .$nuget pack $projectNuspec -Output $nupkgDir\ } "Error packaging $name"
+    Exec { .$nuget pack "$projectNuspec" -Output "$nupkgDir" } "Error packaging $name"
   }
 }
 

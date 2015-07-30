@@ -32,6 +32,11 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Windows Application Runtime.
         /// </summary>
-        WindowsApp
+        WindowsApp,
+
+        /// <summary>
+        /// Universal Application Runtime.
+        /// </summary>
+        UniversalAppPlatform
     }
 }
