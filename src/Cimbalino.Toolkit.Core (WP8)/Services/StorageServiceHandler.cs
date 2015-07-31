@@ -91,6 +91,9 @@ namespace Cimbalino.Toolkit.Services
                     folder = string.Empty;
                     protocol = "ms-appx";
                     break;
+                case StorageType.Legacy:
+                    folder = string.Empty;
+                    break;
                 default:
                     return ExceptionHelper.ThrowNotSupported<Uri>();
             }
