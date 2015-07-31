@@ -48,26 +48,26 @@ namespace Cimbalino.Toolkit.Services
         {
             var applicationData = ApplicationData.Current;
 
-            LocalStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.LocalFolder);
-            PackageStorageServiceHandlerStatic = new StorageServiceHandler(Windows.ApplicationModel.Package.Current.InstalledLocation);
+            LocalStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.LocalFolder, StorageServiceHandler.StorageType.Local);
+            PackageStorageServiceHandlerStatic = new StorageServiceHandler(Windows.ApplicationModel.Package.Current.InstalledLocation, StorageServiceHandler.StorageType.Package);
 
 #if WINDOWS_PHONE
             if (Version.Parse(Deployment.Current.RuntimeVersion).Major >= 6)
             {
-                RoamingStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.RoamingFolder);
-                TemporaryStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.TemporaryFolder);
+                RoamingStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.RoamingFolder, StorageServiceHandler.StorageType.Roaming);
+                TemporaryStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.TemporaryFolder, StorageServiceHandler.StorageType.Temporary);
 
                 var localCacheFolderPropertyInfo = applicationData.GetType().GetRuntimeProperty("LocalCacheFolder");
 
                 if (localCacheFolderPropertyInfo != null)
                 {
-                    LocalCacheStorageServiceHandlerStatic = new StorageServiceHandler((StorageFolder)localCacheFolderPropertyInfo.GetValue(applicationData));
+                    LocalCacheStorageServiceHandlerStatic = new StorageServiceHandler((StorageFolder)localCacheFolderPropertyInfo.GetValue(applicationData), StorageServiceHandler.StorageType.LocalCache);
                 }
             }
 #else
-            RoamingStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.RoamingFolder);
-            TemporaryStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.TemporaryFolder);
-            PackageStorageServiceHandlerStatic = new StorageServiceHandler(Windows.ApplicationModel.Package.Current.InstalledLocation);
+            RoamingStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.RoamingFolder, StorageServiceHandler.StorageType.Roaming);
+            TemporaryStorageServiceHandlerStatic = new StorageServiceHandler(applicationData.TemporaryFolder, StorageServiceHandler.StorageType.Temporary);
+            PackageStorageServiceHandlerStatic = new StorageServiceHandler(Windows.ApplicationModel.Package.Current.InstalledLocation, StorageServiceHandler.StorageType.Package);
 #endif
 
 #if WINDOWS_PHONE_APP
@@ -75,7 +75,7 @@ namespace Cimbalino.Toolkit.Services
 
             if (localCacheFolderPropertyInfo != null)
             {
-                LocalCacheStorageServiceHandlerStatic = new StorageServiceHandler((StorageFolder)localCacheFolderPropertyInfo.GetValue(applicationData));
+                LocalCacheStorageServiceHandlerStatic = new StorageServiceHandler((StorageFolder)localCacheFolderPropertyInfo.GetValue(applicationData), StorageServiceHandler.StorageType.LocalCache);
             }
 #endif
         }
