@@ -52,7 +52,9 @@ namespace Cimbalino.Toolkit.Converters
             }
 
 #if WINDOWS_PHONE
-            return ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower(culture);
+            return culture == null
+                ? ((string) _stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower()
+                : ((string) _stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower(culture);
 #else
             return ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower();
 #endif
