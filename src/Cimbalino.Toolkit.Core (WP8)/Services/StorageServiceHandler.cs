@@ -33,16 +33,6 @@ namespace Cimbalino.Toolkit.Services
 #endif
     public class StorageServiceHandler : IStorageServiceHandler
     {
-        public enum StorageType
-        {
-            Local,
-            Roaming,
-            LocalCache,
-            Temporary,
-            Legacy,
-            Package
-        }
-
         /// <summary>
         /// The root <see cref="StorageFolder"/> instance.
         /// </summary>
@@ -51,54 +41,58 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// The storage type
         /// </summary>
-        private readonly StorageType _storageType;
+        private readonly StorageServiceStorageType _storageType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageServiceHandler" /> class.
         /// </summary>
         /// <param name="storageFolder">The root <see cref="StorageFolder" /> instance.</param>
         /// <param name="storageType">Type of the storage.</param>
-        public StorageServiceHandler(StorageFolder storageFolder, StorageType storageType)
+        public StorageServiceHandler(StorageFolder storageFolder, StorageServiceStorageType storageType)
         {
             StorageFolder = storageFolder;
             _storageType = storageType;
         }
 
         /// <summary>
-        /// Gets the URI for the specified file.
+        /// Builds the URI for the specified file.
         /// </summary>
         /// <param name="file">The file.</param>
         /// <returns></returns>
-        public Uri GetUri(string file)
+        public Uri BuildFileUri(string file)
         {
             var protocol = "ms-appdata";
-            string folder;
+
+            string rootFolder;
+
             switch (_storageType)
             {
-                case StorageType.Local:
-                    folder = "local/";
+                case StorageServiceStorageType.Local:
+                    rootFolder = "local/";
                     break;
-                case StorageType.LocalCache:
-                    folder = "localcache/";
+
+                case StorageServiceStorageType.LocalCache:
+                    rootFolder = "localcache/";
                     break;
-                case StorageType.Roaming:
-                    folder = "roaming/";
+
+                case StorageServiceStorageType.Roaming:
+                    rootFolder = "roaming/";
                     break;
-                case StorageType.Temporary:
-                    folder = "temp/";
+
+                case StorageServiceStorageType.Temporary:
+                    rootFolder = "temp/";
                     break;
-                case StorageType.Package:
-                    folder = string.Empty;
+
+                case StorageServiceStorageType.Package:
                     protocol = "ms-appx";
+                    rootFolder = string.Empty;
                     break;
-                case StorageType.Legacy:
-                    folder = string.Empty;
-                    break;
+
                 default:
                     return ExceptionHelper.ThrowNotSupported<Uri>();
             }
 
-            var url = $"{protocol}:///{folder}{file}";
+            var url = $"{protocol}:///{rootFolder}{file}";
 
             return new Uri(url, UriKind.Absolute);
         }

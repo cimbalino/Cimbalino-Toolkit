@@ -355,6 +355,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageServiceHandler.cs">
       <Link>Services\StorageServiceHandler.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageServiceStorageType.cs">
+      <Link>Services\StorageServiceStorageType.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\WindowsPhoneStoreService.cs">
       <Link>Services\WindowsPhoneStoreService.cs</Link>
     </Compile>

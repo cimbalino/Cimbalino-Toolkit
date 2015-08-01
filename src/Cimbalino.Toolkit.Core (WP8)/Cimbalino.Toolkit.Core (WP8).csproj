@@ -419,6 +419,7 @@
     <Compile Include="Services\RuntimeInformationService.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Services\StorageServiceHandler.cs" />
+    <Compile Include="Services\StorageServiceStorageType.cs" />
     <Compile Include="Services\WindowsPhoneStoreService.cs" />
     <Compile Include="System\Security\Cryptography\HMACMD5.Generated.cs" />
     <Compile Include="System\Security\Cryptography\MD5.Generated.cs" />

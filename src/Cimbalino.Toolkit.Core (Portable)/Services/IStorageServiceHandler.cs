@@ -26,11 +26,11 @@ namespace Cimbalino.Toolkit.Services
     public interface IStorageServiceHandler
     {
         /// <summary>
-        /// Gets the URI for the specified file.
+        /// Builds the URI for the specified file.
         /// </summary>
         /// <param name="file">The file.</param>
         /// <returns></returns>
-        Uri GetUri(string file);
+        Uri BuildFileUri(string file);
 
         /// <summary>
         /// Copies an existing file to a new file.
