@@ -21,6 +21,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
 using Windows.Storage;
+using Cimbalino.Toolkit.Helpers;
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -38,12 +39,62 @@ namespace Cimbalino.Toolkit.Services
         protected readonly StorageFolder StorageFolder;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageServiceHandler"/> class.
+        /// The storage type
         /// </summary>
-        /// <param name="storageFolder">The root <see cref="StorageFolder"/> instance.</param>
-        public StorageServiceHandler(StorageFolder storageFolder)
+        private readonly StorageServiceStorageType _storageType;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageServiceHandler" /> class.
+        /// </summary>
+        /// <param name="storageFolder">The root <see cref="StorageFolder" /> instance.</param>
+        /// <param name="storageType">Type of the storage.</param>
+        public StorageServiceHandler(StorageFolder storageFolder, StorageServiceStorageType storageType)
         {
             StorageFolder = storageFolder;
+            _storageType = storageType;
+        }
+
+        /// <summary>
+        /// Builds the URI for the specified file.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <returns></returns>
+        public Uri BuildFileUri(string file)
+        {
+            var protocol = "ms-appdata";
+
+            string rootFolder;
+
+            switch (_storageType)
+            {
+                case StorageServiceStorageType.Local:
+                    rootFolder = "local/";
+                    break;
+
+                case StorageServiceStorageType.LocalCache:
+                    rootFolder = "localcache/";
+                    break;
+
+                case StorageServiceStorageType.Roaming:
+                    rootFolder = "roaming/";
+                    break;
+
+                case StorageServiceStorageType.Temporary:
+                    rootFolder = "temp/";
+                    break;
+
+                case StorageServiceStorageType.Package:
+                    protocol = "ms-appx";
+                    rootFolder = string.Empty;
+                    break;
+
+                default:
+                    return ExceptionHelper.ThrowNotSupported<Uri>();
+            }
+
+            var url = $"{protocol}:///{rootFolder}{file}";
+
+            return new Uri(url, UriKind.Absolute);
         }
 
         /// <summary>
