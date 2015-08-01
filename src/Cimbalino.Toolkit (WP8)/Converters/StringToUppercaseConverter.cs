@@ -51,7 +51,9 @@ namespace Cimbalino.Toolkit.Converters
             }
 
 #if WINDOWS_PHONE
-            return ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper(culture);
+            return culture == null
+                ? ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper()
+                : ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper(culture);
 #else
             return ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper();
 #endif
