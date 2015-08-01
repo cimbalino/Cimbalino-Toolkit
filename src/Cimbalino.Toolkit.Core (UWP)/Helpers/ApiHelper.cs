@@ -16,7 +16,7 @@
 using Windows.Foundation.Metadata;
 #endif
 
-namespace Cimbalino.Toolkit.Core.Helpers
+namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
     /// Helper class to define what functionality is available on each platform

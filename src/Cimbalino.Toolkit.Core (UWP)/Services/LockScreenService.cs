@@ -12,42 +12,26 @@
 // </license>
 // ****************************************************************************
 
-// ****************************************************************************
-// <copyright file="LockScreenService.cs" company="Pedro Lamas">
-// Copyright © Pedro Lamas 2014
-// </copyright>
-// ****************************************************************************
-// <author>Pedro Lamas</author>
-// <email>pedrolamas@gmail.com</email>
-// <project>Cimbalino.Toolkit.Core</project>
-// <web>http://www.pedrolamas.com</web>
-// <license>
-// See license.txt in this solution or http://www.pedrolamas.com/license_MIT.txt
-// </license>
-// ****************************************************************************
 #if WINDOWS_PHONE
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Windows.Phone.System.UserProfile;
 using Cimbalino.Toolkit.Helpers;
-using Cimbalino.Toolkit.Services;
+using Windows.Phone.System.UserProfile;
 #elif WINDOWS_PHONE_APP
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
-using Cimbalino.Toolkit.Services;
 #else
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Windows.System.UserProfile;
 using Cimbalino.Toolkit.Helpers;
-using Cimbalino.Toolkit.Services;
+using Windows.System.UserProfile;
 #endif
 
-namespace Cimbalino.Toolkit.Core.Services
+namespace Cimbalino.Toolkit.Services
 {
     public class LockScreenService : ILockScreenService
     {

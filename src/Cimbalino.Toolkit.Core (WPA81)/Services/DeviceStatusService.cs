@@ -13,7 +13,6 @@
 // ****************************************************************************
 
 #if WINDOWS_PHONE_APP
-using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using Windows.Devices.Input;
 using Windows.Phone.Devices.Power;
@@ -21,15 +20,12 @@ using Windows.Phone.System.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
 using Cimbalino.Toolkit.Helpers;
-
 #elif WINDOWS_APP
 using System;
 using Windows.Devices.Input;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Cimbalino.Toolkit.Helpers;
-
 #else
-using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using Windows.Devices.Input;
 using Windows.Devices.Power;

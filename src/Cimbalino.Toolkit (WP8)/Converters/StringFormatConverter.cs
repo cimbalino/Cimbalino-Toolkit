@@ -13,15 +13,14 @@
 // ****************************************************************************
 
 #if WINDOWS_PHONE
-using Cimbalino.Toolkit.Helpers;
 using System;
 using System.Globalization;
 using System.Windows.Data;
-
-#else
 using Cimbalino.Toolkit.Helpers;
+#else
 using System;
 using System.Globalization;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Xaml.Data;
 #endif
 

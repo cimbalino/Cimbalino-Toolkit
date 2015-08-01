@@ -18,7 +18,6 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using Cimbalino.Toolkit.Helpers;
-
 #else
 using System;
 using System.Globalization;

@@ -16,31 +16,26 @@
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Cimbalino.Toolkit.Core.Helpers;
-using Cimbalino.Toolkit.Helpers;
-
 #elif WINDOWS_UWP
 using System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.Phone.UI.Input;
 using Windows.UI.Core;
-using Cimbalino.Toolkit.Core.Helpers;
-using Cimbalino.Toolkit.Helpers;
-
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 #else
 using System;
 using System.Collections.Generic;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Cimbalino.Toolkit.Helpers;
-
 #endif
 
 namespace Cimbalino.Toolkit.Services

@@ -16,11 +16,10 @@
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
-
 #else
-using Cimbalino.Toolkit.Core.Helpers;
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.ViewManagement;
 #endif
 

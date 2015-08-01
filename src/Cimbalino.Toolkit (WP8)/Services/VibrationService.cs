@@ -15,18 +15,13 @@
 #if WINDOWS_PHONE
 using System;
 using Microsoft.Devices;
-#elif WINDOWS_PHONE_APP
-using Cimbalino.Toolkit.Core.Helpers;
+#elif WINDOWS_PHONE_APP || WINDOWS_UWP
 using System;
-using Windows.Phone.Devices.Notification;
-#elif WINDOWS_UWP
-using Cimbalino.Toolkit.Core.Helpers;
-using System;
+using Cimbalino.Toolkit.Helpers;
 using Windows.Phone.Devices.Notification;
 #else
 using System;
 using Cimbalino.Toolkit.Helpers;
-
 #endif
 
 namespace Cimbalino.Toolkit.Services

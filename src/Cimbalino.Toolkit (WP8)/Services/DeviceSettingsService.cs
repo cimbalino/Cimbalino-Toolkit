@@ -15,14 +15,11 @@
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
-using Windows.System;
-using Cimbalino.Toolkit.Core.Helpers;
 using Cimbalino.Toolkit.Helpers;
-
+using Windows.System;
 #else
 using System;
 using System.Threading.Tasks;
-using Cimbalino.Toolkit.Core.Helpers;
 using Cimbalino.Toolkit.Helpers;
 #endif
 

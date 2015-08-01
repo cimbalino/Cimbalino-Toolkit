@@ -17,21 +17,21 @@ using System.Threading.Tasks;
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 using Windows.ApplicationModel.Calls;
-using Cimbalino.Toolkit.Core.Helpers;
 #elif WINDOWS_UWP
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Calls;
-using Cimbalino.Toolkit.Core.Helpers;
 using System;
-using Windows.System;
+using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
+using Windows.ApplicationModel.Calls;
+using Windows.System;
 #else
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.System;
-using Cimbalino.Toolkit.Core.Helpers;
 #endif
 
 namespace Cimbalino.Toolkit.Services

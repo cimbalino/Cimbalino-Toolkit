@@ -17,8 +17,6 @@ using System;
 using System.Windows;
 using System.Xml;
 using Cimbalino.Toolkit.Extensions;
-#else
-using System;
 #endif
 
 namespace Cimbalino.Toolkit.Helpers
