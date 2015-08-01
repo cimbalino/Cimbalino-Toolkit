@@ -12,6 +12,7 @@
 // </license>
 // ****************************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -24,6 +25,13 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public interface IStorageServiceHandler
     {
+        /// <summary>
+        /// Gets the URI for the specified file.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <returns></returns>
+        Uri GetUri(string file);
+
         /// <summary>
         /// Copies an existing file to a new file.
         /// </summary>
