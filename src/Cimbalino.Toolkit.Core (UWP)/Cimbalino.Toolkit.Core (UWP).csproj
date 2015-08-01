@@ -503,6 +503,7 @@
     <Compile Include="Helpers\ApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LockScreenService.cs" />
+    <Compile Include="Services\PersonalizationService.cs" />
     <Content Include="Properties\Cimbalino.Toolkit.Core.rd.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -527,7 +528,6 @@
   <Target Name="BeforeBuild">
   </Target>-->
   <Target Name="AfterBuild">
-    <Copy SourceFiles="@(PropertiesFile)"
-          DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="@(PropertiesFile)" DestinationFolder="$(OutputPath)" />
   </Target>
 </Project>
