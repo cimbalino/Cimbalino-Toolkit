@@ -365,6 +365,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\DeviceStatusService.cs">
       <Link>Services\DeviceStatusService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\PersonalizationService.cs">
+      <Link>Services\PersonalizationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\WindowsStoreService.cs">
       <Link>Services\WindowsStoreService.cs</Link>
     </Compile>

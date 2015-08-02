@@ -205,7 +205,6 @@
     <Compile Include="Behaviors\Behavior.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Helpers\DependencyObjectCollection{T}.cs" />
-    <Compile Include="Services\PersonalizationService.cs" />
     <Compile Include="Services\StatusBarService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

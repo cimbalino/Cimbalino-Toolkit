@@ -36,12 +36,11 @@ namespace Cimbalino.Toolkit.Core.Services
         /// <summary>
         /// Sets the lock screen image.
         /// </summary>
-        /// <param name="filePath">The file path.</param>
-        /// <param name="fileIsInPackage">if set to <c>true</c> [file is in package].</param>
+        /// <param name="fileUri">The file URI.</param>
         /// <returns></returns>
-        public virtual async Task<bool> SetLockScreenImageAsync(string filePath, bool fileIsInPackage = false)
+        public virtual async Task<bool> SetLockScreenImageAsync(string fileUri)
         {
-            var file = await GetStorageFile(filePath, fileIsInPackage);
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(fileUri));
 
             var result = await UserProfilePersonalizationSettings.Current.TrySetLockScreenImageAsync(file);
             return result;
@@ -50,24 +49,14 @@ namespace Cimbalino.Toolkit.Core.Services
         /// <summary>
         /// Sets the wallpaper image.
         /// </summary>
-        /// <param name="filePath">The file path.</param>
-        /// <param name="fileIsInPackage">if set to <c>true</c> [file is in package].</param>
+        /// <param name="fileUri">The file URI.</param>
         /// <returns></returns>
-        public virtual async Task<bool> SetWallpaperImageAsync(string filePath, bool fileIsInPackage = false)
+        public virtual async Task<bool> SetWallpaperImageAsync(string fileUri)
         {
-            var file = await GetStorageFile(filePath, fileIsInPackage);
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(fileUri));
 
             var result = await UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(file);
             return result;
-        }
-
-        private async Task<StorageFile> GetStorageFile(string filePath, bool fileIsInPackage = false)
-        {
-            var file = fileIsInPackage
-                ? await StorageFile.GetFileFromApplicationUriAsync(new Uri(filePath))
-                : await StorageFile.GetFileFromPathAsync(filePath);
-
-            return file;
         }
     }
 }
