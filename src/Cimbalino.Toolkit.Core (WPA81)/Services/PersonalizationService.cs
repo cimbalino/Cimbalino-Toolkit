@@ -30,10 +30,9 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Sets the lock screen image.
         /// </summary>
-        /// <param name="filePath">The file path.</param>
-        /// <param name="fileIsInPackage">if set to <c>true</c> [file is in package].</param>
+        /// <param name="fileUri">The file URI.</param>
         /// <returns></returns>
-        public virtual Task<bool> SetLockScreenImageAsync(string filePath, bool fileIsInPackage = false)
+        public virtual Task<bool> SetLockScreenImageAsync(string fileUri)
         {
             return ExceptionHelper.ThrowNotSupported<Task<bool>>();
         }
@@ -41,10 +40,9 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Sets the wallpaper image.
         /// </summary>
-        /// <param name="filePath">The file path.</param>
-        /// <param name="fileIsInPackage">if set to <c>true</c> [file is in package].</param>
+        /// <param name="fileUri">The file URI.</param>
         /// <returns></returns>
-        public virtual Task<bool> SetWallpaperImageAsync(string filePath, bool fileIsInPackage = false)
+        public virtual Task<bool> SetWallpaperImageAsync(string fileUri)
         {
             return ExceptionHelper.ThrowNotSupported<Task<bool>>();
         }

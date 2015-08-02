@@ -299,6 +299,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Services\LockScreenService.cs">
       <Link>Services\LockScreenService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\PersonalizationService.cs">
+      <Link>Services\PersonalizationService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
     </Compile>

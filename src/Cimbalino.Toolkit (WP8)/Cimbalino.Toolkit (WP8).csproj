@@ -92,9 +92,6 @@
     <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\TitleBarService.cs">
       <Link>Services\TitleBarService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\PersonalizationService.cs">
-      <Link>Services\PersonalizationService.cs</Link>
-    </Compile>
     <Compile Include="Behaviors\AfterAutoFocusEventArgs.cs" />
     <Compile Include="Behaviors\ApplicationBar.cs" />
     <Compile Include="Behaviors\ApplicationBarBehavior.cs" />
