@@ -16,16 +16,16 @@
 using System;
 using System.Reflection;
 using System.Windows;
-using Windows.Storage;
 using Cimbalino.Toolkit.Helpers;
+using Windows.Storage;
 #elif WINDOWS_PHONE_APP
 using System;
 using System.Reflection;
-using Windows.Storage;
 using Cimbalino.Toolkit.Helpers;
+using Windows.Storage;
 #else
-using Windows.Storage;
 using Cimbalino.Toolkit.Helpers;
+using Windows.Storage;
 #endif
 
 namespace Cimbalino.Toolkit.Services

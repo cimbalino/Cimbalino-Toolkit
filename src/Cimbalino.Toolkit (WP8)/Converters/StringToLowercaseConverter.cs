@@ -20,8 +20,8 @@ using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Globalization;
-using Windows.UI.Xaml.Data;
 using Cimbalino.Toolkit.Helpers;
+using Windows.UI.Xaml.Data;
 #endif
 
 namespace Cimbalino.Toolkit.Converters
@@ -52,8 +52,8 @@ namespace Cimbalino.Toolkit.Converters
 
 #if WINDOWS_PHONE
             return culture == null
-                ? ((string) _stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower()
-                : ((string) _stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower(culture);
+                ? ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower()
+                : ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower(culture);
 #else
             return ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToLower();
 #endif

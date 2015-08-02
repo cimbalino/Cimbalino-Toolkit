@@ -19,8 +19,8 @@ using Windows.Phone.System.UserProfile;
 #else
 using System;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Background;
 using Cimbalino.Toolkit.Helpers;
+using Windows.ApplicationModel.Background;
 #endif
 
 namespace Cimbalino.Toolkit.Services

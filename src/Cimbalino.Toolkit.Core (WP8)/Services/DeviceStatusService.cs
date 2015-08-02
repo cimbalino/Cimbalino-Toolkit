@@ -13,10 +13,10 @@
 // ****************************************************************************
 
 using System;
-using Windows.Phone.Devices.Power;
-using Windows.Phone.System.Power;
 using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Info;
+using Windows.Phone.Devices.Power;
+using Windows.Phone.System.Power;
 
 namespace Cimbalino.Toolkit.Services
 {

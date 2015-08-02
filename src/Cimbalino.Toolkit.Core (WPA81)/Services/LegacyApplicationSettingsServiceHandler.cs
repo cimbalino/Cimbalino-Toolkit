@@ -87,7 +87,7 @@ namespace Cimbalino.Toolkit.Services
         public async virtual Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
         {
 #if WINDOWS_UWP
-            if(await ApplicationData.Current.LocalFolder.TryGetItemAsync("__ApplicationSettings") == null)
+            if (await ApplicationData.Current.LocalFolder.TryGetItemAsync("__ApplicationSettings") == null)
             {
                 return new Dictionary<string, object>();
             }

@@ -20,8 +20,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
-using Windows.Storage;
 using Cimbalino.Toolkit.Helpers;
+using Windows.Storage;
 
 namespace Cimbalino.Toolkit.Services
 {

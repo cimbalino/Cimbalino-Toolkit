@@ -74,7 +74,6 @@ namespace Cimbalino.Toolkit.Services
             }
             remove
             {
-                
             }
         }
 #endif

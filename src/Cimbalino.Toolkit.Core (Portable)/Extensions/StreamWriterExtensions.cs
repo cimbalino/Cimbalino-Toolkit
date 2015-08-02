@@ -42,7 +42,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="streamWriter">The stream writer.</param>
         /// <param name="lines">The lines.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async static Task WriteAllLinesAsync(this StreamWriter streamWriter, IEnumerable<string> lines)
+        public static async Task WriteAllLinesAsync(this StreamWriter streamWriter, IEnumerable<string> lines)
         {
             foreach (var line in lines)
             {

@@ -22,8 +22,8 @@ using Windows.ApplicationModel.Chat;
 #elif WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.ApplicationModel.Chat;
 using Windows.System;
 #else

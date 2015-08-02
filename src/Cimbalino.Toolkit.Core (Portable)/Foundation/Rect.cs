@@ -21,7 +21,7 @@ namespace Cimbalino.Toolkit.Foundation
     /// </summary>
     public struct Rect
     {
-        private readonly static Rect EmptyRect = new Rect()
+        private static readonly Rect EmptyRect = new Rect()
         {
             _x = double.PositiveInfinity,
             _y = double.PositiveInfinity,

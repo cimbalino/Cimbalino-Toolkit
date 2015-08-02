@@ -255,7 +255,7 @@ namespace Cimbalino.Toolkit.Services
             return false;
         }
 
-		/// <summary>
+        /// <summary>
         /// Ensure that a <see cref="Frame"/> instance has been found.
         /// </summary>
         /// <returns>true if a <see cref="Frame"/> instance has been found; otherwise, false.</returns>
@@ -267,7 +267,7 @@ namespace Cimbalino.Toolkit.Services
             {
                 _mainFrame.Navigated -= Frame_Navigated;
                 _mainFrame.Navigated += Frame_Navigated;
-                
+
                 return true;
             }
 
@@ -290,7 +290,7 @@ namespace Cimbalino.Toolkit.Services
         protected virtual void RaiseNavigated(EventArgs eventArgs)
         {
             var eventHandler = Navigated;
-            eventHandler?.Invoke(this, eventArgs);            
+            eventHandler?.Invoke(this, eventArgs);
         }
 
 #if WINDOWS_UWP
@@ -350,15 +350,15 @@ namespace Cimbalino.Toolkit.Services
 
             return handled;
         }
-		
-		/// <summary>
+
+        /// <summary>
         /// Raises the <see cref="BackKeyPressed"/> event with the provided event data.
         /// </summary>
         /// <param name="eventArgs">The event data.</param>
         protected virtual void RaiseBackKeyPressed(NavigationServiceBackKeyPressedEventArgs eventArgs)
         {
             var eventHandler = BackKeyPressed;
-			eventHandler?.Invoke(this, eventArgs);
+            eventHandler?.Invoke(this, eventArgs);
         }
 #endif
     }

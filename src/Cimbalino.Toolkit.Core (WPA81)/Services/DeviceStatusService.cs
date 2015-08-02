@@ -14,26 +14,25 @@
 
 #if WINDOWS_PHONE_APP
 using System;
+using Cimbalino.Toolkit.Helpers;
 using Windows.Devices.Input;
 using Windows.Phone.Devices.Power;
 using Windows.Phone.System.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
-using Cimbalino.Toolkit.Helpers;
 #elif WINDOWS_APP
 using System;
+using Cimbalino.Toolkit.Helpers;
 using Windows.Devices.Input;
 using Windows.Security.ExchangeActiveSyncProvisioning;
-using Cimbalino.Toolkit.Helpers;
 #else
 using System;
+using Cimbalino.Toolkit.Helpers;
 using Windows.Devices.Input;
 using Windows.Devices.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
 using Windows.System.Power;
-using Cimbalino.Toolkit.Helpers;
-
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -73,10 +72,8 @@ namespace Cimbalino.Toolkit.Services
             {
                 ExceptionHelper.ThrowNotSupported();
             }
-
             remove
             {
-                
             }
         }
 #else
@@ -299,11 +296,9 @@ namespace Cimbalino.Toolkit.Services
                 return Battery.GetDefault().RemainingChargePercent;
 #elif WINDOWS_UWP
                 var report = Battery.AggregateBattery.GetReport();
-                if (report.FullChargeCapacityInMilliwattHours.HasValue
-                    && report.RemainingCapacityInMilliwattHours.HasValue)
+                if (report.FullChargeCapacityInMilliwattHours.HasValue && report.RemainingCapacityInMilliwattHours.HasValue)
                 {
-                    return (report.RemainingCapacityInMilliwattHours.Value/
-                            report.FullChargeCapacityInMilliwattHours.Value)*100;
+                    return (report.RemainingCapacityInMilliwattHours.Value / report.FullChargeCapacityInMilliwattHours.Value) * 100;
                 }
 
                 return null;

@@ -15,16 +15,14 @@
 #if WINDOWS_PHONE
 using System;
 using System.Windows;
-using Windows.Storage;
 using Cimbalino.Toolkit.Helpers;
-
+using Windows.Storage;
 #elif WINDOWS_PHONE_APP
 using Windows.Storage;
 #else
 using System;
-using Windows.Storage;
 using Cimbalino.Toolkit.Helpers;
-
+using Windows.Storage;
 #endif
 
 namespace Cimbalino.Toolkit.Services

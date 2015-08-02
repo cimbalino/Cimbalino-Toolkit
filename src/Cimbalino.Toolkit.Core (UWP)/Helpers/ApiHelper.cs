@@ -21,7 +21,7 @@ namespace Cimbalino.Toolkit.Helpers
     /// <summary>
     /// Helper class to define what functionality is available on each platform
     /// </summary>
-    public static class ApiHelper
+    internal static class ApiHelper
     {
 #if WINDOWS_UWP
         public static bool SupportsBackButton => ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons");
