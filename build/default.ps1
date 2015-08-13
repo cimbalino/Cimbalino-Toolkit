@@ -139,15 +139,7 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
     
       New-Item -Path $configurationDir -ItemType Directory | Out-Null
 	  
-	    if (Test-Path $tempBinariesDir\$fullProjectName\Properties) {
-        $propertiesDir = "$configurationDir\$projectName\Properties"
-        
-        New-Item -Path $propertiesDir -ItemType Directory -Force | Out-Null
-        
-        Copy-Item -Path $tempBinariesDir\$fullProjectName\Properties\$projectName.rd.xml -Destination $propertiesDir\ -Recurse
-      }
-      
-      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	
+	    Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	
     }
   }
 }
