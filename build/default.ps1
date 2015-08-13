@@ -23,7 +23,7 @@ properties {
     "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
     "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
     "Win81" = @{Suffix = " (Win81)"; Folder="win81"};
-	"UWP" = @{Suffix = " (UWP)"; Folder="uap10.0"}
+    "UWP" = @{Suffix = " (UWP)"; Folder="uap10.0"}
   }
   
   $projects = @(
@@ -123,7 +123,7 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
   New-Item -Path $binariesDir -ItemType Directory | Out-Null
   New-Item -Path $tempBinariesDir -ItemType Directory | Out-Null
   
-  Exec { msbuild "/t:Clean;Build" /p:Configuration=Release /p:OutDir=$tempBinariesDir /p:GenerateProjectSpecificOutputFolder=true /p:StyleCopTreatErrorsAsWarnings=true /m "$sourceDir\Cimbalino.Toolkit.sln" } "Error building $solutionFile"
+  Exec { msbuild "/t:Clean;Build" /p:Configuration=Release "/p:OutDir=$tempBinariesDir" /p:GenerateProjectSpecificOutputFolder=true /p:StyleCopTreatErrorsAsWarnings=true /m "$sourceDir\Cimbalino.Toolkit.sln" } "Error building $solutionFile"
   
   $projects | % {
     $projectName = $_.Name
@@ -136,23 +136,18 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
       
       $projectDir = "$binariesDir\$projectName"
       $configurationDir = "$projectDir\$configurationFolder"
-	  $propertiesDir = "$configurationDir\$projectName\Properties"
-      $tempPropertiesDir = "$tempBinariesDir\$fullProjectName\Properties\"
     
       New-Item -Path $configurationDir -ItemType Directory | Out-Null
 	  
-	  $tempPropertiesDirExists = Test-Path -PathType Container $tempPropertiesDir
-	  if($tempPropertiesDirExists -eq $true){
-
-            $propertiesDirExists = Test-Path -PathType Container $propertiesDir
-            if($propertiesDirExists -eq $false){
-                New-Item -Path $propertiesDir -ItemType Directory | Out-Null
-            }
-
-			Copy-Item -Path $tempPropertiesDir\* -Destination $propertiesDir\ -Recurse -force
-	  }
+	    if (Test-Path $tempBinariesDir\$fullProjectName\Properties) {
+        $propertiesDir = "$configurationDir\$projectName\Properties"
+        
+        New-Item -Path $propertiesDir -ItemType Directory -Force | Out-Null
+        
+        Copy-Item -Path $tempBinariesDir\$fullProjectName\Properties\$projectName.rd.xml -Destination $propertiesDir\ -Recurse
+      }
       
-      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	  	  
+      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	
     }
   }
 }
@@ -195,7 +190,7 @@ task PublishNuget -depends PackNuGet -description "Publish the NuGet packages to
     Write-Host -ForegroundColor Green "Publishing $nupkg..."
     Write-Host
     
-    Exec { .$nuget push $nupkg } "Error publishing $nupkg"
+    Exec { .$nuget push "$nupkg" } "Error publishing $nupkg"
   }
 }
 
