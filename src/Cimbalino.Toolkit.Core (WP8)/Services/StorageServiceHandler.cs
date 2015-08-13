@@ -55,11 +55,11 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Builds the URI for the specified file.
+        /// Builds a <see cref="Uri"/> given a relative path to a file in the store.
         /// </summary>
-        /// <param name="file">The file.</param>
-        /// <returns></returns>
-        public Uri BuildFileUri(string file)
+        /// <param name="path">The relative path of the file in the store.</param>
+        /// <returns>A <see cref="Uri"/> for the file in the store.</returns>
+        public Uri BuildFileUri(string path)
         {
             var protocol = "ms-appdata";
 
@@ -92,7 +92,7 @@ namespace Cimbalino.Toolkit.Services
                     return ExceptionHelper.ThrowNotSupported<Uri>();
             }
 
-            var url = $"{protocol}:///{rootFolder}{file}";
+            var url = $"{protocol}:///{rootFolder}{path}";
 
             return new Uri(url, UriKind.Absolute);
         }

@@ -26,11 +26,11 @@ namespace Cimbalino.Toolkit.Services
     public interface IStorageServiceHandler
     {
         /// <summary>
-        /// Builds the URI for the specified file.
+        /// Builds a <see cref="Uri"/> given a relative path to a file in the store.
         /// </summary>
-        /// <param name="file">The file.</param>
-        /// <returns></returns>
-        Uri BuildFileUri(string file);
+        /// <param name="path">The relative path of the file in the store.</param>
+        /// <returns>A <see cref="Uri"/> for the file in the store.</returns>
+        Uri BuildFileUri(string path);
 
         /// <summary>
         /// Copies an existing file to a new file.
