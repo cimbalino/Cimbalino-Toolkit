@@ -145,6 +145,7 @@
     <Compile Include="Services\StoreService.cs" />
     <Compile Include="Services\StatusBarService.cs" />
     <Compile Include="Services\VibrationService.cs" />
+    <Compile Include="Services\WebAuthenticationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cimbalino.Toolkit.Core %28WP8%29\Cimbalino.Toolkit.Core %28WP8%29.csproj">
