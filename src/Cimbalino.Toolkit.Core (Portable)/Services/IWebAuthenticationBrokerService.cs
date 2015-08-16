@@ -18,6 +18,9 @@ using System.Threading.Tasks;
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Interface for a service to aid with using the web authentication broker
+    /// </summary>
     public interface IWebAuthenticationBrokerService
     {
         Task<WebAuthenticationResult> AuthenticateAsync(WebAuthenticationOptions options, Uri uri, Uri callbackUri = null);
