@@ -342,6 +342,9 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IVibrationService.cs">
       <Link>Services\IVibrationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IWebAuthenticationBrokerService.cs">
+      <Link>Services\IWebAuthenticationBrokerService.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IWindowsPhoneStoreService.cs">
       <Link>Services\IWindowsPhoneStoreService.cs</Link>
     </Compile>
@@ -380,6 +383,15 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\TitleBarIsVisibleChangedArgs.cs">
       <Link>Services\TitleBarIsVisibleChangedArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WebAuthenticationOptions.cs">
+      <Link>Services\WebAuthenticationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WebAuthenticationResult.cs">
+      <Link>Services\WebAuthenticationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WebAuthenticationStatus.cs">
+      <Link>Services\WebAuthenticationStatus.cs</Link>
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs">
       <Link>Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs</Link>
