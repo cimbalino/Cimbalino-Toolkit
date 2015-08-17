@@ -13,34 +13,41 @@
 // ****************************************************************************
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Options for Web Authentication Broker
+    /// </summary>
     public enum WebAuthenticationOptions : uint
-    {
-        //
-        // Summary:
-        //     No options are requested.
+    {   
+        /// <summary>
+        /// No options are requested.
+        /// </summary>
         None,
-        //
-        // Summary:
-        //     Tells the web authentication broker to not render any UI. This option will throw
-        //     an exception if used with AuthenticateAndContinue; AuthenticateSilentlyAsync,
-        //     which includes this option implicitly, should be used instead.
+          
+        /// <summary>
+        /// Tells the web authentication broker to not render any UI. This option will throw
+        /// an exception if used with AuthenticateAndContinue; AuthenticateSilentlyAsync,
+        /// which includes this option implicitly, should be used instead.
+        /// </summary>
         SilentMode,
-        //
-        // Summary:
-        //     Tells the web authentication broker to return the window title string of the
-        //     webpage in the ResponseData property.
+
+        /// <summary>
+        /// Tells the web authentication broker to return the window title string of the
+        /// webpage in the ResponseData property.
+        /// </summary>
         UseTitle,
-        //
-        // Summary:
-        //     Tells the web authentication broker to return the body of the HTTP POST in the
-        //     ResponseData property. For use with single sign-on (SSO) only.
+           
+        /// <summary>
+        /// Tells the web authentication broker to return the body of the HTTP POST in the
+        /// ResponseData property. For use with single sign-on (SSO) only.
+        /// </summary>
         UseHttpPost = 4,
-        //
-        // Summary:
-        //     Tells the web authentication broker to render the webpage in an app container
-        //     that supports privateNetworkClientServer, enterpriseAuthentication, and sharedUserCertificate
-        //     capabilities. Note the application that uses this flag must have these capabilities
-        //     as well.
+          
+        /// <summary>
+        /// Tells the web authentication broker to render the webpage in an app container
+        /// that supports privateNetworkClientServer, enterpriseAuthentication, and sharedUserCertificate
+        /// capabilities. Note the application that uses this flag must have these capabilities
+        /// as well.
+        /// </summary>
         UseCorporateNetwork = 8
     }
 }
