@@ -23,11 +23,49 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public interface IWebAuthenticationBrokerService
     {
+        /// <summary>
+        /// Authenticates the.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        /// <param name="uri">The URI.</param>
+        /// <param name="callbackUri">The callback URI.</param>
+        /// <returns></returns>
         Task<WebAuthenticationResult> AuthenticateAsync(WebAuthenticationOptions options, Uri uri, Uri callbackUri = null);
+        
+        /// <summary>
+        /// Authenticates and continues.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
         void AuthenticateAndContinue(Uri uri);
+
+        /// <summary>
+        /// Authenticates and continues.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <param name="callbackUri">The callback URI.</param>
         void AuthenticateAndContinue(Uri uri, Uri callbackUri);
+
+        /// <summary>
+        /// Authenticates and continues.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <param name="callbackUri">The callback URI.</param>
+        /// <param name="valueSet">The value set.</param>
+        /// <param name="options">The options.</param>
         void AuthenticateAndContinue(Uri uri, Uri callbackUri, Dictionary<string, object> valueSet, WebAuthenticationOptions options);
+       
+        /// <summary>
+        /// Authenticates the silently.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <param name="options">The options.</param>
+        /// <returns></returns>
         Task<WebAuthenticationResult> AuthenticateSilentlyAsync(Uri uri, WebAuthenticationOptions? options = null);
+        
+        /// <summary>
+        /// Gets the current application callback URI.
+        /// </summary>
+        /// <returns></returns>
         Uri GetCurrentApplicationCallbackUri();
     }
 }
