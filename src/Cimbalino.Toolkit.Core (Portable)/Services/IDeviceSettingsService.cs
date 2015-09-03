@@ -74,13 +74,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowPowerSettingsAsync();
-
-        /// <summary>
-        /// Shows the NFC settings dialog.
-        /// </summary>
-        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        Task ShowProximitySettingsAsync();
-
+        
         /// <summary>
         /// Shows the Screen Rotation settings dialog.
         /// </summary>
@@ -116,12 +110,6 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowDataSenseSettingsAsync();
-
-        /// <summary>
-        /// Shows the NFC transaction settings dialog.
-        /// </summary>
-        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        Task ShowNfcTransactionSettingsAsync();
 
         /// <summary>
         /// Shows the proxy settings dialog.
@@ -170,5 +158,77 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowMessagingSettingsAsync();
+
+        /// <summary>
+        /// Shows the display settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowDisplaySettingsAsync();
+
+        /// <summary>
+        /// Shows the connected devices
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowConnectedDevicesSettingsAsync();
+
+        /// <summary>
+        /// Shows the mouse and touchpad
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowMouseAndTouchpadSettingsAsync();
+
+        /// <summary>
+        /// Shows the dial up settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowDialUpSettingsAsync();
+
+        /// <summary>
+        /// Shows the ethernet settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowEthernetSettingsAsync();
+
+        /// <summary>
+        /// Shows the mobile hotspot settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowMobileHotspotSettingsAsync();
+
+        /// <summary>
+        /// Shows the personalization settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowPersonalizationSettingsAsync();
+
+        /// <summary>
+        /// Shows the date and time settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowDateAndTimeSettingsAsync();
+
+        /// <summary>
+        /// Shows the speech settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowSpeechSettingsAsync();
+
+        /// <summary>
+        /// Shows the radios settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowRadiosSettingsAsync();
+
+        /// <summary>
+        /// Shows the speech privacy settings
+        /// </summary>
+        /// <returns></returns>
+        Task ShowSpeechPrivacySettingsAsync();
+
+        /// <summary>
+        /// Shows the windows update settings
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowWindowsUpdateSettingsAsync();
     }
 }
