@@ -92,6 +92,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\TitleBarService.cs">
       <Link>Services\TitleBarService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\WebAuthenticationBrokerService.cs">
+      <Link>Services\WebAuthenticationBrokerService.cs</Link>
+    </Compile>
     <Compile Include="Behaviors\AfterAutoFocusEventArgs.cs" />
     <Compile Include="Behaviors\ApplicationBar.cs" />
     <Compile Include="Behaviors\ApplicationBarBehavior.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Services\StoreService.cs" />
     <Compile Include="Services\StatusBarService.cs" />
     <Compile Include="Services\VibrationService.cs" />
+    <Compile Include="Services\WebAuthenticationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cimbalino.Toolkit.Core %28WP8%29\Cimbalino.Toolkit.Core %28WP8%29.csproj">
