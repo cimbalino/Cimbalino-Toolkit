@@ -74,13 +74,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowPowerSettingsAsync();
-
-        /// <summary>
-        /// Shows the NFC settings dialog.
-        /// </summary>
-        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        Task ShowProximitySettingsAsync();
-
+        
         /// <summary>
         /// Shows the Screen Rotation settings dialog.
         /// </summary>
@@ -100,55 +94,49 @@ namespace Cimbalino.Toolkit.Services
         Task ShowWorkplaceSettingsAsync();
 
         /// <summary>
-        /// Shows the storage sense settings dialog.
+        /// Shows the Storage Sense settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowStorageSenseSettingsAsync();
 
         /// <summary>
-        /// Shows the maps settings dialog.
+        /// Shows the Maps settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowMapsSettingsAsync();
 
         /// <summary>
-        /// Shows the data sense settings dialog.
+        /// Shows the Data Sense settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowDataSenseSettingsAsync();
 
         /// <summary>
-        /// Shows the NFC transaction settings dialog.
-        /// </summary>
-        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        Task ShowNfcTransactionSettingsAsync();
-
-        /// <summary>
-        /// Shows the proxy settings dialog.
+        /// Shows the Proxy settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowProxySettingsAsync();
 
         /// <summary>
-        /// Shows the region and language settings dialog.
+        /// Shows the Region and Language settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowRegionAndLanguageSettingsAsync();
 
         /// <summary>
-        /// Shows the webcam settings dialog.
+        /// Shows the Webcam settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowWebcamSettingsAsync();
 
         /// <summary>
-        /// Shows the microphone settings dialog.
+        /// Shows the Microphone settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowMicrophoneSettingsAsync();
 
         /// <summary>
-        /// Shows the custom devices settings dialog.
+        /// Shows the Custom Devices settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowCustomDevicesSettingsAsync();
@@ -160,15 +148,87 @@ namespace Cimbalino.Toolkit.Services
         Task ShowContactsSettingsAsync();
 
         /// <summary>
-        /// Shows the calendar settings dialog.
+        /// Shows the Calendar settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowCalendarSettingsAsync();
 
         /// <summary>
-        /// Shows the messaging settings dialog.
+        /// Shows the Messaging settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task ShowMessagingSettingsAsync();
+
+        /// <summary>
+        /// Shows the Display settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowDisplaySettingsAsync();
+
+        /// <summary>
+        /// Shows the Connected Devices settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowConnectedDevicesSettingsAsync();
+
+        /// <summary>
+        /// Shows the Mouse and Touchpad settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowMouseAndTouchpadSettingsAsync();
+
+        /// <summary>
+        /// Shows the Dial-Up settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowDialUpSettingsAsync();
+
+        /// <summary>
+        /// Shows the Ethernet settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowEthernetSettingsAsync();
+
+        /// <summary>
+        /// Shows the Mobile Hotspot settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowMobileHotspotSettingsAsync();
+
+        /// <summary>
+        /// Shows the Personalization settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowPersonalizationSettingsAsync();
+
+        /// <summary>
+        /// Shows the Date and Time settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowDateAndTimeSettingsAsync();
+
+        /// <summary>
+        /// Shows the Speech settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowSpeechSettingsAsync();
+
+        /// <summary>
+        /// Shows the Radios settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowRadiosSettingsAsync();
+
+        /// <summary>
+        /// Shows the Speech Privacy settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowSpeechPrivacySettingsAsync();
+
+        /// <summary>
+        /// Shows the Windows Update settings dialog.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task ShowWindowsUpdateSettingsAsync();
     }
 }
