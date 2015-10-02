@@ -17,21 +17,22 @@ using Cimbalino.Toolkit.Helpers;
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Represents an implementation of the <see cref="IPersonalizationService"/>.
+    /// </summary>
     public class PersonalizationService : IPersonalizationService
     {
         /// <summary>
         /// Gets a value indicating whether this instance is supported.
         /// </summary>
-        /// <value>
-        /// <c>true</c> if this instance is supported; otherwise, <c>false</c>.
-        /// </value>
+        /// <value>true if this instance is supported; otherwise, false.</value>
         public virtual bool IsSupported { get; } = ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Sets the lock screen image.
         /// </summary>
         /// <param name="fileUri">The file URI.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<bool> SetLockScreenImageAsync(string fileUri)
         {
             return ExceptionHelper.ThrowNotSupported<Task<bool>>();
@@ -41,7 +42,7 @@ namespace Cimbalino.Toolkit.Services
         /// Sets the wallpaper image.
         /// </summary>
         /// <param name="fileUri">The file URI.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<bool> SetWallpaperImageAsync(string fileUri)
         {
             return ExceptionHelper.ThrowNotSupported<Task<bool>>();

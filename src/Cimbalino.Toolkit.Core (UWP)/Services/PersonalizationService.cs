@@ -21,42 +21,38 @@ using Windows.System.UserProfile;
 namespace Cimbalino.Toolkit.Core.Services
 {
     /// <summary>
-    /// Personalization service allows the changing of the user's Wallpaper and Lock screen images
+    /// Represents an implementation of the <see cref="IPersonalizationService"/>.
     /// </summary>
     public class PersonalizationService : IPersonalizationService
     {
         /// <summary>
         /// Gets a value indicating whether this instance is supported.
         /// </summary>
-        /// <value>
-        /// <c>true</c> if this instance is supported; otherwise, <c>false</c>.
-        /// </value>
+        /// <value>true if this instance is supported; otherwise, false.</value>
         public virtual bool IsSupported { get; } = UserProfilePersonalizationSettings.IsSupported();
 
         /// <summary>
         /// Sets the lock screen image.
         /// </summary>
         /// <param name="fileUri">The file URI.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual async Task<bool> SetLockScreenImageAsync(string fileUri)
         {
             var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(fileUri));
 
-            var result = await UserProfilePersonalizationSettings.Current.TrySetLockScreenImageAsync(file);
-            return result;
+            return await UserProfilePersonalizationSettings.Current.TrySetLockScreenImageAsync(file);
         }
 
         /// <summary>
         /// Sets the wallpaper image.
         /// </summary>
         /// <param name="fileUri">The file URI.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual async Task<bool> SetWallpaperImageAsync(string fileUri)
         {
             var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri(fileUri));
 
-            var result = await UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(file);
-            return result;
+            return await UserProfilePersonalizationSettings.Current.TrySetWallpaperImageAsync(file);
         }
     }
 }

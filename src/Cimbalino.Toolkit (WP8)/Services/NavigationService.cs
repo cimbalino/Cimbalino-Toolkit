@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Documents;
 using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Controls;
 

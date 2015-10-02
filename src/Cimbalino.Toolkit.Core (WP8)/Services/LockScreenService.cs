@@ -33,6 +33,9 @@ using Windows.System.UserProfile;
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Represents an implementation of the <see cref="ILockScreenService"/>.
+    /// </summary>
     public class LockScreenService : ILockScreenService
     {
 #if WINDOWS_PHONE
@@ -41,7 +44,7 @@ namespace Cimbalino.Toolkit.Services
         private const string LockScreenFileNormal = "shared\\shellcontent\\MBWallpaper.png";
         private const string LockScreenFileAlternative = "shared\\shellcontent\\MBWallpaper2.png";
 
-        protected Uri ImageUri
+        private Uri ImageUri
         {
             get
             {
@@ -53,7 +56,7 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-        protected string LockScreenImageUrl
+        private string LockScreenImageUrl
         {
             get
             {
@@ -61,7 +64,7 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-        protected string LockScreenFile
+        private string LockScreenFile
         {
             get
             {
@@ -70,27 +73,41 @@ namespace Cimbalino.Toolkit.Services
         }
 #endif
 
-        protected IStorageServiceHandler LocalStorage;
-
-        public LockScreenService()
-        {
-            LocalStorage = new StorageService().Local;
-        }
-
+        /// <summary>
+        /// Sets the lock screen background image.
+        /// </summary>
+        /// <param name="uri">The file URI.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task SetLockScreenAsync(Uri uri)
         {
             throw new NotImplementedException();
         }
 
-        public virtual Task SetLockScreenAsync(Stream stream)
+        /// <summary>
+        /// Sets the lock screen background image.
+        /// </summary>
+        /// <param name="stream">The file stream.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public virtual async Task SetLockScreenAsync(Stream stream)
         {
-#if WINDOWS_PHONE_APP
-            return ExceptionHelper.ThrowNotSupported<Task>();
+#if WINDOWS_PHONE
+            using (var fileStream = await StorageService.LocalStorageServiceHandlerStatic.CreateFileAsync(LockScreenFile))
+            {
+                await stream.CopyToAsync(fileStream);
+            }
+
+            ImageUri = new Uri(LockScreenImageUrl, UriKind.RelativeOrAbsolute);
+#elif WINDOWS_UWP || WINDOWS_APP
+            await LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream());
 #else
-            return SaveStream(stream);
+            await ExceptionHelper.ThrowNotSupported<Task>();
 #endif
         }
 
+        /// <summary>
+        /// Gets the current lock screen background image URI.
+        /// </summary>
+        /// <returns>The file URI.</returns>
         public virtual Uri GetCurrentLockScreenUri()
         {
 #if WINDOWS_PHONE
@@ -102,26 +119,13 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        /// <summary>
+        /// Sets the current app as the lock screen background image provider.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<LockScreenServiceRequestResult> RequestAccessAsync()
         {
             return ExceptionHelper.ThrowNotSupported<Task<LockScreenServiceRequestResult>>("To use this method, add Cimbalino.Toolkit assembly to the project and use the LockScreenWithRequestService instead. This method can't be called from a Background Agent.");
         }
-
-#if WINDOWS_PHONE
-        protected async Task SaveStream(Stream stream)
-        {
-            using (var fileStream = await LocalStorage.CreateFileAsync(LockScreenFile))
-            {
-                await stream.CopyToAsync(fileStream);
-            }
-
-            ImageUri = new Uri(LockScreenImageUrl, UriKind.RelativeOrAbsolute);
-        }
-#elif WINDOWS_APP || WINDOWS_UWP
-        protected Task SaveStream(Stream stream)
-        {
-            return LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream()).AsTask();
-        }
-#endif
     }
 }

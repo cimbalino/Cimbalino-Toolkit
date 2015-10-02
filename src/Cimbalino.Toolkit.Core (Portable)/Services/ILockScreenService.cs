@@ -18,30 +18,33 @@ using System.Threading.Tasks;
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Represents a service capable of managing the lock screen.
+    /// </summary>
     public interface ILockScreenService
     {
         /// <summary>
-        /// Sets the lock screen.
+        /// Sets the lock screen background image.
         /// </summary>
-        /// <param name="uri">The URI.</param>
-        /// <returns></returns>
+        /// <param name="uri">The file URI.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task SetLockScreenAsync(Uri uri);
 
         /// <summary>
-        /// Sets the lock screen.
+        /// Sets the lock screen background image.
         /// </summary>
-        /// <param name="stream">The stream.</param>
-        /// <returns></returns>
+        /// <param name="stream">The file stream.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task SetLockScreenAsync(Stream stream);
 
         /// <summary>
-        /// Gets the current lock screen URI.
+        /// Gets the current lock screen background image URI.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The file URI.</returns>
         Uri GetCurrentLockScreenUri();
-        
+
         /// <summary>
-        /// Sets the current app as the lock screen background provider.
+        /// Sets the current app as the lock screen background image provider.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task<LockScreenServiceRequestResult> RequestAccessAsync();

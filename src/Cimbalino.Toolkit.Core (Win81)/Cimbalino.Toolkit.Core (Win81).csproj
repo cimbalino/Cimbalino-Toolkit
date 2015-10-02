@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,6 +37,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Cimbalino.Toolkit.Core.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +49,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
@@ -58,6 +61,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -69,6 +73,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -80,6 +85,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +97,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -102,6 +109,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ByteArrayExtensions.cs">
@@ -314,9 +322,6 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Helpers\ApiHelper.cs">
       <Link>Helpers\ApiHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Services\LockScreenService.cs">
-      <Link>Services\LockScreenService.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\DependencyObjectExtensions.cs">
       <Link>Extensions\DependencyObjectExtensions.cs</Link>
     </Compile>
@@ -341,8 +346,14 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\LocationServiceExtensions.cs">
       <Link>Services\LocationServiceExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\LockScreenService.cs">
+      <Link>Services\LockScreenService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\NetworkInformationService.cs">
       <Link>Services\NetworkInformationService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\PersonalizationService.cs">
+      <Link>Services\PersonalizationService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\RuntimeInformationService.cs">
       <Link>Services\RuntimeInformationService.cs</Link>
@@ -364,9 +375,6 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\DeviceStatusService.cs">
       <Link>Services\DeviceStatusService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\PersonalizationService.cs">
-      <Link>Services\PersonalizationService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WPA81%29\Services\WindowsStoreService.cs">
       <Link>Services\WindowsStoreService.cs</Link>
@@ -488,6 +496,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-beta013\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-beta013\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

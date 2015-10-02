@@ -16,28 +16,29 @@ using System.Threading.Tasks;
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Represents a service capable of changing of the user's wallpaper and lock screen images.
+    /// </summary>
     public interface IPersonalizationService
     {
         /// <summary>
         /// Gets a value indicating whether this instance is supported.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is supported; otherwise, <c>false</c>.
-        /// </value>
+        /// <value>true if this instance is supported; otherwise, false.</value>
         bool IsSupported { get; }
 
         /// <summary>
         /// Sets the lock screen image.
         /// </summary>
         /// <param name="fileUri">The file URI.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task<bool> SetLockScreenImageAsync(string fileUri);
 
         /// <summary>
         /// Sets the wallpaper image.
         /// </summary>
         /// <param name="fileUri">The file URI.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task<bool> SetWallpaperImageAsync(string fileUri);
     }
 }

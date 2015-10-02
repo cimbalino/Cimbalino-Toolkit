@@ -16,29 +16,31 @@
 using System;
 using System.Threading.Tasks;
 using Windows.Phone.System.UserProfile;
+#elif WINDOWS_PHONE_APP
+using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
 using Windows.ApplicationModel.Background;
 #endif
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Represents an implementation of the <see cref="ILockScreenService"/>.
+    /// </summary>
     public class LockScreenWithRequestService : LockScreenService
     {
-        public override Task<LockScreenServiceRequestResult> RequestAccessAsync()
+        /// <summary>
+        /// Sets the current app as the lock screen background image provider.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public override async Task<LockScreenServiceRequestResult> RequestAccessAsync()
         {
 #if WINDOWS_PHONE_APP
-            return ExceptionHelper.ThrowNotSupported<Task<LockScreenServiceRequestResult>>();
-#else
-            return Request();
-#endif
-        }
-
-#if WINDOWS_PHONE
-        private static async Task<LockScreenServiceRequestResult> Request()
-        {
+            return await ExceptionHelper.ThrowNotSupported<Task<LockScreenServiceRequestResult>>();
+#elif WINDOWS_PHONE
             var result = await LockScreenManager.RequestAccessAsync();
 
             switch (result)
@@ -52,10 +54,7 @@ namespace Cimbalino.Toolkit.Services
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
 #else
-        private static async Task<LockScreenServiceRequestResult> Request()
-        {
             var status = await BackgroundExecutionManager.RequestAccessAsync();
 
             switch (status)
@@ -64,10 +63,14 @@ namespace Cimbalino.Toolkit.Services
                 case BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity:
                     return LockScreenServiceRequestResult.Granted;
 
-                default:
+                case BackgroundAccessStatus.Denied:
+                case BackgroundAccessStatus.Unspecified:
                     return LockScreenServiceRequestResult.Denied;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-        }
 #endif
+        }
     }
 }

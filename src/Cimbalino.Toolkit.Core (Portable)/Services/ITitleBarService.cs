@@ -16,25 +16,26 @@ using System;
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Represents a service capable of managing the window title bar.
+    /// </summary>
     public interface ITitleBarService
     {
         /// <summary>
-        /// Sets the extend view into title bar.
-        /// </summary>
-        /// <param name="extend">if set to <c>true</c> [extend].</param>
-        void SetExtendViewIntoTitleBar(bool extend);
-
-        /// <summary>
-        /// Occurs when [is visible changed].
+        /// Occurs when the visibility of the title bar changes.
         /// </summary>
         event EventHandler<TitleBarIsVisibleChangedArgs> IsVisibleChanged;
 
         /// <summary>
-        /// Gets the height.
+        /// Gets or sets a value that specifies whether this title bar should replace the default window title bar.
         /// </summary>
-        /// <value>
-        /// The height.
-        /// </value>
+        /// <value>true if this title bar should replace the default window title bar; otherwise, false.</value>
+        bool ExtendViewIntoTitleBar { get; set; }
+
+        /// <summary>
+        /// Gets the title bar height.
+        /// </summary>
+        /// <value>The title bar height.</value>
         double Height { get; }
     }
 }

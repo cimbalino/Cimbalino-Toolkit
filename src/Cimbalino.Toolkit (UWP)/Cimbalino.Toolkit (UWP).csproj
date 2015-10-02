@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,7 @@
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Release\Cimbalino.Toolkit.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -48,6 +50,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <PlatformTarget>ARM</PlatformTarget>
@@ -60,6 +63,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -72,6 +76,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -84,6 +89,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -96,6 +102,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -108,6 +115,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
@@ -201,6 +209,9 @@
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\LauncherService.cs">
       <Link>Services\LauncherService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\LockScreenWithRequestService.cs">
+      <Link>Services\LockScreenWithRequestService.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\MapManagerService.cs">
       <Link>Services\MapManagerService.cs</Link>
     </Compile>
@@ -215,6 +226,9 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\StoreService.cs">
       <Link>Services\StoreService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\TitleBarService.cs">
+      <Link>Services\TitleBarService.cs</Link>
     </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\VibrationService.cs">
       <Link>Services\VibrationService.cs</Link>
@@ -235,8 +249,6 @@
       <Link>Services\StatusBarService.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\LockScreenWithRequestService.cs" />
-    <Compile Include="Services\TitleBarService.cs" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">

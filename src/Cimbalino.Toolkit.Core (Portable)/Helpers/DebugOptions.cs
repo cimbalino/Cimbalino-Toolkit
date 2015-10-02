@@ -14,8 +14,15 @@
 
 namespace Cimbalino.Toolkit.Helpers
 {
+    /// <summary>
+    /// Helper class to set debugging options used in Cimbalino Toolkit.
+    /// </summary>
     public static class DebugOptions
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether exceptions should be raised when code tries to access to unsupported features.
+        /// </summary>
+        /// <value>true if exceptions should be raised when code tries to access to unsupported features; otherwise, false.</value>
         public static bool ThrowNotSupportedExceptions { get; set; }
     }
 }

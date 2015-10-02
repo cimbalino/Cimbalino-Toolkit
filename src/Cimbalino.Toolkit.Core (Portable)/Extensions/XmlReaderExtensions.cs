@@ -41,7 +41,8 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="reader">The current reader.</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The element content converted to the requested nullable typed object.</returns>
-        public static T? ReadElementContentAsNullable<T>(this XmlReader reader) where T : struct
+        public static T? ReadElementContentAsNullable<T>(this XmlReader reader) 
+            where T : struct
         {
             if (reader.IsEmptyElement)
             {

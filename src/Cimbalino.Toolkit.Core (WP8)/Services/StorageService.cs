@@ -35,9 +35,9 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class StorageService : IStorageService
     {
-        private static readonly IStorageServiceHandler LocalStorageServiceHandlerStatic, RoamingStorageServiceHandlerStatic, TemporaryStorageServiceHandlerStatic, PackageStorageServiceHandlerStatic;
+        internal static readonly IStorageServiceHandler LocalStorageServiceHandlerStatic, RoamingStorageServiceHandlerStatic, TemporaryStorageServiceHandlerStatic, PackageStorageServiceHandlerStatic;
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
-        private static readonly IStorageServiceHandler LocalCacheStorageServiceHandlerStatic;
+        internal static readonly IStorageServiceHandler LocalCacheStorageServiceHandlerStatic;
 #endif
 
         static StorageService()

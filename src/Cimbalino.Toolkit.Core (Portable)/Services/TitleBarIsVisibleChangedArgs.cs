@@ -16,13 +16,24 @@ using System;
 
 namespace Cimbalino.Toolkit.Services
 {
+    /// <summary>
+    /// Provides data for <see cref="ITitleBarService.IsVisibleChanged"/> events.
+    /// </summary>
     public class TitleBarIsVisibleChangedArgs : EventArgs
     {
+        /// <summary>
+        /// Gets or sets a value indicating whether the title bar is visible.
+        /// </summary>
+        /// <value>true if the title bar is visible; otherwise, false.</value>
+        public bool IsVisible { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TitleBarIsVisibleChangedArgs"/> class.
+        /// </summary>
+        /// <param name="isVisible">The title bar visibility state.</param>
         public TitleBarIsVisibleChangedArgs(bool isVisible)
         {
             IsVisible = isVisible;
         }
-
-        public bool IsVisible { get; set; }
     }
 }

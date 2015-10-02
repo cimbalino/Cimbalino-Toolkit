@@ -122,7 +122,6 @@ namespace Cimbalino.Toolkit.Services
             }
 
 #if WINDOWS_UWP
-            SystemNavigationManager.GetForCurrentView().BackRequested -= OnBackRequested;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 #endif
         }
@@ -246,8 +245,7 @@ namespace Cimbalino.Toolkit.Services
             {
                 _mainFrame.BackStack.RemoveAt(_mainFrame.BackStackDepth - 1);
 
-                // This is for Windows 10 apps
-                ShowHideBackButtonVisibility();
+                SetBackButtonVisibility();
 
                 return true;
             }
@@ -280,7 +278,7 @@ namespace Cimbalino.Toolkit.Services
 
             RaiseNavigated(EventArgs.Empty);
 
-            ShowHideBackButtonVisibility();
+            SetBackButtonVisibility();
         }
 
         /// <summary>
@@ -297,18 +295,23 @@ namespace Cimbalino.Toolkit.Services
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
-            ShowHideBackButtonVisibility();
+
+            SetBackButtonVisibility();
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the back button visibility will be handled automatically.
+        /// </summary>
+        /// <value>true if the back button visibility will be handled automatically; otherwise, false.</value>
         public static bool HandleBackButtonVisibility { get; set; } = true;
 #endif
 
-        private void ShowHideBackButtonVisibility()
+        private void SetBackButtonVisibility()
         {
 #if WINDOWS_UWP
             if (HandleBackButtonVisibility)
             {
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = _mainFrame?.CanGoBack ?? false ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
 #endif
         }
@@ -318,14 +321,17 @@ namespace Cimbalino.Toolkit.Services
         {
             e.Handled = HandleBackKeyPress();
 
-            ShowHideBackButtonVisibility();
+            SetBackButtonVisibility();
         }
 
         private bool HandleBackKeyPress()
         {
             var handled = false;
+
             var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+
             RaiseBackKeyPressed(eventArgs);
+
             switch (eventArgs.Behavior)
             {
                 case NavigationServiceBackKeyPressedBehavior.GoBack:
@@ -335,15 +341,19 @@ namespace Cimbalino.Toolkit.Services
                         handled = true;
                     }
                     break;
+
                 case NavigationServiceBackKeyPressedBehavior.HideApp:
                     break;
+
                 case NavigationServiceBackKeyPressedBehavior.ExitApp:
                     handled = true;
                     Application.Current.Exit();
                     break;
+
                 case NavigationServiceBackKeyPressedBehavior.DoNothing:
                     handled = true;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -358,7 +368,11 @@ namespace Cimbalino.Toolkit.Services
         protected virtual void RaiseBackKeyPressed(NavigationServiceBackKeyPressedEventArgs eventArgs)
         {
             var eventHandler = BackKeyPressed;
-            eventHandler?.Invoke(this, eventArgs);
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, eventArgs);
+            }
         }
 #endif
     }

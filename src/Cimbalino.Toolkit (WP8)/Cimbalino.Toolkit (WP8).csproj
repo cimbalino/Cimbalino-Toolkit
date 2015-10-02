@@ -31,6 +31,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +43,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>Bin\Release\Cimbalino.Toolkit.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +55,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
@@ -63,6 +66,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,6 +78,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
     <DebugType>pdbonly</DebugType>
@@ -84,14 +89,9 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\LockScreenWithRequestService.cs">
-      <Link>Services\LockScreenWithRequestService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\TitleBarService.cs">
-      <Link>Services\TitleBarService.cs</Link>
-    </Compile>
     <Compile Include="Behaviors\AfterAutoFocusEventArgs.cs" />
     <Compile Include="Behaviors\ApplicationBar.cs" />
     <Compile Include="Behaviors\ApplicationBarBehavior.cs" />
@@ -134,6 +134,7 @@
     <Compile Include="Services\DisplayPropertiesService.cs" />
     <Compile Include="Services\EmailComposeService.cs" />
     <Compile Include="Services\LauncherService.cs" />
+    <Compile Include="Services\LockScreenWithRequestService.cs" />
     <Compile Include="Services\MapManagerService.cs" />
     <Compile Include="Services\MessageBoxService.cs" />
     <Compile Include="Services\NavigationService.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Services\SmsComposeService.cs" />
     <Compile Include="Services\StoreService.cs" />
     <Compile Include="Services\StatusBarService.cs" />
+    <Compile Include="Services\TitleBarService.cs" />
     <Compile Include="Services\VibrationService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +164,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-beta013\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-beta013\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

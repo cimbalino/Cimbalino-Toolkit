@@ -427,7 +427,7 @@ namespace Cimbalino.Toolkit.Services
         public Task ShowMobileHotspotSettingsAsync()
         {
 #if WINDOWS_UWP
-            return LaunchUrlAsync(IsMobile ? "ms-settings-mobilehotspot:" :"ms-settings:network-mobilehotspot");
+            return LaunchUrlAsync(IsMobile ? "ms-settings-mobilehotspot:" : "ms-settings:network-mobilehotspot");
 #else
             return ExceptionHelper.ThrowNotSupported<Task>();
 #endif
