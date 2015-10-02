@@ -20,11 +20,10 @@ using Windows.System;
 #elif WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 using Windows.System;
 using Windows.System.Profile;
-using Cimbalino.Toolkit.Helpers;
 #else
-using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
 #endif
@@ -36,23 +35,6 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class DeviceSettingsService : IDeviceSettingsService
     {
-#if WINDOWS_UWP
-        private static string _deviceFamily;
-
-        private static bool IsMobile
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_deviceFamily))
-                {
-                    _deviceFamily = AnalyticsInfo.VersionInfo.DeviceFamily;
-                }
-
-                return _deviceFamily == "Windows.Mobile";
-            }
-        }
-#endif
-
         /// <summary>
         /// Shows the Airplane Mode settings dialog.
         /// </summary>
@@ -206,7 +188,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the storage sense settings dialog.
+        /// Shows the Storage Sense settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowStorageSenseSettingsAsync()
@@ -219,7 +201,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the maps settings dialog.
+        /// Shows the Maps settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMapsSettingsAsync()
@@ -232,7 +214,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the data sense settings dialog.
+        /// Shows the Data Sense settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowDataSenseSettingsAsync()
@@ -245,7 +227,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the proxy settings dialog.
+        /// Shows the Proxy settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowProxySettingsAsync()
@@ -263,7 +245,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the region and language settings dialog.
+        /// Shows the Region and Language settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowRegionAndLanguageSettingsAsync()
@@ -281,7 +263,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the webcam settings dialog.
+        /// Shows the Webcam settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowWebcamSettingsAsync()
@@ -294,7 +276,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the microphone settings dialog.
+        /// Shows the Microphone settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMicrophoneSettingsAsync()
@@ -307,7 +289,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the custom devices settings dialog.
+        /// Shows the Custom Devices settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowCustomDevicesSettingsAsync()
@@ -320,7 +302,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the contacts settings dialog.
+        /// Shows the Contact settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowContactsSettingsAsync()
@@ -333,7 +315,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the calendar settings dialog.
+        /// Shows the Calendar settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowCalendarSettingsAsync()
@@ -346,7 +328,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the messaging settings dialog.
+        /// Shows the Messaging settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMessagingSettingsAsync()
@@ -359,7 +341,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the display settings
+        /// Shows the Display settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowDisplaySettingsAsync()
@@ -372,7 +354,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the connected devices settings
+        /// Shows the Connected Devices settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowConnectedDevicesSettingsAsync()
@@ -390,7 +372,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the mouse and touchpad settings
+        /// Shows the Mouse and Touchpad settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMouseAndTouchpadSettingsAsync()
@@ -403,7 +385,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the dial up settings
+        /// Shows the Dial-Up settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowDialUpSettingsAsync()
@@ -421,7 +403,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the ethernet settings
+        /// Shows the Ethernet settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowEthernetSettingsAsync()
@@ -439,7 +421,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the mobile hotspot settings
+        /// Shows the Mobile Hotspot settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowMobileHotspotSettingsAsync()
@@ -452,7 +434,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the personalization settings
+        /// Shows the Personalization settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowPersonalizationSettingsAsync()
@@ -465,7 +447,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the date and time settings
+        /// Shows the Date and Time settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowDateAndTimeSettingsAsync()
@@ -478,7 +460,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the speech settings
+        /// Shows the Speech settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowSpeechSettingsAsync()
@@ -491,7 +473,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the radios settings
+        /// Shows the Radios settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowRadiosSettingsAsync()
@@ -504,7 +486,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the speech privacy settings
+        /// Shows the Speech Privacy settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowSpeechPrivacySettingsAsync()
@@ -517,7 +499,7 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Shows the windows update settings
+        /// Shows the Windows Update settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowWindowsUpdateSettingsAsync()
@@ -540,5 +522,23 @@ namespace Cimbalino.Toolkit.Services
             return ExceptionHelper.ThrowNotSupported<Task>();
         }
 #endif
+
+#if WINDOWS_UWP
+        private static string _deviceFamily;
+
+        private static bool IsMobile
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_deviceFamily))
+                {
+                    _deviceFamily = AnalyticsInfo.VersionInfo.DeviceFamily;
+                }
+
+                return _deviceFamily == "Windows.Mobile";
+            }
+        }
+#endif
+
     }
 }
