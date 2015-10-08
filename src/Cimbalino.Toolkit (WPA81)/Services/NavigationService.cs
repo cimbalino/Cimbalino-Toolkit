@@ -335,7 +335,7 @@ namespace Cimbalino.Toolkit.Services
             switch (eventArgs.Behavior)
             {
                 case NavigationServiceBackKeyPressedBehavior.GoBack:
-                    if (_mainFrame.CanGoBack)
+                    if (_mainFrame?.CanGoBack ?? false)
                     {
                         _mainFrame.GoBack();
                         handled = true;
@@ -347,7 +347,7 @@ namespace Cimbalino.Toolkit.Services
 
                 case NavigationServiceBackKeyPressedBehavior.ExitApp:
                     handled = true;
-                    Application.Current.Exit();
+                    Application.Current?.Exit();
                     break;
 
                 case NavigationServiceBackKeyPressedBehavior.DoNothing:
