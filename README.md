@@ -9,11 +9,11 @@ The toolkit is fully compatible with:
 * Windows Phone Silverlight 8.0 and 8.1 apps (WP8)
 * Windows Phone 8.1 apps (WPA81)
 * Windows Store 8.1 apps (Win81)
-* **Windows 10 UWP apps (Universal Windows Platform)**
+* Windows 10 UWP apps (Universal Windows Platform)
 
-**Note:** Windows 10 UWP (Universal Windows Platform) support is still under active development, so you will have to install the pre-release 2.0.0 NuGet package!
+**Note:** Due to changes in the way NuGet works, if you use Cimbalino Toolkit in your Windows 10 UWP (Universal Windows Platform) apps, you will have to manually add the Behaviors SDK!
 
-## NuGet packages ![Latest stable version](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat "Latest stable version") ![Latest pre-release version](https://img.shields.io/nuget/vpre/Cimbalino.Toolkit.svg?style=flat "Latest pre-release version")
+## NuGet packages ![Latest stable version](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat "Latest stable version")
 
 * [Cimbalino.Toolkit.Core](https://www.nuget.org/packages/Cimbalino.Toolkit.Core) - The PCL portion of the toolkit (compatible with background agents)
 * [Cimbalino.Toolkit](https://www.nuget.org/packages/Cimbalino.Toolkit) - The main component of the toolkit
