@@ -6,7 +6,7 @@ properties {
   $binDir = "$baseDir\bin"
   $docSourceDir = "$baseDir\doc"
   
-  $version = "1.2.7"
+  $version = "2.0.0-beta3"
   
   $tempDir = "$binDir\temp"
   $binariesDir = "$binDir\binaries"
@@ -22,16 +22,17 @@ properties {
     "Portable" = @{Suffix = " (Portable)"; Folder="portable-net45+wp8+win8+wpa81"};
     "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
     "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
-    "Win81" = @{Suffix = " (Win81)"; Folder="win81"}
+    "Win81" = @{Suffix = " (Win81)"; Folder="win81"};
+    "UWP" = @{Suffix = " (UWP)"; Folder="uap10.0"}
   }
   
   $projects = @(
-    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81")},
-    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81")}
+    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81", "UWP")},
+    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81", "UWP")}
   )
 }
 
-Framework "4.5.1x86"
+Framework "4.6x86"
 
 task default -depends ?
 
@@ -122,10 +123,12 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
   New-Item -Path $binariesDir -ItemType Directory | Out-Null
   New-Item -Path $tempBinariesDir -ItemType Directory | Out-Null
   
-  Exec { msbuild "/t:Clean;Build" /p:Configuration=Release /p:OutDir=$tempBinariesDir /p:GenerateProjectSpecificOutputFolder=true /p:StyleCopTreatErrorsAsWarnings=true /m "$sourceDir\Cimbalino.Toolkit.sln" } "Error building $solutionFile"
+  Exec { msbuild "/t:Clean;Build" /p:Configuration=Release "/p:OutDir=$tempBinariesDir" /p:GenerateProjectSpecificOutputFolder=true /p:StyleCopTreatErrorsAsWarnings=true /m "$sourceDir\Cimbalino.Toolkit.sln" } "Error building $solutionFile"
   
   $projects | % {
     $projectName = $_.Name
+    
+    $projectDir = "$binariesDir\$projectName"
     
     $_.Configurations | % {
       $configuration = $configurations[$_]
@@ -133,12 +136,11 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
       $configurationFolder = $configuration.Folder
       $fullProjectName = "$projectName$configurationSuffix"
       
-      $projectDir = "$binariesDir\$projectName"
       $configurationDir = "$projectDir\$configurationFolder"
     
       New-Item -Path $configurationDir -ItemType Directory | Out-Null
-      
-      Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse
+	  
+	    Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	
     }
   }
 }
@@ -163,14 +165,21 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
           % { $_ -Replace '\$version\$', $version }
         } | Set-Content -Path $projectNuspec -Encoding UTF8
     
-    New-Item -Path $projectLibFolder -ItemType Directory | Out-Null
-    
-    Copy-Item -Path $binariesDir\$projectName\* -Destination $projectLibFolder\ -Recurse
-    
+    $_.Configurations | % {
+      $configuration = $configurations[$_]
+      $configurationFolder = $configuration.Folder
+      
+      $configurationDir = "$projectLibFolder\$configurationFolder"
+      
+      New-Item -Path $configurationDir -ItemType Directory | Out-Null
+      
+      Copy-Item -Path $binariesDir\$projectName\$configurationFolder\* -Destination $configurationDir\ -Exclude '*.pdb' -Recurse
+    }
+	    
     Write-Host -ForegroundColor Green "Packaging $projectName..."
     Write-Host
     
-    Exec { .$nuget pack $projectNuspec -Output $nupkgDir\ } "Error packaging $name"
+    Exec { .$nuget pack "$projectNuspec" -Output "$nupkgDir" } "Error packaging $name"
   }
 }
 
@@ -181,7 +190,7 @@ task PublishNuget -depends PackNuGet -description "Publish the NuGet packages to
     Write-Host -ForegroundColor Green "Publishing $nupkg..."
     Write-Host
     
-    Exec { .$nuget push $nupkg } "Error publishing $nupkg"
+    Exec { .$nuget push "$nupkg" } "Error publishing $nupkg"
   }
 }
 

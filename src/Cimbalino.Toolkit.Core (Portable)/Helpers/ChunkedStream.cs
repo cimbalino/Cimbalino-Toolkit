@@ -55,7 +55,7 @@ namespace Cimbalino.Toolkit.Helpers
         /// <returns>Calling this method will raise a <see cref="NotSupportedException"/>.</returns>
         public override int Read(byte[] buffer, int offset, int count)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<int>();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Cimbalino.Toolkit.Helpers
         /// <returns>Calling this method will raise a <see cref="NotSupportedException"/>.</returns>
         public override long Seek(long offset, SeekOrigin origin)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<long>();
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Cimbalino.Toolkit.Helpers
         /// <param name="value">The value.</param>
         public override void SetLength(long value)
         {
-            throw new NotSupportedException();
+            ExceptionHelper.ThrowNotSupported();
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Cimbalino.Toolkit.Helpers
         {
             get
             {
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<long>();
             }
         }
 
@@ -153,11 +153,11 @@ namespace Cimbalino.Toolkit.Helpers
         {
             get
             {
-                throw new NotSupportedException();
+                return ExceptionHelper.ThrowNotSupported<long>();
             }
             set
             {
-                throw new NotSupportedException();
+                ExceptionHelper.ThrowNotSupported();
             }
         }
 

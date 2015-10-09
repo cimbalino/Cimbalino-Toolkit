@@ -15,12 +15,12 @@
 #if WINDOWS_APP
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -38,7 +38,7 @@ namespace Cimbalino.Toolkit.Services
         public virtual Task ShowAsync(string text)
         {
 #if WINDOWS_APP
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
 #else
             return ShowAsync(text, 0, false);
 #endif
@@ -53,7 +53,7 @@ namespace Cimbalino.Toolkit.Services
         public virtual Task ShowAsync(string text, bool isIndeterminate)
         {
 #if WINDOWS_APP
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
 #else
             return ShowAsync(text, 0, isIndeterminate);
 #endif
@@ -68,9 +68,14 @@ namespace Cimbalino.Toolkit.Services
         public virtual Task ShowAsync(string text, double value)
         {
 #if WINDOWS_APP
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
 #else
-            return ShowAsync(text, value, false);
+            if (ApiHelper.SupportsStatusBar)
+            {
+                return ShowAsync(text, value, false);
+            }
+
+            return Task.FromResult(0);
 #endif
         }
 
@@ -81,20 +86,25 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_APP
         public virtual Task HideAsync()
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<Task>();
         }
 #else
-        public virtual async Task HideAsync()
+        public virtual Task HideAsync()
         {
-            var statusBar = StatusBar.GetForCurrentView();
-
-            if (statusBar != null)
+            if (ApiHelper.SupportsStatusBar)
             {
-                await statusBar.ProgressIndicator.HideAsync();
+                var statusBar = StatusBar.GetForCurrentView();
+
+                if (statusBar != null)
+                {
+                    return statusBar.ProgressIndicator.HideAsync().AsTask();
+                }
             }
+
+            return Task.FromResult(0);
         }
 
-        private async Task ShowAsync(string text, double value, bool isIndeterminate)
+        private Task ShowAsync(string text, double value, bool isIndeterminate)
         {
             var statusBar = StatusBar.GetForCurrentView();
 
@@ -103,8 +113,10 @@ namespace Cimbalino.Toolkit.Services
                 statusBar.ProgressIndicator.Text = text;
                 statusBar.ProgressIndicator.ProgressValue = isIndeterminate ? (double?)null : value;
 
-                await statusBar.ProgressIndicator.ShowAsync();
+                return statusBar.ProgressIndicator.ShowAsync().AsTask();
             }
+
+            return Task.FromResult(0);
         }
 #endif
     }

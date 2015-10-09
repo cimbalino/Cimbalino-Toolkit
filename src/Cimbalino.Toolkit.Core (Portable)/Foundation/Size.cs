@@ -21,7 +21,7 @@ namespace Cimbalino.Toolkit.Foundation
     /// </summary>
     public struct Size
     {
-        private readonly static Size EmptySize = new Size()
+        private static readonly Size EmptySize = new Size()
         {
             _width = double.NegativeInfinity,
             _height = double.NegativeInfinity

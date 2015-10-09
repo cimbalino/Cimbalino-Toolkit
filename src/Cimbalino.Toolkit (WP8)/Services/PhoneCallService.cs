@@ -17,11 +17,20 @@ using System.Threading.Tasks;
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 using Windows.ApplicationModel.Calls;
+#elif WINDOWS_UWP
+using System;
+using System.Threading.Tasks;
+using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
+using Windows.ApplicationModel.Calls;
+using Windows.System;
 #else
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.System;
 #endif
 
@@ -63,11 +72,32 @@ namespace Cimbalino.Toolkit.Services
         public virtual Task ShowAsync(string phoneNumber, string displayName)
         {
             PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
+            
+            return Task.FromResult(0);
+        }
+#elif WINDOWS_UWP
+        public virtual Task ShowAsync(string phoneNumber, string displayName)
+        {
+            if (ApiHelper.SupportsPhoneCalls)
+            {
+                PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
+            }
+            else
+            {
+                return CallByUri(phoneNumber, displayName);
+            }
 
             return Task.FromResult(0);
         }
 #else
-        public async virtual Task ShowAsync(string phoneNumber, string displayName)
+        public virtual Task ShowAsync(string phoneNumber, string displayName)
+        {
+            return CallByUri(phoneNumber, displayName);
+        }
+#endif
+
+#if WINDOWS_APP || WINDOWS_UWP
+        private async Task CallByUri(string phoneNumber, string displayName)
         {
             var phoneCallUri = new UriBuilder("tel:")
                 .SetPath(phoneNumber)

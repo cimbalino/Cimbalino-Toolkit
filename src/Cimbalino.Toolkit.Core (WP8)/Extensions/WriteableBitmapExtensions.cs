@@ -12,8 +12,6 @@
 // </license>
 // ****************************************************************************
 
-////using System.IO.Compression;
-
 #if WINDOWS_PHONE
 using System;
 using System.IO;

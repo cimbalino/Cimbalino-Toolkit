@@ -16,9 +16,11 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Globalization;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Xaml.Data;
 #endif
 
@@ -49,7 +51,9 @@ namespace Cimbalino.Toolkit.Converters
             }
 
 #if WINDOWS_PHONE
-            return ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper(culture);
+            return culture == null
+                ? ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper()
+                : ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper(culture);
 #else
             return ((string)_stringFormatConverter.Convert(value, targetType, parameter, culture)).ToUpper();
 #endif
@@ -67,7 +71,7 @@ namespace Cimbalino.Toolkit.Converters
         /// </returns>
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<object>();
         }
     }
 }

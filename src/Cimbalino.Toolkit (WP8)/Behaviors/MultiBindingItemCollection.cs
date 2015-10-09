@@ -117,7 +117,7 @@ namespace Cimbalino.Toolkit.Behaviors
             {
                 _updating = true;
 
-                for (var index = 0; index < Count; index++)
+                for (var index = 0; index < this.Count; index++)
                 {
                     var multiBindingItem = this[index] as MultiBindingItem;
 

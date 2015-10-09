@@ -4,6 +4,7 @@ Thumbs.db
 *.suo
 *.log
 [Bb]in
+[Oo]bj
 *.cache
 *.Cache
 *.ncrunchsolution*

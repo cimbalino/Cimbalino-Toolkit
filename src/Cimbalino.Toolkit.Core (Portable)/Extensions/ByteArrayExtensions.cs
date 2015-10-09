@@ -15,6 +15,10 @@
 #if PORTABLE
 using System;
 using System.Text;
+#elif WINDOWS_UWP
+using System;
+using System.Security.Cryptography;
+using System.Text;
 #elif WINDOWS_PHONE
 using System;
 using System.Security.Cryptography;

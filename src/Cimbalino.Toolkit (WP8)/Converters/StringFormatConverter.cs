@@ -16,9 +16,11 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Globalization;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Xaml.Data;
 #endif
 
@@ -66,7 +68,7 @@ namespace Cimbalino.Toolkit.Converters
         /// </returns>
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<object>();
         }
     }
 }

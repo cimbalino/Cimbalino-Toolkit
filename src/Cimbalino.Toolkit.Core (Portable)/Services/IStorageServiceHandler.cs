@@ -12,6 +12,7 @@
 // </license>
 // ****************************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -24,6 +25,13 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public interface IStorageServiceHandler
     {
+        /// <summary>
+        /// Builds a <see cref="Uri"/> given a relative path to a file in the store.
+        /// </summary>
+        /// <param name="path">The relative path of the file in the store.</param>
+        /// <returns>A <see cref="Uri"/> for the file in the store.</returns>
+        Uri BuildFileUri(string path);
+
         /// <summary>
         /// Copies an existing file to a new file.
         /// </summary>

@@ -20,6 +20,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.Storage;
 
 namespace Cimbalino.Toolkit.Services
@@ -38,12 +39,62 @@ namespace Cimbalino.Toolkit.Services
         protected readonly StorageFolder StorageFolder;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StorageServiceHandler"/> class.
+        /// The storage type
         /// </summary>
-        /// <param name="storageFolder">The root <see cref="StorageFolder"/> instance.</param>
-        public StorageServiceHandler(StorageFolder storageFolder)
+        private readonly StorageServiceStorageType _storageType;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageServiceHandler" /> class.
+        /// </summary>
+        /// <param name="storageFolder">The root <see cref="StorageFolder" /> instance.</param>
+        /// <param name="storageType">Type of the storage.</param>
+        public StorageServiceHandler(StorageFolder storageFolder, StorageServiceStorageType storageType)
         {
             StorageFolder = storageFolder;
+            _storageType = storageType;
+        }
+
+        /// <summary>
+        /// Builds a <see cref="Uri"/> given a relative path to a file in the store.
+        /// </summary>
+        /// <param name="path">The relative path of the file in the store.</param>
+        /// <returns>A <see cref="Uri"/> for the file in the store.</returns>
+        public Uri BuildFileUri(string path)
+        {
+            var protocol = "ms-appdata";
+
+            string rootFolder;
+
+            switch (_storageType)
+            {
+                case StorageServiceStorageType.Local:
+                    rootFolder = "local/";
+                    break;
+
+                case StorageServiceStorageType.LocalCache:
+                    rootFolder = "localcache/";
+                    break;
+
+                case StorageServiceStorageType.Roaming:
+                    rootFolder = "roaming/";
+                    break;
+
+                case StorageServiceStorageType.Temporary:
+                    rootFolder = "temp/";
+                    break;
+
+                case StorageServiceStorageType.Package:
+                    protocol = "ms-appx";
+                    rootFolder = string.Empty;
+                    break;
+
+                default:
+                    return ExceptionHelper.ThrowNotSupported<Uri>();
+            }
+
+            var url = $"{protocol}:///{rootFolder}{path}";
+
+            return new Uri(url, UriKind.Absolute);
         }
 
         /// <summary>
@@ -162,7 +213,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task<bool> DirectoryExistsAsync(string dir)
         {
-#if WINDOWS_APP
+#if WINDOWS_APP || WINDOWS_UWP
             return await StorageFolder.TryGetItemAsync(dir) is StorageFolder;
 #else
             try
@@ -185,7 +236,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public async virtual Task<bool> FileExistsAsync(string path)
         {
-#if WINDOWS_APP
+#if WINDOWS_APP || WINDOWS_UWP
             return await StorageFolder.TryGetItemAsync(path) is StorageFile;
 #else
             try

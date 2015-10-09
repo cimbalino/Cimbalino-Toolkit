@@ -18,10 +18,12 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Data;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 #endif
@@ -127,7 +129,7 @@ namespace Cimbalino.Toolkit.Converters
         /// </returns>
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException();
+            return ExceptionHelper.ThrowNotSupported<object>();
         }
     }
 }

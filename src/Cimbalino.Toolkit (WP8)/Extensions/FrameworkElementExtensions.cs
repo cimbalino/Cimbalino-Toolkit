@@ -67,7 +67,11 @@ namespace Cimbalino.Toolkit.Extensions
 
             if (behaviorsCollection != null)
             {
+#if WINDOWS_UWP
+                return (T)behaviorsCollection.FirstOrDefault(x => x.GetType() == typeof(T));
+#else
                 return behaviorsCollection.OfType<T>().FirstOrDefault();
+#endif
             }
 
             return null;

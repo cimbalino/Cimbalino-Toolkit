@@ -56,7 +56,8 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="value">The value to compare to.</param>
         /// <typeparam name="T">The values type.</typeparam>
         /// <returns>The largest of the two values.</returns>
-        public static T Max<T>(this T currentValue, T value) where T : IComparable
+        public static T Max<T>(this T currentValue, T value) 
+            where T : IComparable
         {
             if (currentValue.CompareTo(value) < 0)
             {
@@ -73,7 +74,8 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="value">The value to compare to.</param>
         /// <typeparam name="T">The values type.</typeparam>
         /// <returns>The smallest of the two values.</returns>
-        public static T Min<T>(this T currentValue, T value) where T : IComparable
+        public static T Min<T>(this T currentValue, T value) 
+            where T : IComparable
         {
             if (currentValue.CompareTo(value) > 0)
             {
