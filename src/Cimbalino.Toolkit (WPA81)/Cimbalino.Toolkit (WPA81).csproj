@@ -105,6 +105,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\EnterKeyBehavior.cs">
       <Link>Behaviors\EnterKeyBehavior.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MonitoredInteraction.cs">
+      <Link>Behaviors\MonitoredInteraction.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\MultiBindingBehavior.cs">
       <Link>Behaviors\MultiBindingBehavior.cs</Link>
     </Compile>

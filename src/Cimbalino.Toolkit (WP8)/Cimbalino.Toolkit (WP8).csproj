@@ -104,6 +104,7 @@
     <Compile Include="Behaviors\ApplicationBarMenuItemCollection.cs" />
     <Compile Include="Behaviors\AutoFocusBehavior.cs" />
     <Compile Include="Behaviors\EnterKeyBehavior.cs" />
+    <Compile Include="Behaviors\MonitoredInteraction.cs" />
     <Compile Include="Behaviors\MultiApplicationBarBehavior.cs" />
     <Compile Include="Behaviors\MultiBindingBehavior.cs" />
     <Compile Include="Behaviors\MultiBindingItem.cs" />
