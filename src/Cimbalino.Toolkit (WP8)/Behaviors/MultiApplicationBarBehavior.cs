@@ -46,6 +46,19 @@ namespace Cimbalino.Toolkit.Behaviors
         }
 
         /// <summary>
+        /// Called when the behavior is being detached from its AssociatedObject, but before it has actually occurred.
+        /// </summary>
+        /// <remarks>
+        /// Override this to unhook functionality from the AssociatedObject.
+        /// </remarks>
+        protected override void OnDetaching()
+        {
+            AssociatedObject.LayoutUpdated -= AssociatedObjectOnLayoutUpdated;
+
+            base.OnDetaching();
+        }
+
+        /// <summary>
         /// Gets the <see cref="ApplicationBar"/> collection.
         /// </summary>
         /// <value>The <see cref="ApplicationBar"/> collection.</value>
