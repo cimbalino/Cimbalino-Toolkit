@@ -128,13 +128,14 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
   $projects | % {
     $projectName = $_.Name
     
+    $projectDir = "$binariesDir\$projectName"
+    
     $_.Configurations | % {
       $configuration = $configurations[$_]
       $configurationSuffix = $configuration.Suffix
       $configurationFolder = $configuration.Folder
       $fullProjectName = "$projectName$configurationSuffix"
       
-      $projectDir = "$binariesDir\$projectName"
       $configurationDir = "$projectDir\$configurationFolder"
     
       New-Item -Path $configurationDir -ItemType Directory | Out-Null
@@ -164,9 +165,16 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
           % { $_ -Replace '\$version\$', $version }
         } | Set-Content -Path $projectNuspec -Encoding UTF8
     
-    New-Item -Path $projectLibFolder -ItemType Directory | Out-Null
-    
-    Copy-Item -Path $binariesDir\$projectName\* -Destination $projectLibFolder\ -Recurse
+    $_.Configurations | % {
+      $configuration = $configurations[$_]
+      $configurationFolder = $configuration.Folder
+      
+      $configurationDir = "$projectLibFolder\$configurationFolder"
+      
+      New-Item -Path $configurationDir -ItemType Directory | Out-Null
+      
+      Copy-Item -Path $binariesDir\$projectName\$configurationFolder\* -Destination $configurationDir\ -Exclude '*.pdb' -Recurse
+    }
 	    
     Write-Host -ForegroundColor Green "Packaging $projectName..."
     Write-Host
