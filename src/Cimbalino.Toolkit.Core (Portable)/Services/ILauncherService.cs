@@ -42,5 +42,13 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="file">The file to start.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task LaunchFileAsync(string file);
+
+        /// <summary>
+        /// Checks for registered URI schema asynchronous.
+        /// </summary>
+        /// <param name="uriScheme">The URI scheme.</param>
+        /// <param name="includeUriForResults">if set to <c>true</c> [include URI for results].</param>
+        /// <returns>True if Uri scheme exists</returns>
+        Task<bool> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false);
     }
 }

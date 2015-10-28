@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.System;
@@ -54,6 +55,24 @@ namespace Cimbalino.Toolkit.Services
             var storageFile = await ApplicationData.Current.LocalFolder.GetFileAsync(file);
 
             await Launcher.LaunchFileAsync(storageFile);
+        }
+
+        /// <summary>
+        /// Checks for registered URI schema asynchronous.
+        /// </summary>
+        /// <param name="uriScheme">The URI scheme.</param>
+        /// <param name="includeUriForResults">if set to <c>true</c> [include URI for results].</param>
+        /// <returns>
+        /// True if Uri scheme exists
+        /// </returns>
+        public virtual async Task<bool> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false)
+        {
+#if WINDOWS_UWP
+            var apps = await Launcher.FindUriSchemeHandlersAsync(uriScheme, includeUriForResults ? LaunchQuerySupportType.UriForResults : LaunchQuerySupportType.Uri);
+            return apps != null && apps.Any();
+#else
+            return false;
+#endif
         }
     }
 }
