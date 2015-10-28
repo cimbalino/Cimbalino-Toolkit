@@ -48,7 +48,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="uriScheme">The URI scheme.</param>
         /// <param name="includeUriForResults">if set to <c>true</c> [include URI for results].</param>
-        /// <returns>True if Uri scheme exists</returns>
-        Task<bool> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false);
+        /// <returns>Result of checking Uri scheme is handled</returns>
+        Task<UriScheme> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false);
     }
 }

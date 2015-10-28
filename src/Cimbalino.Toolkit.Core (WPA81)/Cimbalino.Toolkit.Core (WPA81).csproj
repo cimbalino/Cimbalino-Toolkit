@@ -250,6 +250,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\TitleBarIsVisibleChangedArgs.cs">
       <Link>Services\TitleBarIsVisibleChangedArgs.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\UriScheme.cs">
+      <Link>Services\UriScheme.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs">
       <Link>Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs</Link>
     </Compile>

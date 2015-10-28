@@ -62,16 +62,14 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="uriScheme">The URI scheme.</param>
         /// <param name="includeUriForResults">if set to <c>true</c> [include URI for results].</param>
-        /// <returns>
-        /// True if Uri scheme exists
-        /// </returns>
-        public virtual async Task<bool> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false)
+        /// <returns>Result of checking Uri scheme is handled</returns>
+        public virtual async Task<UriScheme> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false)
         {
 #if WINDOWS_UWP
             var apps = await Launcher.FindUriSchemeHandlersAsync(uriScheme, includeUriForResults ? LaunchQuerySupportType.UriForResults : LaunchQuerySupportType.Uri);
-            return apps != null && apps.Any();
+            return apps != null && apps.Any() ? UriScheme.HasHandler : UriScheme.HasNoHandler;
 #else
-            return false;
+            return UriScheme.Unknown;
 #endif
         }
     }

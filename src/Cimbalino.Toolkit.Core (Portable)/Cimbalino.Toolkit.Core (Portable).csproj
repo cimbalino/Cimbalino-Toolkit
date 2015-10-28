@@ -104,6 +104,7 @@
     <Compile Include="Services\IWindowsPhoneStoreService.cs" />
     <Compile Include="Services\IWindowsStoreService.cs" />
     <Compile Include="Services\TitleBarIsVisibleChangedArgs.cs" />
+    <Compile Include="Services\UriScheme.cs" />
     <Compile Include="Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs" />
     <Compile Include="Services\WindowsPhoneStoreServiceAppCapabilityNode.cs" />
     <Compile Include="Services\WindowsPhoneStoreServiceAppCategoryNode.cs" />
