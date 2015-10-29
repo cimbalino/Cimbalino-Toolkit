@@ -287,6 +287,9 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IApplicationSettingsServiceHandler.cs">
       <Link>Services\IApplicationSettingsServiceHandler.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IClipboardService.cs">
+      <Link>Services\IClipboardService.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IDeviceSettingsService.cs">
       <Link>Services\IDeviceSettingsService.cs</Link>
     </Compile>
