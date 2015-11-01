@@ -12,10 +12,20 @@
 // </license>
 // ****************************************************************************
 
+#if WINDOWS_UWP
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.System;
+#else
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
+using Windows.Storage;
+using Windows.System;
+#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -55,5 +65,44 @@ namespace Cimbalino.Toolkit.Services
 
             await Launcher.LaunchFileAsync(storageFile);
         }
+
+        /// <summary>
+        /// Enumerate the scheme handlers on the device.
+        /// </summary>
+        /// <param name="uriScheme">The scheme name that you find to find handlers for.</param>
+        /// <param name="includeUriForResults">Filter the list of handlers by whether they can be launched for results or not.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+#if WINDOWS_UWP
+        public virtual async Task<IEnumerable<LauncherServiceAppInfo>> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false)
+        {
+            var appInfos = await Launcher.FindUriSchemeHandlersAsync(uriScheme, includeUriForResults ? LaunchQuerySupportType.UriForResults : LaunchQuerySupportType.Uri);
+
+            return appInfos.ToLauncherServiceAppInfo();
+        }
+#else
+        public virtual Task<IEnumerable<LauncherServiceAppInfo>> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false)
+        {
+            return ExceptionHelper.ThrowNotSupported<Task<IEnumerable<LauncherServiceAppInfo>>>();
+        }
+#endif
+
+        /// <summary>
+        /// Enumerate the file handlers on the device.
+        /// </summary>
+        /// <param name="extension">The file extension that you want to find handlers for.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+#if WINDOWS_UWP
+        public virtual async Task<IEnumerable<LauncherServiceAppInfo>> FindFileHandlersAsync(string extension)
+        {
+            var appInfos = await Launcher.FindFileHandlersAsync(extension);
+
+            return appInfos.ToLauncherServiceAppInfo();
+        }
+#else
+        public virtual Task<IEnumerable<LauncherServiceAppInfo>> FindFileHandlersAsync(string extension)
+        {
+            return ExceptionHelper.ThrowNotSupported<Task<IEnumerable<LauncherServiceAppInfo>>>();
+        }
+#endif
     }
 }

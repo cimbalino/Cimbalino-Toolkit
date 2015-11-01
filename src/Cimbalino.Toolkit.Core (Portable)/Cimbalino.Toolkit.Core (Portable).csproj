@@ -98,6 +98,7 @@
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
     <Compile Include="Services\ILockScreenService.cs" />
     <Compile Include="Services\IPersonalizationService.cs" />
+    <Compile Include="Services\LauncherServiceAppInfo.cs" />
     <Compile Include="Services\LockScreenServiceRequestResult.cs" />
     <Compile Include="Services\PowerStatusChangedEventArgs.cs" />
     <Compile Include="Services\ITitleBarService.cs" />

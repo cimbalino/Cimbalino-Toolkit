@@ -232,6 +232,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IWindowsStoreService.cs">
       <Link>Services\IWindowsStoreService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LauncherServiceAppInfo.cs">
+      <Link>Services\LauncherServiceAppInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LockScreenServiceRequestResult.cs">
       <Link>Services\LockScreenServiceRequestResult.cs</Link>
     </Compile>
