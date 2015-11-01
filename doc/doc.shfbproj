@@ -47,6 +47,7 @@
             <version label="Windows Phone Silverlight" version="8.0" helpFileProject="doc-wp8.shfbproj" />
             <version label="Windows" version="8.1" helpFileProject="doc-win81.shfbproj" />
             <version label="Windows Phone" version="8.1" helpFileProject="doc-wpa81.shfbproj" />
+            <version label="Windows" version="10" helpFileProject="doc-uap10.0.shfbproj" />
           </versions>
         </configuration>
       </PlugInConfig>
