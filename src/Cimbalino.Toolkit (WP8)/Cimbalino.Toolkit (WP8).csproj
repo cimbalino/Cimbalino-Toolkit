@@ -92,9 +92,6 @@
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\ClipboardService.cs">
-      <Link>Services\ClipboardService.cs</Link>
-    </Compile>
     <Compile Include="Behaviors\AfterAutoFocusEventArgs.cs" />
     <Compile Include="Behaviors\ApplicationBar.cs" />
     <Compile Include="Behaviors\ApplicationBarBehavior.cs" />
@@ -133,6 +130,7 @@
     <Compile Include="Extensions\FrameworkElementExtensions.cs" />
     <Compile Include="Helpers\NamescopeBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ClipboardService.cs" />
     <Compile Include="Services\DeviceSettingsService.cs" />
     <Compile Include="Services\DeviceStatusWithKeyboardService.cs" />
     <Compile Include="Services\DisplayPropertiesService.cs" />

@@ -96,9 +96,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\ClipboardService.cs">
-      <Link>Services\ClipboardService.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AfterAutoFocusEventArgs.cs">
       <Link>Behaviors\AfterAutoFocusEventArgs.cs</Link>
     </Compile>
@@ -176,6 +173,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Helpers\NamescopeBinding.cs">
       <Link>Helpers\NamescopeBinding.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\ClipboardService.cs">
+      <Link>Services\ClipboardService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DeviceSettingsService.cs">
       <Link>Services\DeviceSettingsService.cs</Link>
