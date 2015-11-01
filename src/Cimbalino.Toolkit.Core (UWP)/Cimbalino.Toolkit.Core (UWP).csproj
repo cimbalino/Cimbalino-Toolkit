@@ -356,6 +356,9 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IWindowsStoreService.cs">
       <Link>Services\IWindowsStoreService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LauncherServiceAppInfo.cs">
+      <Link>Services\LauncherServiceAppInfo.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\LocationServiceAccuracy.cs">
       <Link>Services\LocationServiceAccuracy.cs</Link>
     </Compile>
@@ -388,9 +391,6 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\TitleBarIsVisibleChangedArgs.cs">
       <Link>Services\TitleBarIsVisibleChangedArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\UriScheme.cs">
-      <Link>Services\UriScheme.cs</Link>
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs">
       <Link>Services\WindowsPhoneStoreServiceAppCapabilitiesNode.cs</Link>

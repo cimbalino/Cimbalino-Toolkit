@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cimbalino.Toolkit.Services
@@ -44,11 +45,18 @@ namespace Cimbalino.Toolkit.Services
         Task LaunchFileAsync(string file);
 
         /// <summary>
-        /// Checks for registered URI schema asynchronous.
+        /// Enumerate the scheme handlers on the device.
         /// </summary>
-        /// <param name="uriScheme">The URI scheme.</param>
-        /// <param name="includeUriForResults">if set to <c>true</c> [include URI for results].</param>
-        /// <returns>Result of checking Uri scheme is handled</returns>
-        Task<UriScheme> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false);
+        /// <param name="uriScheme">The scheme name that you find to find handlers for.</param>
+        /// <param name="includeUriForResults">Filter the list of handlers by whether they can be launched for results or not.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task<IEnumerable<LauncherServiceAppInfo>> FindUriSchemeHandlersAsync(string uriScheme, bool includeUriForResults = false);
+
+        /// <summary>
+        /// Enumerate the file handlers on the device.
+        /// </summary>
+        /// <param name="extension">The file extension that you want to find handlers for.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task<IEnumerable<LauncherServiceAppInfo>> FindFileHandlersAsync(string extension);
     }
 }
