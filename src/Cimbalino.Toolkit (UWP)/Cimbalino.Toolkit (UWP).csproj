@@ -122,6 +122,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit %28Win81%29\Services\ClipboardService.cs">
+      <Link>Services\ClipboardService.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\behaviors\AfterAutoFocusEventArgs.cs">
       <Link>Behaviors\AfterAutoFocusEventArgs.cs</Link>
     </Compile>

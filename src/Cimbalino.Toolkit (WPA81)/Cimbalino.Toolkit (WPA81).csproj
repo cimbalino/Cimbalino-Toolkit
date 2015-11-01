@@ -174,6 +174,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Helpers\NamescopeBinding.cs">
       <Link>Helpers\NamescopeBinding.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\ClipboardService.cs">
+      <Link>Services\ClipboardService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\DeviceSettingsService.cs">
       <Link>Services\DeviceSettingsService.cs</Link>
     </Compile>

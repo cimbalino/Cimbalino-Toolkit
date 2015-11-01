@@ -130,6 +130,7 @@
     <Compile Include="Extensions\FrameworkElementExtensions.cs" />
     <Compile Include="Helpers\NamescopeBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ClipboardService.cs" />
     <Compile Include="Services\DeviceSettingsService.cs" />
     <Compile Include="Services\DeviceStatusWithKeyboardService.cs" />
     <Compile Include="Services\DisplayPropertiesService.cs" />
