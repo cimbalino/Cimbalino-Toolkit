@@ -1,6 +1,6 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // <copyright file="LauncherServiceExtensions.cs" company="Pedro Lamas">
-// Copyright � Pedro Lamas 2014
+// Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
 // <author>Pedro Lamas</author>
