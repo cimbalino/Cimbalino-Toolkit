@@ -8,6 +8,7 @@
    	    <listItem>Windows Phone Silverlight 8.0 and 8.1 apps (WP8)</listItem>
    	    <listItem>Windows Phone 8.1 apps (WPA81)</listItem>
    	    <listItem>Windows Store 8.1 apps (Win81)</listItem>
+   	    <listItem>Windows 10 UWP apps (Universal Windows Platform)</listItem>
    	  </list>
     </introduction>
     <section address="NuGetPackages">
@@ -29,9 +30,9 @@
     </section>
     <relatedTopics>
       <externalLink>
-        <linkText>Homepage</linkText>
-        <linkAlternateText>Cimbalino Toolkit Homepage</linkAlternateText>
-        <linkUri>http://cimbalino.org/</linkUri>
+        <linkText>GitHub</linkText>
+        <linkAlternateText>Cimbalino Toolkit GitHub Repository</linkAlternateText>
+        <linkUri>https://github.com/Cimbalino/Cimbalino-Toolkit</linkUri>
       </externalLink>
       <externalLink>
         <linkText>@CimbalinoWP (Twitter)</linkText>
