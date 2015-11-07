@@ -60,8 +60,8 @@ public class UnimplementModuleWeaver
     {
         var typeDefinition = new TypeDefinition(null, "NotImplementedInReferenceAssembly", TypeAttributes.NotPublic, ModuleDefinition.TypeSystem.Object);
 
-        var exceptionTypeReference = ModuleDefinition.Import(typeof(Exception));
-        var notImplementedExceptionCtorMethodReference = ModuleDefinition.Import(typeof(NotImplementedException).GetConstructor(new[] { typeof(string) }));
+        var exceptionTypeReference = ModuleDefinition.ImportReference(typeof(Exception));
+        var notImplementedExceptionCtorMethodReference = ModuleDefinition.ImportReference(typeof(NotImplementedException).GetConstructor(new[] { typeof(string) }));
 
         var createExceptionMethodDefinition = new MethodDefinition("CreateException", MethodAttributes.Public | MethodAttributes.Static, exceptionTypeReference);
 
