@@ -42,8 +42,7 @@ task default -depends ?
 
 task Clean -description "Clean the output folder" {
   if (Test-Path -path $binDir) {
-    Write-Host -ForegroundColor Green "Deleting Working Directory"
-    Write-Host
+    WriteColoredOutput -ForegroundColor Green "Deleting Working Directory...`n"
     
     Remove-Item $binDir -Recurse -Force
   }
@@ -52,6 +51,8 @@ task Clean -description "Clean the output folder" {
 }
 
 task Setup -description "Setup environment" {
+  WriteColoredOutput -ForegroundColor Green "Setup environment...`n"
+  
   if ($isAppVeyor) {
     $script:version = $version -replace '([0-9]+(\.[0-9]+){2}).*', ('$1-dev' + $env:APPVEYOR_BUILD_NUMBER)
     
@@ -86,6 +87,8 @@ task Headers -description "Updates the headers in *.cs files" {
         $newContent = ($headerTemplate -f $projectName, $filename) + ($oldContent -Replace "(?s)^.*// \*+\r\n\r\n", "")
         
         if ($newContent -ne $oldContent) {
+          WriteColoredOutput -ForegroundColor Green "Updating '$fullFilename' header...`n"
+          
           [System.IO.File]::WriteAllText($fullFilename, $newContent, [System.Text.Encoding]::UTF8)
         }
       }
@@ -111,8 +114,7 @@ task Version -description "Updates the version entries in AssemblyInfo.cs files"
       
       $projectDir = "$sourceDir\$fullProjectName\"
       
-      Write-Host -ForegroundColor Green "Versioning $fullProjectName..."
-      Write-Host
+      WriteColoredOutput -ForegroundColor Green "Versioning $fullProjectName...`n"
       
       Get-ChildItem -Path $projectDir -Filter AssemblyInfo.cs -Recurse | % {
         $fullFilename = $_.FullName
@@ -177,21 +179,13 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
           % { $_ -Replace '\$version\$', $script:version }
         } | Set-Content -Path $projectNuspec -Encoding UTF8
     
-    $_.Configurations | % {
-      $configuration = $configurations[$_]
-      $configurationFolder = $configuration.Folder
-      
-      $configurationDir = "$projectLibFolder\$configurationFolder"
-      
-      New-Item -Path $configurationDir -ItemType Directory | Out-Null
-      
-      Copy-Item -Path $binariesDir\$projectName\$configurationFolder\* -Destination $configurationDir\ -Exclude '*.pdb' -Recurse
-    }
-	    
-    Write-Host -ForegroundColor Green "Packaging $projectName..."
-    Write-Host
+    New-Item -Path $projectLibFolder -ItemType Directory | Out-Null
     
-    Exec { .$nuget pack "$projectNuspec" -Output "$nupkgDir" } "Error packaging $name"
+    Copy-Item -Path $binariesDir\$projectName\* -Destination $projectLibFolder\ -Recurse
+	    
+    WriteColoredOutput -ForegroundColor Green "Packaging $projectName...`n"
+    
+    Exec { .$nuget pack "$projectNuspec" -Output "$nupkgDir" } "Error packaging $projectName"
   }
 }
 
@@ -199,14 +193,15 @@ task PublishNuget -depends PackNuGet -description "Publish the NuGet packages to
   Get-ChildItem $nupkgDir\*.nupkg | % {
     $nupkg = $_.FullName
     
-    Write-Host -ForegroundColor Green "Publishing $nupkg..."
-    Write-Host
-    
     if ($isAppVeyor) {
+      WriteColoredOutput -ForegroundColor Green "Archiving '$nupkg' artifact...`n"
+      
       Push-AppveyorArtifact $nupkg
     }
     else {
-      Exec { .$nuget push "$nupkg" } "Error publishing $nupkg"
+      WriteColoredOutput -ForegroundColor Green "Publishing '$nupkg'...`n"
+      
+      Exec { .$nuget push "$nupkg" } "Error publishing '$nupkg'"
     }
   }
 }
