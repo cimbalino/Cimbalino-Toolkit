@@ -1,10 +1,14 @@
-properties { 
+$psake.use_exit_on_error = $true
+
+properties {
   $baseDir  = Resolve-Path ..
   $buildDir = "$baseDir\build"
   $sourceDir = "$baseDir\src"
   $toolsDir = "$baseDir\tools"
   $binDir = "$baseDir\bin"
   $docSourceDir = "$baseDir\doc"
+  
+  $isAppVeyor = Test-Path -Path env:\APPVEYOR
   
   $version = "2.0.0"
   
@@ -37,8 +41,7 @@ Framework "4.6x86"
 task default -depends ?
 
 task Clean -description "Clean the output folder" {
-  if (Test-Path -path $binDir)
-  {
+  if (Test-Path -path $binDir) {
     Write-Host -ForegroundColor Green "Deleting Working Directory"
     Write-Host
     
@@ -49,6 +52,15 @@ task Clean -description "Clean the output folder" {
 }
 
 task Setup -description "Setup environment" {
+  if ($isAppVeyor) {
+    $script:version = $version -replace '([0-9]+(\.[0-9]+){2}).*', ('$1-dev' + $env:APPVEYOR_BUILD_NUMBER)
+    
+    Update-AppveyorBuild -Version $script:version
+  }
+  else {
+    $script:version = $version
+  }
+  
   Exec { .$nuget restore $packagesConfig "$sourceDir\Cimbalino.Toolkit.sln" } "Error pre-installing NuGet packages"
 }
 
@@ -82,7 +94,7 @@ task Headers -description "Updates the headers in *.cs files" {
 }
 
 task Version -description "Updates the version entries in AssemblyInfo.cs files" {
-  $assemblyVersion = $version -replace '([0-9]+(\.[0-9]+){2}).*', '$1.0'
+  $assemblyVersion = $script:version -replace '([0-9]+(\.[0-9]+){2}).*', '$1.0'
   $fileVersion = $assemblyVersion
   $assemblyVersionPattern = 'AssemblyVersion\("[0-9]+(\.([0-9]+|\*)){1,3}"\)'
   $fileVersionPattern = 'AssemblyFileVersion\("[0-9]+(\.([0-9]+|\*)){1,3}"\)'
@@ -162,7 +174,7 @@ task PackNuGet -depends Build -description "Create the NuGet packages" {
     Copy-Item -Path $buildDir\$projectName\* -Destination $projectNugetFolder\ -Recurse
     
     (Get-Content -Path $projectNuspec) | % {
-          % { $_ -Replace '\$version\$', $version }
+          % { $_ -Replace '\$version\$', $script:version }
         } | Set-Content -Path $projectNuspec -Encoding UTF8
     
     $_.Configurations | % {
@@ -190,7 +202,12 @@ task PublishNuget -depends PackNuGet -description "Publish the NuGet packages to
     Write-Host -ForegroundColor Green "Publishing $nupkg..."
     Write-Host
     
-    Exec { .$nuget push "$nupkg" } "Error publishing $nupkg"
+    if ($isAppVeyor) {
+      Push-AppveyorArtifact $nupkg
+    }
+    else {
+      Exec { .$nuget push "$nupkg" } "Error publishing $nupkg"
+    }
   }
 }
 
