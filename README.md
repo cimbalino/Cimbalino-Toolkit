@@ -1,4 +1,4 @@
-# Cimbalino Toolkit
+# Cimbalino Toolkit [![Build status](https://ci.appveyor.com/api/projects/status/0p6a4efon0vjq8pg?svg=true)](https://ci.appveyor.com/project/Cimbalino/cimbalino-toolkit "Build Status")
 
 ![Cimbalino Toolkit](https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/Cimbalino.Toolkit.png "Cimbalino Toolkit")
 
@@ -13,7 +13,7 @@ The toolkit is fully compatible with:
 
 **Note:** Due to changes in the way NuGet works, if you use Cimbalino Toolkit in your Windows 10 UWP (Universal Windows Platform) apps, you will have to manually add the Behaviors SDK!
 
-## NuGet packages ![Latest stable version](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat "Latest stable version")
+## NuGet packages ![Latest stable version](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat "Latest stable version")  ![Latest pre-release version](https://img.shields.io/nuget/vpre/Cimbalino.Toolkit.svg?style=flat "Latest pre-release version")
 
 * [Cimbalino.Toolkit.Core](https://www.nuget.org/packages/Cimbalino.Toolkit.Core) - The PCL portion of the toolkit (compatible with background agents)
 * [Cimbalino.Toolkit](https://www.nuget.org/packages/Cimbalino.Toolkit) - The main component of the toolkit
