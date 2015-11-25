@@ -239,12 +239,6 @@
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\VibrationService.cs">
       <Link>Services\VibrationService.cs</Link>
     </Compile>
-    <Compile Include="..\cimbalino.toolkit %28wpa81%29\behaviors\Behavior.cs">
-      <Link>Behaviors\Behavior.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit %28wpa81%29\behaviors\Behavior{T}.cs">
-      <Link>Behaviors\Behavior{T}.cs</Link>
-    </Compile>
     <Compile Include="..\cimbalino.toolkit %28wpa81%29\helpers\DependencyObjectCollection{T}.cs">
       <Link>Helpers\DependencyObjectCollection{T}.cs</Link>
     </Compile>
@@ -258,9 +252,6 @@
     <Compile Include="Services\LauncherServiceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
-    </SDKReference>
     <SDKReference Include="WindowsDesktop, Version=10.0.10240.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>

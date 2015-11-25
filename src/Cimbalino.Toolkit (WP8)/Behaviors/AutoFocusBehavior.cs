@@ -23,6 +23,17 @@ using System.Windows.Interactivity;
 using Cimbalino.Toolkit.Extensions;
 using KeyRoutedEventArgs = System.Windows.Input.KeyEventArgs;
 using VirtualKey = System.Windows.Input.Key;
+#elif WINDOWS_UWP
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
+using Cimbalino.Toolkit.Extensions;
+using Microsoft.Xaml.Interactivity;
+using Windows.System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 #else
 using System;
 using System.Collections.Generic;

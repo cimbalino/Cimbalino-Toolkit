@@ -14,7 +14,13 @@
       <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework="wp8" />
     </frameworkAssemblies>
     <dependencies>
-      <dependency id="Cimbalino.Toolkit.Core" version="$version$" />
+      <group>
+        <dependency id="Cimbalino.Toolkit.Core" version="$version$" />
+      </group>
+      <group targetFramework="uap10.0">
+        <dependency id="Cimbalino.Toolkit.Core" version="$version$" />
+        <dependency id="Microsoft.Xaml.Behaviors.Uwp.Managed" version="1.0.2" />
+      </group>
     </dependencies>
     <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT Appbar ApplicationBar UWP UAP</tags>
   </metadata>

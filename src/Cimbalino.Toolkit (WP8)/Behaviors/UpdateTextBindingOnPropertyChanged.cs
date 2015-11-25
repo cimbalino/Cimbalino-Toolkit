@@ -15,6 +15,9 @@
 #if WINDOWS_PHONE
 using System.Windows.Controls;
 using System.Windows.Interactivity;
+#elif WINDOWS_UWP
+using Microsoft.Xaml.Interactivity;
+using Windows.UI.Xaml.Controls;
 #else
 using Windows.UI.Xaml.Controls;
 #endif

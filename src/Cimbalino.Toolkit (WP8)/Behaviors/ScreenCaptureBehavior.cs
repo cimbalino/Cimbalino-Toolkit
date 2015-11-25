@@ -18,6 +18,12 @@ using System.Windows;
 using System.Windows.Interactivity;
 using Microsoft.Phone.Controls;
 using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
+#elif WINDOWS_UWP
+using Microsoft.Xaml.Interactivity;
+using Windows.ApplicationModel;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 #else
 using Windows.ApplicationModel;
 using Windows.UI.ViewManagement;

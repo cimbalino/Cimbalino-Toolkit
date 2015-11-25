@@ -19,6 +19,12 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Interactivity;
+#elif WINDOWS_UWP
+using System;
+using System.Reflection;
+using Microsoft.Xaml.Interactivity;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
 #else
 using System;
 using System.Reflection;
