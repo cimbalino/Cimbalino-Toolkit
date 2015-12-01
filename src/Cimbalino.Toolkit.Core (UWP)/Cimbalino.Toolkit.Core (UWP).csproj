@@ -464,6 +464,9 @@
     <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\SHA256Managed.cs">
       <Link>System\Security\Cryptography\SHA256Managed.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\CoreDispatcherExtensions.cs">
+      <Link>Extensions\CoreDispatcherExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28wp8%29\extensions\DependencyObjectExtensions.cs">
       <Link>Extensions\DependencyObjectExtensions.cs</Link>
     </Compile>
