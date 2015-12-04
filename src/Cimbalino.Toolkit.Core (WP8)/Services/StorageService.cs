@@ -19,7 +19,6 @@ using System.Windows;
 using Cimbalino.Toolkit.Helpers;
 using Windows.Storage;
 #elif WINDOWS_PHONE_APP
-using System;
 using System.Reflection;
 using Cimbalino.Toolkit.Helpers;
 using Windows.Storage;

@@ -27,7 +27,7 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Store application.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task ShowAsync()
+        public virtual async Task ShowAsync()
         {
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
             var storeUrl = "zune:navigate";
@@ -43,7 +43,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="publisherName">The publisher display name.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task ShowPublisherAsync(string publisherName)
+        public virtual async Task ShowPublisherAsync(string publisherName)
         {
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
             var storeUrl = "zune:search?publisher=" + Uri.EscapeDataString(publisherName);
@@ -59,7 +59,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="keywords">The keywords to search for.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task SearchAsync(string keywords)
+        public virtual async Task SearchAsync(string keywords)
         {
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
             var storeUrl = "zune:search?keyword=" + Uri.EscapeDataString(keywords);
@@ -75,7 +75,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="applicationId">The application id.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task ReviewAsync(string applicationId)
+        public virtual async Task ReviewAsync(string applicationId)
         {
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP
             var storeUrl = "zune:reviewapp";

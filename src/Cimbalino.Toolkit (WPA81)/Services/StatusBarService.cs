@@ -13,7 +13,6 @@
 // ****************************************************************************
 
 #if WINDOWS_APP
-using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
 #else

@@ -69,7 +69,7 @@ namespace Cimbalino.Toolkit.Helpers
         /// Raises the <see cref="E:System.Collections.ObjectModel.ObservableCollection`1.CollectionChanged"/> event with the provided event data.
         /// </summary>
         /// <param name="e">The event data to report in the event.</param>
-        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             if (!SuppressEvents)
             {

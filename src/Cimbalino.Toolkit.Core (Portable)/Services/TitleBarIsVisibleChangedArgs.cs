@@ -22,7 +22,7 @@ namespace Cimbalino.Toolkit.Services
     public class TitleBarIsVisibleChangedArgs : EventArgs
     {
         /// <summary>
-        /// Gets or sets a value indicating whether the title bar is visible.
+        /// Gets a value indicating whether the title bar is visible.
         /// </summary>
         /// <value>true if the title bar is visible; otherwise, false.</value>
         public bool IsVisible { get; private set; }

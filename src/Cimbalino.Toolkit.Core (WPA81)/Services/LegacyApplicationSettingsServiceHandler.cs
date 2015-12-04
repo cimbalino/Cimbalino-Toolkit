@@ -84,7 +84,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets an object that represents all the settings in this <see cref="IApplicationSettingsServiceHandler"/> instance.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
+        public virtual async Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
         {
 #if WINDOWS_UWP
             if (await ApplicationData.Current.LocalFolder.TryGetItemAsync("__ApplicationSettings") == null)

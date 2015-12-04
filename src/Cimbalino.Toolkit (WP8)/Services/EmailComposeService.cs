@@ -84,7 +84,7 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
-        public async virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
+        public virtual async Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
             var emailMessage = new EmailMessage
             {
@@ -110,7 +110,7 @@ namespace Cimbalino.Toolkit.Services
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
         }
 #else
-        public async virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
+        public virtual async Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
             var emailUri = new UriBuilder("mailto:")
                 .SetPath(to)

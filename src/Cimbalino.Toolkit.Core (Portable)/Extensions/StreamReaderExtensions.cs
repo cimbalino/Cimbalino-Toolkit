@@ -54,7 +54,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public static Task<string[]> ReadAllLinesAsync(this StreamReader streamReader)
         {
-            return Task.Factory.StartNew<string[]>(streamReader.ReadAllLines);
+            return Task.Factory.StartNew(streamReader.ReadAllLines);
         }
     }
 }

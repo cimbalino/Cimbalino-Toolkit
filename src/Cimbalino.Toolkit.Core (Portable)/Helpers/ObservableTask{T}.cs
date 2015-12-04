@@ -23,6 +23,18 @@ namespace Cimbalino.Toolkit.Helpers
     public class ObservableTask<T> : ObservableTaskBase<Task<T>>
     {
         /// <summary>
+        /// Gets the result value of this task.
+        /// </summary>
+        /// <value>The result value of this task.</value>
+        public T Result
+        {
+            get
+            {
+                return Task.Result;
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ObservableTask{T}"/> class.
         /// </summary>
         /// <param name="task">The associated task instance.</param>

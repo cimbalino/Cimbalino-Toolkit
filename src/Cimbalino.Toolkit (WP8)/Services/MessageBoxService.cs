@@ -44,7 +44,7 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 #else
-        public async virtual Task ShowAsync(string text)
+        public virtual async Task ShowAsync(string text)
         {
             var message = new MessageDialog(text);
 
@@ -66,7 +66,7 @@ namespace Cimbalino.Toolkit.Services
             return Task.FromResult(0);
         }
 #else
-        public async virtual Task ShowAsync(string text, string caption)
+        public virtual async Task ShowAsync(string text, string caption)
         {
             var message = new MessageDialog(text, caption);
 
@@ -96,7 +96,7 @@ namespace Cimbalino.Toolkit.Services
             return taskCompletionSource.Task;
         }
 #else
-        public async virtual Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
+        public virtual async Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
         {
             var message = new MessageDialog(text, caption);
 

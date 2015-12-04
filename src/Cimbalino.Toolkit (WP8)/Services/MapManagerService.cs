@@ -14,14 +14,10 @@
 
 #if WINDOWS_PHONE
 using Microsoft.Phone.Tasks;
-#elif WINDOWS_PHONE_APP
-using Windows.Services.Maps;
-#elif WINDOWS_UWP
+#elif WINDOWS_PHONE_APP || WINDOWS_UWP
 using Windows.Services.Maps;
 #else
-using System;
 using Cimbalino.Toolkit.Helpers;
-
 #endif
 
 namespace Cimbalino.Toolkit.Services

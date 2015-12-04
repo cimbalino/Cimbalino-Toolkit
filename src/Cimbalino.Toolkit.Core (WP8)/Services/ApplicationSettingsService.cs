@@ -19,8 +19,9 @@ using Cimbalino.Toolkit.Helpers;
 using Windows.Storage;
 #elif WINDOWS_PHONE_APP
 using Windows.Storage;
+#elif WINDOWS_UWP
+using Windows.Storage;
 #else
-using System;
 using Cimbalino.Toolkit.Helpers;
 using Windows.Storage;
 #endif

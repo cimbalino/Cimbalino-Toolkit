@@ -21,9 +21,7 @@ namespace Cimbalino.Toolkit.Extensions
     /// <summary>
     /// Provides a set of static (Shared in Visual Basic) methods for <see cref="Dispatcher"/> instances.
     /// </summary>
-#if !NETFX_CORE
     [CLSCompliant(false)]
-#endif
     public static class DispatcherExtensions
     {
         /// <summary>

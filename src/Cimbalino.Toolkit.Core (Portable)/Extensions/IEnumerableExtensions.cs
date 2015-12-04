@@ -70,7 +70,7 @@ namespace Cimbalino.Toolkit.Extensions
             {
                 yield return value;
 
-                foreach (var child in descendBy(value).Descendants<TResult>(descendBy))
+                foreach (var child in descendBy(value).Descendants(descendBy))
                 {
                     yield return child;
                 }

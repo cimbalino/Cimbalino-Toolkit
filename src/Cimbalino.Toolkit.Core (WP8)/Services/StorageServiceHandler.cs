@@ -115,7 +115,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="destinationFileName">The name of the destination file. This cannot be a directory.</param>
         /// <param name="overwrite">true if the destination file can be overwritten; otherwise, false.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task CopyFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
+        public virtual async Task CopyFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
         {
             var file = await StorageFolder.GetFileAsync(sourceFileName);
 
@@ -147,7 +147,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="destinationFileName">The name of the destination file. This cannot be a directory.</param>
         /// <param name="overwrite">true if the destination file can be overwritten; otherwise, false.</param>
         /// <returns>The <see cref="Task" /> object representing the asynchronous operation.</returns>
-        public async virtual Task MoveFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
+        public virtual async Task MoveFileAsync(string sourceFileName, string destinationFileName, bool overwrite)
         {
             var file = await StorageFolder.GetFileAsync(sourceFileName);
 
@@ -166,7 +166,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="dir">The relative path of the directory to create within the storage.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task CreateDirectoryAsync(string dir)
+        public virtual async Task CreateDirectoryAsync(string dir)
         {
             await StorageFolder.CreateFolderAsync(dir);
         }
@@ -186,7 +186,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="dir">The relative path of the directory to delete within the storage scope.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task DeleteDirectoryAsync(string dir)
+        public virtual async Task DeleteDirectoryAsync(string dir)
         {
             var folder = await StorageFolder.GetFolderAsync(dir);
 
@@ -198,7 +198,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="path">The name of the file to be deleted. Wildcard characters are not supported.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task DeleteFileAsync(string path)
+        public virtual async Task DeleteFileAsync(string path)
         {
             var file = await StorageFolder.GetFileAsync(path);
 
@@ -211,7 +211,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="dir">The path to test.</param>
         /// <returns>true if path refers to an existing directory in the store and is not null; otherwise, false.</returns>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<bool> DirectoryExistsAsync(string dir)
+        public virtual async Task<bool> DirectoryExistsAsync(string dir)
         {
 #if WINDOWS_APP || WINDOWS_UWP
             return await StorageFolder.TryGetItemAsync(dir) is StorageFolder;
@@ -234,7 +234,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="path">The path and file name to test.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<bool> FileExistsAsync(string path)
+        public virtual async Task<bool> FileExistsAsync(string path)
         {
 #if WINDOWS_APP || WINDOWS_UWP
             return await StorageFolder.TryGetItemAsync(path) is StorageFile;
@@ -256,7 +256,7 @@ namespace Cimbalino.Toolkit.Services
         /// Enumerates the directories in the root of a store.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string[]> GetDirectoryNamesAsync()
+        public virtual async Task<string[]> GetDirectoryNamesAsync()
         {
             var folders = await StorageFolder.GetFoldersAsync();
 
@@ -270,7 +270,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="searchPattern">A search pattern. Both single-character ("?") and multi-character ("*") wildcards are supported.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string[]> GetDirectoryNamesAsync(string searchPattern)
+        public virtual async Task<string[]> GetDirectoryNamesAsync(string searchPattern)
         {
             var folderName = Path.GetDirectoryName(searchPattern);
             var folder = string.IsNullOrEmpty(folderName) ? StorageFolder : await StorageFolder.GetFolderAsync(folderName);
@@ -298,7 +298,7 @@ namespace Cimbalino.Toolkit.Services
         /// Obtains the names of files in the root of a store.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string[]> GetFileNamesAsync()
+        public virtual async Task<string[]> GetFileNamesAsync()
         {
             var files = await StorageFolder.GetFilesAsync();
 
@@ -312,7 +312,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="searchPattern">A search pattern. Both single-character ("?") and multi-character ("*") wildcards are supported.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string[]> GetFileNamesAsync(string searchPattern)
+        public virtual async Task<string[]> GetFileNamesAsync(string searchPattern)
         {
             var folderName = Path.GetDirectoryName(searchPattern);
             var folder = string.IsNullOrEmpty(folderName) ? StorageFolder : await StorageFolder.GetFolderAsync(folderName);
@@ -351,7 +351,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="path">The file to open for reading.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string> ReadAllTextAsync(string path)
+        public virtual async Task<string> ReadAllTextAsync(string path)
         {
             using (var fileStream = await OpenFileForReadAsync(path).ConfigureAwait(false))
             {
@@ -368,7 +368,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="path">The file to open for reading.</param>
         /// <param name="encoding">The encoding applied to the contents of the file.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string> ReadAllTextAsync(string path, Encoding encoding)
+        public virtual async Task<string> ReadAllTextAsync(string path, Encoding encoding)
         {
             using (var fileStream = await OpenFileForReadAsync(path).ConfigureAwait(false))
             {
@@ -384,7 +384,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="path">The file to open for reading.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string[]> ReadAllLinesAsync(string path)
+        public virtual async Task<string[]> ReadAllLinesAsync(string path)
         {
             using (var fileStream = await OpenFileForReadAsync(path).ConfigureAwait(false))
             {
@@ -408,7 +408,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="path">The file to open for reading.</param>
         /// <param name="encoding">The encoding applied to the contents of the file.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<string[]> ReadAllLinesAsync(string path, Encoding encoding)
+        public virtual async Task<string[]> ReadAllLinesAsync(string path, Encoding encoding)
         {
             using (var fileStream = await OpenFileForReadAsync(path).ConfigureAwait(false))
             {
@@ -431,7 +431,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="path">The file to open for reading.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task<byte[]> ReadAllBytesAsync(string path)
+        public virtual async Task<byte[]> ReadAllBytesAsync(string path)
         {
             using (var fileStream = await OpenFileForReadAsync(path).ConfigureAwait(false))
             {
@@ -445,7 +445,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="path">The file to write to.</param>
         /// <param name="contents">The string to write to the file.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task WriteAllTextAsync(string path, string contents)
+        public virtual async Task WriteAllTextAsync(string path, string contents)
         {
             using (var fileStream = await CreateFileAsync(path).ConfigureAwait(false))
             {
@@ -463,7 +463,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="contents">The string to write to the file.</param>
         /// <param name="encoding">The encoding to apply to the string.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task WriteAllTextAsync(string path, string contents, Encoding encoding)
+        public virtual async Task WriteAllTextAsync(string path, string contents, Encoding encoding)
         {
             using (var fileStream = await CreateFileAsync(path).ConfigureAwait(false))
             {
@@ -480,7 +480,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="path">The file to write to.</param>
         /// <param name="contents">The lines to write to the file.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task WriteAllLinesAsync(string path, IEnumerable<string> contents)
+        public virtual async Task WriteAllLinesAsync(string path, IEnumerable<string> contents)
         {
             using (var fileStream = await CreateFileAsync(path).ConfigureAwait(false))
             {
@@ -501,7 +501,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="contents">The lines to write to the file.</param>
         /// <param name="encoding">The character encoding to use.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task WriteAllLinesAsync(string path, IEnumerable<string> contents, Encoding encoding)
+        public virtual async Task WriteAllLinesAsync(string path, IEnumerable<string> contents, Encoding encoding)
         {
             using (var fileStream = await CreateFileAsync(path).ConfigureAwait(false))
             {
@@ -521,7 +521,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="path">The file to write to.</param>
         /// <param name="bytes">The bytes to write to the file.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task WriteAllBytesAsync(string path, byte[] bytes)
+        public virtual async Task WriteAllBytesAsync(string path, byte[] bytes)
         {
             using (var fileStream = await CreateFileAsync(path).ConfigureAwait(false))
             {
@@ -535,7 +535,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="path">The file to append the specified string to.</param>
         /// <param name="contents">The string to append to the file.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task AppendAllText(string path, string contents)
+        public virtual async Task AppendAllText(string path, string contents)
         {
             using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {
@@ -553,7 +553,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="contents">The string to append to the file.</param>
         /// <param name="encoding">The character encoding to use.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task AppendAllText(string path, string contents, Encoding encoding)
+        public virtual async Task AppendAllText(string path, string contents, Encoding encoding)
         {
             using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {
@@ -570,7 +570,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="path">The file to append the lines to. The file is created if it does not already exist.</param>
         /// <param name="contents">The lines to append to the file.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task AppendAllLines(string path, IEnumerable<string> contents)
+        public virtual async Task AppendAllLines(string path, IEnumerable<string> contents)
         {
             using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {
@@ -591,7 +591,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="contents">The lines to append to the file.</param>
         /// <param name="encoding">The character encoding to use.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public async virtual Task AppendAllLines(string path, IEnumerable<string> contents, Encoding encoding)
+        public virtual async Task AppendAllLines(string path, IEnumerable<string> contents, Encoding encoding)
         {
             using (var fileStream = await StorageFolder.OpenStreamForWriteAsync(path, CreationCollisionOption.OpenIfExists).ConfigureAwait(false))
             {

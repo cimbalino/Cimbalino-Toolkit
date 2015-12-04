@@ -17,7 +17,6 @@ using System.Threading.Tasks;
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
 using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
 using Windows.ApplicationModel.Calls;
 #elif WINDOWS_UWP
 using System;
@@ -30,7 +29,6 @@ using Windows.System;
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
-using Cimbalino.Toolkit.Helpers;
 using Windows.System;
 #endif
 

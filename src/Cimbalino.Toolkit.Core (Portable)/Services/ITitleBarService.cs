@@ -27,7 +27,7 @@ namespace Cimbalino.Toolkit.Services
         event EventHandler<TitleBarIsVisibleChangedArgs> IsVisibleChanged;
 
         /// <summary>
-        /// Gets or sets a value that specifies whether this title bar should replace the default window title bar.
+        /// Gets or sets a value indicating whether this title bar should replace the default window title bar.
         /// </summary>
         /// <value>true if this title bar should replace the default window title bar; otherwise, false.</value>
         bool ExtendViewIntoTitleBar { get; set; }

@@ -15,7 +15,6 @@
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
 using Windows.Phone.ApplicationModel;
 #else
-using System;
 using Cimbalino.Toolkit.Helpers;
 #endif
 

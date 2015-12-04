@@ -18,6 +18,10 @@ using System.Windows;
 using System.Windows.Interactivity;
 using TriggerBase = System.Windows.Interactivity.TriggerBase;
 using TriggerCollection = System.Windows.Interactivity.TriggerCollection;
+#elif WINDOWS_UWP
+using System.Linq;
+using Microsoft.Xaml.Interactivity;
+using Windows.UI.Xaml;
 #else
 using System.Linq;
 using Cimbalino.Toolkit.Behaviors;
