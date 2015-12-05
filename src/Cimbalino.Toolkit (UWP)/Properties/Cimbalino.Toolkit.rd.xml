@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+  <Library Name="Cimbalino.Toolkit" />
+  <Library Name="Microsoft.Xaml.Interactions">
+    <Type Name="Microsoft.Xaml.Interactivity.Behavior{T}">
+      <Property Name="AssociatedObject" Serialize="Included" />
+    </Type>
+  </Library>
+</Directives>
