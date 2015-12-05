@@ -20,9 +20,9 @@ using System.Windows.Media;
 #else
 using System;
 using System.Globalization;
-using Windows.UI;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
+using Color = Windows.UI.Color;
 #endif
 
 namespace Cimbalino.Toolkit.Converters
@@ -44,7 +44,7 @@ namespace Cimbalino.Toolkit.Converters
         /// </returns>
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || !(value is Color))
+            if (!(value is Color))
             {
                 return null;
             }

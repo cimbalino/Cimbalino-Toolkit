@@ -133,11 +133,13 @@ namespace Cimbalino.Toolkit.Helpers
             }
         }
 
+#pragma warning disable SA1623 // Property summary documentation must match accessors
         /// <summary>
         /// This property is not supported.
         /// </summary>
         /// <value>The length.</value>
         public override long Length
+#pragma warning restore SA1623 // Property summary documentation must match accessors
         {
             get
             {
@@ -145,11 +147,13 @@ namespace Cimbalino.Toolkit.Helpers
             }
         }
 
+#pragma warning disable SA1623 // Property summary documentation must match accessors
         /// <summary>
         /// This property is not supported.
         /// </summary>
         /// <value>The position.</value>
         public override long Position
+#pragma warning restore SA1623 // Property summary documentation must match accessors
         {
             get
             {
