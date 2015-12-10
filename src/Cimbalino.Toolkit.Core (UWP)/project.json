@@ -2,7 +2,7 @@
   "dependencies": {
     "Microsoft.Bcl.Compression": "3.9.85",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "StyleCop.Analyzers": "1.0.0-rc1"
+    "StyleCop.Analyzers": "1.0.0-rc2"
   },
   "frameworks": {
     "uap10.0": {}
