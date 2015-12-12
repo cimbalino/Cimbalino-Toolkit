@@ -69,12 +69,7 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_APP
             return ExceptionHelper.ThrowNotSupported<Task>();
 #else
-            if (ApiHelper.SupportsStatusBar)
-            {
-                return ShowAsync(text, value, false);
-            }
-
-            return Task.FromResult(0);
+            return ShowAsync(text, value, false);
 #endif
         }
 
@@ -88,7 +83,7 @@ namespace Cimbalino.Toolkit.Services
             return ExceptionHelper.ThrowNotSupported<Task>();
         }
 #else
-        public virtual Task HideAsync()
+        public virtual async Task HideAsync()
         {
             if (ApiHelper.SupportsStatusBar)
             {
@@ -96,26 +91,25 @@ namespace Cimbalino.Toolkit.Services
 
                 if (statusBar != null)
                 {
-                    return statusBar.ProgressIndicator.HideAsync().AsTask();
+                    await statusBar.ProgressIndicator.HideAsync();
                 }
             }
-
-            return Task.FromResult(0);
         }
 
-        private Task ShowAsync(string text, double value, bool isIndeterminate)
+        private async Task ShowAsync(string text, double value, bool isIndeterminate)
         {
-            var statusBar = StatusBar.GetForCurrentView();
-
-            if (statusBar != null)
+            if (ApiHelper.SupportsStatusBar)
             {
-                statusBar.ProgressIndicator.Text = text;
-                statusBar.ProgressIndicator.ProgressValue = isIndeterminate ? (double?)null : value;
+                var statusBar = StatusBar.GetForCurrentView();
 
-                return statusBar.ProgressIndicator.ShowAsync().AsTask();
+                if (statusBar != null)
+                {
+                    statusBar.ProgressIndicator.Text = text;
+                    statusBar.ProgressIndicator.ProgressValue = isIndeterminate ? (double?)null : value;
+
+                    await statusBar.ProgressIndicator.ShowAsync();
+                }
             }
-
-            return Task.FromResult(0);
         }
 #endif
     }

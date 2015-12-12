@@ -36,11 +36,14 @@ namespace Cimbalino.Toolkit.Services
         /// Sets the current app as the lock screen background image provider.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+#if WINDOWS_PHONE_APP
+        public override Task<LockScreenServiceRequestResult> RequestAccessAsync()
+        {
+            return ExceptionHelper.ThrowNotSupported<Task<LockScreenServiceRequestResult>>();
+        }
+#elif WINDOWS_PHONE
         public override async Task<LockScreenServiceRequestResult> RequestAccessAsync()
         {
-#if WINDOWS_PHONE_APP
-            return await ExceptionHelper.ThrowNotSupported<Task<LockScreenServiceRequestResult>>();
-#elif WINDOWS_PHONE
             var result = await LockScreenManager.RequestAccessAsync();
 
             switch (result)
@@ -54,7 +57,10 @@ namespace Cimbalino.Toolkit.Services
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
 #else
+        public override async Task<LockScreenServiceRequestResult> RequestAccessAsync()
+        {
             var status = await BackgroundExecutionManager.RequestAccessAsync();
 
             switch (status)
@@ -70,7 +76,7 @@ namespace Cimbalino.Toolkit.Services
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-#endif
         }
+#endif
     }
 }

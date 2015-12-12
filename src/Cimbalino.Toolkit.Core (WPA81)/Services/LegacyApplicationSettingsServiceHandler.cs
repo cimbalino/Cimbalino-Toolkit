@@ -94,7 +94,7 @@ namespace Cimbalino.Toolkit.Services
 #endif
             try
             {
-                using (var fileStream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("__ApplicationSettings"))
+                using (var fileStream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("__ApplicationSettings").ConfigureAwait(false))
                 {
                     using (var streamReader = new StreamReader(fileStream))
                     {

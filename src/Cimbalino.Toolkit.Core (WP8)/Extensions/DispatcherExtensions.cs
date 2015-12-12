@@ -34,7 +34,7 @@ namespace Cimbalino.Toolkit.Extensions
         {
             return dispatcher.RunAndAwaitAsync(async () =>
             {
-                await function();
+                await function().ConfigureAwait(false);
 
                 return true;
             });
@@ -55,7 +55,7 @@ namespace Cimbalino.Toolkit.Extensions
             {
                 try
                 {
-                    var result = await function();
+                    var result = await function().ConfigureAwait(false);
 
                     taskCompletionSource.TrySetResult(result);
                 }

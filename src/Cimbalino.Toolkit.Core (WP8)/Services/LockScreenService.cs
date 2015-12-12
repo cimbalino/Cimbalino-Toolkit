@@ -88,21 +88,27 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="stream">The file stream.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+#if WINDOWS_PHONE
         public virtual async Task SetLockScreenAsync(Stream stream)
         {
-#if WINDOWS_PHONE
-            using (var fileStream = await StorageService.LocalStorageServiceHandlerStatic.CreateFileAsync(LockScreenFile))
+            using (var fileStream = await StorageService.LocalStorageServiceHandlerStatic.CreateFileAsync(LockScreenFile).ConfigureAwait(false))
             {
-                await stream.CopyToAsync(fileStream);
+                await stream.CopyToAsync(fileStream).ConfigureAwait(false);
             }
 
             ImageUri = new Uri(LockScreenImageUrl, UriKind.RelativeOrAbsolute);
-#elif WINDOWS_UWP || WINDOWS_APP
-            await LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream());
-#else
-            await ExceptionHelper.ThrowNotSupported<Task>();
-#endif
         }
+#elif WINDOWS_UWP || WINDOWS_APP
+        public virtual async Task SetLockScreenAsync(Stream stream)
+        {
+            await LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream());
+        }
+#else
+        public virtual Task SetLockScreenAsync(Stream stream)
+        {
+            return ExceptionHelper.ThrowNotSupported<Task>();
+        }
+#endif
 
         /// <summary>
         /// Gets the current lock screen background image URI.

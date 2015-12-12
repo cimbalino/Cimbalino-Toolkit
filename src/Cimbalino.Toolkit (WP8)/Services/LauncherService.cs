@@ -49,9 +49,9 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="url">The URI to start.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task LaunchUriAsync(string url)
+        public virtual Task LaunchUriAsync(string url)
         {
-            await LaunchUriAsync(new Uri(url));
+            return LaunchUriAsync(new Uri(url));
         }
 
         /// <summary>
