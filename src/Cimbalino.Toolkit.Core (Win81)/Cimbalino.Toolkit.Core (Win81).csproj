@@ -226,6 +226,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDeviceStatusService.cs">
       <Link>Services\IDeviceStatusService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDispatcherService.cs">
+      <Link>Services\IDispatcherService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ILockScreenService.cs">
       <Link>Services\ILockScreenService.cs</Link>
     </Compile>
@@ -348,6 +351,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\ApplicationSettingsServiceHandler.cs">
       <Link>Services\ApplicationSettingsServiceHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\DispatcherService.cs">
+      <Link>Services\DispatcherService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\LocationService.cs">
       <Link>Services\LocationService.cs</Link>

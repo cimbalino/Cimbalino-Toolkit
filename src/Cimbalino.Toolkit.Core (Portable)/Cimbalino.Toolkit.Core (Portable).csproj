@@ -97,6 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
     <Compile Include="Services\IClipboardService.cs" />
+    <Compile Include="Services\IDispatcherService.cs" />
     <Compile Include="Services\ILockScreenService.cs" />
     <Compile Include="Services\IPersonalizationService.cs" />
     <Compile Include="Services\LauncherServiceAppInfo.cs" />
