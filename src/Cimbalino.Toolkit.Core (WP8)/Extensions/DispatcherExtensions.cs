@@ -28,16 +28,27 @@ namespace Cimbalino.Toolkit.Extensions
         /// Runs the event dispatcher and awaits for it to complete before returning the results for dispatched events asynchronously.
         /// </summary>
         /// <param name="dispatcher">The dispatcher.</param>
-        /// <param name="function">The async function to call.</param>
+        /// <param name="action">The action to call.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public static Task RunAndAwaitAsync(this Dispatcher dispatcher, Func<Task> function)
+        public static Task RunAndAwaitAsync(this Dispatcher dispatcher, Action action)
         {
-            return dispatcher.RunAndAwaitAsync(async () =>
-            {
-                await function().ConfigureAwait(false);
+            var taskCompletionSource = new TaskCompletionSource<bool>();
 
-                return true;
+            dispatcher.BeginInvoke(() =>
+            {
+                try
+                {
+                    action();
+
+                    taskCompletionSource.TrySetResult(true);
+                }
+                catch (Exception ex)
+                {
+                    taskCompletionSource.TrySetException(ex);
+                }
             });
+
+            return taskCompletionSource.Task;
         }
 
         /// <summary>
@@ -45,9 +56,64 @@ namespace Cimbalino.Toolkit.Extensions
         /// </summary>
         /// <typeparam name="T">The return type.</typeparam>
         /// <param name="dispatcher">The dispatcher.</param>
-        /// <param name="function">The async function to call.</param>
+        /// <param name="function">The function to call.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public static Task<T> RunAndAwaitAsync<T>(this Dispatcher dispatcher, Func<Task<T>> function)
+        public static Task<T> RunAndAwaitAsync<T>(this Dispatcher dispatcher, Func<T> function)
+        {
+            var taskCompletionSource = new TaskCompletionSource<T>();
+
+            dispatcher.BeginInvoke(() =>
+            {
+                try
+                {
+                    var result = function();
+
+                    taskCompletionSource.TrySetResult(result);
+                }
+                catch (Exception ex)
+                {
+                    taskCompletionSource.TrySetException(ex);
+                }
+            });
+
+            return taskCompletionSource.Task;
+        }
+
+        /// <summary>
+        /// Runs the event dispatcher and awaits for it to complete before returning the results for dispatched events asynchronously.
+        /// </summary>
+        /// <param name="dispatcher">The dispatcher.</param>
+        /// <param name="asyncAction">The async action to call.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public static Task RunAndAwaitAsync(this Dispatcher dispatcher, Func<Task> asyncAction)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            dispatcher.BeginInvoke(async () =>
+            {
+                try
+                {
+                    await asyncAction().ConfigureAwait(false);
+
+                    taskCompletionSource.TrySetResult(true);
+                }
+                catch (Exception ex)
+                {
+                    taskCompletionSource.TrySetException(ex);
+                }
+            });
+
+            return taskCompletionSource.Task;
+        }
+
+        /// <summary>
+        /// Runs the event dispatcher and awaits for it to complete before returning the results for dispatched events asynchronously.
+        /// </summary>
+        /// <typeparam name="T">The return type.</typeparam>
+        /// <param name="dispatcher">The dispatcher.</param>
+        /// <param name="asyncFunction">The async function to call.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public static Task<T> RunAndAwaitAsync<T>(this Dispatcher dispatcher, Func<Task<T>> asyncFunction)
         {
             var taskCompletionSource = new TaskCompletionSource<T>();
 
@@ -55,7 +121,7 @@ namespace Cimbalino.Toolkit.Extensions
             {
                 try
                 {
-                    var result = await function().ConfigureAwait(false);
+                    var result = await asyncFunction().ConfigureAwait(false);
 
                     taskCompletionSource.TrySetResult(result);
                 }

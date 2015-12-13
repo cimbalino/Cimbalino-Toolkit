@@ -30,16 +30,28 @@ namespace Cimbalino.Toolkit.Extensions
         /// Runs the event dispatcher and awaits for it to complete before returning the results for dispatched events asynchronously.
         /// </summary>
         /// <param name="dispatcher">The dispatcher.</param>
-        /// <param name="function">The async function to call.</param>
+        /// <param name="priority">Specifies the priority for event dispatch.</param>
+        /// <param name="action">The action to call.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public static Task RunAndAwaitAsync(this CoreDispatcher dispatcher, Func<Task> function)
+        public static async Task RunAndAwaitAsync(this CoreDispatcher dispatcher, CoreDispatcherPriority priority, Action action)
         {
-            return dispatcher.RunAndAwaitAsync(async () =>
-            {
-                await function().ConfigureAwait(false);
+            var taskCompletionSource = new TaskCompletionSource<bool>();
 
-                return true;
+            await dispatcher.RunAsync(priority, () =>
+            {
+                try
+                {
+                    action();
+
+                    taskCompletionSource.TrySetResult(true);
+                }
+                catch (Exception ex)
+                {
+                    taskCompletionSource.TrySetException(ex);
+                }
             });
+
+            await taskCompletionSource.Task.ConfigureAwait(false);
         }
 
         /// <summary>
@@ -47,17 +59,75 @@ namespace Cimbalino.Toolkit.Extensions
         /// </summary>
         /// <typeparam name="T">The return type.</typeparam>
         /// <param name="dispatcher">The dispatcher.</param>
-        /// <param name="function">The async function to call.</param>
+        /// <param name="priority">Specifies the priority for event dispatch.</param>
+        /// <param name="function">The function to call.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public static async Task<T> RunAndAwaitAsync<T>(this CoreDispatcher dispatcher, Func<Task<T>> function)
+        public static async Task<T> RunAndAwaitAsync<T>(this CoreDispatcher dispatcher, CoreDispatcherPriority priority, Func<T> function)
         {
             var taskCompletionSource = new TaskCompletionSource<T>();
 
-            await dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            await dispatcher.RunAsync(priority, () =>
             {
                 try
                 {
-                    var result = await function().ConfigureAwait(false);
+                    var result = function();
+
+                    taskCompletionSource.TrySetResult(result);
+                }
+                catch (Exception ex)
+                {
+                    taskCompletionSource.TrySetException(ex);
+                }
+            });
+
+            return await taskCompletionSource.Task.ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Runs the event dispatcher and awaits for it to complete before returning the results for dispatched events asynchronously.
+        /// </summary>
+        /// <param name="dispatcher">The dispatcher.</param>
+        /// <param name="priority">Specifies the priority for event dispatch.</param>
+        /// <param name="asyncAction">The async action to call.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public static async Task RunAndAwaitAsync(this CoreDispatcher dispatcher, CoreDispatcherPriority priority, Func<Task> asyncAction)
+        {
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+
+            await dispatcher.RunAsync(priority, async () =>
+            {
+                try
+                {
+                    await asyncAction().ConfigureAwait(false);
+
+                    taskCompletionSource.TrySetResult(true);
+                }
+                catch (Exception ex)
+                {
+                    taskCompletionSource.TrySetException(ex);
+                }
+            });
+
+            await taskCompletionSource.Task.ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Runs the event dispatcher and awaits for it to complete before returning the results for dispatched events asynchronously.
+        /// </summary>
+        /// <typeparam name="T">The return type.</typeparam>
+        /// <param name="dispatcher">The dispatcher.</param>
+        /// <param name="priority">Specifies the priority for event dispatch.</param>
+        /// <param name="asyncFunction">The async function to call.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public static async Task<T> RunAndAwaitAsync<T>(this CoreDispatcher dispatcher, CoreDispatcherPriority priority, Func<Task<T>> asyncFunction)
+        {
+            var taskCompletionSource = new TaskCompletionSource<T>();
+
+            await dispatcher.RunAsync(priority, async () =>
+            {
+                try
+                {
+                    var result = await asyncFunction().ConfigureAwait(false);
 
                     taskCompletionSource.TrySetResult(result);
                 }
