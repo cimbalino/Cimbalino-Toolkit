@@ -22,7 +22,6 @@ using Windows.ApplicationModel.Calls;
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
-using Cimbalino.Toolkit.Helpers;
 using Windows.ApplicationModel.Calls;
 using Windows.System;
 #else
@@ -76,16 +75,14 @@ namespace Cimbalino.Toolkit.Services
 #elif WINDOWS_UWP
         public virtual Task ShowAsync(string phoneNumber, string displayName)
         {
-            if (ApiHelper.SupportsPhoneCalls)
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Calls.PhoneCallManager"))
             {
                 PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
-            }
-            else
-            {
-                return CallByUri(phoneNumber, displayName);
+
+                return Task.CompletedTask;
             }
 
-            return Task.FromResult(0);
+            return CallByUri(phoneNumber, displayName);
         }
 #else
         public virtual Task ShowAsync(string phoneNumber, string displayName)

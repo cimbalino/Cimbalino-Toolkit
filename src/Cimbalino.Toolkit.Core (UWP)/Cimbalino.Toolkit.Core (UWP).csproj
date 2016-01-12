@@ -530,7 +530,6 @@
     <Compile Include="..\cimbalino.toolkit.core %28wpa81%29\services\WindowsStoreService.cs">
       <Link>Services\WindowsStoreService.cs</Link>
     </Compile>
-    <Compile Include="Helpers\ApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PersonalizationService.cs" />
   </ItemGroup>

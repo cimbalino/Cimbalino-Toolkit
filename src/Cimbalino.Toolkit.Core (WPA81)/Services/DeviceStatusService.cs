@@ -92,11 +92,6 @@ namespace Cimbalino.Toolkit.Services
             get
             {
 #if WINDOWS_PHONE_APP || WINDOWS_UWP
-                if (!ApiHelper.SupportsMemoryManager)
-                {
-                    return -1;
-                }
-
                 return (long)MemoryManager.AppMemoryUsage;
 #else
                 return ExceptionHelper.ThrowNotSupported<long>();
@@ -115,11 +110,6 @@ namespace Cimbalino.Toolkit.Services
             get
             {
 #if WINDOWS_PHONE_APP || WINDOWS_UWP
-                if (!ApiHelper.SupportsMemoryManager)
-                {
-                    return -1;
-                }
-
                 return (long)MemoryManager.AppMemoryUsageLimit;
 #else
                 return ExceptionHelper.ThrowNotSupported<long>();
@@ -266,7 +256,7 @@ namespace Cimbalino.Toolkit.Services
             get
             {
 #if WINDOWS_UWP
-                
+
                 var status = PowerManager.BatteryStatus;
                 switch (status)
                 {

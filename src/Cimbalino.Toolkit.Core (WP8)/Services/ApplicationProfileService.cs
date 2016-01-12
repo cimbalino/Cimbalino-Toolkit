@@ -33,15 +33,22 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
+#if WINDOWS_UWP
+                if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.ApplicationModel.ApplicationProfile"))
+                {
+                    return ApplicationProfileServiceMode.Unknown;
+                }
+#endif
+
 #if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
                 switch (ApplicationProfile.Modes)
                 {
                     case ApplicationProfileModes.Default:
                         return ApplicationProfileServiceMode.Default;
-                    
+
                     case ApplicationProfileModes.Alternate:
                         return ApplicationProfileServiceMode.KidsCorner;
-                    
+
                     default:
                         return ApplicationProfileServiceMode.Unknown;
                 }

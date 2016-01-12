@@ -98,10 +98,18 @@ namespace Cimbalino.Toolkit.Services
 
             ImageUri = new Uri(LockScreenImageUrl, UriKind.RelativeOrAbsolute);
         }
-#elif WINDOWS_UWP || WINDOWS_APP
+#elif WINDOWS_APP
         public virtual async Task SetLockScreenAsync(Stream stream)
         {
             await LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream());
+        }
+#elif WINDOWS_UWP
+        public virtual async Task SetLockScreenAsync(Stream stream)
+        {
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.System.UserProfile.LockScreen"))
+            {
+                await LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream());
+            }
         }
 #else
         public virtual Task SetLockScreenAsync(Stream stream)
@@ -118,8 +126,15 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_PHONE
             return new Uri(LockScreenImageUrl, UriKind.Absolute);
-#elif WINDOWS_UWP || WINDOWS_APP
+#elif WINDOWS_APP
             return LockScreen.OriginalImageFile;
+#elif WINDOWS_UWP
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.System.UserProfile.LockScreen"))
+            {
+                return LockScreen.OriginalImageFile;
+            }
+
+            return null;
 #else
             return ExceptionHelper.ThrowNotSupported<Uri>();
 #endif

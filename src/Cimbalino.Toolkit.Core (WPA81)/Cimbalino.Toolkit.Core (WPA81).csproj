@@ -304,9 +304,6 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppScreenshotNode.cs">
       <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Helpers\ApiHelper.cs">
-      <Link>Helpers\ApiHelper.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Win81%29\System\Security\Cryptography\HashAlgorithmBase.cs">
       <Link>System\Security\Cryptography\HashAlgorithmBase.cs</Link>
     </Compile>

@@ -110,20 +110,26 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
+#if WINDOWS_PHONE_APP
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationService"/> class.
         /// </summary>
         public NavigationService()
         {
-            if (ApiHelper.SupportsBackButton)
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+        }
+#elif WINDOWS_UWP
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationService"/> class.
+        /// </summary>
+        public NavigationService()
+        {
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
             {
                 HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             }
 
-#if WINDOWS_UWP
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-#endif
         }
 #endif
 

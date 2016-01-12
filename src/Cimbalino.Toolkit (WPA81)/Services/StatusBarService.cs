@@ -18,7 +18,6 @@ using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
 using Windows.UI.ViewManagement;
 #endif
 
@@ -36,11 +35,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync(string text)
         {
-#if WINDOWS_APP
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#else
             return ShowAsync(text, 0, false);
-#endif
         }
 
         /// <summary>
@@ -51,11 +46,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync(string text, bool isIndeterminate)
         {
-#if WINDOWS_APP
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#else
             return ShowAsync(text, 0, isIndeterminate);
-#endif
         }
 
         /// <summary>
@@ -66,11 +57,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync(string text, double value)
         {
-#if WINDOWS_APP
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#else
             return ShowAsync(text, value, false);
-#endif
         }
 
         /// <summary>
@@ -82,33 +69,46 @@ namespace Cimbalino.Toolkit.Services
         {
             return ExceptionHelper.ThrowNotSupported<Task>();
         }
+
+        private Task ShowAsync(string text, double value, bool isIndeterminate)
+        {
+            return ExceptionHelper.ThrowNotSupported<Task>();
+        }
 #else
         public virtual async Task HideAsync()
         {
-            if (ApiHelper.SupportsStatusBar)
+#if WINDOWS_UWP
+            if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
-                var statusBar = StatusBar.GetForCurrentView();
+                return;
+            }
+#endif
 
-                if (statusBar != null)
-                {
-                    await statusBar.ProgressIndicator.HideAsync();
-                }
+            var statusBar = StatusBar.GetForCurrentView();
+
+            if (statusBar != null)
+            {
+                await statusBar.ProgressIndicator.HideAsync();
             }
         }
 
         private async Task ShowAsync(string text, double value, bool isIndeterminate)
         {
-            if (ApiHelper.SupportsStatusBar)
+#if WINDOWS_UWP
+            if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
-                var statusBar = StatusBar.GetForCurrentView();
+                return;
+            }
+#endif
 
-                if (statusBar != null)
-                {
-                    statusBar.ProgressIndicator.Text = text;
-                    statusBar.ProgressIndicator.ProgressValue = isIndeterminate ? (double?)null : value;
+            var statusBar = StatusBar.GetForCurrentView();
 
-                    await statusBar.ProgressIndicator.ShowAsync();
-                }
+            if (statusBar != null)
+            {
+                statusBar.ProgressIndicator.Text = text;
+                statusBar.ProgressIndicator.ProgressValue = isIndeterminate ? (double?)null : value;
+
+                await statusBar.ProgressIndicator.ShowAsync();
             }
         }
 #endif

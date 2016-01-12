@@ -20,10 +20,10 @@ using Windows.Graphics.Display;
 using Rect = Cimbalino.Toolkit.Foundation.Rect;
 #elif WINDOWS_UWP
 using System;
+using Cimbalino.Toolkit.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.UI.Xaml;
-using Cimbalino.Toolkit.Foundation;
 #else
 using System;
 using Cimbalino.Toolkit.Foundation;

@@ -17,7 +17,6 @@ using System;
 using Microsoft.Devices;
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
 using System;
-using Cimbalino.Toolkit.Helpers;
 using Windows.Phone.Devices.Notification;
 #else
 using System;
@@ -56,8 +55,10 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_PHONE
             VibrateController.Default.Start(duration);
-#elif WINDOWS_PHONE_APP || WINDOWS_UWP
-            if (ApiHelper.SupportsVibrate)
+#elif WINDOWS_PHONE_APP 
+            VibrationDevice.GetDefault().Vibrate(duration);
+#elif WINDOWS_UWP
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.Devices.Notification.VibrationDevice"))
             {
                 VibrationDevice.GetDefault().Vibrate(duration);
             }
@@ -73,8 +74,10 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_PHONE
             VibrateController.Default.Stop();
-#elif WINDOWS_PHONE_APP || WINDOWS_UWP
-            if (ApiHelper.SupportsVibrate)
+#elif WINDOWS_PHONE_APP
+            VibrationDevice.GetDefault().Cancel();
+#elif WINDOWS_UWP
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.Devices.Notification.VibrationDevice"))
             {
                 VibrationDevice.GetDefault().Cancel();
             }
