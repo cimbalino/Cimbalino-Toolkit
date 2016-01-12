@@ -18,6 +18,12 @@ using System.Windows;
 using Microsoft.Phone.Info;
 using Windows.Graphics.Display;
 using Rect = Cimbalino.Toolkit.Foundation.Rect;
+#elif WINDOWS_UWP
+using System;
+using Windows.Foundation.Metadata;
+using Windows.Graphics.Display;
+using Windows.UI.Xaml;
+using Cimbalino.Toolkit.Foundation;
 #else
 using System;
 using Cimbalino.Toolkit.Foundation;
@@ -144,13 +150,25 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the physical screen diagonal size.
         /// </summary>
         /// <value>The physical screen diagonal size.</value>
-        public virtual float ScreenDiagonal
+        public virtual double ScreenDiagonal
         {
             get
             {
+#if WINDOWS_UWP
+                if (ApiInformation.IsPropertyPresent("Windows.Graphics.Display.DisplayInformation", "DiagonalSizeInInches"))
+                {
+                    var diagonalSizeInInches = DisplayInformation.GetForCurrentView().DiagonalSizeInInches;
+
+                    if (diagonalSizeInInches.HasValue)
+                    {
+                        return diagonalSizeInInches.Value;
+                    }
+                }
+#endif
+
                 var physicalBounds = PhysicalBounds;
 
-                return (float)Math.Sqrt(Math.Pow(physicalBounds.Width / RawDpiX, 2) + Math.Pow(physicalBounds.Height / RawDpiY, 2));
+                return Math.Sqrt(Math.Pow(physicalBounds.Width / RawDpiX, 2) + Math.Pow(physicalBounds.Height / RawDpiY, 2));
             }
         }
 

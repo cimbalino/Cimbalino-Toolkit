@@ -55,7 +55,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the physical screen diagonal size.
         /// </summary>
         /// <value>The physical screen diagonal size.</value>
-        float ScreenDiagonal { get; }
+        double ScreenDiagonal { get; }
 
         /// <summary>
         /// Gets the number of raw (physical) pixels for each view (layout) pixel.
