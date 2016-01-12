@@ -11,12 +11,20 @@ The toolkit is fully compatible with:
 * Windows Store 8.1 apps (Win81)
 * Windows 10 UWP apps (Universal Windows Platform)
 
-**Note:** Due to changes in the way NuGet works, if you use Cimbalino Toolkit in your Windows 10 UWP (Universal Windows Platform) apps, you will have to manually add the Behaviors SDK!
-
 ## NuGet packages ![Latest stable version](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat "Latest stable version")  ![Latest pre-release version](https://img.shields.io/nuget/vpre/Cimbalino.Toolkit.svg?style=flat "Latest pre-release version")
 
 * [Cimbalino.Toolkit.Core](https://www.nuget.org/packages/Cimbalino.Toolkit.Core) - The PCL portion of the toolkit (compatible with background agents)
 * [Cimbalino.Toolkit](https://www.nuget.org/packages/Cimbalino.Toolkit) - The main component of the toolkit
+
+## Getting started
+
+* [Adding the Cimbalino Toolkit NuGet to a Universal App](https://www.pedrolamas.com/2015/01/05/cimbalino-toolkit-step-by-step/)
+* [Integrating with MVVM Light Toolkit](https://www.pedrolamas.com/2015/01/26/cimbalino-toolkit-integrating-with-mvvm-light-toolkit/)
+
+## Getting help
+
+* Check the [documentation](http://cimbalino.org/help).
+* Send a tweet to [@CimbalinoWP](http://twitter.com/CimbalinoWP) with your query!
 
 ## FAQ
 
@@ -32,9 +40,13 @@ The Cimbalino Toolkit does not support Windows Phone 7.x, but you can still use 
 
 Yes, there are some plans in the making, but that will still take some time... :) 
 
+## Contributing
+
+For more information about contributing PRs and issues, see our [Contribution Guidelines](https://github.com/Cimbalino/Cimbalino-Toolkit/blob/master/CONTRIBUTING.md).
+
 ## License
 
-See the [LICENSE.txt](https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/LICENSE.txt) file for details.
+See the [LICENSE.txt](https://github.com/Cimbalino/Cimbalino-Toolkit/blob/master/LICENSE.txt) file for details.
 
 ## More information
 
