@@ -19,17 +19,14 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Interactivity;
-#elif WINDOWS_UWP
+using System.Windows.Markup;
+#else
 using System;
 using System.Reflection;
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
-#else
-using System;
-using System.Reflection;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Markup;
 #endif
 
 namespace Cimbalino.Toolkit.Behaviors
@@ -38,9 +35,10 @@ namespace Cimbalino.Toolkit.Behaviors
     /// The behavior that enables multiple binding.
     /// </summary>
 #if WINDOWS_PHONE
-    [System.Windows.Markup.ContentProperty("Items")]
+    [ContentProperty("Items")]
 #else
-    [Windows.UI.Xaml.Markup.ContentProperty(Name = "Items")]
+    [ContentProperty(Name = "Items")]
+    [TypeConstraint(typeof(FrameworkElement))]
 #endif
     public class MultiBindingBehavior : Behavior<FrameworkElement>
     {

@@ -18,13 +18,8 @@ using System.Windows;
 using System.Windows.Interactivity;
 using Microsoft.Phone.Controls;
 using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
-#elif WINDOWS_UWP
-using Microsoft.Xaml.Interactivity;
-using Windows.ApplicationModel;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 #else
+using Microsoft.Xaml.Interactivity;
 using Windows.ApplicationModel;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -36,6 +31,9 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that controls the screen capture feature on Windows Phone.
     /// </summary>
+#if !WINDOWS_PHONE
+    [TypeConstraint(typeof(Page))]
+#endif
     public class ScreenCaptureBehavior : Behavior<Page>
     {
         /// <summary>

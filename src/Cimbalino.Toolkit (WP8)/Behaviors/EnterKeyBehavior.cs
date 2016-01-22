@@ -19,15 +19,9 @@ using System.Windows.Input;
 using System.Windows.Interactivity;
 using KeyRoutedEventArgs = System.Windows.Input.KeyEventArgs;
 using VirtualKey = System.Windows.Input.Key;
-#elif WINDOWS_UWP
-using System.Windows.Input;
-using Microsoft.Xaml.Interactivity;
-using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 #else
 using System.Windows.Input;
+using Microsoft.Xaml.Interactivity;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -39,6 +33,9 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that handles the Enter key press to execute a command.
     /// </summary>
+#if !WINDOWS_PHONE
+    [TypeConstraint(typeof(Control))]
+#endif
     public class EnterKeyBehavior : Behavior<Control>
     {
         /// <summary>
