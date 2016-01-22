@@ -125,6 +125,9 @@
     <Compile Include="..\Cimbalino.Toolkit %28Win81%29\Services\ClipboardService.cs">
       <Link>Services\ClipboardService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28Win81%29\Services\TitleBarService.cs">
+      <Link>Services\TitleBarService.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\behaviors\AfterAutoFocusEventArgs.cs">
       <Link>Behaviors\AfterAutoFocusEventArgs.cs</Link>
     </Compile>
@@ -232,9 +235,6 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\StoreService.cs">
       <Link>Services\StoreService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\TitleBarService.cs">
-      <Link>Services\TitleBarService.cs</Link>
     </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\VibrationService.cs">
       <Link>Services\VibrationService.cs</Link>

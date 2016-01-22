@@ -12,20 +12,8 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_UWP
 using System;
 using Cimbalino.Toolkit.Helpers;
-using Windows.ApplicationModel.Core;
-#elif WINDOWS_APP
-using System;
-using System.Linq;
-using System.Reflection;
-using Cimbalino.Toolkit.Helpers;
-using Windows.ApplicationModel.Core;
-#else
-using System;
-using Cimbalino.Toolkit.Helpers;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -34,28 +22,6 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class TitleBarService : ITitleBarService
     {
-#if WINDOWS_UWP
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TitleBarService"/> class.
-        /// </summary>
-        public TitleBarService()
-        {
-            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += TitleBarOnIsVisibleChanged;
-        }
-
-        private void TitleBarOnIsVisibleChanged(CoreApplicationViewTitleBar sender, object args)
-        {
-            var titleBar = CoreApplication.GetCurrentView().TitleBar;
-
-            var eventHandler = IsVisibleChanged;
-
-            if (eventHandler != null)
-            {
-                eventHandler(sender, new TitleBarIsVisibleChangedArgs(titleBar.IsVisible));
-            }
-        }
-#endif
-
         /// <summary>
         /// Gets or sets a value indicating whether this title bar should replace the default window title bar.
         /// </summary>
@@ -64,44 +30,14 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_UWP || WINDOWS_APP
-                var titleBar = GetTitleBar();
-
-                if (titleBar == null)
-                {
-                    return ExceptionHelper.ThrowNotSupported<bool>();
-                }
-
-                return titleBar.ExtendViewIntoTitleBar;
-#else
                 return ExceptionHelper.ThrowNotSupported<bool>();
-#endif
             }
             set
             {
-#if WINDOWS_UWP || WINDOWS_APP
-                var titleBar = GetTitleBar();
-
-                if (titleBar == null)
-                {
-                    ExceptionHelper.ThrowNotSupported<bool>();
-
-                    return;
-                }
-
-                titleBar.ExtendViewIntoTitleBar = value;
-#else
                 ExceptionHelper.ThrowNotSupported();
-#endif
             }
         }
 
-#if WINDOWS_UWP
-        /// <summary>
-        /// Occurs when the visibility of the title bar changes.
-        /// </summary>
-        public event EventHandler<TitleBarIsVisibleChangedArgs> IsVisibleChanged;
-#else
         /// <summary>
         /// Occurs when the visibility of the title bar changes.
         /// </summary>
@@ -115,7 +51,6 @@ namespace Cimbalino.Toolkit.Services
             {
             }
         }
-#endif
 
         /// <summary>
         /// Gets the title bar height.
@@ -125,39 +60,8 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_UWP || WINDOWS_APP
-                var titleBar = GetTitleBar();
-
-                if (titleBar == null)
-                {
-                    return ExceptionHelper.ThrowNotSupported<double>();
-                }
-
-                return titleBar.Height;
-#else
                 return ExceptionHelper.ThrowNotSupported<double>();
-#endif
             }
         }
-
-#if WINDOWS_UWP
-        private CoreApplicationViewTitleBar GetTitleBar()
-        {
-            return CoreApplication.GetCurrentView().TitleBar;
-        }
-#elif WINDOWS_APP
-        private dynamic GetTitleBar()
-        {
-            var window = CoreApplication.GetCurrentView();
-
-            var titleBar = window.GetType()
-                                 .GetRuntimeProperties()
-                                 .FirstOrDefault(x => x.Name == "TitleBar")
-                                 .GetMethod
-                                 .Invoke(window, null);
-
-            return titleBar;
-        }
-#endif
     }
 }

@@ -228,9 +228,6 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\StoreService.cs">
       <Link>Services\StoreService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\TitleBarService.cs">
-      <Link>Services\TitleBarService.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\VibrationService.cs">
       <Link>Services\VibrationService.cs</Link>
     </Compile>
@@ -251,6 +248,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClipboardService.cs" />
+    <Compile Include="Services\TitleBarService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
