@@ -15,6 +15,7 @@
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
+using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 
 namespace Cimbalino.Toolkit.Services
@@ -31,11 +32,19 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public DispatcherService()
         {
-            var coreWindow = CoreWindow.GetForCurrentThread();
-
-            if (coreWindow != null)
+            if (CoreApplication.Views.Count > 0)
             {
-                _dispatcher = coreWindow.Dispatcher;
+                var coreApplicationView = CoreApplication.MainView;
+
+                if (coreApplicationView != null)
+                {
+                    var coreWindow = coreApplicationView.CoreWindow;
+
+                    if (coreWindow != null)
+                    {
+                        _dispatcher = coreWindow.Dispatcher;
+                    }
+                }
             }
         }
 
@@ -46,7 +55,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task InvokeOnUiThreadAsync(Action action)
         {
-            return this.InvokeOnUiThreadAsync(action, false);
+            return InvokeOnUiThreadAsync(action, false);
         }
 
         /// <summary>
@@ -77,7 +86,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task<T> InvokeOnUiThreadAsync<T>(Func<T> function)
         {
-            return this.InvokeOnUiThreadAsync(function, false);
+            return InvokeOnUiThreadAsync(function, false);
         }
 
         /// <summary>
@@ -108,7 +117,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task InvokeOnUiThreadAsync(Func<Task> asyncAction)
         {
-            return this.InvokeOnUiThreadAsync(asyncAction, false);
+            return InvokeOnUiThreadAsync(asyncAction, false);
         }
 
         /// <summary>
@@ -137,7 +146,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task<T> InvokeOnUiThreadAsync<T>(Func<Task<T>> asyncFunction)
         {
-            return this.InvokeOnUiThreadAsync(asyncFunction, false);
+            return InvokeOnUiThreadAsync(asyncFunction, false);
         }
 
         /// <summary>
