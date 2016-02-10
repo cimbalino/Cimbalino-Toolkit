@@ -211,7 +211,7 @@ namespace Cimbalino.Toolkit.Services
                 throw new TimeoutException();
             }
 
-            var position = getGeopositionAsyncTask.Result;
+            var position = await getGeopositionAsyncTask.ConfigureAwait(false);
 
             return position.Coordinate.ToLocationServicePosition();
         }
