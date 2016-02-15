@@ -32,7 +32,8 @@ properties {
   
   $projects = @(
     @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81", "UWP")},
-    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81", "UWP")}
+    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81", "UWP")},
+    @{Name = "Cimbalino.Toolkit.Controls"; Configurations = @("UWP")}
   )
 }
 

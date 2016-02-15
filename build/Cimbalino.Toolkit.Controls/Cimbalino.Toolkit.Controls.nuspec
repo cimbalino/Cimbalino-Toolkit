@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Cimbalino.Toolkit.Controls</id>
+    <version>$version$</version>
+    <authors>Pedro Lamas</authors>
+    <title>Cimbalino Toolkit Controls</title>
+    <description>Cimbalino Toolkit is a set of useful and powerful items that will help you build your Windows applications. This is the UI Controls portion of the toolkit.</description>
+    <language>en-US</language>
+    <projectUrl>http://cimbalino.org</projectUrl>
+    <licenseUrl>https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/LICENSE.txt</licenseUrl>
+    <iconUrl>https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/Cimbalino.Toolkit.png</iconUrl>
+    <dependencies>
+      <dependency id="Cimbalino.Toolkit" version="$version$" />
+    </dependencies>
+    <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT Controls</tags>
+  </metadata>
+</package>

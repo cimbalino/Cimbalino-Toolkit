@@ -4,6 +4,7 @@
     <ItemGroup>
       <ValidatePackages Include="Cimbalino.Toolkit.Core"/>
       <ValidatePackages Include="Cimbalino.Toolkit"/>
+      <ValidatePackages Include="Cimbalino.Toolkit.Controls"/>
     </ItemGroup>
   </Target>
 </Project>
