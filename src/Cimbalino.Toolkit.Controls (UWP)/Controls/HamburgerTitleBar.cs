@@ -37,7 +37,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="Title" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(HamburgerTitleBar), null);
+            DependencyProperty.Register("Title", typeof(string), typeof(HamburgerTitleBar), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the <see cref="IconElement"/> for the left button.
@@ -53,7 +53,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="LeftButtonIcon" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty LeftButtonIconProperty =
-            DependencyProperty.Register("LeftButtonIcon", typeof(IconElement), typeof(HamburgerTitleBar), null);
+            DependencyProperty.Register("LeftButtonIcon", typeof(IconElement), typeof(HamburgerTitleBar), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the command to invoke when the left button is pressed.
@@ -69,7 +69,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="LeftButtonCommand" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty LeftButtonCommandProperty =
-            DependencyProperty.Register("LeftButtonCommand", typeof(ICommand), typeof(HamburgerTitleBar), null);
+            DependencyProperty.Register("LeftButtonCommand", typeof(ICommand), typeof(HamburgerTitleBar), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the visibility of the left button.
@@ -85,7 +85,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="LeftButtonVisibility" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty LeftButtonVisibilityProperty =
-            DependencyProperty.Register("LeftButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), null);
+            DependencyProperty.Register("LeftButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
         /// Gets or sets a value indicating whether the user can interact with the left button.
@@ -117,7 +117,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="RightButtonIcon" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty RightButtonIconProperty =
-            DependencyProperty.Register("RightButtonIcon", typeof(IconElement), typeof(HamburgerTitleBar), null);
+            DependencyProperty.Register("RightButtonIcon", typeof(IconElement), typeof(HamburgerTitleBar), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the command to invoke when the right button is pressed.
@@ -133,7 +133,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="RightButtonCommand" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty RightButtonCommandProperty =
-            DependencyProperty.Register("RightButtonCommand", typeof(ICommand), typeof(HamburgerTitleBar), null);
+            DependencyProperty.Register("RightButtonCommand", typeof(ICommand), typeof(HamburgerTitleBar), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the visibility of the right button.
@@ -149,7 +149,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="RightButtonVisibility" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty RightButtonVisibilityProperty =
-            DependencyProperty.Register("RightButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), null);
+            DependencyProperty.Register("RightButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Collapsed));
 
         /// <summary>
         /// Gets or sets a value indicating whether the user can interact with the right button.

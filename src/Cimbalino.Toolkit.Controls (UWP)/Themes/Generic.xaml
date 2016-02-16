@@ -168,35 +168,6 @@
                 Value="Stretch" />
         <Setter Property="Background"
                 Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
-        <Setter Property="VisualStateNarrowMinWidth"
-                Value="0" />
-        <Setter Property="VisualStateNormalMinWidth"
-                Value="521" />
-        <Setter Property="VisualStateWideMinWidth"
-                Value="1200" />
-        <Setter Property="OpenPaneLength"
-                Value="{ThemeResource SplitViewOpenPaneThemeLength}" />
-        <Setter Property="TitleBarContent">
-            <Setter.Value>
-                <controls:HamburgerTitleBar Title="Test Page">
-                    <controls:HamburgerTitleBar.LeftButtonIcon>
-                        <FontIcon FontSize="20"
-                                  Glyph="&#xE700;" />
-                    </controls:HamburgerTitleBar.LeftButtonIcon>
-                    <controls:HamburgerTitleBar.RightButtonIcon>
-                        <FontIcon FontSize="20"
-                                  Glyph="&#xE700;" />
-                    </controls:HamburgerTitleBar.RightButtonIcon>
-                </controls:HamburgerTitleBar>
-            </Setter.Value>
-        </Setter>
-        <!--<Setter Property="PaneContent">
-            <Setter.Value>
-                <Border Background="Red"
-                        BorderBrush="Blue"
-                        BorderThickness="2" />
-            </Setter.Value>
-        </Setter>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:HamburgerFrame">
@@ -252,10 +223,11 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                        <ContentPresenter Content="{TemplateBinding TitleBarContent}" />
+                        <ContentPresenter Content="{TemplateBinding TopContent}" />
 
                         <SplitView x:Name="RootSplitView"
                                    Grid.Row="1"
+                                   CompactPaneLength="{TemplateBinding CompactPaneLength}"
                                    DisplayMode="{TemplateBinding DisplayMode}"
                                    IsPaneOpen="{Binding IsPaneOpen,
                                                         RelativeSource={RelativeSource TemplatedParent},
