@@ -156,6 +156,7 @@ task Build -depends Clean, Setup, Version -description "Build all projects and g
       New-Item -Path $configurationDir -ItemType Directory | Out-Null
 	  
 	    Copy-Item -Path $tempBinariesDir\$fullProjectName\$projectName.* -Destination $configurationDir\ -Recurse	
+	    Get-ChildItem -Path $tempBinariesDir\$fullProjectName\ -Directory | Copy-Item -Destination $configurationDir\ -Recurse
     }
   }
 }
