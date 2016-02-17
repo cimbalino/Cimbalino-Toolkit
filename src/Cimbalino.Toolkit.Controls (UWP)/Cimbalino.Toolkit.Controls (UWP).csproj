@@ -134,10 +134,12 @@
     <ProjectReference Include="..\Cimbalino.Toolkit %28UWP%29\Cimbalino.Toolkit %28UWP%29.csproj">
       <Project>{539a10b4-cf0a-4266-81f3-d93e8713032b}</Project>
       <Name>Cimbalino.Toolkit %28UWP%29</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Cimbalino.Toolkit.Core %28UWP%29\Cimbalino.Toolkit.Core %28UWP%29.csproj">
       <Project>{d79208c1-8c83-4d03-bbd8-208b52137627}</Project>
       <Name>Cimbalino.Toolkit.Core %28UWP%29</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
