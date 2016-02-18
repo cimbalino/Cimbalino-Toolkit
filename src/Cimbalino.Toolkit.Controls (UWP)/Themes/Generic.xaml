@@ -166,8 +166,14 @@
                 Value="False" />
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
-        <Setter Property="Background"
-                Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+        <Setter Property="HeaderBackground"
+                Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
+        <Setter Property="PaneBackground"
+                Value="{ThemeResource SystemControlPageBackgroundChromeLowBrush}" />
+        <Setter Property="OpenPaneLength"
+                Value="{ThemeResource SplitViewOpenPaneThemeLength}" />
+        <Setter Property="CompactPaneLength"
+                Value="{ThemeResource SplitViewCompactPaneThemeLength}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:HamburgerFrame">
@@ -223,7 +229,8 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                        <ContentPresenter Content="{TemplateBinding TopContent}" />
+                        <Border Background="{TemplateBinding HeaderBackground}"
+                                Child="{TemplateBinding Header}" />
 
                         <SplitView x:Name="RootSplitView"
                                    Grid.Row="1"
@@ -235,9 +242,9 @@
                                    OpenPaneLength="{TemplateBinding OpenPaneLength}"
                                    PaneBackground="{x:Null}">
                             <SplitView.Pane>
-                                <ContentPresenter x:Name="PaneContentPresenter"
-                                                  Background="{TemplateBinding Background}"
-                                                  Content="{TemplateBinding PaneContent}" />
+                                <Border x:Name="PaneBorder"
+                                        Background="{TemplateBinding PaneBackground}"
+                                        Child="{TemplateBinding Pane}" />
                             </SplitView.Pane>
 
                             <ContentPresenter x:Name="MainContentPresenter"

@@ -15,6 +15,7 @@
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -22,11 +23,11 @@ namespace Cimbalino.Toolkit.Controls
     /// A hamburger frame.
     /// </summary>
     [TemplatePart(Name = "RootGrid", Type = typeof(Grid))]
-    [TemplatePart(Name = "PaneContentPresenter", Type = typeof(ContentPresenter))]
+    [TemplatePart(Name = "PaneBorder", Type = typeof(Border))]
     public class HamburgerFrame : Frame
     {
         private Grid _rootGrid;
-        private ContentPresenter _paneContentPresenter;
+        private Border _paneBorder;
         private FrameworkElement _observedContainer;
 
         /// <summary>
@@ -142,36 +143,68 @@ namespace Cimbalino.Toolkit.Controls
             DependencyProperty.Register("IsPaneOpen", typeof(bool), typeof(HamburgerFrame), new PropertyMetadata(false));
 
         /// <summary>
-        /// Gets or sets the top area content.
+        /// Gets or sets the header.
         /// </summary>
-        /// <value>The top area content.</value>
-        public object TopContent
+        /// <value>The header.</value>
+        public UIElement Header
         {
-            get { return (object)GetValue(TopContentProperty); }
-            set { SetValue(TopContentProperty, value); }
+            get { return (UIElement)GetValue(HeaderProperty); }
+            set { SetValue(HeaderProperty, value); }
         }
 
         /// <summary>
-        /// Identifier for the <see cref="TopContent" /> dependency property.
+        /// Identifier for the <see cref="Header" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty TopContentProperty =
-            DependencyProperty.Register("TopContent", typeof(object), typeof(HamburgerFrame), new PropertyMetadata(null));
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register("Header", typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
-        /// Gets or sets the internal <see cref="SplitView"/> pane content.
+        /// Gets or sets the background of the header.
         /// </summary>
-        /// <value>The internal <see cref="SplitView"/> pane content.</value>
-        public object PaneContent
+        /// <value>The background of the header.</value>
+        public Brush HeaderBackground
         {
-            get { return (object)GetValue(PaneContentProperty); }
-            set { SetValue(PaneContentProperty, value); }
+            get { return (Brush)GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
         }
 
         /// <summary>
-        /// Identifier for the <see cref="PaneContent" /> dependency property.
+        /// Identifier for the <see cref="HeaderBackground" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty PaneContentProperty =
-            DependencyProperty.Register("PaneContent", typeof(object), typeof(HamburgerFrame), new PropertyMetadata(null));
+        public static readonly DependencyProperty HeaderBackgroundProperty =
+            DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets the internal <see cref="SplitView"/> pane.
+        /// </summary>
+        /// <value>The internal <see cref="SplitView"/> pane.</value>
+        public UIElement Pane
+        {
+            get { return (UIElement)GetValue(PaneProperty); }
+            set { SetValue(PaneProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="Pane" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PaneProperty =
+            DependencyProperty.Register("Pane", typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets the background of the internal <see cref="SplitView"/> pane.
+        /// </summary>
+        /// <value>The background of the internal <see cref="SplitView"/> pane.</value>
+        public Brush PaneBackground
+        {
+            get { return (Brush)GetValue(PaneBackgroundProperty); }
+            set { SetValue(PaneBackgroundProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="PaneBackground" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PaneBackgroundProperty =
+            DependencyProperty.Register("PaneBackground", typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HamburgerFrame" /> class.
@@ -198,7 +231,7 @@ namespace Cimbalino.Toolkit.Controls
             base.OnApplyTemplate();
 
             _rootGrid = (Grid)this.GetTemplateChild("RootGrid");
-            _paneContentPresenter = (ContentPresenter)this.GetTemplateChild("PaneContentPresenter");
+            _paneBorder = (Border)this.GetTemplateChild("PaneBorder");
 
             ResetApplicationViewVisibleMargin(ApplicationView.GetForCurrentView());
         }
@@ -223,7 +256,7 @@ namespace Cimbalino.Toolkit.Controls
 
         private void ResetInternalMargin()
         {
-            if (_paneContentPresenter == null)
+            if (_paneBorder == null)
             {
                 return;
             }
@@ -232,9 +265,9 @@ namespace Cimbalino.Toolkit.Controls
 
             var internalMargin = new Thickness(0, 0, page.ActualWidth - _observedContainer.ActualWidth, page.ActualHeight - _observedContainer.ActualHeight);
 
-            if (!_paneContentPresenter.Margin.Equals(internalMargin))
+            if (!_paneBorder.Margin.Equals(internalMargin))
             {
-                _paneContentPresenter.Margin = internalMargin;
+                _paneBorder.Margin = internalMargin;
             }
         }
 
