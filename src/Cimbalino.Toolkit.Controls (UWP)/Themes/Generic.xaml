@@ -7,34 +7,24 @@
 
     <x:Double x:Key="BaseMeasure">48</x:Double>
 
-    <Style x:Key="HamburgerButtonTextBlockStyle"
-           TargetType="TextBlock">
-        <Setter Property="Margin"
-                Value="4,0" />
-        <Setter Property="HorizontalAlignment"
-                Value="Left" />
-        <Setter Property="VerticalAlignment"
-                Value="Center" />
-        <Setter Property="TextTrimming"
-                Value="CharacterEllipsis" />
-        <Setter Property="TextWrapping"
-                Value="NoWrap" />
+    <Style x:Key="HamburgerButtonTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Margin" Value="4,0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
     <Style x:Key="HamburgerTitleBarTextBlockStyle"
            BasedOn="{StaticResource HamburgerButtonTextBlockStyle}"
            TargetType="TextBlock">
-        <Setter Property="FontWeight"
-                Value="Bold" />
+        <Setter Property="FontWeight" Value="Bold" />
     </Style>
 
     <Style TargetType="controls:HamburgerButton">
-        <Setter Property="Background"
-                Value="Transparent" />
-        <Setter Property="Foreground"
-                Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
-        <Setter Property="UseSystemFocusVisuals"
-                Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+        <Setter Property="UseSystemFocusVisuals" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:HamburgerButton">
@@ -50,63 +40,45 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="PointerOver">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
-                                                                       Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlHighlightListLowBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListLowBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconContentPresenter" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
-                                                                       Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlHighlightListMediumBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightListMediumBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconContentPresenter" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAltBaseHighBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                                                    Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconContentPresenter" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                        <Border Width="{StaticResource BaseMeasure}"
-                                Height="{StaticResource BaseMeasure}">
-                            <ContentPresenter x:Name="IconContentPresenter"
-                                              Content="{TemplateBinding Icon}" />
+                        <Border Width="{StaticResource BaseMeasure}" Height="{StaticResource BaseMeasure}">
+                            <ContentPresenter x:Name="IconContentPresenter" Content="{TemplateBinding Icon}" />
                         </Border>
 
                         <TextBlock x:Name="ContentPresenter"
@@ -122,15 +94,12 @@
     </Style>
 
     <Style TargetType="controls:HamburgerTitleBar">
-        <Setter Property="Background"
-                Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
-        <Setter Property="Foreground"
-                Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+        <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
+        <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:HamburgerTitleBar">
-                    <Grid MinHeight="{StaticResource BaseMeasure}"
-                          Background="{TemplateBinding Background}">
+                    <Grid MinHeight="{StaticResource BaseMeasure}" Background="{TemplateBinding Background}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
@@ -160,20 +129,13 @@
     </Style>
 
     <Style TargetType="controls:HamburgerFrame">
-        <Setter Property="HorizontalContentAlignment"
-                Value="Stretch" />
-        <Setter Property="IsTabStop"
-                Value="False" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Stretch" />
-        <Setter Property="HeaderBackground"
-                Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
-        <Setter Property="PaneBackground"
-                Value="{ThemeResource SystemControlPageBackgroundChromeLowBrush}" />
-        <Setter Property="OpenPaneLength"
-                Value="{ThemeResource SplitViewOpenPaneThemeLength}" />
-        <Setter Property="CompactPaneLength"
-                Value="{ThemeResource SplitViewCompactPaneThemeLength}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HeaderBackground" Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
+        <Setter Property="PaneBackground" Value="{ThemeResource SystemControlPageBackgroundChromeLowBrush}" />
+        <Setter Property="OpenPaneLength" Value="{ThemeResource SplitViewOpenPaneThemeLength}" />
+        <Setter Property="CompactPaneLength" Value="{ThemeResource SplitViewCompactPaneThemeLength}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:HamburgerFrame">
@@ -186,51 +148,38 @@
                             <VisualStateGroup x:Name="VisualStateGroup">
                                 <VisualState x:Name="VisualStateNarrow">
                                     <VisualState.StateTriggers>
-                                        <AdaptiveTrigger x:Name="VisualStateNarrowTrigger"
-                                                         MinWindowWidth="{Binding VisualStateNarrowMinWidth,
-                                                                                  RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <AdaptiveTrigger x:Name="VisualStateNarrowTrigger" MinWindowWidth="{Binding VisualStateNarrowMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
-                                        <Setter Target="RootSplitView.DisplayMode"
-                                                Value="Overlay" />
-                                        <Setter Target="RootSplitView.IsPaneOpen"
-                                                Value="False" />
+                                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay" />
+                                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
                                     </VisualState.Setters>
                                 </VisualState>
 
                                 <VisualState x:Name="VisualStateNormal">
                                     <VisualState.StateTriggers>
-                                        <AdaptiveTrigger x:Name="VisualStateNormalTrigger"
-                                                         MinWindowWidth="{Binding VisualStateNormalMinWidth,
-                                                                                  RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <AdaptiveTrigger x:Name="VisualStateNormalTrigger" MinWindowWidth="{Binding VisualStateNormalMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
-                                        <Setter Target="RootSplitView.DisplayMode"
-                                                Value="CompactOverlay" />
-                                        <Setter Target="RootSplitView.IsPaneOpen"
-                                                Value="False" />
+                                        <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay" />
+                                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
                                     </VisualState.Setters>
                                 </VisualState>
 
                                 <VisualState x:Name="VisualStateWide">
                                     <VisualState.StateTriggers>
-                                        <AdaptiveTrigger x:Name="VisualStateWideTrigger"
-                                                         MinWindowWidth="{Binding VisualStateWideMinWidth,
-                                                                                  RelativeSource={RelativeSource TemplatedParent}}" />
+                                        <AdaptiveTrigger x:Name="VisualStateWideTrigger" MinWindowWidth="{Binding VisualStateWideMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
-                                        <Setter Target="RootSplitView.DisplayMode"
-                                                Value="CompactInline" />
-                                        <Setter Target="RootSplitView.IsPaneOpen"
-                                                Value="True" />
+                                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline" />
+                                        <Setter Target="RootSplitView.IsPaneOpen" Value="True" />
                                     </VisualState.Setters>
                                 </VisualState>
 
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                        <Border Background="{TemplateBinding HeaderBackground}"
-                                Child="{TemplateBinding Header}" />
+                        <Border Background="{TemplateBinding HeaderBackground}" Child="{TemplateBinding Header}" />
 
                         <SplitView x:Name="RootSplitView"
                                    Grid.Row="1"
