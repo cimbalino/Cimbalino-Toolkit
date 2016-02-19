@@ -127,6 +127,7 @@
     <Compile Include="Controls\HamburgerButton.cs" />
     <Compile Include="Controls\HamburgerFrame.cs" />
     <Compile Include="Controls\HamburgerTitleBar.cs" />
+    <Compile Include="Helpers\Hamburger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Cimbalino.Toolkit.Controls.rd.xml" />
   </ItemGroup>
