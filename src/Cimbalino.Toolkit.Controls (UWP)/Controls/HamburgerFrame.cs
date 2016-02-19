@@ -254,16 +254,14 @@ namespace Cimbalino.Toolkit.Controls
             }
         }
 
-        private void ResetInternalMargin()
+        private void ResetInternalMargin(Page page, FrameworkElement observedContainer)
         {
             if (_paneBorder == null)
             {
                 return;
             }
 
-            var page = (Page)_observedContainer.Parent;
-
-            var internalMargin = new Thickness(0, 0, page.ActualWidth - _observedContainer.ActualWidth, page.ActualHeight - _observedContainer.ActualHeight);
+            var internalMargin = new Thickness(0, 0, page.ActualWidth - observedContainer.ActualWidth, page.ActualHeight - observedContainer.ActualHeight);
 
             if (!_paneBorder.Margin.Equals(internalMargin))
             {
@@ -283,13 +281,15 @@ namespace Cimbalino.Toolkit.Controls
 
             if (page != null)
             {
-                _observedContainer = page.Content as FrameworkElement;
+                var observedContainer = page.Content as FrameworkElement;
 
-                if (_observedContainer != null)
+                if (observedContainer != null)
                 {
-                    _observedContainer.SizeChanged += ObservedContainer_SizeChanged;
+                    observedContainer.SizeChanged += ObservedContainer_SizeChanged;
 
-                    ResetInternalMargin();
+                    ResetInternalMargin(page, observedContainer);
+
+                    _observedContainer = observedContainer;
                 }
             }
         }
@@ -301,7 +301,17 @@ namespace Cimbalino.Toolkit.Controls
 
         private void ObservedContainer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ResetInternalMargin();
+            var observedContainer = sender as FrameworkElement;
+
+            if (observedContainer != null)
+            {
+                var page = observedContainer.Parent as Page;
+
+                if (page != null)
+                {
+                    ResetInternalMargin(page, observedContainer);
+                }
+            }
         }
     }
 }
