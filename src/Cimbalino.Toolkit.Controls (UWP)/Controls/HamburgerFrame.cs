@@ -12,6 +12,7 @@
 // </license>
 // ****************************************************************************
 
+using System;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -23,12 +24,24 @@ namespace Cimbalino.Toolkit.Controls
     /// A hamburger frame.
     /// </summary>
     [TemplatePart(Name = "RootGrid", Type = typeof(Grid))]
+    [TemplatePart(Name = "RootSplitView", Type = typeof(SplitView))]
     [TemplatePart(Name = "PaneBorder", Type = typeof(Border))]
     public class HamburgerFrame : Frame
     {
         private Grid _rootGrid;
         private Border _paneBorder;
+        private SplitView _rootSplitView;
         private FrameworkElement _observedContainer;
+
+        /// <summary>
+        /// Occurs when the internal <see cref="SplitView"/> pane is closing.
+        /// </summary>
+        public event EventHandler<SplitViewPaneClosingEventArgs> PaneClosing;
+
+        /// <summary>
+        /// Occurs when the internal <see cref="SplitView"/> pane is closed.
+        /// </summary>
+        public event EventHandler PaneClosed;
 
         /// <summary>
         /// Gets or sets the minimal window width at which the hamburger frame will use a narrow style.
@@ -228,10 +241,23 @@ namespace Cimbalino.Toolkit.Controls
         /// </summary>
         protected override void OnApplyTemplate()
         {
+            if (_rootSplitView != null)
+            {
+                _rootSplitView.PaneClosing -= RootSplitView_PaneClosing;
+                _rootSplitView.PaneClosed -= RootSplitView_PaneClosed;
+            }
+
             base.OnApplyTemplate();
 
             _rootGrid = (Grid)this.GetTemplateChild("RootGrid");
+            _rootSplitView = (SplitView)this.GetTemplateChild("RootSplitView");
             _paneBorder = (Border)this.GetTemplateChild("PaneBorder");
+
+            if (_rootSplitView != null)
+            {
+                _rootSplitView.PaneClosing += RootSplitView_PaneClosing;
+                _rootSplitView.PaneClosed += RootSplitView_PaneClosed;
+            }
 
             ResetApplicationViewVisibleMargin(ApplicationView.GetForCurrentView());
         }
@@ -291,6 +317,26 @@ namespace Cimbalino.Toolkit.Controls
 
                     _observedContainer = observedContainer;
                 }
+            }
+        }
+
+        private void RootSplitView_PaneClosing(SplitView sender, SplitViewPaneClosingEventArgs args)
+        {
+            var eventHandler = PaneClosing;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, args);
+            }
+        }
+
+        private void RootSplitView_PaneClosed(SplitView sender, object args)
+        {
+            var eventHandler = PaneClosed;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, EventArgs.Empty);
             }
         }
 
