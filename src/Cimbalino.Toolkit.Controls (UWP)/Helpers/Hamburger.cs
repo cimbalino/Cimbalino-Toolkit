@@ -75,6 +75,32 @@ namespace Cimbalino.Toolkit.Helpers
         public static readonly DependencyProperty PaneProperty =
             DependencyProperty.RegisterAttached("Pane", typeof(UIElement), typeof(Hamburger), new PropertyMetadata(null));
 
+        /// <summary>
+        /// Gets the <see cref="HamburgerFrame.IsPaneOpen"/> value.
+        /// </summary>
+        /// <param name="obj">The attached object.</param>
+        /// <returns>The <see cref="HamburgerFrame.IsPaneOpen"/> value.</returns>
+        public static bool GetIsPaneOpen(DependencyObject obj)
+        {
+            return DoWithHamburgerFrame(x => x.IsPaneOpen);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="HamburgerFrame.IsPaneOpen"/> value.
+        /// </summary>
+        /// <param name="obj">The attached object.</param>
+        /// <param name="value">The new <see cref="HamburgerFrame.IsPaneOpen"/> value.</param>
+        public static void SetIsPaneOpen(DependencyObject obj, bool value)
+        {
+            DoWithHamburgerFrame(x => x.IsPaneOpen = value);
+        }
+
+        /// <summary>
+        /// Identifier for the IsPaneOpen attached property.
+        /// </summary>
+        public static readonly DependencyProperty IsPaneOpenProperty =
+            DependencyProperty.RegisterAttached("IsPaneOpen", typeof(bool), typeof(Hamburger), new PropertyMetadata(false));
+
         private static T DoWithHamburgerFrame<T>(Func<HamburgerFrame, T> function)
         {
             var hamburgerFrame = Window.Current.Content as HamburgerFrame;
