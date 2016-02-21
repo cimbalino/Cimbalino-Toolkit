@@ -160,7 +160,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Width="{StaticResource BaseMeasure}"
+                        <Button x:Name="LeftButton"
+                                Width="{StaticResource BaseMeasure}"
                                 Height="{StaticResource BaseMeasure}"
                                 Command="{TemplateBinding LeftButtonCommand}"
                                 Content="{TemplateBinding LeftButtonIcon}"
@@ -172,7 +173,8 @@
                                    Style="{StaticResource HamburgerTitleBarTextBlockStyle}"
                                    Text="{TemplateBinding Title}" />
 
-                        <Button Grid.Column="2"
+                        <Button x:Name="RightButton"
+                                Grid.Column="2"
                                 Width="{StaticResource BaseMeasure}"
                                 Height="{StaticResource BaseMeasure}"
                                 Command="{TemplateBinding RightButtonCommand}"

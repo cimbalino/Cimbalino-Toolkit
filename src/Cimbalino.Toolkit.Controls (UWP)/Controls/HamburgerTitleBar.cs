@@ -12,6 +12,7 @@
 // </license>
 // ****************************************************************************
 
+using System;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -21,8 +22,23 @@ namespace Cimbalino.Toolkit.Controls
     /// <summary>
     /// A hamburger title bar.
     /// </summary>
+    [TemplatePart(Name = "LeftButton", Type = typeof(Button))]
+    [TemplatePart(Name = "RightButton", Type = typeof(Button))]
     public class HamburgerTitleBar : Control
     {
+        private Button _leftButton;
+        private Button _rightButton;
+
+        /// <summary>
+        /// Occurs when the left button is clicked.
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> LeftButtonClick;
+
+        /// <summary>
+        /// Occurs when the right button is clicked.
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> RightButtonClick;
+
         /// <summary>
         /// Gets or sets the displayed title of the title bar.
         /// </summary>
@@ -173,6 +189,55 @@ namespace Cimbalino.Toolkit.Controls
         public HamburgerTitleBar()
         {
             DefaultStyleKey = typeof(HamburgerTitleBar);
+        }
+
+        /// <summary>
+        /// When overridden in a derived class, is invoked whenever application code or internal processes call ApplyTemplate.
+        /// </summary>
+        protected override void OnApplyTemplate()
+        {
+            if (_leftButton != null)
+            {
+                _leftButton.Click -= LeftButton_Click;
+            }
+            if (_rightButton != null)
+            {
+                _rightButton.Click -= RightButton_Click;
+            }
+
+            base.OnApplyTemplate();
+
+            _leftButton = (Button)GetTemplateChild("LeftButton");
+            _rightButton = (Button)GetTemplateChild("RightButton");
+
+            if (_leftButton != null)
+            {
+                _leftButton.Click += LeftButton_Click;
+            }
+            if (_rightButton != null)
+            {
+                _rightButton.Click += RightButton_Click;
+            }
+        }
+
+        private void LeftButton_Click(object sender, RoutedEventArgs e)
+        {
+            var eventHandler = LeftButtonClick;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, e);
+            }
+        }
+
+        private void RightButton_Click(object sender, RoutedEventArgs e)
+        {
+            var eventHandler = RightButtonClick;
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, e);
+            }
         }
     }
 }
