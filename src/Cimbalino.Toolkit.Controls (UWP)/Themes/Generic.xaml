@@ -19,7 +19,7 @@
            BasedOn="{StaticResource HamburgerButtonTextBlockStyle}"
            TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="CharacterSpacing" Value="80" />
+        <Setter Property="CharacterSpacing" Value="75" />
     </Style>
 
     <Style x:Key="HamburgerTitleBarButtonStyle" TargetType="Button">
