@@ -21,7 +21,7 @@ namespace Cimbalino.Toolkit.Helpers
     /// <summary>
     /// Static class that owns the Hamburger attached properties.
     /// </summary>
-    public class Hamburger
+    public class Hamburger : DependencyObject
     {
         /// <summary>
         /// Gets the <see cref="HamburgerFrame.Header"/> value.
@@ -48,6 +48,32 @@ namespace Cimbalino.Toolkit.Helpers
         /// </summary>
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.RegisterAttached("Header", typeof(UIElement), typeof(Hamburger), new PropertyMetadata(null));
+
+        /// <summary>
+        /// Gets the <see cref="HamburgerFrame.SubHeader"/> value.
+        /// </summary>
+        /// <param name="obj">The attached object.</param>
+        /// <returns>The <see cref="HamburgerFrame.SubHeader"/> value.</returns>
+        public static UIElement GetSubHeader(DependencyObject obj)
+        {
+            return (UIElement)obj.GetValue(SubHeaderProperty);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="HamburgerFrame.SubHeader"/> value.
+        /// </summary>
+        /// <param name="obj">The attached object.</param>
+        /// <param name="value">The new <see cref="HamburgerFrame.SubHeader"/> value.</param>
+        public static void SetSubHeader(DependencyObject obj, UIElement value)
+        {
+            obj.SetValue(SubHeaderProperty, value);
+        }
+
+        /// <summary>
+        /// Identifier for the SubHeader attached property.
+        /// </summary>
+        public static readonly DependencyProperty SubHeaderProperty =
+            DependencyProperty.RegisterAttached("SubHeader", typeof(UIElement), typeof(Hamburger), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets the <see cref="HamburgerFrame.Pane"/> value.

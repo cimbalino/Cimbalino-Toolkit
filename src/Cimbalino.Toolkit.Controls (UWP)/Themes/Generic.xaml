@@ -7,17 +7,22 @@
 
     <x:Double x:Key="BaseMeasure">48</x:Double>
 
-    <Style x:Key="HamburgerButtonTextBlockStyle" TargetType="TextBlock">
-        <Setter Property="Margin" Value="4,0" />
+    <Style x:Key="HamburgerButtonTextBlockStyle"
+           BasedOn="{StaticResource BodyTextBlockStyle}"
+           TargetType="TextBlock">
+        <Setter Property="Margin" Value="12,0" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
-    <Style x:Key="HamburgerTitleBarTextBlockStyle"
-           BasedOn="{StaticResource HamburgerButtonTextBlockStyle}"
-           TargetType="TextBlock">
+    <Style x:Key="HamburgerTitleBarTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Margin" Value="12,0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="CharacterSpacing" Value="75" />
     </Style>
@@ -256,16 +261,26 @@
                                         Child="{TemplateBinding Pane}" />
                             </SplitView.Pane>
 
-                            <ContentPresenter x:Name="MainContentPresenter"
-                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              Background="{TemplateBinding Background}"
-                                              BorderBrush="{TemplateBinding BorderBrush}"
-                                              BorderThickness="{TemplateBinding BorderThickness}"
-                                              Content="{TemplateBinding Content}"
-                                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                                              ContentTransitions="{TemplateBinding ContentTransitions}"
-                                              Padding="{TemplateBinding Padding}" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Border Background="{TemplateBinding SubHeaderBackground}" Child="{TemplateBinding SubHeader}" />
+
+                                <ContentPresenter x:Name="MainContentPresenter"
+                                                  Grid.Row="1"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Background="{TemplateBinding Background}"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                  Padding="{TemplateBinding Padding}" />
+                            </Grid>
                         </SplitView>
                     </Grid>
                 </ControlTemplate>

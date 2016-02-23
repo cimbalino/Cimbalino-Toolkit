@@ -188,6 +188,38 @@ namespace Cimbalino.Toolkit.Controls
             DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
+        /// Gets or sets the subheader.
+        /// </summary>
+        /// <value>The subheader.</value>
+        public UIElement SubHeader
+        {
+            get { return (UIElement)GetValue(SubHeaderProperty); }
+            set { SetValue(SubHeaderProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="SubHeader" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty SubHeaderProperty =
+            DependencyProperty.Register("SubHeader", typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets the background of the subheader.
+        /// </summary>
+        /// <value>The background of the subheader.</value>
+        public Brush SubHeaderBackground
+        {
+            get { return (Brush)GetValue(SubHeaderBackgroundProperty); }
+            set { SetValue(SubHeaderBackgroundProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="SubHeaderBackground" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty SubHeaderBackgroundProperty =
+            DependencyProperty.Register("SubHeaderBackground", typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
+
+        /// <summary>
         /// Gets or sets the internal <see cref="SplitView"/> pane.
         /// </summary>
         /// <value>The internal <see cref="SplitView"/> pane.</value>
