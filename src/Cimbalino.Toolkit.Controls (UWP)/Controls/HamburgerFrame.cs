@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using System.Collections.Generic;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,6 +29,9 @@ namespace Cimbalino.Toolkit.Controls
     [TemplatePart(Name = "PaneBorder", Type = typeof(Border))]
     public class HamburgerFrame : Frame
     {
+        private readonly object _registeredHamburgerButtonsLock = new object();
+        private readonly List<HamburgerButton> _registeredHamburgerButtons = new List<HamburgerButton>();
+
         private Grid _rootGrid;
         private Border _paneBorder;
         private SplitView _rootSplitView;
@@ -294,6 +298,54 @@ namespace Cimbalino.Toolkit.Controls
             ResetApplicationViewVisibleMargin(ApplicationView.GetForCurrentView());
         }
 
+        /// <summary>
+        /// Registers the specified <see cref="HamburgerButton"/>.
+        /// </summary>
+        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/>.</param>
+        internal void RegisterHamburgerButton(HamburgerButton hamburgerButton)
+        {
+            lock (_registeredHamburgerButtonsLock)
+            {
+                _registeredHamburgerButtons.Add(hamburgerButton);
+            }
+
+            if (this.CurrentSourcePageType != null)
+            {
+                hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == this.CurrentSourcePageType;
+            }
+        }
+
+        /// <summary>
+        /// Unregisters the specified <see cref="HamburgerButton"/>.
+        /// </summary>
+        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/>.</param>
+        internal void UnregisterHamburgerButton(HamburgerButton hamburgerButton)
+        {
+            lock (_registeredHamburgerButtonsLock)
+            {
+                _registeredHamburgerButtons.Remove(hamburgerButton);
+            }
+        }
+
+        /// <summary>
+        /// Follows the specified <see cref="HamburgerButton"/> navigation data.
+        /// </summary>
+        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/>.</param>
+        internal void FollowHamburgerButton(HamburgerButton hamburgerButton)
+        {
+            var navigationSourcePageType = hamburgerButton.NavigationSourcePageType;
+
+            if (navigationSourcePageType != null)
+            {
+                this.Navigate(navigationSourcePageType);
+            }
+
+            if (DisplayMode == SplitViewDisplayMode.CompactInline || DisplayMode == SplitViewDisplayMode.CompactOverlay)
+            {
+                IsPaneOpen = false;
+            }
+        }
+
         private void ResetApplicationViewVisibleMargin(ApplicationView applicationView)
         {
             if (_rootGrid == null)
@@ -348,6 +400,14 @@ namespace Cimbalino.Toolkit.Controls
                     ResetInternalMargin(page, observedContainer);
 
                     _observedContainer = observedContainer;
+                }
+            }
+
+            lock (_registeredHamburgerButtonsLock)
+            {
+                foreach (var hamburgerButton in _registeredHamburgerButtons)
+                {
+                    hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == e.SourcePageType;
                 }
             }
         }
