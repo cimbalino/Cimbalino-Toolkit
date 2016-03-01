@@ -13,7 +13,7 @@
 // ****************************************************************************
 
 using System;
-using System.Windows.Input;
+using Cimbalino.Toolkit.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -22,22 +22,24 @@ namespace Cimbalino.Toolkit.Controls
     /// <summary>
     /// A hamburger title bar.
     /// </summary>
-    [TemplatePart(Name = "LeftButton", Type = typeof(Button))]
-    [TemplatePart(Name = "RightButton", Type = typeof(Button))]
+    [TemplatePart(Name = "MenuButton", Type = typeof(Button))]
+    [TemplatePart(Name = "BackButton", Type = typeof(Button))]
     public class HamburgerTitleBar : Control
     {
-        private Button _leftButton;
-        private Button _rightButton;
+        /// <summary>
+        /// Occurs when the menu button is clicked.
+        /// </summary>
+        public event EventHandler<RoutedEventArgs> MenuButtonClick;
 
         /// <summary>
-        /// Occurs when the left button is clicked.
+        /// Occurs when the back button is clicked.
         /// </summary>
-        public event EventHandler<RoutedEventArgs> LeftButtonClick;
+        public event EventHandler<RoutedEventArgs> BackButtonClick;
 
-        /// <summary>
-        /// Occurs when the right button is clicked.
-        /// </summary>
-        public event EventHandler<RoutedEventArgs> RightButtonClick;
+        private HamburgerFrame _hamburgerFrame;
+
+        private Button _menuButton;
+        private Button _backButton;
 
         /// <summary>
         /// Gets or sets the displayed title of the title bar.
@@ -56,132 +58,52 @@ namespace Cimbalino.Toolkit.Controls
             DependencyProperty.Register("Title", typeof(string), typeof(HamburgerTitleBar), new PropertyMetadata(null));
 
         /// <summary>
-        /// Gets or sets the <see cref="IconElement"/> for the left button.
+        /// Gets or sets the visibility of the menu button.
         /// </summary>
-        /// <value>The <see cref="IconElement"/> for the left button.</value>
-        public IconElement LeftButtonIcon
+        /// <value>The visibility of the menu button.</value>
+        public Visibility MenuButtonVisibility
         {
-            get { return (IconElement)GetValue(LeftButtonIconProperty); }
-            set { SetValue(LeftButtonIconProperty, value); }
+            get { return (Visibility)GetValue(MenuButtonVisibilityProperty); }
+            set { SetValue(MenuButtonVisibilityProperty, value); }
         }
 
         /// <summary>
-        /// Identifier for the <see cref="LeftButtonIcon" /> dependency property.
+        /// Identifier for the <see cref="MenuButtonVisibility" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty LeftButtonIconProperty =
-            DependencyProperty.Register("LeftButtonIcon", typeof(IconElement), typeof(HamburgerTitleBar), new PropertyMetadata(null));
+        public static readonly DependencyProperty MenuButtonVisibilityProperty =
+            DependencyProperty.Register("MenuButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
-        /// Gets or sets the command to invoke when the left button is pressed.
+        /// Gets or sets the visibility of the back button.
         /// </summary>
-        /// <value>The command to invoke when the left button is pressed.</value>
-        public ICommand LeftButtonCommand
+        /// <value>The visibility of the back button.</value>
+        public Visibility BackButtonVisibility
         {
-            get { return (ICommand)GetValue(LeftButtonCommandProperty); }
-            set { SetValue(LeftButtonCommandProperty, value); }
+            get { return (Visibility)GetValue(BackButtonVisibilityProperty); }
+            set { SetValue(BackButtonVisibilityProperty, value); }
         }
 
         /// <summary>
-        /// Identifier for the <see cref="LeftButtonCommand" /> dependency property.
+        /// Identifier for the <see cref="BackButtonVisibility" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty LeftButtonCommandProperty =
-            DependencyProperty.Register("LeftButtonCommand", typeof(ICommand), typeof(HamburgerTitleBar), new PropertyMetadata(null));
+        public static readonly DependencyProperty BackButtonVisibilityProperty =
+            DependencyProperty.Register("BackButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Collapsed));
 
         /// <summary>
-        /// Gets or sets the visibility of the left button.
+        /// Gets or sets a value indicating whether to automatically handle the back button visibility.
         /// </summary>
-        /// <value>The visibility of the left button.</value>
-        public Visibility LeftButtonVisibility
+        /// <value>true to automatically handle the back button visibility; otherwise, false.</value>
+        public bool HandleBackButtonVisibility
         {
-            get { return (Visibility)GetValue(LeftButtonVisibilityProperty); }
-            set { SetValue(LeftButtonVisibilityProperty, value); }
+            get { return (bool)GetValue(HandleBackButtonVisibilityProperty); }
+            set { SetValue(HandleBackButtonVisibilityProperty, value); }
         }
 
         /// <summary>
-        /// Identifier for the <see cref="LeftButtonVisibility" /> dependency property.
+        /// Identifier for the <see cref="HandleBackButtonVisibility" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty LeftButtonVisibilityProperty =
-            DependencyProperty.Register("LeftButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Visible));
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the user can interact with the left button.
-        /// </summary>
-        /// <value>true if the user can interact with the left button; otherwise, false.</value>
-        public bool LeftButtonIsEnabled
-        {
-            get { return (bool)GetValue(LeftButtonIsEnabledProperty); }
-            set { SetValue(LeftButtonIsEnabledProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifier for the <see cref="LeftButtonIsEnabled" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty LeftButtonIsEnabledProperty =
-            DependencyProperty.Register("LeftButtonIsEnabled", typeof(bool), typeof(HamburgerTitleBar), new PropertyMetadata(true));
-
-        /// <summary>
-        /// Gets or sets the <see cref="IconElement"/> for the right button.
-        /// </summary>
-        /// <value>The <see cref="IconElement"/> for the right button.</value>
-        public IconElement RightButtonIcon
-        {
-            get { return (IconElement)GetValue(RightButtonIconProperty); }
-            set { SetValue(RightButtonIconProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifier for the <see cref="RightButtonIcon" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty RightButtonIconProperty =
-            DependencyProperty.Register("RightButtonIcon", typeof(IconElement), typeof(HamburgerTitleBar), new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets or sets the command to invoke when the right button is pressed.
-        /// </summary>
-        /// <value>The command to invoke when the right button is pressed.</value>
-        public ICommand RightButtonCommand
-        {
-            get { return (ICommand)GetValue(RightButtonCommandProperty); }
-            set { SetValue(RightButtonCommandProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifier for the <see cref="RightButtonCommand" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty RightButtonCommandProperty =
-            DependencyProperty.Register("RightButtonCommand", typeof(ICommand), typeof(HamburgerTitleBar), new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets or sets the visibility of the right button.
-        /// </summary>
-        /// <value>The visibility of the right button.</value>
-        public Visibility RightButtonVisibility
-        {
-            get { return (Visibility)GetValue(RightButtonVisibilityProperty); }
-            set { SetValue(RightButtonVisibilityProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifier for the <see cref="RightButtonVisibility" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty RightButtonVisibilityProperty =
-            DependencyProperty.Register("RightButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Collapsed));
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the user can interact with the right button.
-        /// </summary>
-        /// <value>true if the user can interact with the right button; otherwise, false.</value>
-        public bool RightButtonIsEnabled
-        {
-            get { return (bool)GetValue(RightButtonIsEnabledProperty); }
-            set { SetValue(RightButtonIsEnabledProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifier for the <see cref="RightButtonIsEnabled" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty RightButtonIsEnabledProperty =
-            DependencyProperty.Register("RightButtonIsEnabled", typeof(bool), typeof(HamburgerTitleBar), new PropertyMetadata(true));
+        public static readonly DependencyProperty HandleBackButtonVisibilityProperty =
+            DependencyProperty.Register("HandleBackButtonVisibility", typeof(bool), typeof(HamburgerTitleBar), new PropertyMetadata(true));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HamburgerTitleBar" /> class.
@@ -189,6 +111,9 @@ namespace Cimbalino.Toolkit.Controls
         public HamburgerTitleBar()
         {
             DefaultStyleKey = typeof(HamburgerTitleBar);
+
+            Loaded += HamburgerTitleBar_Loaded;
+            Unloaded += HamburgerTitleBar_Unloaded;
         }
 
         /// <summary>
@@ -196,33 +121,53 @@ namespace Cimbalino.Toolkit.Controls
         /// </summary>
         protected override void OnApplyTemplate()
         {
-            if (_leftButton != null)
+            if (_menuButton != null)
             {
-                _leftButton.Click -= LeftButton_Click;
+                _menuButton.Click -= InternalMenuButtonClick;
             }
-            if (_rightButton != null)
+            if (_backButton != null)
             {
-                _rightButton.Click -= RightButton_Click;
+                _backButton.Click -= InternalBackButton_Click;
             }
 
             base.OnApplyTemplate();
 
-            _leftButton = (Button)GetTemplateChild("LeftButton");
-            _rightButton = (Button)GetTemplateChild("RightButton");
+            _menuButton = (Button)GetTemplateChild("MenuButton");
+            _backButton = (Button)GetTemplateChild("BackButton");
 
-            if (_leftButton != null)
+            if (_menuButton != null)
             {
-                _leftButton.Click += LeftButton_Click;
+                _menuButton.Click += InternalMenuButtonClick;
             }
-            if (_rightButton != null)
+            if (_backButton != null)
             {
-                _rightButton.Click += RightButton_Click;
+                _backButton.Click += InternalBackButton_Click;
             }
         }
 
-        private void LeftButton_Click(object sender, RoutedEventArgs e)
+        private void HamburgerTitleBar_Loaded(object sender, RoutedEventArgs e)
         {
-            var eventHandler = LeftButtonClick;
+            _hamburgerFrame = this.GetVisualAncestor<HamburgerFrame>();
+
+            if (_hamburgerFrame != null)
+            {
+                _hamburgerFrame.RegisterHamburgerTitleBar(this);
+            }
+        }
+
+        private void HamburgerTitleBar_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (_hamburgerFrame != null)
+            {
+                _hamburgerFrame.UnregisterHamburgerTitleBar(this);
+
+                _hamburgerFrame = null;
+            }
+        }
+
+        private void InternalMenuButtonClick(object sender, RoutedEventArgs e)
+        {
+            var eventHandler = MenuButtonClick;
 
             if (eventHandler != null)
             {
@@ -230,9 +175,9 @@ namespace Cimbalino.Toolkit.Controls
             }
         }
 
-        private void RightButton_Click(object sender, RoutedEventArgs e)
+        private void InternalBackButton_Click(object sender, RoutedEventArgs e)
         {
-            var eventHandler = RightButtonClick;
+            var eventHandler = BackButtonClick;
 
             if (eventHandler != null)
             {

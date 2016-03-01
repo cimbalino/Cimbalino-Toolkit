@@ -26,7 +26,7 @@ namespace Cimbalino.Toolkit.Controls
     /// </summary>
     public class HamburgerButton : ToggleButton
     {
-        private HamburgerFrame _frame;
+        private HamburgerFrame _hamburgerFrame;
 
         /// <summary>
         /// Gets or sets the <see cref="IconElement"/> for this button.
@@ -94,37 +94,23 @@ namespace Cimbalino.Toolkit.Controls
         {
         }
 
-        /// <summary>
-        /// Called before the Tapped event occurs.
-        /// </summary>
-        /// <param name="e">Event data for the event.</param>
-        protected override void OnTapped(TappedRoutedEventArgs e)
-        {
-            if (_frame != null)
-            {
-                _frame.FollowHamburgerButton(this);
-            }
-
-            base.OnTapped(e);
-        }
-
         private void HamburgerButton_Loaded(object sender, RoutedEventArgs e)
         {
-            _frame = this.GetVisualAncestor<HamburgerFrame>();
+            _hamburgerFrame = this.GetVisualAncestor<HamburgerFrame>();
 
-            if (_frame != null)
+            if (_hamburgerFrame != null)
             {
-                _frame.RegisterHamburgerButton(this);
+                _hamburgerFrame.RegisterHamburgerButton(this);
             }
         }
 
         private void HamburgerButton_Unloaded(object sender, RoutedEventArgs e)
         {
-            if (_frame != null)
+            if (_hamburgerFrame != null)
             {
-                _frame.UnregisterHamburgerButton(this);
+                _hamburgerFrame.UnregisterHamburgerButton(this);
 
-                _frame = null;
+                _hamburgerFrame = null;
             }
         }
     }

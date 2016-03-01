@@ -31,6 +31,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
         <Setter Property="UseSystemFocusVisuals" Value="True" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -253,33 +254,31 @@
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="LeftButton"
+                        <Button x:Name="MenuButton"
                                 Width="{StaticResource BaseMeasure}"
                                 Height="{StaticResource BaseMeasure}"
-                                Command="{TemplateBinding LeftButtonCommand}"
-                                Content="{TemplateBinding LeftButtonIcon}"
-                                IsEnabled="{TemplateBinding LeftButtonIsEnabled}"
                                 Style="{StaticResource HamburgerTitleBarButtonStyle}"
-                                Visibility="{TemplateBinding LeftButtonVisibility}" />
+                                Visibility="{TemplateBinding MenuButtonVisibility}">
+                            <FontIcon Glyph="&#xE700;" />
+                        </Button>
 
-                        <TextBlock Grid.Column="1"
+                        <Button x:Name="BackButton"
+                                Grid.Column="1"
+                                Width="{StaticResource BaseMeasure}"
+                                Height="{StaticResource BaseMeasure}"
+                                Style="{StaticResource HamburgerTitleBarButtonStyle}"
+                                Visibility="{TemplateBinding BackButtonVisibility}">
+                            <FontIcon Glyph="&#xE72B;" />
+                        </Button>
+
+                        <TextBlock Grid.Column="2"
                                    Foreground="{TemplateBinding Foreground}"
                                    Style="{StaticResource HamburgerTitleBarTextBlockStyle}"
                                    Text="{TemplateBinding Title}" />
-
-                        <Button x:Name="RightButton"
-                                Grid.Column="2"
-                                Width="{StaticResource BaseMeasure}"
-                                Height="{StaticResource BaseMeasure}"
-                                Command="{TemplateBinding RightButtonCommand}"
-                                Content="{TemplateBinding RightButtonIcon}"
-                                IsEnabled="{TemplateBinding RightButtonIsEnabled}"
-                                Style="{StaticResource HamburgerTitleBarButtonStyle}"
-                                Visibility="{TemplateBinding RightButtonVisibility}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

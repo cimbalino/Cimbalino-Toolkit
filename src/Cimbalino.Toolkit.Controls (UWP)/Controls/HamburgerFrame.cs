@@ -29,8 +29,10 @@ namespace Cimbalino.Toolkit.Controls
     [TemplatePart(Name = "PaneBorder", Type = typeof(Border))]
     public class HamburgerFrame : Frame
     {
-        private readonly object _registeredHamburgerButtonsLock = new object();
+        private readonly object _registeredControlsLock = new object();
         private readonly List<HamburgerButton> _registeredHamburgerButtons = new List<HamburgerButton>();
+
+        private HamburgerTitleBar _registeredHamburgerTitleBar;
 
         private Grid _rootGrid;
         private Border _paneBorder;
@@ -299,50 +301,80 @@ namespace Cimbalino.Toolkit.Controls
         }
 
         /// <summary>
-        /// Registers the specified <see cref="HamburgerButton"/>.
+        /// Registers the specified <see cref="HamburgerButton"/> control.
         /// </summary>
-        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/>.</param>
+        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/> control.</param>
         internal void RegisterHamburgerButton(HamburgerButton hamburgerButton)
         {
-            lock (_registeredHamburgerButtonsLock)
+            lock (_registeredControlsLock)
             {
                 _registeredHamburgerButtons.Add(hamburgerButton);
+
+                hamburgerButton.Click += HamburgerButton_Click;
             }
 
-            if (this.CurrentSourcePageType != null)
+            if (hamburgerButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
             {
                 hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == this.CurrentSourcePageType;
             }
         }
 
         /// <summary>
-        /// Unregisters the specified <see cref="HamburgerButton"/>.
+        /// Unregisters the specified <see cref="HamburgerButton"/> control.
         /// </summary>
-        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/>.</param>
+        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/> control.</param>
         internal void UnregisterHamburgerButton(HamburgerButton hamburgerButton)
         {
-            lock (_registeredHamburgerButtonsLock)
+            lock (_registeredControlsLock)
             {
+                hamburgerButton.Click -= HamburgerButton_Click;
+
                 _registeredHamburgerButtons.Remove(hamburgerButton);
             }
         }
 
         /// <summary>
-        /// Follows the specified <see cref="HamburgerButton"/> navigation data.
+        /// Registers the specified <see cref="HamburgerTitleBar"/> control.
         /// </summary>
-        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/>.</param>
-        internal void FollowHamburgerButton(HamburgerButton hamburgerButton)
+        /// <param name="hamburgerTitleBar">The <see cref="HamburgerTitleBar"/> control.</param>
+        internal void RegisterHamburgerTitleBar(HamburgerTitleBar hamburgerTitleBar)
         {
-            var navigationSourcePageType = hamburgerButton.NavigationSourcePageType;
-
-            if (navigationSourcePageType != null)
+            lock (_registeredControlsLock)
             {
-                this.Navigate(navigationSourcePageType);
+                if (_registeredHamburgerTitleBar != null)
+                {
+                    throw new ArgumentException("A HamburgerTitleBar control has already been registered.", nameof(hamburgerTitleBar));
+                }
+
+                _registeredHamburgerTitleBar = hamburgerTitleBar;
+
+                hamburgerTitleBar.MenuButtonClick += HamburgerTitleBar_MenuButtonClick;
+                hamburgerTitleBar.BackButtonClick += HamburgerTitleBar_BackButtonClick;
             }
 
-            if (DisplayMode == SplitViewDisplayMode.CompactInline || DisplayMode == SplitViewDisplayMode.CompactOverlay)
+            if (_registeredHamburgerTitleBar.HandleBackButtonVisibility)
             {
-                IsPaneOpen = false;
+                hamburgerTitleBar.BackButtonVisibility = this.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        /// <summary>
+        /// Unregisters the specified <see cref="HamburgerTitleBar"/> control.
+        /// </summary>
+        /// <param name="hamburgerTitleBar">The <see cref="HamburgerTitleBar"/> control.</param>
+        internal void UnregisterHamburgerTitleBar(HamburgerTitleBar hamburgerTitleBar)
+        {
+            lock (_registeredControlsLock)
+            {
+                if (_registeredHamburgerTitleBar != hamburgerTitleBar)
+                {
+                    throw new ArgumentException("The registered HamburgerTitleBar control is not the same as the one indicated.", nameof(hamburgerTitleBar));
+                }
+
+                hamburgerTitleBar.MenuButtonClick -= HamburgerTitleBar_MenuButtonClick;
+                hamburgerTitleBar.BackButtonClick -= HamburgerTitleBar_BackButtonClick;
+
+                _registeredHamburgerTitleBar = null;
             }
         }
 
@@ -403,11 +435,19 @@ namespace Cimbalino.Toolkit.Controls
                 }
             }
 
-            lock (_registeredHamburgerButtonsLock)
+            lock (_registeredControlsLock)
             {
                 foreach (var hamburgerButton in _registeredHamburgerButtons)
                 {
-                    hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == e.SourcePageType;
+                    if (hamburgerButton.NavigationSourcePageType != null)
+                    {
+                        hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == e.SourcePageType;
+                    }
+                }
+
+                if (_registeredHamburgerTitleBar != null && _registeredHamburgerTitleBar.HandleBackButtonVisibility)
+                {
+                    _registeredHamburgerTitleBar.BackButtonVisibility = this.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
         }
@@ -450,6 +490,31 @@ namespace Cimbalino.Toolkit.Controls
                     ResetInternalMargin(page, observedContainer);
                 }
             }
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            var navigationSourcePageType = ((HamburgerButton)sender).NavigationSourcePageType;
+
+            if (navigationSourcePageType != null)
+            {
+                this.Navigate(navigationSourcePageType);
+            }
+
+            if (DisplayMode == SplitViewDisplayMode.Overlay || DisplayMode == SplitViewDisplayMode.CompactOverlay)
+            {
+                IsPaneOpen = false;
+            }
+        }
+
+        private void HamburgerTitleBar_MenuButtonClick(object sender, RoutedEventArgs e)
+        {
+            IsPaneOpen = !IsPaneOpen;
+        }
+
+        private void HamburgerTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.GoBack();
         }
     }
 }
