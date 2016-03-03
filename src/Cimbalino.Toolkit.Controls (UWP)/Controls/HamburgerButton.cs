@@ -17,7 +17,6 @@ using Cimbalino.Toolkit.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -42,7 +41,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="IconProperty" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(IconElement), typeof(HamburgerButton), null);
+            DependencyProperty.Register("Icon", typeof(IconElement), typeof(HamburgerButton), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the visibility of the label.
@@ -58,7 +57,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="LabelVisibility" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty LabelVisibilityProperty =
-            DependencyProperty.Register("LabelVisibility", typeof(Visibility), typeof(HamburgerButton), null);
+            DependencyProperty.Register("LabelVisibility", typeof(Visibility), typeof(HamburgerButton), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
         /// Gets or sets the navigation source page type.
