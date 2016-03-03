@@ -349,12 +349,6 @@ namespace Cimbalino.Toolkit.Controls
                 _registeredHamburgerTitleBar = hamburgerTitleBar;
 
                 hamburgerTitleBar.MenuButtonClick += HamburgerTitleBar_MenuButtonClick;
-                hamburgerTitleBar.BackButtonClick += HamburgerTitleBar_BackButtonClick;
-            }
-
-            if (_registeredHamburgerTitleBar.HandleBackButtonVisibility)
-            {
-                hamburgerTitleBar.BackButtonVisibility = this.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
@@ -372,7 +366,6 @@ namespace Cimbalino.Toolkit.Controls
                 }
 
                 hamburgerTitleBar.MenuButtonClick -= HamburgerTitleBar_MenuButtonClick;
-                hamburgerTitleBar.BackButtonClick -= HamburgerTitleBar_BackButtonClick;
 
                 _registeredHamburgerTitleBar = null;
             }
@@ -444,11 +437,6 @@ namespace Cimbalino.Toolkit.Controls
                         hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == e.SourcePageType;
                     }
                 }
-
-                if (_registeredHamburgerTitleBar != null && _registeredHamburgerTitleBar.HandleBackButtonVisibility)
-                {
-                    _registeredHamburgerTitleBar.BackButtonVisibility = this.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
-                }
             }
         }
 
@@ -510,11 +498,6 @@ namespace Cimbalino.Toolkit.Controls
         private void HamburgerTitleBar_MenuButtonClick(object sender, RoutedEventArgs e)
         {
             IsPaneOpen = !IsPaneOpen;
-        }
-
-        private void HamburgerTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.GoBack();
         }
     }
 }

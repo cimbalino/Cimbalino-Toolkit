@@ -251,7 +251,6 @@
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
@@ -263,16 +262,7 @@
                             <FontIcon Glyph="&#xE700;" />
                         </Button>
 
-                        <Button x:Name="BackButton"
-                                Grid.Column="1"
-                                Width="{StaticResource BaseMeasure}"
-                                Height="{StaticResource BaseMeasure}"
-                                Style="{StaticResource HamburgerTitleBarButtonStyle}"
-                                Visibility="{TemplateBinding BackButtonVisibility}">
-                            <FontIcon Glyph="&#xE72B;" />
-                        </Button>
-
-                        <TextBlock Grid.Column="2"
+                        <TextBlock Grid.Column="1"
                                    Foreground="{TemplateBinding Foreground}"
                                    Style="{StaticResource HamburgerTitleBarTextBlockStyle}"
                                    Text="{TemplateBinding Title}" />

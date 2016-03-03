@@ -23,7 +23,6 @@ namespace Cimbalino.Toolkit.Controls
     /// A hamburger title bar.
     /// </summary>
     [TemplatePart(Name = "MenuButton", Type = typeof(Button))]
-    [TemplatePart(Name = "BackButton", Type = typeof(Button))]
     public class HamburgerTitleBar : Control
     {
         /// <summary>
@@ -31,15 +30,9 @@ namespace Cimbalino.Toolkit.Controls
         /// </summary>
         public event EventHandler<RoutedEventArgs> MenuButtonClick;
 
-        /// <summary>
-        /// Occurs when the back button is clicked.
-        /// </summary>
-        public event EventHandler<RoutedEventArgs> BackButtonClick;
-
         private HamburgerFrame _hamburgerFrame;
 
         private Button _menuButton;
-        private Button _backButton;
 
         /// <summary>
         /// Gets or sets the displayed title of the title bar.
@@ -74,38 +67,6 @@ namespace Cimbalino.Toolkit.Controls
             DependencyProperty.Register("MenuButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
-        /// Gets or sets the visibility of the back button.
-        /// </summary>
-        /// <value>The visibility of the back button.</value>
-        public Visibility BackButtonVisibility
-        {
-            get { return (Visibility)GetValue(BackButtonVisibilityProperty); }
-            set { SetValue(BackButtonVisibilityProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifier for the <see cref="BackButtonVisibility" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty BackButtonVisibilityProperty =
-            DependencyProperty.Register("BackButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Collapsed));
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to automatically handle the back button visibility.
-        /// </summary>
-        /// <value>true to automatically handle the back button visibility; otherwise, false.</value>
-        public bool HandleBackButtonVisibility
-        {
-            get { return (bool)GetValue(HandleBackButtonVisibilityProperty); }
-            set { SetValue(HandleBackButtonVisibilityProperty, value); }
-        }
-
-        /// <summary>
-        /// Identifier for the <see cref="HandleBackButtonVisibility" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty HandleBackButtonVisibilityProperty =
-            DependencyProperty.Register("HandleBackButtonVisibility", typeof(bool), typeof(HamburgerTitleBar), new PropertyMetadata(true));
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="HamburgerTitleBar" /> class.
         /// </summary>
         public HamburgerTitleBar()
@@ -125,23 +86,14 @@ namespace Cimbalino.Toolkit.Controls
             {
                 _menuButton.Click -= InternalMenuButtonClick;
             }
-            if (_backButton != null)
-            {
-                _backButton.Click -= InternalBackButton_Click;
-            }
 
             base.OnApplyTemplate();
 
             _menuButton = (Button)GetTemplateChild("MenuButton");
-            _backButton = (Button)GetTemplateChild("BackButton");
 
             if (_menuButton != null)
             {
                 _menuButton.Click += InternalMenuButtonClick;
-            }
-            if (_backButton != null)
-            {
-                _backButton.Click += InternalBackButton_Click;
             }
         }
 
@@ -168,16 +120,6 @@ namespace Cimbalino.Toolkit.Controls
         private void InternalMenuButtonClick(object sender, RoutedEventArgs e)
         {
             var eventHandler = MenuButtonClick;
-
-            if (eventHandler != null)
-            {
-                eventHandler(this, e);
-            }
-        }
-
-        private void InternalBackButton_Click(object sender, RoutedEventArgs e)
-        {
-            var eventHandler = BackButtonClick;
 
             if (eventHandler != null)
             {
