@@ -121,5 +121,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <returns>true if successfully removed the most recent available entry from the back stack; otherwise, false.</returns>
         bool RemoveBackEntry();
+
+        /// <summary>
+        /// Attempts to register the specified object as the active frame instance.
+        /// </summary>
+        /// <param name="frame">The object that will be registered as the active frame instance.</param>
+        void RegisterFrame(object frame);
     }
 }

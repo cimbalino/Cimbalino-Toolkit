@@ -45,7 +45,9 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class NavigationService : INavigationService
     {
-        private Frame _mainFrame;
+        private readonly object _frameLock = new object();
+
+        private Frame _frame;
 
         /// <summary>
         /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
@@ -78,12 +80,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                if (EnsureMainFrame())
-                {
-                    return _mainFrame.BaseUri;
-                }
-
-                return null;
+                return GetFrame()?.BaseUri;
             }
         }
 
@@ -101,12 +98,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                if (EnsureMainFrame())
-                {
-                    return _mainFrame.BaseUri.QueryString();
-                }
-
-                return null;
+                return GetFrame()?.BaseUri.QueryString();
             }
         }
 
@@ -140,7 +132,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(string source)
         {
-            return EnsureMainFrame() && _mainFrame.Navigate(Type.GetType(source));
+            return GetFrame()?.Navigate(Type.GetType(source)) ?? false;
         }
 
         /// <summary>
@@ -181,7 +173,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(Type type)
         {
-            return EnsureMainFrame() && _mainFrame.Navigate(type);
+            return GetFrame()?.Navigate(type) ?? false;
         }
 
         /// <summary>
@@ -192,7 +184,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(Type type, object parameter)
         {
-            return EnsureMainFrame() && _mainFrame.Navigate(type, parameter);
+            return GetFrame()?.Navigate(type, parameter) ?? false;
         }
 
         /// <summary>
@@ -203,7 +195,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                return EnsureMainFrame() && _mainFrame.CanGoBack;
+                return GetFrame()?.CanGoBack ?? false;
             }
         }
 
@@ -212,9 +204,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void GoBack()
         {
-            if (EnsureMainFrame() && _mainFrame.CanGoBack)
+            var frame = GetFrame();
+
+            if (frame?.CanGoBack ?? false)
             {
-                _mainFrame.GoBack();
+                frame.GoBack();
             }
         }
 
@@ -226,7 +220,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                return EnsureMainFrame() && _mainFrame.CanGoForward;
+                return GetFrame()?.CanGoForward ?? false;
             }
         }
 
@@ -235,9 +229,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void GoForward()
         {
-            if (EnsureMainFrame() && _mainFrame.CanGoForward)
+            var frame = GetFrame();
+
+            if (frame?.CanGoForward ?? false)
             {
-                _mainFrame.GoForward();
+                frame.GoForward();
             }
         }
 
@@ -247,9 +243,11 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if successfully removed the most recent available entry from the back stack; otherwise, false.</returns>
         public virtual bool RemoveBackEntry()
         {
-            if (EnsureMainFrame() && _mainFrame.CanGoBack)
+            var frame = GetFrame();
+
+            if (frame?.CanGoBack ?? false)
             {
-                _mainFrame.BackStack.RemoveAt(_mainFrame.BackStackDepth - 1);
+                frame.BackStack.RemoveAt(frame.BackStackDepth - 1);
 
                 SetBackButtonVisibility();
 
@@ -260,22 +258,48 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Ensure that a <see cref="Frame"/> instance has been found.
+        /// Registers the specified <see cref="Frame"/> instance.
         /// </summary>
-        /// <returns>true if a <see cref="Frame"/> instance has been found; otherwise, false.</returns>
-        protected virtual bool EnsureMainFrame()
+        /// <param name="frame">The <see cref="Frame"/> instance.</param>
+        public virtual void RegisterFrame(Frame frame)
         {
-            _mainFrame = Window.Current.Content as Frame;
-
-            if (_mainFrame != null)
+            lock (_frameLock)
             {
-                _mainFrame.Navigated -= Frame_Navigated;
-                _mainFrame.Navigated += Frame_Navigated;
+                var oldFrame = _frame;
 
-                return true;
+                if (oldFrame != null)
+                {
+                    oldFrame.Navigated -= Frame_Navigated;
+                }
+
+                _frame = frame;
+
+                if (frame != null)
+                {
+                    frame.Navigated += Frame_Navigated;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the current <see cref="Frame"/> instance.
+        /// </summary>
+        /// <returns>The current <see cref="Frame"/> instance.</returns>
+        private Frame GetFrame()
+        {
+            var frame = _frame;
+
+            if (frame == null)
+            {
+                frame = Window.Current.Content as Frame;
+
+                if (frame != null)
+                {
+                    RegisterFrame(frame);
+                }
             }
 
-            return false;
+            return frame;
         }
 
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
@@ -341,9 +365,11 @@ namespace Cimbalino.Toolkit.Services
             switch (eventArgs.Behavior)
             {
                 case NavigationServiceBackKeyPressedBehavior.GoBack:
-                    if (_mainFrame?.CanGoBack ?? false)
+                    var frame = GetFrame();
+
+                    if (frame?.CanGoBack ?? false)
                     {
-                        _mainFrame.GoBack();
+                        frame.GoBack();
                         handled = true;
                     }
                     break;
@@ -381,5 +407,10 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 #endif
+
+        void INavigationService.RegisterFrame(object frame)
+        {
+            RegisterFrame(frame as Frame);
+        }
     }
 }

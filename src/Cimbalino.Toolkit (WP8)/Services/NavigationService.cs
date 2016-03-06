@@ -14,9 +14,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Navigation;
 using Cimbalino.Toolkit.Helpers;
 using Microsoft.Phone.Controls;
+using PhoneNavigationService = System.Windows.Navigation.NavigationService;
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -25,8 +28,10 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class NavigationService : INavigationService
     {
-        private PhoneApplicationFrame _mainFrame;
-        private System.Windows.Navigation.NavigationService _navigationService;
+        private readonly object _frameLock = new object();
+
+        private PhoneApplicationFrame _frame;
+        private PhoneNavigationService _navigationService;
 
         /// <summary>
         /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
@@ -46,12 +51,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                if (EnsureNavigationService())
-                {
-                    return _mainFrame.CurrentSource;
-                }
-
-                return null;
+                return GetFrame()?.CurrentSource;
             }
         }
 
@@ -75,17 +75,9 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                if (EnsureNavigationService())
-                {
-                    var page = _mainFrame.Content as PhoneApplicationPage;
+                var page = GetFrame()?.Content as PhoneApplicationPage;
 
-                    if (page != null && page.NavigationContext != null)
-                    {
-                        return page.NavigationContext.QueryString;
-                    }
-                }
-
-                return null;
+                return page?.NavigationContext?.QueryString;
             }
         }
 
@@ -106,7 +98,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public virtual bool Navigate(Uri source)
         {
-            return EnsureNavigationService() && _navigationService.Navigate(source);
+            return GetNavigationService()?.Navigate(source) ?? false;
         }
 
         /// <summary>
@@ -159,7 +151,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                return EnsureNavigationService() && _navigationService.CanGoBack;
+                return GetNavigationService()?.CanGoBack ?? false;
             }
         }
 
@@ -168,9 +160,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void GoBack()
         {
-            if (CanGoBack)
+            var navigationService = GetNavigationService();
+
+            if (navigationService?.CanGoBack ?? false)
             {
-                _navigationService.GoBack();
+                navigationService.GoBack();
             }
         }
 
@@ -182,7 +176,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-                return EnsureNavigationService() && _navigationService.CanGoForward;
+                return GetNavigationService()?.CanGoForward ?? false;
             }
         }
 
@@ -191,9 +185,11 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void GoForward()
         {
-            if (CanGoForward)
+            var navigationService = GetNavigationService();
+
+            if (navigationService?.CanGoForward ?? false)
             {
-                _navigationService.GoForward();
+                navigationService.GoForward();
             }
         }
 
@@ -203,9 +199,11 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if successfully removed the most recent available entry from the back stack; otherwise, false.</returns>
         public virtual bool RemoveBackEntry()
         {
-            if (EnsureNavigationService() && _navigationService.CanGoBack)
+            var navigationService = GetNavigationService();
+
+            if (navigationService?.CanGoBack ?? false)
             {
-                _navigationService.RemoveBackEntry();
+                navigationService.RemoveBackEntry();
 
                 return true;
             }
@@ -214,68 +212,70 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Ensure that a <see cref="System.Windows.Navigation.NavigationService"/> instance has been found.
+        /// Registers the specified <see cref="PhoneApplicationFrame"/> instance.
         /// </summary>
-        /// <returns>true if a <see cref="System.Windows.Navigation.NavigationService"/> instance has been found; otherwise, false.</returns>
-        protected virtual bool EnsureNavigationService()
+        /// <param name="frame">The <see cref="PhoneApplicationFrame"/> instance.</param>
+        public virtual void RegisterFrame(PhoneApplicationFrame frame)
         {
-            if (_navigationService != null)
+            lock (_frameLock)
             {
-                return true;
-            }
-
-            if (_mainFrame == null)
-            {
-                _mainFrame = Application.Current.RootVisual as PhoneApplicationFrame;
-
-                if (_mainFrame != null)
+                if (_frame != null)
                 {
-                    _mainFrame.Navigated += (s, e) =>
-                    {
-                        if (_navigationService == null)
-                        {
-                            GetNavigationServiceFromPage(e.Content as PhoneApplicationPage);
-                        }
+                    _frame.Navigated -= Frame_Navigated;
+                    _frame.BackKeyPress -= Frame_BackKeyPress;
+                }
 
-                        RaiseNavigated(null);
-                    };
+                _frame = frame;
 
-                    _mainFrame.BackKeyPress += (s, e) =>
-                    {
-                        var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+                if (_frame != null)
+                {
+                    _frame.Navigated += Frame_Navigated;
+                    _frame.BackKeyPress += Frame_BackKeyPress;
 
-                        RaiseBackKeyPressed(eventArgs);
+                    _navigationService = (_frame.Content as PhoneApplicationPage)?.NavigationService;
+                }
+                else
+                {
+                    _navigationService = null;
+                }
+            }
+        }
 
-                        switch (eventArgs.Behavior)
-                        {
-                            case NavigationServiceBackKeyPressedBehavior.GoBack:
-                                break;
+        /// <summary>
+        /// Returns the current <see cref="PhoneApplicationFrame"/> instance.
+        /// </summary>
+        /// <returns>The current <see cref="PhoneApplicationFrame"/> instance.</returns>
+        protected virtual PhoneApplicationFrame GetFrame()
+        {
+            var frame = _frame;
 
-                            case NavigationServiceBackKeyPressedBehavior.HideApp:
-                                ExceptionHelper.ThrowNotSupported();
-                                break;
-                            case NavigationServiceBackKeyPressedBehavior.ExitApp:
-                                e.Cancel = true;
-                                Application.Current.Terminate();
-                                break;
+            if (frame == null)
+            {
+                frame = Application.Current.RootVisual as PhoneApplicationFrame;
 
-                            case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                                e.Cancel = true;
-                                break;
-
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                    };
-
-                    if (GetNavigationServiceFromPage(_mainFrame.Content as PhoneApplicationPage))
-                    {
-                        return true;
-                    }
+                if (frame != null)
+                {
+                    RegisterFrame(frame);
                 }
             }
 
-            return false;
+            return frame;
+        }
+
+        /// <summary>
+        /// Returns the current <see cref="PhoneNavigationService"/> instance.
+        /// </summary>
+        /// <returns>The current <see cref="PhoneNavigationService"/> instance.</returns>
+        protected virtual PhoneNavigationService GetNavigationService()
+        {
+            var navigationService = _navigationService;
+
+            if (navigationService == null)
+            {
+                GetFrame();
+            }
+
+            return _navigationService;
         }
 
         /// <summary>
@@ -306,9 +306,47 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-        private bool GetNavigationServiceFromPage(PhoneApplicationPage page)
+        private void Frame_Navigated(object s, NavigationEventArgs e)
         {
-            return page != null && (_navigationService = page.NavigationService) != null;
+            if (_navigationService == null)
+            {
+                _navigationService = (e.Content as PhoneApplicationPage)?.NavigationService;
+            }
+
+            RaiseNavigated(EventArgs.Empty);
+        }
+
+        private void Frame_BackKeyPress(object s, CancelEventArgs e)
+        {
+            var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+
+            RaiseBackKeyPressed(eventArgs);
+
+            switch (eventArgs.Behavior)
+            {
+                case NavigationServiceBackKeyPressedBehavior.GoBack:
+                    break;
+
+                case NavigationServiceBackKeyPressedBehavior.HideApp:
+                    ExceptionHelper.ThrowNotSupported();
+                    break;
+                case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                    e.Cancel = true;
+                    Application.Current.Terminate();
+                    break;
+
+                case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                    e.Cancel = true;
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        void INavigationService.RegisterFrame(object frame)
+        {
+            RegisterFrame(frame as PhoneApplicationFrame);
         }
     }
 }
