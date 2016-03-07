@@ -22,6 +22,7 @@ using TriggerCollection = System.Windows.Interactivity.TriggerCollection;
 using System.Linq;
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
+
 #else
 using System.Linq;
 using Cimbalino.Toolkit.Behaviors;

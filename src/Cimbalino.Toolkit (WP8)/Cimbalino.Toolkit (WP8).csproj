@@ -92,6 +92,12 @@
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Extensions\FilePickerExtensions.cs">
+      <Link>Extensions\FilePickerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\FilePickerService.cs">
+      <Link>Services\FilePickerService.cs</Link>
+    </Compile>
     <Compile Include="Behaviors\AfterAutoFocusEventArgs.cs" />
     <Compile Include="Behaviors\ApplicationBar.cs" />
     <Compile Include="Behaviors\ApplicationBarBehavior.cs" />

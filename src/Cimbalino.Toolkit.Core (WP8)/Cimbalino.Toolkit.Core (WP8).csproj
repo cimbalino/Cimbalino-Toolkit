@@ -188,6 +188,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\DeviceStatusServicePowerSource.cs">
       <Link>Services\DeviceStatusServicePowerSource.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerOptions.cs">
+      <Link>Services\FilePickerOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerResult.cs">
+      <Link>Services\FilePickerResult.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationManifestService.cs">
       <Link>Services\IApplicationManifestService.cs</Link>
     </Compile>
@@ -208,6 +214,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IDispatcherService.cs">
       <Link>Services\IDispatcherService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IFilePickerService.cs">
+      <Link>Services\IFilePickerService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ILockScreenService.cs">
       <Link>Services\ILockScreenService.cs</Link>
