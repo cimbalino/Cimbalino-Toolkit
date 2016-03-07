@@ -1,6 +1,5 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Bcl.Build": "1.0.21",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
     "StyleCop.Analyzers": "1.0.0"
