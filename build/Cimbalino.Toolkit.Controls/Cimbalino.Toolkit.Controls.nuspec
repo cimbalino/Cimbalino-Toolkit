@@ -13,6 +13,6 @@
     <dependencies>
       <dependency id="Cimbalino.Toolkit" version="$version$" />
     </dependencies>
-    <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT Controls</tags>
+    <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT UWP UAP Controls Hamburger</tags>
   </metadata>
 </package>
