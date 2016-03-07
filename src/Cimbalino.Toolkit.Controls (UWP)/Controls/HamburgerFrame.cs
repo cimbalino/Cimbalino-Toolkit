@@ -30,7 +30,7 @@ namespace Cimbalino.Toolkit.Controls
     public class HamburgerFrame : Frame
     {
         private readonly object _registeredControlsLock = new object();
-        private readonly List<HamburgerButton> _registeredHamburgerButtons = new List<HamburgerButton>();
+        private readonly List<HamburgerMenuButton> _registeredHamburgerMenuButtons = new List<HamburgerMenuButton>();
 
         private HamburgerTitleBar _registeredHamburgerTitleBar;
 
@@ -301,35 +301,35 @@ namespace Cimbalino.Toolkit.Controls
         }
 
         /// <summary>
-        /// Registers the specified <see cref="HamburgerButton"/> control.
+        /// Registers the specified <see cref="HamburgerMenuButton"/> control.
         /// </summary>
-        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/> control.</param>
-        internal void RegisterHamburgerButton(HamburgerButton hamburgerButton)
+        /// <param name="hamburgerMenuButton">The <see cref="HamburgerMenuButton"/> control.</param>
+        internal void RegisterHamburgerMenuButton(HamburgerMenuButton hamburgerMenuButton)
         {
             lock (_registeredControlsLock)
             {
-                _registeredHamburgerButtons.Add(hamburgerButton);
+                _registeredHamburgerMenuButtons.Add(hamburgerMenuButton);
 
-                hamburgerButton.Click += HamburgerButton_Click;
+                hamburgerMenuButton.Click += HamburgerMenuButton_Click;
             }
 
-            if (hamburgerButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
+            if (hamburgerMenuButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
             {
-                hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == this.CurrentSourcePageType;
+                hamburgerMenuButton.IsChecked = hamburgerMenuButton.NavigationSourcePageType == this.CurrentSourcePageType;
             }
         }
 
         /// <summary>
-        /// Unregisters the specified <see cref="HamburgerButton"/> control.
+        /// Unregisters the specified <see cref="HamburgerMenuButton"/> control.
         /// </summary>
-        /// <param name="hamburgerButton">The <see cref="HamburgerButton"/> control.</param>
-        internal void UnregisterHamburgerButton(HamburgerButton hamburgerButton)
+        /// <param name="hamburgerMenuButton">The <see cref="HamburgerMenuButton"/> control.</param>
+        internal void UnregisterHamburgerMenuButton(HamburgerMenuButton hamburgerMenuButton)
         {
             lock (_registeredControlsLock)
             {
-                hamburgerButton.Click -= HamburgerButton_Click;
+                hamburgerMenuButton.Click -= HamburgerMenuButton_Click;
 
-                _registeredHamburgerButtons.Remove(hamburgerButton);
+                _registeredHamburgerMenuButtons.Remove(hamburgerMenuButton);
             }
         }
 
@@ -430,11 +430,11 @@ namespace Cimbalino.Toolkit.Controls
 
             lock (_registeredControlsLock)
             {
-                foreach (var hamburgerButton in _registeredHamburgerButtons)
+                foreach (var hamburgerMenuButton in _registeredHamburgerMenuButtons)
                 {
-                    if (hamburgerButton.NavigationSourcePageType != null)
+                    if (hamburgerMenuButton.NavigationSourcePageType != null)
                     {
-                        hamburgerButton.IsChecked = hamburgerButton.NavigationSourcePageType == e.SourcePageType;
+                        hamburgerMenuButton.IsChecked = hamburgerMenuButton.NavigationSourcePageType == e.SourcePageType;
                     }
                 }
             }
@@ -480,9 +480,9 @@ namespace Cimbalino.Toolkit.Controls
             }
         }
 
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
         {
-            var navigationSourcePageType = ((HamburgerButton)sender).NavigationSourcePageType;
+            var navigationSourcePageType = ((HamburgerMenuButton)sender).NavigationSourcePageType;
 
             if (navigationSourcePageType != null)
             {

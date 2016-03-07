@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="HamburgerButton.cs" company="Pedro Lamas">
+// <copyright file="HamburgerMenuButton.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -21,9 +21,9 @@ using Windows.UI.Xaml.Controls.Primitives;
 namespace Cimbalino.Toolkit.Controls
 {
     /// <summary>
-    /// A hamburger button.
+    /// A hamburger menu button.
     /// </summary>
-    public class HamburgerButton : ToggleButton
+    public class HamburgerMenuButton : ToggleButton
     {
         private HamburgerFrame _hamburgerFrame;
 
@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="IconProperty" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(IconElement), typeof(HamburgerButton), new PropertyMetadata(null));
+            DependencyProperty.Register("Icon", typeof(IconElement), typeof(HamburgerMenuButton), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the visibility of the label.
@@ -57,7 +57,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="LabelVisibility" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty LabelVisibilityProperty =
-            DependencyProperty.Register("LabelVisibility", typeof(Visibility), typeof(HamburgerButton), new PropertyMetadata(Visibility.Visible));
+            DependencyProperty.Register("LabelVisibility", typeof(Visibility), typeof(HamburgerMenuButton), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
         /// Gets or sets the navigation source page type.
@@ -73,17 +73,17 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="NavigationSourcePageType" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty NavigationSourcePageTypeProperty =
-            DependencyProperty.Register("NavigationSourcePageType", typeof(Type), typeof(HamburgerButton), new PropertyMetadata(null));
+            DependencyProperty.Register("NavigationSourcePageType", typeof(Type), typeof(HamburgerMenuButton), new PropertyMetadata(null));
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HamburgerButton" /> class.
+        /// Initializes a new instance of the <see cref="HamburgerMenuButton" /> class.
         /// </summary>
-        public HamburgerButton()
+        public HamburgerMenuButton()
         {
-            DefaultStyleKey = typeof(HamburgerButton);
+            DefaultStyleKey = typeof(HamburgerMenuButton);
 
-            Loaded += HamburgerButton_Loaded;
-            Unloaded += HamburgerButton_Unloaded;
+            Loaded += HamburgerMenuButton_Loaded;
+            Unloaded += HamburgerMenuButton_Unloaded;
         }
 
         /// <summary>
@@ -93,21 +93,21 @@ namespace Cimbalino.Toolkit.Controls
         {
         }
 
-        private void HamburgerButton_Loaded(object sender, RoutedEventArgs e)
+        private void HamburgerMenuButton_Loaded(object sender, RoutedEventArgs e)
         {
             _hamburgerFrame = this.GetVisualAncestor<HamburgerFrame>();
 
             if (_hamburgerFrame != null)
             {
-                _hamburgerFrame.RegisterHamburgerButton(this);
+                _hamburgerFrame.RegisterHamburgerMenuButton(this);
             }
         }
 
-        private void HamburgerButton_Unloaded(object sender, RoutedEventArgs e)
+        private void HamburgerMenuButton_Unloaded(object sender, RoutedEventArgs e)
         {
             if (_hamburgerFrame != null)
             {
-                _hamburgerFrame.UnregisterHamburgerButton(this);
+                _hamburgerFrame.UnregisterHamburgerMenuButton(this);
 
                 _hamburgerFrame = null;
             }

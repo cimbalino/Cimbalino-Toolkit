@@ -7,7 +7,7 @@
 
     <x:Double x:Key="BaseMeasure">48</x:Double>
 
-    <Style x:Key="HamburgerButtonTextBlockStyle"
+    <Style x:Key="HamburgerMenuButtonTextBlockStyle"
            BasedOn="{StaticResource BodyTextBlockStyle}"
            TargetType="TextBlock">
         <Setter Property="Margin" Value="12,0" />
@@ -17,7 +17,9 @@
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
-    <Style x:Key="HamburgerTitleBarTextBlockStyle" TargetType="TextBlock">
+    <Style x:Key="HamburgerTitleBarTextBlockStyle"
+           BasedOn="{StaticResource BodyTextBlockStyle}"
+           TargetType="TextBlock">
         <Setter Property="Margin" Value="12,0" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -82,13 +84,13 @@
         </Setter>
     </Style>
 
-    <Style TargetType="controls:HamburgerButton">
+    <Style TargetType="controls:HamburgerMenuButton">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
         <Setter Property="UseSystemFocusVisuals" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:HamburgerButton">
+                <ControlTemplate TargetType="controls:HamburgerMenuButton">
                     <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -196,7 +198,7 @@
                         <TextBlock x:Name="ContentPresenter"
                                    Grid.Column="1"
                                    Foreground="{TemplateBinding Foreground}"
-                                   Style="{StaticResource HamburgerButtonTextBlockStyle}"
+                                   Style="{StaticResource HamburgerMenuButtonTextBlockStyle}"
                                    Text="{TemplateBinding Content}"
                                    Visibility="{TemplateBinding LabelVisibility}" />
                     </Grid>

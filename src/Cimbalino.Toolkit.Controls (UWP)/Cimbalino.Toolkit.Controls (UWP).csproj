@@ -124,7 +124,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\HamburgerButton.cs" />
+    <Compile Include="Controls\HamburgerMenuButton.cs" />
     <Compile Include="Controls\HamburgerFrame.cs" />
     <Compile Include="Controls\HamburgerTitleBar.cs" />
     <Compile Include="Helpers\Hamburger.cs" />
