@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using Windows.Storage.Pickers;
 using Cimbalino.Toolkit.Services;
+using Windows.Storage.Pickers;
 
 namespace Cimbalino.Toolkit.Extensions
 {
