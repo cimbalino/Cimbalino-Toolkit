@@ -34,8 +34,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.Storage;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Helpers;
 
@@ -107,7 +107,9 @@ namespace Cimbalino.Toolkit.Services
         /// Opens the multiple files picker asynchronous.
         /// </summary>
         /// <param name="options">The options.</param>
-        /// <returns>A list of FilePickerResult objects</returns>
+        /// <returns>
+        /// A list of FilePickerResult objects
+        /// </returns>
         public virtual async Task<List<FilePickerResult>> OpenMultipleFilesPickerAsync(FilePickerOptions options)
         {
             if (options?.FileTypeFilters == null || !options.FileTypeFilters.Any())
@@ -152,7 +154,7 @@ namespace Cimbalino.Toolkit.Services
             filePicker.PickMultipleFilesAndContinue();
             files = await tcs.Task;
 #elif WINDOWS_PHONE
-            return ExceptionHelper.ThrowNotSupported <List<FilePickerResult>>("This is not supported on silverlight");
+            return ExceptionHelper.ThrowNotSupported<List<FilePickerResult>>("This is not supported on silverlight");
 #endif
 
             var taskList = files.Select(ProcessFileResult);
