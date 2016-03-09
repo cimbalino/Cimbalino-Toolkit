@@ -11,7 +11,10 @@
     <licenseUrl>https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/LICENSE.txt</licenseUrl>
     <iconUrl>https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/Cimbalino.Toolkit.png</iconUrl>
     <dependencies>
-      <dependency id="Microsoft.Bcl.Compression" version="3.9.85" />
+      <group targetFramework="wp8">
+        <dependency id="Microsoft.Bcl.Compression" version="3.9.85" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+      </group>
     </dependencies>
     <tags>Cimbalino Windows Phone Toolkit PedroLamas WP8 MVVM WPDev WP8Dev WinDev Universal Silverlight WinRT UWP UAP Core Background Agent</tags>
   </metadata>

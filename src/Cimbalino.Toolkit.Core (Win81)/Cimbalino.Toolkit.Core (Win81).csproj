@@ -112,6 +112,9 @@
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Compression\CompressionLevel.cs">
+      <Link>Compression\CompressionLevel.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ByteArrayExtensions.cs">
       <Link>Extensions\ByteArrayExtensions.cs</Link>
     </Compile>
@@ -328,6 +331,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppScreenshotNode.cs">
       <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Compression\CompressionExtensions.cs">
+      <Link>Compression\CompressionExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\CoreDispatcherExtensions.cs">
       <Link>Extensions\CoreDispatcherExtensions.cs</Link>
     </Compile>
@@ -518,13 +524,6 @@
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -133,6 +133,9 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Compression\CompressionLevel.cs">
+      <Link>Compression\CompressionLevel.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\compression\Crc32.generated.cs">
       <Link>Compression\Crc32.generated.cs</Link>
     </Compile>
@@ -474,6 +477,9 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\SHA256Managed.cs">
       <Link>System\Security\Cryptography\SHA256Managed.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Compression\CompressionExtensions.cs">
+      <Link>Compression\CompressionExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\CoreDispatcherExtensions.cs">
       <Link>Extensions\CoreDispatcherExtensions.cs</Link>

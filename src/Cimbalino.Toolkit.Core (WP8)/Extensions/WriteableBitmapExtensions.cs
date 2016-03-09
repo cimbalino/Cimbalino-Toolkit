@@ -15,7 +15,6 @@
 #if WINDOWS_PHONE
 using System;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
@@ -164,7 +163,7 @@ namespace Cimbalino.Toolkit.Extensions
         {
             using (var chunkedStream = new ChunkedStream(MaximumChunkSize, data => WriteChunk(outputStream, PngChunkTypeData, data)))
             {
-                using (var zlibStream = new ZlibStream(chunkedStream, CompressionMode.Compress, true))
+                using (var zlibStream = new ZlibStream(chunkedStream, CompressionLevel.Optimal, true))
                 {
                     var pixels = writeableBitmap.Pixels;
                     var width = writeableBitmap.PixelWidth;

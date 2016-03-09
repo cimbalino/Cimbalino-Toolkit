@@ -92,6 +92,9 @@
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Compression\CompressionLevel.cs">
+      <Link>Compression\CompressionLevel.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Extensions\ByteArrayExtensions.cs">
       <Link>Extensions\ByteArrayExtensions.cs</Link>
     </Compile>
@@ -413,6 +416,7 @@
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\Services\LocationServiceStatusChangedEventArgs.cs">
       <Link>Services\LocationServiceStatusChangedEventArgs.cs</Link>
     </Compile>
+    <Compile Include="Compression\CompressionExtensions.cs" />
     <Compile Include="Extensions\DispatcherExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\CoreDispatcherExtensions.cs" />
