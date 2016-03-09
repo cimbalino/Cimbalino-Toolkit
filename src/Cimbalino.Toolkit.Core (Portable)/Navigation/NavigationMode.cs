@@ -17,6 +17,8 @@ namespace Cimbalino.Toolkit.Navigation
 
         // Summary:
         //     Navigation is to the current page (perhaps with different data).
-        Refresh = 3
+        Refresh = 3,
+
+        Reset = 4
     }
 }
