@@ -30,7 +30,7 @@ namespace Cimbalino.Toolkit.Services
                     return PositionAccuracy.High;
 
                 default:
-                    throw new ArgumentOutOfRangeException("accuracy");
+                    throw new ArgumentOutOfRangeException(nameof(accuracy), accuracy, null);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Cimbalino.Toolkit.Services
                     return LocationServiceAccuracy.High;
 
                 default:
-                    throw new ArgumentOutOfRangeException("positionAccuracy");
+                    throw new ArgumentOutOfRangeException(nameof(positionAccuracy), positionAccuracy, null);
             }
         }
 
@@ -72,7 +72,7 @@ namespace Cimbalino.Toolkit.Services
                     return LocationServiceStatus.NotAvailable;
 
                 default:
-                    throw new ArgumentOutOfRangeException("positionStatus");
+                    throw new ArgumentOutOfRangeException(nameof(positionStatus), positionStatus, null);
             }
         }
 

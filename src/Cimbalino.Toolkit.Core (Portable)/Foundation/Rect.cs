@@ -79,7 +79,7 @@ namespace Cimbalino.Toolkit.Foundation
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
                 }
 
                 _width = value;
@@ -100,7 +100,7 @@ namespace Cimbalino.Toolkit.Foundation
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("value");
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
                 }
 
                 _height = value;
@@ -285,12 +285,12 @@ namespace Cimbalino.Toolkit.Foundation
         {
             if (width < 0)
             {
-                throw new ArgumentOutOfRangeException("width");
+                throw new ArgumentOutOfRangeException(nameof(width), width, null);
             }
 
             if (height < 0)
             {
-                throw new ArgumentOutOfRangeException("height");
+                throw new ArgumentOutOfRangeException(nameof(height), height, null);
             }
 
             _x = x;

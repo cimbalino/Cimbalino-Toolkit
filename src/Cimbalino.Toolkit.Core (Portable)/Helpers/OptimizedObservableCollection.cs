@@ -86,7 +86,7 @@ namespace Cimbalino.Toolkit.Helpers
         {
             if (items == null)
             {
-                throw new ArgumentNullException("items");
+                throw new ArgumentNullException(nameof(items));
             }
 
             try
@@ -115,7 +115,7 @@ namespace Cimbalino.Toolkit.Helpers
         {
             if (items == null)
             {
-                throw new ArgumentNullException("items");
+                throw new ArgumentNullException(nameof(items));
             }
 
             SuppressEvents = true;
@@ -134,7 +134,7 @@ namespace Cimbalino.Toolkit.Helpers
         {
             if (items == null)
             {
-                throw new ArgumentNullException("items");
+                throw new ArgumentNullException(nameof(items));
             }
 
             var itemIndex = 0;

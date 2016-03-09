@@ -205,7 +205,7 @@ namespace Cimbalino.Toolkit.Extensions
         {
             if (batchSize < 1)
             {
-                throw new ArgumentException("Batch size must be greater or equal to 1", "batchSize");
+                throw new ArgumentException("Batch size must be greater or equal to 1", nameof(batchSize));
             }
 
             var buffer = new List<TResult>();

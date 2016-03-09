@@ -33,7 +33,7 @@ namespace Cimbalino.Toolkit.Compression
                     return SystemCompressionLevel.NoCompression;
 
                 default:
-                    throw new ArgumentOutOfRangeException("compressionLevel");
+                    throw new ArgumentOutOfRangeException(nameof(compressionLevel), compressionLevel, null);
             }
         }
     }
