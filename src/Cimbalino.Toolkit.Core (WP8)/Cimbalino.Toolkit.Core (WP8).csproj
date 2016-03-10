@@ -311,9 +311,6 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppScreenshotNode.cs">
       <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Helpers\WeakEventSubscription{T1,T2}.cs">
-      <Link>Helpers\WeakEventSubscription{T1,T2}.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
     </Compile>
@@ -424,6 +421,7 @@
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\CoreDispatcherExtensions.cs" />
     <Compile Include="Extensions\WriteableBitmapExtensions.cs" />
+    <Compile Include="Helpers\WeakEventSubscription{T1,T2}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationManifestService.cs" />
     <Compile Include="Services\ApplicationProfileService.cs" />
