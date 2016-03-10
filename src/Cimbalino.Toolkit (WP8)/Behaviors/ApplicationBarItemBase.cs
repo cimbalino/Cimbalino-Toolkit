@@ -179,7 +179,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Command" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.RegisterAttached("Command", typeof(ICommand), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(null, OnCommandChanged));
+            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(null, OnCommandChanged));
 
         private static void OnCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -219,7 +219,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="CommandParameter" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.RegisterAttached("CommandParameter", typeof(object), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(OnCommandParameterChanged));
+            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(OnCommandParameterChanged));
 
         private static void OnCommandParameterChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
