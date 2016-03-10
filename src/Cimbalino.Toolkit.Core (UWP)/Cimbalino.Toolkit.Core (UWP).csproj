@@ -7,7 +7,7 @@
     <ProjectGuid>{D79208C1-8C83-4D03-BBD8-208B52137627}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cimbalino.Toolkit.Core</RootNamespace>
+    <RootNamespace>Cimbalino.Toolkit</RootNamespace>
     <AssemblyName>Cimbalino.Toolkit.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -489,6 +489,9 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28wp8%29\extensions\WriteableBitmapExtensions.cs">
       <Link>Extensions\WriteableBitmapExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Helpers\WeakEventSubscription{T1,T2}.cs">
+      <Link>Helpers\WeakEventSubscription{T1,T2}.cs</Link>
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\ApplicationManifestService.cs">
       <Link>Services\ApplicationManifestService.cs</Link>
