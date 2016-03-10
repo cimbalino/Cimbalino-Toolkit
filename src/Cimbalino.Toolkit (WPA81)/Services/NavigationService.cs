@@ -47,6 +47,10 @@ namespace Cimbalino.Toolkit.Services
     {
         private readonly object _frameLock = new object();
 
+#if WINDOWS_UWP
+        private readonly bool _handleWindowBackButton;
+#endif
+
         private Frame _frame;
 
         /// <summary>
@@ -115,13 +119,26 @@ namespace Cimbalino.Toolkit.Services
         /// Initializes a new instance of the <see cref="NavigationService"/> class.
         /// </summary>
         public NavigationService()
+            : this(true)
         {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
             {
                 HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             }
+        }
 
-            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigationService"/> class.
+        /// </summary>
+        /// <param name="handleWindowBackButton">true if the back button visibility will be handled automatically; otherwise, false.</param>
+        public NavigationService(bool handleWindowBackButton)
+        {
+            _handleWindowBackButton = handleWindowBackButton;
+
+            if (handleWindowBackButton)
+            {
+                SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
+            }
         }
 #endif
 
@@ -249,7 +266,9 @@ namespace Cimbalino.Toolkit.Services
             {
                 frame.BackStack.RemoveAt(frame.BackStackDepth - 1);
 
+#if WINDOWS_UWP
                 SetBackButtonVisibility();
+#endif
 
                 return true;
             }
@@ -308,7 +327,9 @@ namespace Cimbalino.Toolkit.Services
 
             RaiseNavigated(EventArgs.Empty);
 
+#if WINDOWS_UWP
             SetBackButtonVisibility();
+#endif
         }
 
         /// <summary>
@@ -322,36 +343,30 @@ namespace Cimbalino.Toolkit.Services
         }
 
 #if WINDOWS_UWP
-        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
 
             SetBackButtonVisibility();
         }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the back button visibility will be handled automatically.
-        /// </summary>
-        /// <value>true if the back button visibility will be handled automatically; otherwise, false.</value>
-        public static bool HandleBackButtonVisibility { get; set; } = true;
-#endif
-
         private void SetBackButtonVisibility()
         {
-#if WINDOWS_UWP
-            if (HandleBackButtonVisibility)
+            if (_handleWindowBackButton)
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
-#endif
         }
+#endif
 
 #if WINDOWS_PHONE_APP || WINDOWS_UWP
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
 
+#if WINDOWS_UWP
             SetBackButtonVisibility();
+#endif
         }
 
         private bool HandleBackKeyPress()
