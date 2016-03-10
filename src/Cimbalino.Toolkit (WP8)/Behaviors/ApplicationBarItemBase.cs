@@ -80,7 +80,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="IsEnabled" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(true, OnIsEnabledChanged));
+            DependencyProperty.Register(nameof(IsEnabled), typeof(bool), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(true, OnIsEnabledChanged));
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -117,7 +117,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Text" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(ApplicationBarItemBase<T>), new PropertyMetadata("button", OnTextChanged));
+            DependencyProperty.Register(nameof(Text), typeof(string), typeof(ApplicationBarItemBase<T>), new PropertyMetadata("button", OnTextChanged));
 
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -149,7 +149,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="IsVisible" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsVisibleProperty =
-            DependencyProperty.Register("IsVisible", typeof(bool), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(true, OnIsVisibleChanged));
+            DependencyProperty.Register(nameof(IsVisible), typeof(bool), typeof(ApplicationBarItemBase<T>), new PropertyMetadata(true, OnIsVisibleChanged));
 
         private static void OnIsVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

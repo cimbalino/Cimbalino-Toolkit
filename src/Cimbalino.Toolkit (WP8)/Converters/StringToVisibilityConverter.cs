@@ -47,7 +47,7 @@ namespace Cimbalino.Toolkit.Converters
         /// Identifier for the <see cref="InvertValue" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty InvertValueProperty =
-            DependencyProperty.Register("InvertValue", typeof(bool), typeof(StringToVisibilityConverter), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(InvertValue), typeof(bool), typeof(StringToVisibilityConverter), new PropertyMetadata(false));
 
         /// <summary>
         /// Converts a <see cref="string"/> value to a <see cref="Visibility"/> value.

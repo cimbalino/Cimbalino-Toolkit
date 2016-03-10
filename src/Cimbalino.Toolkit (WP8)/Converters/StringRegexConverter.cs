@@ -49,7 +49,7 @@ namespace Cimbalino.Toolkit.Converters
         /// Identifier for the <see cref="Pattern" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty PatternProperty =
-            DependencyProperty.Register("Pattern", typeof(string), typeof(StringRegexConverter), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Pattern), typeof(string), typeof(StringRegexConverter), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the replacement pattern string.
@@ -65,7 +65,7 @@ namespace Cimbalino.Toolkit.Converters
         /// Identifier for the <see cref="ReplacementPattern" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ReplacementPatternProperty =
-            DependencyProperty.Register("ReplacementPattern", typeof(string), typeof(StringRegexConverter), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ReplacementPattern), typeof(string), typeof(StringRegexConverter), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the options that modify the matching operation.
@@ -81,7 +81,7 @@ namespace Cimbalino.Toolkit.Converters
         /// Identifier for the <see cref="Options" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty OptionsProperty =
-            DependencyProperty.Register("Options", typeof(RegexOptions), typeof(StringRegexConverter), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Options), typeof(RegexOptions), typeof(StringRegexConverter), new PropertyMetadata(null));
 
         /// <summary>
         /// Formats a <see cref="string"/> value using a Regular Expression.

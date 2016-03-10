@@ -58,7 +58,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Command" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register("Command", typeof(ICommand), typeof(EnterKeyBehavior), null);
+            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(EnterKeyBehavior), null);
 
         /// <summary>
         /// Gets or sets the parameter to pass to the <see cref="Command"/> property. This is a DependencyProperty.
@@ -80,7 +80,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="CommandParameter" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register("CommandParameter", typeof(object), typeof(EnterKeyBehavior), null);
+            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(EnterKeyBehavior), null);
 
         /// <summary>
         /// Called after the behavior is attached to an AssociatedObject.

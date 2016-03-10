@@ -56,7 +56,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Items" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register("Items", typeof(MultiBindingItemCollection), typeof(MultiBindingBehavior), null);
+            DependencyProperty.Register(nameof(Items), typeof(MultiBindingItemCollection), typeof(MultiBindingBehavior), null);
 
         /// <summary>
         /// Gets or sets the path to the binding source property.
@@ -72,7 +72,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="PropertyName" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty PropertyNameProperty =
-            DependencyProperty.Register("PropertyName", typeof(string), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
+            DependencyProperty.Register(nameof(PropertyName), typeof(string), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
 
         /// <summary>
         /// Gets or sets the converter to use to convert the source values to or from the target value.
@@ -88,7 +88,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Converter" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ConverterProperty =
-            DependencyProperty.Register("Converter", typeof(IValueConverter), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
+            DependencyProperty.Register(nameof(Converter), typeof(IValueConverter), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
 
 #if WINDOWS_PHONE
         /// <summary>
@@ -105,7 +105,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="ConverterCulture" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ConverterCultureProperty =
-            DependencyProperty.Register("ConverterCulture", typeof(CultureInfo), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
+            DependencyProperty.Register(nameof(ConverterCulture), typeof(CultureInfo), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
 #endif
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="ConverterParameter" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ConverterParameterProperty =
-            DependencyProperty.Register("ConverterParameter", typeof(object), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
+            DependencyProperty.Register(nameof(ConverterParameter), typeof(object), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
 
         /// <summary>
         /// Gets or sets a value that indicates the direction of the data flow in the binding.
@@ -138,7 +138,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Mode" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ModeProperty =
-            DependencyProperty.Register("Mode", typeof(BindingMode), typeof(MultiBindingBehavior), new PropertyMetadata(BindingMode.OneWay, OnPropertyChanged));
+            DependencyProperty.Register(nameof(Mode), typeof(BindingMode), typeof(MultiBindingBehavior), new PropertyMetadata(BindingMode.OneWay, OnPropertyChanged));
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

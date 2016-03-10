@@ -63,7 +63,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="VisualStateNarrowMinWidth" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty VisualStateNarrowMinWidthProperty =
-            DependencyProperty.Register("VisualStateNarrowMinWidth", typeof(double), typeof(HamburgerFrame), new PropertyMetadata(0));
+            DependencyProperty.Register(nameof(VisualStateNarrowMinWidth), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(0));
 
         /// <summary>
         /// Gets or sets the minimal window width at which the hamburger frame will use a normal style.
@@ -79,7 +79,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="VisualStateNormalMinWidth" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty VisualStateNormalMinWidthProperty =
-            DependencyProperty.Register("VisualStateNormalMinWidth", typeof(double), typeof(HamburgerFrame), new PropertyMetadata(521));
+            DependencyProperty.Register(nameof(VisualStateNormalMinWidth), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(521));
 
         /// <summary>
         /// Gets or sets the minimal window width at which the hamburger frame will use a wide style.
@@ -95,7 +95,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="VisualStateWideMinWidth" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty VisualStateWideMinWidthProperty =
-            DependencyProperty.Register("VisualStateWideMinWidth", typeof(double), typeof(HamburgerFrame), new PropertyMetadata(1200));
+            DependencyProperty.Register(nameof(VisualStateWideMinWidth), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(1200));
 
         /// <summary>
         /// Gets or sets a value that specifies how the pane and content areas of the internal <see cref="SplitView"/> are shown.
@@ -111,7 +111,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="DisplayMode" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty DisplayModeProperty =
-            DependencyProperty.Register("DisplayMode", typeof(SplitViewDisplayMode), typeof(HamburgerFrame), new PropertyMetadata(SplitViewDisplayMode.Overlay));
+            DependencyProperty.Register(nameof(DisplayMode), typeof(SplitViewDisplayMode), typeof(HamburgerFrame), new PropertyMetadata(SplitViewDisplayMode.Overlay));
 
         /// <summary>
         /// Gets or sets the width of the internal <see cref="SplitView"/> pane when it's open.
@@ -127,7 +127,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="OpenPaneLength" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty OpenPaneLengthProperty =
-            DependencyProperty.Register("OpenPaneLength", typeof(double), typeof(HamburgerFrame), new PropertyMetadata(320));
+            DependencyProperty.Register(nameof(OpenPaneLength), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(320));
 
         /// <summary>
         /// Gets or sets the width of the internal <see cref="SplitView"/> pane when it's compact.
@@ -143,7 +143,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="CompactPaneLength" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty CompactPaneLengthProperty =
-            DependencyProperty.Register("CompactPaneLength", typeof(double), typeof(HamburgerFrame), new PropertyMetadata(48));
+            DependencyProperty.Register(nameof(CompactPaneLength), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(48));
 
         /// <summary>
         /// Gets or sets a value indicating whether the internal <see cref="SplitView"/> pane is expanded to its full width.
@@ -159,7 +159,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="IsPaneOpen" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsPaneOpenProperty =
-            DependencyProperty.Register("IsPaneOpen", typeof(bool), typeof(HamburgerFrame), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(IsPaneOpen), typeof(bool), typeof(HamburgerFrame), new PropertyMetadata(false));
 
         /// <summary>
         /// Gets or sets the header.
@@ -175,7 +175,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="Header" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Header), typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the background of the header.
@@ -191,7 +191,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="HeaderBackground" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty HeaderBackgroundProperty =
-            DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(HeaderBackground), typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the subheader.
@@ -207,7 +207,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="SubHeader" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty SubHeaderProperty =
-            DependencyProperty.Register("SubHeader", typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(SubHeader), typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the background of the subheader.
@@ -223,7 +223,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="SubHeaderBackground" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty SubHeaderBackgroundProperty =
-            DependencyProperty.Register("SubHeaderBackground", typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(SubHeaderBackground), typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the internal <see cref="SplitView"/> pane.
@@ -239,7 +239,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="Pane" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty PaneProperty =
-            DependencyProperty.Register("Pane", typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Pane), typeof(UIElement), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the background of the internal <see cref="SplitView"/> pane.
@@ -255,7 +255,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="PaneBackground" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty PaneBackgroundProperty =
-            DependencyProperty.Register("PaneBackground", typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(PaneBackground), typeof(Brush), typeof(HamburgerFrame), new PropertyMetadata(null));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HamburgerFrame" /> class.

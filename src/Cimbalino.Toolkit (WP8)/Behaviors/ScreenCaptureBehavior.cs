@@ -50,7 +50,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="IsEnabled" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(ScreenCaptureBehavior), new PropertyMetadata(true, OnIsEnabledChanged));
+            DependencyProperty.Register(nameof(IsEnabled), typeof(bool), typeof(ScreenCaptureBehavior), new PropertyMetadata(true, OnIsEnabledChanged));
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

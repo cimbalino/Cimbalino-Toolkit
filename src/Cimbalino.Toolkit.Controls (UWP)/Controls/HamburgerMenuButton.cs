@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="IconProperty" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(IconElement), typeof(HamburgerMenuButton), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Icon), typeof(IconElement), typeof(HamburgerMenuButton), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the visibility of the label.
@@ -57,7 +57,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="LabelVisibility" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty LabelVisibilityProperty =
-            DependencyProperty.Register("LabelVisibility", typeof(Visibility), typeof(HamburgerMenuButton), new PropertyMetadata(Visibility.Visible));
+            DependencyProperty.Register(nameof(LabelVisibility), typeof(Visibility), typeof(HamburgerMenuButton), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
         /// Gets or sets the navigation source page type.
@@ -73,7 +73,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="NavigationSourcePageType" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty NavigationSourcePageTypeProperty =
-            DependencyProperty.Register("NavigationSourcePageType", typeof(Type), typeof(HamburgerMenuButton), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(NavigationSourcePageType), typeof(Type), typeof(HamburgerMenuButton), new PropertyMetadata(null));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HamburgerMenuButton" /> class.

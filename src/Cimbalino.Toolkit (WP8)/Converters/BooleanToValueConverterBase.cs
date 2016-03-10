@@ -44,7 +44,7 @@ namespace Cimbalino.Toolkit.Converters
         /// Identifier for the <see cref="TrueValue" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty TrueValueProperty =
-            DependencyProperty.Register("TrueValue", typeof(T), typeof(BooleanToValueConverterBase<T>), new PropertyMetadata(default(T)));
+            DependencyProperty.Register(nameof(TrueValue), typeof(T), typeof(BooleanToValueConverterBase<T>), new PropertyMetadata(default(T)));
 
         /// <summary>
         /// Gets or sets the value to return if false.
@@ -60,7 +60,7 @@ namespace Cimbalino.Toolkit.Converters
         /// Identifier for the <see cref="FalseValue" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty FalseValueProperty =
-            DependencyProperty.Register("FalseValue", typeof(T), typeof(BooleanToValueConverterBase<T>), new PropertyMetadata(default(T)));
+            DependencyProperty.Register(nameof(FalseValue), typeof(T), typeof(BooleanToValueConverterBase<T>), new PropertyMetadata(default(T)));
 
         /// <summary>
         /// Converts a <see cref="bool"/> value to a a value of the specified type.

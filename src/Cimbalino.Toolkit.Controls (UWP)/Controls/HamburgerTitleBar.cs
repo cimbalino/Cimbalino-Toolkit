@@ -48,7 +48,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="Title" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(HamburgerTitleBar), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Title), typeof(string), typeof(HamburgerTitleBar), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the visibility of the menu button.
@@ -64,7 +64,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="MenuButtonVisibility" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty MenuButtonVisibilityProperty =
-            DependencyProperty.Register("MenuButtonVisibility", typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Visible));
+            DependencyProperty.Register(nameof(MenuButtonVisibility), typeof(Visibility), typeof(HamburgerTitleBar), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HamburgerTitleBar" /> class.

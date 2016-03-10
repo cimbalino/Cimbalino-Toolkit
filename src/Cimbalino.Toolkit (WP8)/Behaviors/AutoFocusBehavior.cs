@@ -86,7 +86,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="CycleNavigation" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty CycleNavigationProperty =
-            DependencyProperty.Register("CycleNavigation", typeof(bool), typeof(AutoFocusBehavior), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(CycleNavigation), typeof(bool), typeof(AutoFocusBehavior), new PropertyMetadata(false));
 
         /// <summary>
         /// Gets or sets a value indicating whether the entire contents of a control will be selected on focus.
@@ -102,7 +102,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="SelectAllOnFocus" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty SelectAllOnFocusProperty =
-            DependencyProperty.Register("SelectAllOnFocus", typeof(bool), typeof(AutoFocusBehavior), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(SelectAllOnFocus), typeof(bool), typeof(AutoFocusBehavior), new PropertyMetadata(false));
 
         /// <summary>
         /// Gets or sets the command to invoke when the focus moves from one control to the next.
@@ -118,7 +118,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="AfterAutoFocusCommand" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty AfterAutoFocusCommandProperty =
-            DependencyProperty.Register("AfterAutoFocusCommand", typeof(ICommand), typeof(AutoFocusBehavior), null);
+            DependencyProperty.Register(nameof(AfterAutoFocusCommand), typeof(ICommand), typeof(AutoFocusBehavior), null);
 
         private void AssociatedObjectKeyUp(object sender, KeyRoutedEventArgs e)
         {

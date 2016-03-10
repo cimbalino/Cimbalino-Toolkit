@@ -39,6 +39,6 @@ namespace Cimbalino.Toolkit.Helpers
         /// Identifier for the <see cref="Source" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Source", typeof(FrameworkElement), typeof(NamescopeBinding), null);
+            DependencyProperty.Register(nameof(Source), typeof(FrameworkElement), typeof(NamescopeBinding), null);
     }
 }

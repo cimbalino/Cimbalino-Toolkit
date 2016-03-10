@@ -68,7 +68,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="MenuItems" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty MenuItemsProperty =
-            DependencyProperty.Register("MenuItems", typeof(ApplicationBarMenuItemCollection), typeof(ApplicationBar), null);
+            DependencyProperty.Register(nameof(MenuItems), typeof(ApplicationBarMenuItemCollection), typeof(ApplicationBar), null);
 
         /// <summary>
         /// Gets the list of the buttons that appear on the Application Bar.
@@ -91,7 +91,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Buttons" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ButtonsProperty =
-            DependencyProperty.Register("Buttons", typeof(ApplicationBarIconButtonCollection), typeof(ApplicationBar), null);
+            DependencyProperty.Register(nameof(Buttons), typeof(ApplicationBarIconButtonCollection), typeof(ApplicationBar), null);
 
         /// <summary>
         /// Gets or sets the background color of the Application Bar.
@@ -114,7 +114,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="BackgroundColor" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundColorProperty =
-            DependencyProperty.Register("BackgroundColor", typeof(Color), typeof(ApplicationBar), new PropertyMetadata(OnBackgroundColorChanged));
+            DependencyProperty.Register(nameof(BackgroundColor), typeof(Color), typeof(ApplicationBar), new PropertyMetadata(OnBackgroundColorChanged));
 
         /// <summary>
         /// Called after the background color of the ApplicationBar is changed.
@@ -147,7 +147,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="ForegroundColor" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundColorProperty =
-            DependencyProperty.Register("ForegroundColor", typeof(Color), typeof(ApplicationBar), new PropertyMetadata(OnForegroundColorChanged));
+            DependencyProperty.Register(nameof(ForegroundColor), typeof(Color), typeof(ApplicationBar), new PropertyMetadata(OnForegroundColorChanged));
 
         /// <summary>
         /// Called after the foreground color of the ApplicationBar is changed.
@@ -180,7 +180,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="IsMenuEnabled" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsMenuEnabledProperty =
-            DependencyProperty.Register("IsMenuEnabled", typeof(bool), typeof(ApplicationBar), new PropertyMetadata(true, OnIsMenuEnabledChanged));
+            DependencyProperty.Register(nameof(IsMenuEnabled), typeof(bool), typeof(ApplicationBar), new PropertyMetadata(true, OnIsMenuEnabledChanged));
 
         /// <summary>
         /// Called after the menu enabled state of the Application Bar is changed.
@@ -207,7 +207,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="IsVisible" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsVisibleProperty =
-            DependencyProperty.Register("IsVisible", typeof(bool), typeof(ApplicationBar), new PropertyMetadata(true, OnIsVisibleChanged));
+            DependencyProperty.Register(nameof(IsVisible), typeof(bool), typeof(ApplicationBar), new PropertyMetadata(true, OnIsVisibleChanged));
 
         /// <summary>
         /// Called after the visible state of the Application Bar is changed.
@@ -239,7 +239,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Mode" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ModeProperty =
-            DependencyProperty.Register("Mode", typeof(ApplicationBarMode), typeof(ApplicationBar), new PropertyMetadata(ApplicationBarMode.Default, OnModeChanged));
+            DependencyProperty.Register(nameof(Mode), typeof(ApplicationBarMode), typeof(ApplicationBar), new PropertyMetadata(ApplicationBarMode.Default, OnModeChanged));
 
         /// <summary>
         /// Called after the size of the ApplicationBar is changed.
@@ -272,7 +272,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Opacity" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty OpacityProperty =
-            DependencyProperty.Register("Opacity", typeof(double), typeof(ApplicationBar), new PropertyMetadata(1.0, OnOpacityChanged));
+            DependencyProperty.Register(nameof(Opacity), typeof(double), typeof(ApplicationBar), new PropertyMetadata(1.0, OnOpacityChanged));
 
         /// <summary>
         /// Called after the opacity of the ApplicationBar is changed.
@@ -299,7 +299,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="StateChangedCommand" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty StateChangedCommandProperty =
-            DependencyProperty.Register("StateChangedCommand", typeof(ICommand), typeof(ApplicationBar), null);
+            DependencyProperty.Register(nameof(StateChangedCommand), typeof(ICommand), typeof(ApplicationBar), null);
 
         private void ApplicationBarStateChanged(object sender, ApplicationBarStateChangedEventArgs e)
         {

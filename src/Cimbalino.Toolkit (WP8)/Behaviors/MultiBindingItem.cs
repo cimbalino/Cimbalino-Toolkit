@@ -39,7 +39,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="Value" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(object), typeof(MultiBindingItem), new PropertyMetadata(null, OnValueChanged));
+            DependencyProperty.Register(nameof(Value), typeof(object), typeof(MultiBindingItem), new PropertyMetadata(null, OnValueChanged));
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

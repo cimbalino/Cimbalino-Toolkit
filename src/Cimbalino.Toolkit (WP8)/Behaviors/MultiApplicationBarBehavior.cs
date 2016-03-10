@@ -73,7 +73,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="ApplicationBars" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty ApplicationBarsProperty =
-            DependencyProperty.Register("ApplicationBars", typeof(ApplicationBarCollection), typeof(MultiApplicationBarBehavior), null);
+            DependencyProperty.Register(nameof(ApplicationBars), typeof(ApplicationBarCollection), typeof(MultiApplicationBarBehavior), null);
 
         /// <summary>
         /// Gets or sets the index of the selected Application Bar.
@@ -90,7 +90,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="SelectedIndex" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty SelectedIndexProperty =
-            DependencyProperty.Register("SelectedIndex", typeof(int), typeof(MultiApplicationBarBehavior), new PropertyMetadata(-1, OnSelectedIndexChanged));
+            DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(MultiApplicationBarBehavior), new PropertyMetadata(-1, OnSelectedIndexChanged));
 
         /// <summary>
         /// Called after the index of the selected Application Bar is changed.
@@ -119,7 +119,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// Identifier for the <see cref="IsVisible" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsVisibleProperty =
-            DependencyProperty.Register("Visible", typeof(bool), typeof(MultiApplicationBarBehavior), new PropertyMetadata(true, OnIsVisibleChanged));
+            DependencyProperty.Register(nameof(IsVisible), typeof(bool), typeof(MultiApplicationBarBehavior), new PropertyMetadata(true, OnIsVisibleChanged));
 
         internal ApplicationBar SelectedItem
         {
