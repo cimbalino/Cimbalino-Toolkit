@@ -246,6 +246,9 @@
         <Setter Property="PaneBackground" Value="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" />
         <Setter Property="OpenPaneLength" Value="{ThemeResource SplitViewOpenPaneThemeLength}" />
         <Setter Property="CompactPaneLength" Value="{ThemeResource SplitViewCompactPaneThemeLength}" />
+        <Setter Property="VisualStateNarrowMinWidth" Value="0" />
+        <Setter Property="VisualStateNormalMinWidth" Value="521" />
+        <Setter Property="VisualStateWideMinWidth" Value="1200" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:HamburgerFrame">

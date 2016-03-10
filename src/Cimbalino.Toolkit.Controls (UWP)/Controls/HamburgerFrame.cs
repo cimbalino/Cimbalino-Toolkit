@@ -79,7 +79,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="VisualStateNormalMinWidth" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty VisualStateNormalMinWidthProperty =
-            DependencyProperty.Register(nameof(VisualStateNormalMinWidth), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(521));
+            DependencyProperty.Register(nameof(VisualStateNormalMinWidth), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(0));
 
         /// <summary>
         /// Gets or sets the minimal window width at which the hamburger frame will use a wide style.
@@ -95,7 +95,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="VisualStateWideMinWidth" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty VisualStateWideMinWidthProperty =
-            DependencyProperty.Register(nameof(VisualStateWideMinWidth), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(1200));
+            DependencyProperty.Register(nameof(VisualStateWideMinWidth), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(0));
 
         /// <summary>
         /// Gets or sets a value that specifies how the pane and content areas of the internal <see cref="SplitView"/> are shown.
@@ -127,7 +127,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="OpenPaneLength" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty OpenPaneLengthProperty =
-            DependencyProperty.Register(nameof(OpenPaneLength), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(320));
+            DependencyProperty.Register(nameof(OpenPaneLength), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(0));
 
         /// <summary>
         /// Gets or sets the width of the internal <see cref="SplitView"/> pane when it's compact.
@@ -143,7 +143,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="CompactPaneLength" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty CompactPaneLengthProperty =
-            DependencyProperty.Register(nameof(CompactPaneLength), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(48));
+            DependencyProperty.Register(nameof(CompactPaneLength), typeof(double), typeof(HamburgerFrame), new PropertyMetadata(0));
 
         /// <summary>
         /// Gets or sets a value indicating whether the internal <see cref="SplitView"/> pane is expanded to its full width.
