@@ -333,6 +333,8 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Compression\CompressionExtensions.cs">
       <Link>Compression\CompressionExtensions.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Helpers\WeakEventSubscription{T1,T2}.cs">
+      <Link>Helpers\WeakEventSubscription{T1,T2}.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\CoreDispatcherExtensions.cs">
       <Link>Extensions\CoreDispatcherExtensions.cs</Link>

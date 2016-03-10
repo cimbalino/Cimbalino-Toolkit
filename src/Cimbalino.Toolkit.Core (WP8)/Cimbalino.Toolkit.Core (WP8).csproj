@@ -311,6 +311,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\WindowsStoreServiceAppScreenshotNode.cs">
       <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28UWP%29\Helpers\WeakEventSubscription{T1,T2}.cs">
+      <Link>Helpers\WeakEventSubscription{T1,T2}.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core (Portable)\compression\Adler32.generated.cs">
       <Link>Compression\Adler32.generated.cs</Link>
     </Compile>
