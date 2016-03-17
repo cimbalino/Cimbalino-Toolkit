@@ -120,12 +120,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Extensions\FilePickerExtensions.cs">
-      <Link>Extensions\FilePickerExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\FilePickerService.cs">
-      <Link>Services\FilePickerService.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Behaviors\AfterAutoFocusEventArgs.cs">
       <Link>Behaviors\AfterAutoFocusEventArgs.cs</Link>
     </Compile>
@@ -212,6 +206,12 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\EmailComposeService.cs">
       <Link>Services\EmailComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\FilePickerService.cs">
+      <Link>Services\FilePickerService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\FilePickerServiceExtensions.cs">
+      <Link>Services\FilePickerServiceExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\LauncherService.cs">
       <Link>Services\LauncherService.cs</Link>

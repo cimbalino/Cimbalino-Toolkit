@@ -188,11 +188,17 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\DeviceStatusServicePowerSource.cs">
       <Link>Services\DeviceStatusServicePowerSource.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerOptions.cs">
-      <Link>Services\FilePickerOptions.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceFileResult.cs">
+      <Link>Services\FilePickerServiceFileResult.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerResult.cs">
-      <Link>Services\FilePickerResult.cs</Link>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceLocationId.cs">
+      <Link>Services\FilePickerServiceLocationId.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceOptions.cs">
+      <Link>Services\FilePickerServiceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceViewMode.cs">
+      <Link>Services\FilePickerServiceViewMode.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IApplicationManifestService.cs">
       <Link>Services\IApplicationManifestService.cs</Link>

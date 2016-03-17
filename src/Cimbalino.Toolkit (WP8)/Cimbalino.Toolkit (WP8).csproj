@@ -92,12 +92,6 @@
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Extensions\FilePickerExtensions.cs">
-      <Link>Extensions\FilePickerExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Services\FilePickerService.cs">
-      <Link>Services\FilePickerService.cs</Link>
-    </Compile>
     <Compile Include="Behaviors\AfterAutoFocusEventArgs.cs" />
     <Compile Include="Behaviors\ApplicationBar.cs" />
     <Compile Include="Behaviors\ApplicationBarBehavior.cs" />
@@ -141,6 +135,8 @@
     <Compile Include="Services\DeviceStatusWithKeyboardService.cs" />
     <Compile Include="Services\DisplayPropertiesService.cs" />
     <Compile Include="Services\EmailComposeService.cs" />
+    <Compile Include="Services\FilePickerService.cs" />
+    <Compile Include="Services\FilePickerServiceExtensions.cs" />
     <Compile Include="Services\LauncherService.cs" />
     <Compile Include="Services\LockScreenWithRequestService.cs" />
     <Compile Include="Services\MapManagerService.cs" />

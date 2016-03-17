@@ -96,8 +96,10 @@
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
-    <Compile Include="Services\FilePickerOptions.cs" />
-    <Compile Include="Services\FilePickerResult.cs" />
+    <Compile Include="Services\FilePickerServiceLocationId.cs" />
+    <Compile Include="Services\FilePickerServiceOptions.cs" />
+    <Compile Include="Services\FilePickerServiceFileResult.cs" />
+    <Compile Include="Services\FilePickerServiceViewMode.cs" />
     <Compile Include="Services\IClipboardService.cs" />
     <Compile Include="Services\IDispatcherService.cs" />
     <Compile Include="Services\IFilePickerService.cs" />
