@@ -186,9 +186,6 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\EmailComposeService.cs">
       <Link>Services\EmailComposeService.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\FilePickerService.cs">
-      <Link>Services\FilePickerService.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\FilePickerServiceExtensions.cs">
       <Link>Services\FilePickerServiceExtensions.cs</Link>
     </Compile>
@@ -221,6 +218,7 @@
     </Compile>
     <Compile Include="Behaviors\Behavior{T}.cs" />
     <Compile Include="Behaviors\Behavior.cs" />
+    <Compile Include="Services\FilePickerService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Helpers\DependencyObjectCollection{T}.cs" />
     <Compile Include="Services\StatusBarService.cs" />
