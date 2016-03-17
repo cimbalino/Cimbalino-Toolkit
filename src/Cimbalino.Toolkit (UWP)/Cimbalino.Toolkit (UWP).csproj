@@ -223,6 +223,12 @@
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\EmailComposeService.cs">
       <Link>Services\EmailComposeService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\FilePickerService.cs">
+      <Link>Services\FilePickerService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Services\FilePickerServiceExtensions.cs">
+      <Link>Services\FilePickerServiceExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\LauncherService.cs">
       <Link>Services\LauncherService.cs</Link>
     </Compile>

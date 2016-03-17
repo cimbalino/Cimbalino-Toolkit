@@ -286,6 +286,18 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\DeviceStatusServicePowerSource.cs">
       <Link>Services\DeviceStatusServicePowerSource.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceFileResult.cs">
+      <Link>Services\FilePickerServiceFileResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceLocationId.cs">
+      <Link>Extensions\FilePickerServiceLocationId.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceOptions.cs">
+      <Link>Services\FilePickerServiceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\FilePickerServiceViewMode.cs">
+      <Link>Extensions\FilePickerServiceViewMode.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IApplicationManifestService.cs">
       <Link>Services\IApplicationManifestService.cs</Link>
     </Compile>
@@ -315,6 +327,9 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IEmailComposeService.cs">
       <Link>Services\IEmailComposeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IFilePickerService.cs">
+      <Link>Services\IFilePickerService.cs</Link>
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\ILauncherService.cs">
       <Link>Services\ILauncherService.cs</Link>
