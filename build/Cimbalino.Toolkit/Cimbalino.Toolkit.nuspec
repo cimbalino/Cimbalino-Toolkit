@@ -10,9 +10,6 @@
     <projectUrl>http://cimbalino.org</projectUrl>
     <licenseUrl>https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/LICENSE.txt</licenseUrl>
     <iconUrl>https://github.com/Cimbalino/Cimbalino-Toolkit/raw/master/Cimbalino.Toolkit.png</iconUrl>
-    <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework="wp8" />
-    </frameworkAssemblies>
     <dependencies>
       <group>
         <dependency id="Cimbalino.Toolkit.Core" version="$version$" />
