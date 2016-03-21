@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;

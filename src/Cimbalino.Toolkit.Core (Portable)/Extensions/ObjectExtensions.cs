@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Linq;
 using System.Reflection;
@@ -105,7 +105,7 @@ namespace Cimbalino.Toolkit.Extensions
             return (TObject)t.GetRuntimeMethod(methodName, argumentTypes).Invoke(obj, args);
         }
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         /// <summary>
         /// Adds an event handler to an event source.
         /// </summary>

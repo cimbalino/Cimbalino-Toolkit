@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Windows.Controls;
 using System.Windows.Interactivity;
 #elif WINDOWS_UWP

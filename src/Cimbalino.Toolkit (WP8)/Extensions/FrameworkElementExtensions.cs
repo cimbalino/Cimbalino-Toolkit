@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Linq;
 using System.Windows;
 using System.Windows.Interactivity;
@@ -47,7 +47,7 @@ namespace Cimbalino.Toolkit.Extensions
             return Interaction.GetBehaviors(frameworkElement);
         }
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         /// <summary>
         /// Returns the <see cref="TriggerCollection"/> associated with the framework element.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Cimbalino.Toolkit.Extensions
             return null;
         }
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         /// <summary>
         /// Returns the <see cref="TriggerBase"/> attached to the framework element with the specified type.
         /// </summary>

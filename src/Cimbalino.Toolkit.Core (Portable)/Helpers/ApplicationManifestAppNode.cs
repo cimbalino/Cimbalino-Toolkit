@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Xml;
 using Cimbalino.Toolkit.Extensions;
 #endif
@@ -136,7 +136,7 @@ namespace Cimbalino.Toolkit.Helpers
 
         #endregion
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         internal static ApplicationManifestAppNode ParseXml(XmlReader reader)
         {
             var node = new ApplicationManifestAppNode()

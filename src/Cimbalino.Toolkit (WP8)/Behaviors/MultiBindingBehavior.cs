@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Globalization;
 using System.Reflection;
@@ -34,7 +34,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that enables multiple binding.
     /// </summary>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
     [ContentProperty("Items")]
 #else
     [ContentProperty(Name = "Items")]
@@ -90,7 +90,7 @@ namespace Cimbalino.Toolkit.Behaviors
         public static readonly DependencyProperty ConverterProperty =
             DependencyProperty.Register(nameof(Converter), typeof(IValueConverter), typeof(MultiBindingBehavior), new PropertyMetadata(null, OnPropertyChanged));
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         /// <summary>
         /// Gets or sets the <see cref="CultureInfo"/> object that applies to the converter.
         /// </summary>
@@ -180,7 +180,7 @@ namespace Cimbalino.Toolkit.Behaviors
             {
                 var propertyNameParts = targetProperty.Split('.');
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 targetType = Type.GetType(string.Format("System.Windows.Controls.{0}, System.Windows",
                     propertyNameParts[0]));
 #else
@@ -195,7 +195,7 @@ namespace Cimbalino.Toolkit.Behaviors
                 targetType = AssociatedObject.GetType();
             }
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             var targetDependencyPropertyField = targetType.GetField(targetProperty + "Property", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 #else
             PropertyInfo targetDependencyPropertyField = null;
@@ -216,7 +216,7 @@ namespace Cimbalino.Toolkit.Behaviors
                 Path = new PropertyPath("Value"),
                 Source = Items,
                 Converter = Converter,
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 ConverterCulture = ConverterCulture,
 #endif
                 ConverterParameter = ConverterParameter,

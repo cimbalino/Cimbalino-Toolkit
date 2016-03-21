@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using Microsoft.Devices;
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
@@ -53,7 +53,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="duration">The duration (from 0 to 5000 milliseconds) for which the device vibrates.</param>
         public virtual void Vibrate(TimeSpan duration)
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             VibrateController.Default.Start(duration);
 #elif WINDOWS_PHONE_APP 
             VibrationDevice.GetDefault().Vibrate(duration);
@@ -72,7 +72,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void Cancel()
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             VibrateController.Default.Stop();
 #elif WINDOWS_PHONE_APP
             VibrationDevice.GetDefault().Cancel();

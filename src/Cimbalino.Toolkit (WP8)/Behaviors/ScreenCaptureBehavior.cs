@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Interactivity;
@@ -31,7 +31,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that controls the screen capture feature on Windows Phone.
     /// </summary>
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE || WINDOWS_PHONE_81
     [TypeConstraint(typeof(Page))]
 #endif
     public class ScreenCaptureBehavior : Behavior<Page>
@@ -71,7 +71,7 @@ namespace Cimbalino.Toolkit.Behaviors
 
         private void Update()
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             if (DesignerProperties.IsInDesignTool || AssociatedObject == null)
             {
                 return;

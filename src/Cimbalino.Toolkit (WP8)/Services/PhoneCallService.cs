@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Threading.Tasks;
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP
@@ -54,7 +54,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="displayName">The display name.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual Task ShowAsync(string phoneNumber, string displayName)
         {
             new PhoneCallTask()

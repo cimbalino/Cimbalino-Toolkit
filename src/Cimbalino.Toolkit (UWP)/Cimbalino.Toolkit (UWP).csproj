@@ -250,11 +250,11 @@
     <Compile Include="..\cimbalino.toolkit %28wp8%29\services\VibrationService.cs">
       <Link>Services\VibrationService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP81%29\Services\FilePickerService.cs">
+      <Link>Services\FilePickerService.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit %28wpa81%29\helpers\DependencyObjectCollection{T}.cs">
       <Link>Helpers\DependencyObjectCollection{T}.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WPA81%29\Services\FilePickerService.cs">
-      <Link>Services\FilePickerService.cs</Link>
     </Compile>
     <Compile Include="..\cimbalino.toolkit %28wpa81%29\services\NavigationService.cs">
       <Link>Services\NavigationService.cs</Link>

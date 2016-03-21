@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,7 +36,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="text">The message to display.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual Task ShowAsync(string text)
         {
             MessageBox.Show(text);
@@ -58,7 +58,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The message to display.</param>
         /// <param name="caption">The title of the message box.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual Task ShowAsync(string text, string caption)
         {
             MessageBox.Show(text, caption, MessageBoxButton.OK);
@@ -81,7 +81,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="caption">The title of the message box.</param>
         /// <param name="buttons">The captions for message box buttons. The maximum number of buttons is two.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons)
         {
             var taskCompletionSource = new TaskCompletionSource<int>();

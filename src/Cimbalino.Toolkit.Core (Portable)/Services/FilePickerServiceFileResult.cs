@@ -16,7 +16,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-#elif WINDOWS_PHONE
+#elif WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.IO;
 using System.Threading.Tasks;

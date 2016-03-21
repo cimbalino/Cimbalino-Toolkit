@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Reflection;
 using System.Windows;
@@ -46,7 +46,7 @@ namespace Cimbalino.Toolkit.Behaviors
 
             if (behaviorCollection == null)
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 behaviorCollection = (BehaviorCollection)typeof(BehaviorCollection)
                     .GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null)
                     .Invoke(null);
@@ -83,7 +83,7 @@ namespace Cimbalino.Toolkit.Behaviors
 
             if (oldBehaviorCollection != null)
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 var associatedObject = typeof(BehaviorCollection)
                     .GetProperty("AssociatedObject", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
                     .GetValue(oldBehaviorCollection);

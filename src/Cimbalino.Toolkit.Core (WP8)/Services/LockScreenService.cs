@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -38,7 +38,7 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class LockScreenService : ILockScreenService
     {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         private const string LockScreenImageUrlNormal = "ms-appdata:///Local/shared/shellcontent/MBWallpaper.png";
         private const string LockScreenImageUrlAlternative = "ms-appdata:///Local/shared/shellcontent/MBWallpaper2.png";
         private const string LockScreenFileNormal = "shared\\shellcontent\\MBWallpaper.png";
@@ -88,7 +88,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="stream">The file stream.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual async Task SetLockScreenAsync(Stream stream)
         {
             using (var fileStream = await StorageService.LocalStorageServiceHandlerStatic.CreateFileAsync(LockScreenFile).ConfigureAwait(false))
@@ -124,7 +124,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The file URI.</returns>
         public virtual Uri GetCurrentLockScreenUri()
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             return new Uri(LockScreenImageUrl, UriKind.Absolute);
 #elif WINDOWS_APP
             return LockScreen.OriginalImageFile;

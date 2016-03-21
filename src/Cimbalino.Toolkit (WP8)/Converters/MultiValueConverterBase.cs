@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Globalization;
 using System.Windows;
@@ -51,7 +51,7 @@ namespace Cimbalino.Toolkit.Converters
         /// <param name="culture">The culture of the conversion.</param>
         public abstract object[] ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture);
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Convert((object[])value, targetType, parameter, culture);

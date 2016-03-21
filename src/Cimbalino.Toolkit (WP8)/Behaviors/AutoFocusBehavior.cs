@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that enables automatic control focus.
     /// </summary>
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE || WINDOWS_PHONE_81
     [TypeConstraint(typeof(FrameworkElement))]
 #endif
     public class AutoFocusBehavior : Behavior<FrameworkElement>
@@ -155,7 +155,7 @@ namespace Cimbalino.Toolkit.Behaviors
 
                 if (page != null)
                 {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                     page.Focus();
 #else
                     page.Focus(FocusState.Programmatic);
@@ -164,7 +164,7 @@ namespace Cimbalino.Toolkit.Behaviors
             }
             else
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 toControl.Focus();
 #else
                 toControl.Focus(FocusState.Programmatic);

@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Threading.Tasks;
 using Windows.Phone.System.UserProfile;
@@ -41,7 +41,7 @@ namespace Cimbalino.Toolkit.Services
         {
             return ExceptionHelper.ThrowNotSupported<Task<LockScreenServiceRequestResult>>();
         }
-#elif WINDOWS_PHONE
+#elif WINDOWS_PHONE || WINDOWS_PHONE_81
         public override async Task<LockScreenServiceRequestResult> RequestAccessAsync()
         {
             var result = await LockScreenManager.RequestAccessAsync();

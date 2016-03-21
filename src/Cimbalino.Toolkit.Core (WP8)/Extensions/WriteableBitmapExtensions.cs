@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.IO;
 using System.Linq;
@@ -37,7 +37,7 @@ namespace Cimbalino.Toolkit.Extensions
     /// </summary>
     public static class WriteableBitmapExtensions
     {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         private const string PngChunkTypeHeader = "IHDR";
         private const string PngChunkTypePhysical = "pHYs";
         ////private const string PngChunkTypeGamma = "gAMA";
@@ -63,7 +63,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="writeableBitmap">The writeable bitmap.</param>
         /// <param name="outputStream">The image data stream.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public static Task SavePngAsync(this WriteableBitmap writeableBitmap, Stream outputStream)
         {
             WriteHeader(outputStream, writeableBitmap);
@@ -99,7 +99,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="outputStream">The image data stream.</param>
         /// <param name="quality">This parameter represents the quality of the JPEG photo with a range between 0 and 100, with 100 being the best photo quality. We recommend that you do not fall lower than a value of 70. because JPEG picture quality diminishes significantly below that level. </param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public static Task SaveJpegAsync(this WriteableBitmap writeableBitmap, Stream outputStream, int quality)
         {
             writeableBitmap.SaveJpeg(outputStream, writeableBitmap.PixelWidth, writeableBitmap.PixelHeight, 0, quality);
@@ -123,7 +123,7 @@ namespace Cimbalino.Toolkit.Extensions
         }
 #endif
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         private static void WriteHeader(Stream outputStream, WriteableBitmap writeableBitmap)
         {
             outputStream.Write(new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }, 0, 8);

@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,7 +33,7 @@ namespace Cimbalino.Toolkit.Behaviors
     /// <summary>
     /// The behavior that handles the Enter key press to execute a command.
     /// </summary>
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE || WINDOWS_PHONE_81
     [TypeConstraint(typeof(Control))]
 #endif
     public class EnterKeyBehavior : Behavior<Control>

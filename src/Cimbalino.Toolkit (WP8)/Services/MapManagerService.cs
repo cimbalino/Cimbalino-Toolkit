@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using Microsoft.Phone.Tasks;
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
 using Windows.Services.Maps;
@@ -32,7 +32,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void ShowDownloadedMapsUI()
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             new MapDownloaderTask().Show();
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
             MapManager.ShowDownloadedMapsUI();
@@ -46,7 +46,7 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void ShowMapsUpdateUI()
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             new MapUpdaterTask().Show();
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
             MapManager.ShowMapsUpdateUI();

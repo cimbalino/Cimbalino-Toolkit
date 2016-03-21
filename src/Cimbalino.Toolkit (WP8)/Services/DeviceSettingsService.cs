@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP
+#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
@@ -511,7 +511,7 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_APP || WINDOWS_UWP
+#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP || WINDOWS_UWP
         private async Task LaunchUrlAsync(string url)
         {
             await Launcher.LaunchUriAsync(new Uri(url, UriKind.Absolute));

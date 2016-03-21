@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -128,7 +128,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="content">The text content that is stored in the clipboard.</param>
         public virtual void SetText(string content)
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             Clipboard.SetText(content);
 #else
             ExceptionHelper.ThrowNotSupported();

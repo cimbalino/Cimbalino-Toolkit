@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Windows;
 using Microsoft.Phone.Info;
@@ -48,6 +48,10 @@ namespace Cimbalino.Toolkit.Services
             {
 #if WINDOWS_PHONE
                 return DisplayProperties.LogicalDpi;
+#elif WINDOWS_PHONE_81
+#pragma warning disable 0618
+                return DisplayProperties.LogicalDpi;
+#pragma warning restore 0618
 #else
                 return DisplayInformation.GetForCurrentView().LogicalDpi;
 #endif
@@ -62,7 +66,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 object value;
 
                 if (DeviceExtendedProperties.TryGetValue("RawDpiX", out value))
@@ -85,7 +89,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 object value;
 
                 if (DeviceExtendedProperties.TryGetValue("RawDpiY", out value))
@@ -108,7 +112,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 return new Rect(0, 0, Application.Current.Host.Content.ActualWidth, Application.Current.Host.Content.ActualHeight);
 #else
                 var bounds = Window.Current.Bounds;
@@ -126,7 +130,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 object value;
 
                 if (DeviceExtendedProperties.TryGetValue("PhysicalScreenResolution", out value))
@@ -180,7 +184,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 return 1.0;
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
                 return DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;

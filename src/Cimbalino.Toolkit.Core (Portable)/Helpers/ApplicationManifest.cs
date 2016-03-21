@@ -12,7 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Windows;
 using System.Xml;
@@ -26,7 +26,7 @@ namespace Cimbalino.Toolkit.Helpers
     /// </summary>
     public class ApplicationManifest
     {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         private const string AppManifestName = "WMAppManifest.xml";
 
         private static ApplicationManifest _current;
@@ -42,7 +42,7 @@ namespace Cimbalino.Toolkit.Helpers
         {
             get
             {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
                 if (_current == null)
                 {
                     var appManifestResourceInfo = Application.GetResourceStream(new Uri(AppManifestName, UriKind.Relative));
@@ -95,7 +95,7 @@ namespace Cimbalino.Toolkit.Helpers
 
         #endregion
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
         internal static ApplicationManifest ParseXml(XmlReader reader)
         {
             reader.MoveToContent();
