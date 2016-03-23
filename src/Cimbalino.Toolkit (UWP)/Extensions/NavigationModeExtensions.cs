@@ -1,5 +1,5 @@
 ﻿using Cimbalino.Toolkit.Navigation;
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using DeviceNavigationMode = System.Windows.Navigation.NavigationMode;
 #else
 using DeviceNavigationMode = Windows.UI.Xaml.Navigation.NavigationMode;
@@ -7,8 +7,16 @@ using DeviceNavigationMode = Windows.UI.Xaml.Navigation.NavigationMode;
 
 namespace Cimbalino.Toolkit.Extensions
 {
+    /// <summary>
+    /// Extension method for Navigation Mode enum
+    /// </summary>
     public static class NavigationModeExtensions
     {
+        /// <summary>
+        /// To the navigation mode.
+        /// </summary>
+        /// <param name="mode">The mode.</param>
+        /// <returns>The correct navigation mode</returns>
         public static NavigationMode ToNavigationMode(this DeviceNavigationMode mode)
         {
             var result = NavigationMode.New;
