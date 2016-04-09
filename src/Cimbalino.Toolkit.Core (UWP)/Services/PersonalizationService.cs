@@ -18,7 +18,7 @@ using Cimbalino.Toolkit.Services;
 using Windows.Storage;
 using Windows.System.UserProfile;
 
-namespace Cimbalino.Toolkit.Core.Services
+namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
     /// Represents an implementation of the <see cref="IPersonalizationService"/>.

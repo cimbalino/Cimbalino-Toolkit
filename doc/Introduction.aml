@@ -26,6 +26,11 @@
               <linkUri>https://www.nuget.org/packages/Cimbalino.Toolkit</linkUri>
               <linkTarget>_blank</linkTarget>
             </externalLink> - The main component of the toolkit</listItem>
+          <listItem><externalLink>
+              <linkText>Cimbalino.Toolkit.Controls</linkText>
+              <linkUri>https://www.nuget.org/packages/Cimbalino.Toolkit.Controls</linkUri>
+              <linkTarget>_blank</linkTarget>
+            </externalLink> - The controls library of the toolkit</listItem>
         </list>
       </content>
     </section>

@@ -13,7 +13,6 @@
 // ****************************************************************************
 
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Cimbalino.Toolkit.Controls")]
@@ -29,4 +28,3 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("2.2.1.0")]
 
 [assembly: ComVisible(false)]
-[assembly: InternalsVisibleTo("Cimbalino.Toolkit")]

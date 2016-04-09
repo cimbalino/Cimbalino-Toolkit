@@ -29,6 +29,8 @@
       <DocumentationSource sourceFile="..\bin\binaries\Cimbalino.Toolkit.Core\uap10.0\Cimbalino.Toolkit.Core.xml" />
       <DocumentationSource sourceFile="..\bin\binaries\Cimbalino.Toolkit\uap10.0\Cimbalino.Toolkit.dll" />
       <DocumentationSource sourceFile="..\bin\binaries\Cimbalino.Toolkit\uap10.0\Cimbalino.Toolkit.xml" />
+      <DocumentationSource sourceFile="..\bin\binaries\Cimbalino.Toolkit.Controls\uap10.0\Cimbalino.Toolkit.Controls.dll" />
+      <DocumentationSource sourceFile="..\bin\binaries\Cimbalino.Toolkit.Controls\uap10.0\Cimbalino.Toolkit.Controls.xml" />
     </DocumentationSources>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
@@ -41,6 +43,9 @@
     <NamingMethod>MemberName</NamingMethod>
     <HelpTitle>Cimbalino Toolkit</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="Cimbalino.Toolkit.Cimbalino_Toolkit_Controls__UWP__XamlTypeInfo" isExposed="False" xmlns="" />
+    </ApiFilter>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
