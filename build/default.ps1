@@ -10,7 +10,7 @@ properties {
   
   $isAppVeyor = Test-Path -Path env:\APPVEYOR
   
-  $version = "2.2.0-beta1"
+  $version = "2.2.1"
   
   $tempDir = "$binDir\temp"
   $binariesDir = "$binDir\binaries"
@@ -25,14 +25,15 @@ properties {
   $configurations = @{
     "Portable" = @{Suffix = " (Portable)"; Folder="portable-net45+wp8+win8+wpa81"};
     "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
+    "WP81" = @{Suffix = " (WP81)"; Folder="wp81"};
     "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
     "Win81" = @{Suffix = " (Win81)"; Folder="win81"};
     "UWP" = @{Suffix = " (UWP)"; Folder="uap10.0"}
   }
   
   $projects = @(
-    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WPA81", "Win81", "UWP")},
-    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WPA81", "Win81", "UWP")},
+    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WP81", "WPA81", "Win81", "UWP")},
+    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WP81", "WPA81", "Win81", "UWP")},
     @{Name = "Cimbalino.Toolkit.Controls"; Configurations = @("UWP")}
   )
 }

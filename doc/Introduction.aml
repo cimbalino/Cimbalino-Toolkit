@@ -5,10 +5,11 @@
       <para>Cimbalino Toolkit is a set of useful and powerful tools that will help you build your Windows Platform applications.</para>
       <para>The toolkit is fully compatible with:</para>
       <list class="bullet">
-   	    <listItem>Windows Phone Silverlight 8.0 and 8.1 apps (WP8)</listItem>
+   	    <listItem>Windows Phone Silverlight 8.0 apps (WP8)</listItem>
+   	    <listItem>Windows Phone Silverlight 8.1 apps (WP81)</listItem>
    	    <listItem>Windows Phone 8.1 apps (WPA81)</listItem>
    	    <listItem>Windows Store 8.1 apps (Win81)</listItem>
-   	    <listItem>Windows 10 UWP apps (Universal Windows Platform)</listItem>
+   	    <listItem>Windows 10 UWP apps (UAP)</listItem>
    	  </list>
     </introduction>
     <section address="NuGetPackages">
@@ -25,6 +26,11 @@
               <linkUri>https://www.nuget.org/packages/Cimbalino.Toolkit</linkUri>
               <linkTarget>_blank</linkTarget>
             </externalLink> - The main component of the toolkit</listItem>
+          <listItem><externalLink>
+              <linkText>Cimbalino.Toolkit.Controls</linkText>
+              <linkUri>https://www.nuget.org/packages/Cimbalino.Toolkit.Controls</linkUri>
+              <linkTarget>_blank</linkTarget>
+            </externalLink> - The controls library of the toolkit</listItem>
         </list>
       </content>
     </section>

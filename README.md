@@ -6,20 +6,23 @@ Cimbalino Toolkit is a set of useful and powerful tools that will help you build
 
 The toolkit is fully compatible with:
 
-* Windows Phone Silverlight 8.0 and 8.1 apps (WP8)
+* Windows Phone Silverlight 8.0 apps (WP8)
+* Windows Phone Silverlight 8.1 apps (WP81)
 * Windows Phone 8.1 apps (WPA81)
 * Windows Store 8.1 apps (Win81)
-* Windows 10 UWP apps (Universal Windows Platform)
+* Windows 10 UWP apps (UAP)
 
 ## NuGet packages ![Latest stable version](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat "Latest stable version")  ![Latest pre-release version](https://img.shields.io/nuget/vpre/Cimbalino.Toolkit.svg?style=flat "Latest pre-release version")
 
 * [Cimbalino.Toolkit.Core](https://www.nuget.org/packages/Cimbalino.Toolkit.Core) - The PCL portion of the toolkit (compatible with background agents)
 * [Cimbalino.Toolkit](https://www.nuget.org/packages/Cimbalino.Toolkit) - The main component of the toolkit
+* [Cimbalino.Toolkit.Controls](https://www.nuget.org/packages/Cimbalino.Toolkit.Controls) - The controls library of the toolkit
 
 ## Getting started
 
 * [Adding the Cimbalino Toolkit NuGet to a Universal App](https://www.pedrolamas.com/2015/01/05/cimbalino-toolkit-step-by-step/)
 * [Integrating with MVVM Light Toolkit](https://www.pedrolamas.com/2015/01/26/cimbalino-toolkit-integrating-with-mvvm-light-toolkit/)
+* [Cimbalino Toolkit Hamburger controls for UWP](https://www.pedrolamas.com/2016/03/07/cimbalino-toolkit-hamburger-controls-for-uwp/)
 
 ## Getting help
 
