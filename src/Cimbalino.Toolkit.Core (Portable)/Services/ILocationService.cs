@@ -113,5 +113,32 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="timeout">The timeout.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout);
+
+        /// <summary>
+        /// Requests the access asynchronous.
+        /// </summary>
+        /// <returns>Geolocation Access Status</returns>
+        Task<GeolocationAccessStatus> RequestAccessAsync();
+    }
+
+    /// <summary>
+    /// An enum to state whether the access has been denied or allowed
+    /// </summary>
+    public enum GeolocationAccessStatus
+    {
+        /// <summary>
+        /// The access is unspecified
+        /// </summary>
+        Unspecified,
+
+        /// <summary>
+        /// The access is allowed
+        /// </summary>
+        Allowed,
+
+        /// <summary>
+        /// The access is denied
+        /// </summary>
+        Denied
     }
 }

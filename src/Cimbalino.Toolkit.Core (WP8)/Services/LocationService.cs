@@ -216,6 +216,22 @@ namespace Cimbalino.Toolkit.Services
             return position.Coordinate.ToLocationServicePosition();
         }
 
+        /// <summary>
+        /// Requests the access asynchronous.
+        /// </summary>
+        /// <returns>
+        /// Geolocation Access Status
+        /// </returns>
+        public virtual async Task<GeolocationAccessStatus> RequestAccessAsync()
+        {
+#if WINDOWS_UWP
+            var status = await Geolocator.RequestAccessAsync();
+            return status.ToGeolocationAccessStatus();
+#else
+            return GeolocationAccessStatus.Allowed;
+#endif
+        }
+
         private void GeolocatorPositionChanged(Geolocator sender, PositionChangedEventArgs args)
         {
             RaisePositionChanged(args.ToLocationServicePositionChangedEventArgs());

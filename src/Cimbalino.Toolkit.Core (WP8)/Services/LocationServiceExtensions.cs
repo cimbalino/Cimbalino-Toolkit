@@ -113,5 +113,22 @@ namespace Cimbalino.Toolkit.Services
         {
             return new LocationServiceStatusChangedEventArgs(eventArgs.Status.ToLocationServiceStatus());
         }
+
+#if WINDOWS_UWP
+        public static GeolocationAccessStatus ToGeolocationAccessStatus(this Windows.Devices.Geolocation.GeolocationAccessStatus status)
+        {
+            switch (status)
+            {
+                case Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed:
+                    return GeolocationAccessStatus.Allowed;
+                case Windows.Devices.Geolocation.GeolocationAccessStatus.Denied:
+                    return GeolocationAccessStatus.Denied;
+                case Windows.Devices.Geolocation.GeolocationAccessStatus.Unspecified:
+                    return GeolocationAccessStatus.Unspecified;
+            }
+
+            return GeolocationAccessStatus.Unspecified;
+        }
+#endif
     }
 }
