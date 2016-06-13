@@ -12,9 +12,16 @@
 // </license>
 // ****************************************************************************
 
+#if WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+#else
+using System;
+using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
+using Windows.Devices.Geolocation;
+#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -217,20 +224,22 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Requests the access asynchronous.
+        /// Requests permission to access location data.
         /// </summary>
-        /// <returns>
-        /// Geolocation Access Status
-        /// </returns>
-        public virtual async Task<GeolocationAccessStatus> RequestAccessAsync()
-        {
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
 #if WINDOWS_UWP
-            var status = await Geolocator.RequestAccessAsync();
-            return status.ToGeolocationAccessStatus();
-#else
-            return GeolocationAccessStatus.Allowed;
-#endif
+        public virtual async Task<LocationServiceRequestResult> RequestAccessAsync()
+        {
+            var result = await Geolocator.RequestAccessAsync();
+
+            return result.ToLocationServiceRequestResult();
         }
+#else
+        public virtual Task<LocationServiceRequestResult> RequestAccessAsync()
+        {
+            return ExceptionHelper.ThrowNotSupported<Task<LocationServiceRequestResult>>();
+        }
+#endif
 
         private void GeolocatorPositionChanged(Geolocator sender, PositionChangedEventArgs args)
         {

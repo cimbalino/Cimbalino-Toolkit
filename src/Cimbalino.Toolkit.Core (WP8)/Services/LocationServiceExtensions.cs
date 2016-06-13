@@ -115,19 +115,20 @@ namespace Cimbalino.Toolkit.Services
         }
 
 #if WINDOWS_UWP
-        public static GeolocationAccessStatus ToGeolocationAccessStatus(this Windows.Devices.Geolocation.GeolocationAccessStatus status)
+        public static LocationServiceRequestResult ToLocationServiceRequestResult(this GeolocationAccessStatus status)
         {
             switch (status)
             {
-                case Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed:
-                    return GeolocationAccessStatus.Allowed;
-                case Windows.Devices.Geolocation.GeolocationAccessStatus.Denied:
-                    return GeolocationAccessStatus.Denied;
-                case Windows.Devices.Geolocation.GeolocationAccessStatus.Unspecified:
-                    return GeolocationAccessStatus.Unspecified;
-            }
+                case GeolocationAccessStatus.Allowed:
+                    return LocationServiceRequestResult.Allowed;
 
-            return GeolocationAccessStatus.Unspecified;
+                case GeolocationAccessStatus.Denied:
+                case GeolocationAccessStatus.Unspecified:
+                    return LocationServiceRequestResult.Denied;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
+            }
         }
 #endif
     }

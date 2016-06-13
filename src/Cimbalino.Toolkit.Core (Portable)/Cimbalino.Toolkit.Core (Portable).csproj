@@ -100,6 +100,7 @@
     <Compile Include="Services\FilePickerServiceOptions.cs" />
     <Compile Include="Services\FilePickerServiceFileResult.cs" />
     <Compile Include="Services\FilePickerServiceViewMode.cs" />
+    <Compile Include="Services\LocationServiceRequestResult.cs" />
     <Compile Include="Services\IClipboardService.cs" />
     <Compile Include="Services\IDispatcherService.cs" />
     <Compile Include="Services\IFilePickerService.cs" />
