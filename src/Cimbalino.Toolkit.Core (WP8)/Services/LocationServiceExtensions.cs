@@ -113,5 +113,23 @@ namespace Cimbalino.Toolkit.Services
         {
             return new LocationServiceStatusChangedEventArgs(eventArgs.Status.ToLocationServiceStatus());
         }
+
+#if WINDOWS_UWP
+        public static LocationServiceRequestResult ToLocationServiceRequestResult(this GeolocationAccessStatus status)
+        {
+            switch (status)
+            {
+                case GeolocationAccessStatus.Allowed:
+                    return LocationServiceRequestResult.Allowed;
+
+                case GeolocationAccessStatus.Denied:
+                case GeolocationAccessStatus.Unspecified:
+                    return LocationServiceRequestResult.Denied;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
+            }
+        }
+#endif
     }
 }

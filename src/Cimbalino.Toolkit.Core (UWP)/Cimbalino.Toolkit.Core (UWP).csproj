@@ -400,6 +400,9 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\LocationServicePositionChangedEventArgs.cs">
       <Link>Services\LocationServicePositionChangedEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\LocationServiceRequestResult.cs">
+      <Link>Services\LocationServiceRequestResult.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\LocationServiceStatus.cs">
       <Link>Services\LocationServiceStatus.cs</Link>
     </Compile>

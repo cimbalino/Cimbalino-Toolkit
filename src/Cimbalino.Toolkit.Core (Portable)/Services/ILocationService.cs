@@ -113,5 +113,11 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="timeout">The timeout.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout);
+
+        /// <summary>
+        /// Requests permission to access location data.
+        /// </summary>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task<LocationServiceRequestResult> RequestAccessAsync();
     }
 }
