@@ -262,6 +262,7 @@
     <Compile Include="..\cimbalino.toolkit %28wpa81%29\services\StatusBarService.cs">
       <Link>Services\StatusBarService.cs</Link>
     </Compile>
+    <Compile Include="Extensions\NavigationModeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LauncherServiceExtensions.cs" />
   </ItemGroup>
