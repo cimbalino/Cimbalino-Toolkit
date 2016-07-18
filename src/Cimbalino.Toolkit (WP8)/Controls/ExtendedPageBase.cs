@@ -29,10 +29,8 @@ namespace Cimbalino.Toolkit.Controls
     /// </summary>
     public abstract class ExtendedPageBase : Page
     {
-        /// <summary>
-        /// Raises the <see cref="E:NavigatedFrom" /> event.
-        /// </summary>
-        /// <param name="e">The <see cref="NavigationEventArgs" /> instance containing the event data.</param>
+        /// <summary>Called when a page is no longer the active page in a frame.</summary>
+        /// <param name="e">An object that contains the event data.</param>
         protected override async void OnNavigatedFrom(NavigationEventArgs e)
         {
             var viewModel = DataContext as IHandleNavigatedFrom;
@@ -49,10 +47,8 @@ namespace Cimbalino.Toolkit.Controls
             base.OnNavigatedFrom(e);
         }
 
-        /// <summary>
-        /// Raises the <see cref="E:NavigatedTo" /> event.
-        /// </summary>
-        /// <param name="e">The <see cref="NavigationEventArgs" /> instance containing the event data.</param>
+        /// <summary>Called when a page becomes the active page in a frame.</summary>
+        /// <param name="e">An object that contains the event data.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             var viewModel = DataContext as IHandleNavigatedTo;

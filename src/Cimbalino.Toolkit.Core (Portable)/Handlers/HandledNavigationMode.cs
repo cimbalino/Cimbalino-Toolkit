@@ -15,7 +15,7 @@
 namespace Cimbalino.Toolkit.Handlers
 {
     /// <summary>
-    /// Navigation Mode enum
+    /// Specifies the navigation stack characteristics of a navigation.
     /// </summary>
     public enum HandledNavigationMode
     {

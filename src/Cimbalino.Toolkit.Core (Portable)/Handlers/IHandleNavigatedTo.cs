@@ -21,12 +21,10 @@ namespace Cimbalino.Toolkit.Handlers
     /// </summary>
     public interface IHandleNavigatedTo
     {
-        /// <summary>
-        /// Called when [navigated to].
-        /// </summary>
-        /// <param name="navigationMode">The navigation mode.</param>
-        /// <param name="parameter">The parameter.</param>
+        /// <summary>Called when a page is no longer the active page in a frame.</summary>
+        /// <param name="navigationMode">A value that indicates whether the navigation is forward, back, or a new navigation.</param>
+        /// <param name="parameter">Any Parameter object passed to the target page for the navigation.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        Task OnNavigatedToAsync(HandledNavigationMode navigationMode, object parameter = null);
+        Task OnNavigatedToAsync(HandledNavigationMode navigationMode, object parameter);
     }
 }
