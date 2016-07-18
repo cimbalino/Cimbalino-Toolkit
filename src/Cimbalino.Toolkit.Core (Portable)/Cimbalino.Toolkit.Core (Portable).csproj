@@ -94,9 +94,9 @@
     <Compile Include="Helpers\WeakEventSubscription.cs" />
     <Compile Include="Helpers\WeakFunc{TResult}.cs" />
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
-    <Compile Include="Navigation\INavigatedFrom.cs" />
-    <Compile Include="Navigation\INavigatedTo.cs" />
-    <Compile Include="Navigation\NavigationMode.cs" />
+    <Compile Include="Handlers\IHandleNavigatedFrom.cs" />
+    <Compile Include="Handlers\IHandleNavigatedTo.cs" />
+    <Compile Include="Handlers\HandledNavigationMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
     <Compile Include="Services\FilePickerServiceLocationId.cs" />

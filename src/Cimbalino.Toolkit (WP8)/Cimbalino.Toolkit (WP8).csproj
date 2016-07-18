@@ -92,9 +92,6 @@
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Cimbalino.Toolkit %28UWP%29\Extensions\NavigationModeExtensions.cs">
-      <Link>Extensions\NavigationModeExtensions.cs</Link>
-    </Compile>
     <Compile Include="Behaviors\AfterAutoFocusEventArgs.cs" />
     <Compile Include="Behaviors\ApplicationBar.cs" />
     <Compile Include="Behaviors\ApplicationBarBehavior.cs" />
@@ -115,6 +112,8 @@
     <Compile Include="Behaviors\ScreenCaptureBehavior.cs" />
     <Compile Include="Behaviors\UpdatePasswordBindingOnPropertyChanged.cs" />
     <Compile Include="Behaviors\UpdateTextBindingOnPropertyChanged.cs" />
+    <Compile Include="Controls\ExtendedPageBase.cs" />
+    <Compile Include="Controls\ExtendedPageBaseExtensions.cs" />
     <Compile Include="Converters\BooleanToBrushConverter.cs" />
     <Compile Include="Converters\BooleanToIntConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />

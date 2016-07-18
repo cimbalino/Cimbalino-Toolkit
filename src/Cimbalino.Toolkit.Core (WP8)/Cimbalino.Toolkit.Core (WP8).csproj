@@ -119,6 +119,15 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Size.cs">
       <Link>Foundation\Size.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\HandledNavigationMode.cs">
+      <Link>Handlers\HandledNavigationMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\IHandleNavigatedFrom.cs">
+      <Link>Handlers\IHandleNavigatedFrom.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\IHandleNavigatedTo.cs">
+      <Link>Handlers\IHandleNavigatedTo.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifest.cs">
       <Link>Helpers\ApplicationManifest.cs</Link>
     </Compile>
@@ -184,15 +193,6 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\WeakFunc{TResult}.cs">
       <Link>Helpers\WeakFunc{TResult}.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Navigation\INavigatedFrom.cs">
-      <Link>Navigation\INavigatedFrom.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Navigation\INavigatedTo.cs">
-      <Link>Navigation\INavigatedTo.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Navigation\NavigationMode.cs">
-      <Link>Navigation\NavigationMode.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
