@@ -173,7 +173,8 @@
       <Saved_OutputPath>$(OutputPath)</Saved_OutputPath>
       <Saved_TargetPath>$(TargetPath)</Saved_TargetPath>
       <OutputPath>$(OutDir)</OutputPath>
-      <TargetPath></TargetPath>
+      <TargetPath>
+      </TargetPath>
     </PropertyGroup>
   </Target>
   <Target Name="After_PrepareLibraryLayout" AfterTargets="PrepareLibraryLayout">

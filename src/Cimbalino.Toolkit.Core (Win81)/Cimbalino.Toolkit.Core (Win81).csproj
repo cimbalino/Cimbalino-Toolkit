@@ -139,6 +139,15 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Foundation\Size.cs">
       <Link>Foundation\Size.cs</Link>
     </Compile>
+    <Compile Include="..\cimbalino.toolkit.core %28portable%29\handlers\HandledNavigationMode.cs">
+      <Link>Handlers\HandledNavigationMode.cs</Link>
+    </Compile>
+    <Compile Include="..\cimbalino.toolkit.core %28portable%29\handlers\IHandleNavigatedFrom.cs">
+      <Link>Handlers\IHandleNavigatedFrom.cs</Link>
+    </Compile>
+    <Compile Include="..\cimbalino.toolkit.core %28portable%29\handlers\IHandleNavigatedTo.cs">
+      <Link>Handlers\IHandleNavigatedTo.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifest.cs">
       <Link>Helpers\ApplicationManifest.cs</Link>
     </Compile>

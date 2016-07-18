@@ -163,6 +163,12 @@
     <Compile Include="..\cimbalino.toolkit %28wp8%29\behaviors\UpdateTextBindingOnPropertyChanged.cs">
       <Link>Behaviors\UpdateTextBindingOnPropertyChanged.cs</Link>
     </Compile>
+    <Compile Include="..\cimbalino.toolkit %28wp8%29\controls\ExtendedPageBase.cs">
+      <Link>Controls\ExtendedPageBase.cs</Link>
+    </Compile>
+    <Compile Include="..\cimbalino.toolkit %28wp8%29\controls\ExtendedPageBaseExtensions.cs">
+      <Link>Controls\ExtendedPageBaseExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit %28wp8%29\converters\BooleanToBrushConverter.cs">
       <Link>Converters\BooleanToBrushConverter.cs</Link>
     </Compile>
@@ -283,6 +289,7 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
