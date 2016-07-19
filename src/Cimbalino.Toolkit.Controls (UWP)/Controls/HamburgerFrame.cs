@@ -494,11 +494,13 @@ namespace Cimbalino.Toolkit.Controls
 
         private void HamburgerMenuButton_Click(object sender, RoutedEventArgs e)
         {
-            var navigationSourcePageType = ((HamburgerMenuButton)sender).NavigationSourcePageType;
+            var button = (HamburgerMenuButton)sender;
+            var navigationSourcePageType = button.NavigationSourcePageType;
+            var navigationParameter = button.NavigationParameter;
 
             if (navigationSourcePageType != null)
             {
-                this.Navigate(navigationSourcePageType);
+                this.Navigate(navigationSourcePageType, navigationParameter);
             }
 
             if (DisplayMode == SplitViewDisplayMode.Overlay || DisplayMode == SplitViewDisplayMode.CompactOverlay)

@@ -76,6 +76,24 @@ namespace Cimbalino.Toolkit.Controls
             DependencyProperty.Register(nameof(NavigationSourcePageType), typeof(Type), typeof(HamburgerMenuButton), new PropertyMetadata(null));
 
         /// <summary>
+        /// The navigation parameter property
+        /// </summary>
+        public static readonly DependencyProperty NavigationParameterProperty = DependencyProperty.Register(
+            nameof(NavigationParameter), typeof(object), typeof(HamburgerMenuButton), new PropertyMetadata(default(object)));
+
+        /// <summary>
+        /// Gets or sets the navigation parameter.
+        /// </summary>
+        /// <value>
+        /// The navigation parameter.
+        /// </value>
+        public object NavigationParameter
+        {
+            get { return (object)GetValue(NavigationParameterProperty); }
+            set { SetValue(NavigationParameterProperty, value); }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="HamburgerMenuButton" /> class.
         /// </summary>
         public HamburgerMenuButton()
