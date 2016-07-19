@@ -27,7 +27,11 @@ namespace Cimbalino.Toolkit.Helpers
         /// </summary>
         /// <param name="button">The button.</param>
         /// <param name="compareAgainst">The compare against.</param>
-        /// <returns>True if menu item is active</returns>
-        bool IsActive(HamburgerMenuButton button, Type compareAgainst);
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="uri">The URI.</param>
+        /// <returns>
+        /// True if menu item is active
+        /// </returns>
+        bool IsActive(HamburgerMenuButton button, Type compareAgainst, object parameter, Uri uri);
     }
 }

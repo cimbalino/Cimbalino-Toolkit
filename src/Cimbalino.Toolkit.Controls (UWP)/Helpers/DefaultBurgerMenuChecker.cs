@@ -28,10 +28,12 @@ namespace Cimbalino.Toolkit.Helpers
         /// </summary>
         /// <param name="button">The button.</param>
         /// <param name="compareAgainst">The compare against.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="uri">The URI.</param>
         /// <returns>
         /// True if menu item is active
         /// </returns>
-        public bool IsActive(HamburgerMenuButton button, Type compareAgainst)
+        public bool IsActive(HamburgerMenuButton button, Type compareAgainst, object parameter, Uri uri)
         {
             return button.NavigationSourcePageType == compareAgainst;
         }
