@@ -284,6 +284,12 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedEventArgs.cs">
       <Link>Services\NavigationServiceBackKeyPressedEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceNavigationEventArgs.cs">
+      <Link>Services\NavigationServiceNavigationEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceNavigationMode.cs">
+      <Link>Services\NavigationServiceNavigationMode.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\PowerStatusChangedEventArgs.cs">
       <Link>Services\PowerStatusChangedEventArgs.cs</Link>
     </Compile>
@@ -458,6 +464,7 @@
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\LocationServiceExtensions.cs" />
     <Compile Include="Services\LockScreenService.cs" />
+    <Compile Include="Services\NavigationServiceExtensions.cs" />
     <Compile Include="Services\NetworkInformationService.cs" />
     <Compile Include="Services\ApplicationSettingsService.cs" />
     <Compile Include="Services\ApplicationSettingsServiceHandler.cs" />

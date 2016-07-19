@@ -36,7 +36,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
         /// </summary>
-        public event EventHandler Navigated;
+        public event EventHandler<NavigationServiceNavigationEventArgs> Navigated;
 
         /// <summary>
         /// Occurs when the user presses the hardware Back button.
@@ -282,7 +282,7 @@ namespace Cimbalino.Toolkit.Services
         /// Raises the <see cref="Navigated"/> event with the provided event data.
         /// </summary>
         /// <param name="eventArgs">The event data.</param>
-        protected virtual void RaiseNavigated(EventArgs eventArgs)
+        protected virtual void RaiseNavigated(NavigationServiceNavigationEventArgs eventArgs)
         {
             var eventHandler = Navigated;
 
@@ -313,7 +313,7 @@ namespace Cimbalino.Toolkit.Services
                 _navigationService = (e.Content as PhoneApplicationPage)?.NavigationService;
             }
 
-            RaiseNavigated(EventArgs.Empty);
+            RaiseNavigated(e.ToNavigationServiceNavigationEventArgs());
         }
 
         private void Frame_BackKeyPress(object s, CancelEventArgs e)

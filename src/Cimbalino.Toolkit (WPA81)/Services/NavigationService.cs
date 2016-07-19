@@ -56,7 +56,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
         /// </summary>
-        public event EventHandler Navigated;
+        public event EventHandler<NavigationServiceNavigationEventArgs> Navigated;
 
         /// <summary>
         /// Occurs when the user presses the hardware Back button.
@@ -325,7 +325,7 @@ namespace Cimbalino.Toolkit.Services
         {
             CurrentParameter = e.Parameter;
 
-            RaiseNavigated(EventArgs.Empty);
+            RaiseNavigated(e.ToNavigationServiceNavigationEventArgs());
 
 #if WINDOWS_UWP
             SetBackButtonVisibility();
@@ -336,10 +336,14 @@ namespace Cimbalino.Toolkit.Services
         /// Raises the <see cref="Navigated"/> event with the provided event data.
         /// </summary>
         /// <param name="eventArgs">The event data.</param>
-        protected virtual void RaiseNavigated(EventArgs eventArgs)
+        protected virtual void RaiseNavigated(NavigationServiceNavigationEventArgs eventArgs)
         {
             var eventHandler = Navigated;
-            eventHandler?.Invoke(this, eventArgs);
+
+            if (eventHandler != null)
+            {
+                eventHandler(this, eventArgs);
+            }
         }
 
 #if WINDOWS_UWP

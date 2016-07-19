@@ -25,7 +25,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Occurs when the content that is being navigated to has been found and is available, although it may not have completed loading.
         /// </summary>
-        event EventHandler Navigated;
+        event EventHandler<NavigationServiceNavigationEventArgs> Navigated;
 
         /// <summary>
         /// Occurs when the user presses the hardware Back button.

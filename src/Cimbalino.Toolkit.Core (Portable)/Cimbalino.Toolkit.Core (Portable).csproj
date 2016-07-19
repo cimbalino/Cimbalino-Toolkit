@@ -111,6 +111,8 @@
     <Compile Include="Services\IPersonalizationService.cs" />
     <Compile Include="Services\LauncherServiceAppInfo.cs" />
     <Compile Include="Services\LockScreenServiceRequestResult.cs" />
+    <Compile Include="Services\NavigationServiceNavigationEventArgs.cs" />
+    <Compile Include="Services\NavigationServiceNavigationMode.cs" />
     <Compile Include="Services\PowerStatusChangedEventArgs.cs" />
     <Compile Include="Services\ITitleBarService.cs" />
     <Compile Include="Services\IWindowsPhoneStoreService.cs" />
