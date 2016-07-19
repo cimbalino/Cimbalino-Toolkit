@@ -18,6 +18,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Cimbalino.Toolkit.Helpers;
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -29,6 +30,7 @@ namespace Cimbalino.Toolkit.Controls
     [TemplatePart(Name = "PaneBorder", Type = typeof(Border))]
     public class HamburgerFrame : Frame
     {
+        private readonly IBurgerMenuChecker _burgerMenuChecker;
         private readonly object _registeredControlsLock = new object();
         private readonly List<HamburgerMenuButton> _registeredHamburgerMenuButtons = new List<HamburgerMenuButton>();
 
@@ -261,7 +263,17 @@ namespace Cimbalino.Toolkit.Controls
         /// Initializes a new instance of the <see cref="HamburgerFrame" /> class.
         /// </summary>
         public HamburgerFrame()
+            : this(new DefaultBurgerMenuChecker())
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HamburgerFrame"/> class.
+        /// </summary>
+        /// <param name="burgerMenuChecker">The burger active.</param>
+        public HamburgerFrame(IBurgerMenuChecker burgerMenuChecker)
+        {
+            _burgerMenuChecker = burgerMenuChecker ?? new DefaultBurgerMenuChecker();
             DefaultStyleKey = typeof(HamburgerFrame);
 
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
@@ -315,7 +327,7 @@ namespace Cimbalino.Toolkit.Controls
 
             if (hamburgerMenuButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
             {
-                hamburgerMenuButton.IsChecked = hamburgerMenuButton.NavigationSourcePageType == this.CurrentSourcePageType;
+                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, this.CurrentSourcePageType);
             }
         }
 
@@ -434,7 +446,7 @@ namespace Cimbalino.Toolkit.Controls
                 {
                     if (hamburgerMenuButton.NavigationSourcePageType != null)
                     {
-                        hamburgerMenuButton.IsChecked = hamburgerMenuButton.NavigationSourcePageType == e.SourcePageType;
+                        hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, e.SourcePageType);
                     }
                 }
             }
