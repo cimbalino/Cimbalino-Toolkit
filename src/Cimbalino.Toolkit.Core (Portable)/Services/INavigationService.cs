@@ -123,6 +123,11 @@ namespace Cimbalino.Toolkit.Services
         bool RemoveBackEntry();
 
         /// <summary>
+        /// Clears the backstack for the frame in its entirety.
+        /// </summary>
+        void ClearBackstack();
+
+        /// <summary>
         /// Attempts to register the specified object as the active frame instance.
         /// </summary>
         /// <param name="frame">The object that will be registered as the active frame instance.</param>

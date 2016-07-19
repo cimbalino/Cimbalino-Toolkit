@@ -277,6 +277,17 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Clears the backstack for the frame in its entirety.
+        /// </summary>
+        public virtual void ClearBackstack()
+        {
+            while (CanGoBack)
+            {
+                RemoveBackEntry();
+            }
+        }
+
+        /// <summary>
         /// Registers the specified <see cref="Frame"/> instance.
         /// </summary>
         /// <param name="frame">The <see cref="Frame"/> instance.</param>
