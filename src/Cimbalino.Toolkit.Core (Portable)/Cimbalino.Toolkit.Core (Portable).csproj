@@ -96,7 +96,6 @@
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Handlers\IHandleNavigatedFrom.cs" />
     <Compile Include="Handlers\IHandleNavigatedTo.cs" />
-    <Compile Include="Handlers\HandledNavigationMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
     <Compile Include="Services\FilePickerServiceLocationId.cs" />

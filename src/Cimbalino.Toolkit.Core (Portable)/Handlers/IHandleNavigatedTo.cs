@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Services;
 
 namespace Cimbalino.Toolkit.Handlers
 {
@@ -22,9 +23,8 @@ namespace Cimbalino.Toolkit.Handlers
     public interface IHandleNavigatedTo
     {
         /// <summary>Called when a page is no longer the active page in a frame.</summary>
-        /// <param name="navigationMode">A value that indicates whether the navigation is forward, back, or a new navigation.</param>
-        /// <param name="parameter">Any Parameter object passed to the target page for the navigation.</param>
+        /// <param name="eventArgs">An object that contains the event data.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        Task OnNavigatedToAsync(HandledNavigationMode navigationMode, object parameter);
+        Task OnNavigatedToAsync(NavigationServiceNavigationEventArgs eventArgs);
     }
 }

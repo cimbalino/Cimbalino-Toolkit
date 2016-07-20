@@ -155,9 +155,6 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Controls\ExtendedPageBase.cs">
       <Link>Controls\ExtendedPageBase.cs</Link>
     </Compile>
-    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Controls\ExtendedPageBaseExtensions.cs">
-      <Link>Controls\ExtendedPageBaseExtensions.cs</Link>
-    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToBrushConverter.cs">
       <Link>Converters\BooleanToBrushConverter.cs</Link>
     </Compile>

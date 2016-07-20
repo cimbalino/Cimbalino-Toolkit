@@ -15,9 +15,11 @@
 #if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Windows.Navigation;
 using Cimbalino.Toolkit.Handlers;
+using Cimbalino.Toolkit.Services;
 using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
 #else
 using Cimbalino.Toolkit.Handlers;
+using Cimbalino.Toolkit.Services;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 #endif
@@ -37,11 +39,7 @@ namespace Cimbalino.Toolkit.Controls
 
             if (viewModel != null)
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                await viewModel.OnNavigatedFromAsync(e.NavigationMode.ToHandledNavigationMode(), e.Uri);
-#else
-                await viewModel.OnNavigatedFromAsync(e.NavigationMode.ToHandledNavigationMode(), e.Parameter);
-#endif
+                await viewModel.OnNavigatedFromAsync(e.ToNavigationServiceNavigationEventArgs());
             }
 
             base.OnNavigatedFrom(e);
@@ -55,11 +53,7 @@ namespace Cimbalino.Toolkit.Controls
 
             if (viewModel != null)
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                await viewModel.OnNavigatedToAsync(e.NavigationMode.ToHandledNavigationMode(), e.Uri);
-#else
-                await viewModel.OnNavigatedToAsync(e.NavigationMode.ToHandledNavigationMode(), e.Parameter);
-#endif
+                await viewModel.OnNavigatedToAsync(e.ToNavigationServiceNavigationEventArgs());
             }
 
             base.OnNavigatedTo(e);
