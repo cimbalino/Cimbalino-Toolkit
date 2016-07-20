@@ -12,8 +12,8 @@
 // </license>
 // ****************************************************************************
 
-using System;
 using Cimbalino.Toolkit.Controls;
+using Cimbalino.Toolkit.Services;
 
 namespace Cimbalino.Toolkit.Helpers
 {
@@ -27,15 +27,13 @@ namespace Cimbalino.Toolkit.Helpers
         /// Determines whether the specified button is active.
         /// </summary>
         /// <param name="button">The button.</param>
-        /// <param name="compareAgainst">The compare against.</param>
-        /// <param name="parameter">The parameter.</param>
-        /// <param name="uri">The URI.</param>
+        /// <param name="args">The <see cref="NavigationServiceNavigationEventArgs" /> instance containing the event data.</param>
         /// <returns>
         /// True if menu item is active
         /// </returns>
-        public bool IsActive(HamburgerMenuButton button, Type compareAgainst, object parameter, Uri uri)
+        public bool IsActive(HamburgerMenuButton button, NavigationServiceNavigationEventArgs args)
         {
-            return button.NavigationSourcePageType == compareAgainst;
+            return button.NavigationSourcePageType == args.SourcePageType;
         }
     }
 }

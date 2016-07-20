@@ -19,6 +19,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Cimbalino.Toolkit.Helpers;
+using Cimbalino.Toolkit.Services;
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -327,7 +328,7 @@ namespace Cimbalino.Toolkit.Controls
 
             if (hamburgerMenuButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
             {
-                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, this.CurrentSourcePageType, null, null);
+                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, new NavigationServiceNavigationEventArgs(NavigationServiceNavigationMode.Forward, this.CurrentSourcePageType, null, null));
             }
         }
 
@@ -446,7 +447,7 @@ namespace Cimbalino.Toolkit.Controls
                 {
                     if (hamburgerMenuButton.NavigationSourcePageType != null)
                     {
-                        hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, e.SourcePageType, e.Parameter, e.Uri);
+                        hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, e.ToNavigationServiceNavigationEventArgs());
                     }
                 }
             }

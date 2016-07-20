@@ -30,3 +30,4 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 [assembly: InternalsVisibleTo("Cimbalino.Toolkit")]
+[assembly: InternalsVisibleTo("Cimbalino.Toolkit.Controls")]
