@@ -327,7 +327,7 @@ namespace Cimbalino.Toolkit.Controls
 
             if (hamburgerMenuButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
             {
-                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, this.CurrentSourcePageType);
+                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, this.CurrentSourcePageType, null, null);
             }
         }
 
