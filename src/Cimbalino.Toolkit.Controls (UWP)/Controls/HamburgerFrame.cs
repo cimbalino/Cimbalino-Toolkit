@@ -14,12 +14,11 @@
 
 using System;
 using System.Collections.Generic;
+using Cimbalino.Toolkit.Services;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Cimbalino.Toolkit.Helpers;
-using Cimbalino.Toolkit.Services;
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -31,7 +30,6 @@ namespace Cimbalino.Toolkit.Controls
     [TemplatePart(Name = "PaneBorder", Type = typeof(Border))]
     public class HamburgerFrame : Frame
     {
-        private readonly IBurgerMenuChecker _burgerMenuChecker;
         private readonly object _registeredControlsLock = new object();
         private readonly List<HamburgerMenuButton> _registeredHamburgerMenuButtons = new List<HamburgerMenuButton>();
 
@@ -41,9 +39,7 @@ namespace Cimbalino.Toolkit.Controls
         private Border _paneBorder;
         private SplitView _rootSplitView;
         private FrameworkElement _observedContainer;
-
-        private object _mostRecentNavigationParameter;
-        private Uri _mostRecentUri;
+        private object _currentParameter;
 
         /// <summary>
         /// Occurs when the internal <see cref="SplitView"/> pane is closing.
@@ -267,17 +263,7 @@ namespace Cimbalino.Toolkit.Controls
         /// Initializes a new instance of the <see cref="HamburgerFrame" /> class.
         /// </summary>
         public HamburgerFrame()
-            : this(new DefaultBurgerMenuChecker())
         {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HamburgerFrame"/> class.
-        /// </summary>
-        /// <param name="burgerMenuChecker">The burger active.</param>
-        public HamburgerFrame(IBurgerMenuChecker burgerMenuChecker)
-        {
-            _burgerMenuChecker = burgerMenuChecker ?? new DefaultBurgerMenuChecker();
             DefaultStyleKey = typeof(HamburgerFrame);
 
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
@@ -331,7 +317,7 @@ namespace Cimbalino.Toolkit.Controls
 
             if (hamburgerMenuButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
             {
-                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, new NavigationServiceNavigationEventArgs(NavigationServiceNavigationMode.Forward, this.CurrentSourcePageType, _mostRecentNavigationParameter, _mostRecentUri));
+                hamburgerMenuButton.UpdateCheckedState(this.CurrentSourcePageType, _currentParameter);
             }
         }
 
@@ -428,9 +414,6 @@ namespace Cimbalino.Toolkit.Controls
                 _observedContainer = null;
             }
 
-            _mostRecentNavigationParameter = e.Parameter;
-            _mostRecentUri = e.Uri;
-
             var page = e.Content as Page;
 
             if (page != null)
@@ -447,13 +430,15 @@ namespace Cimbalino.Toolkit.Controls
                 }
             }
 
+            _currentParameter = e.Parameter;
+
             lock (_registeredControlsLock)
             {
                 foreach (var hamburgerMenuButton in _registeredHamburgerMenuButtons)
                 {
                     if (hamburgerMenuButton.NavigationSourcePageType != null)
                     {
-                        hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, e.ToNavigationServiceNavigationEventArgs());
+                        hamburgerMenuButton.UpdateCheckedState(e.SourcePageType, e.Parameter);
                     }
                 }
             }

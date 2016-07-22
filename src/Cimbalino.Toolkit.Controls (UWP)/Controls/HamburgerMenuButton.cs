@@ -111,6 +111,16 @@ namespace Cimbalino.Toolkit.Controls
         {
         }
 
+        /// <summary>
+        /// Updates the button checked state in regards to the indicated <paramref name="sourcePageType"/> and <paramref name="parameter"/>.
+        /// </summary>
+        /// <param name="sourcePageType">The data type of the source page.</param>
+        /// <param name="parameter">Any Parameter object passed to the target page for the navigation.</param>
+        public void UpdateCheckedState(Type sourcePageType, object parameter)
+        {
+            this.IsChecked = NavigationSourcePageType == sourcePageType && NavigationParameter == parameter;
+        }
+
         private void HamburgerMenuButton_Loaded(object sender, RoutedEventArgs e)
         {
             _hamburgerFrame = this.GetVisualAncestor<HamburgerFrame>();
