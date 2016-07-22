@@ -429,7 +429,7 @@ namespace Cimbalino.Toolkit.Controls
             }
 
             _mostRecentNavigationParameter = e.Parameter;
-            _mostRecentNavigationParameter = e.Uri;
+            _mostRecentUri = e.Uri;
 
             var page = e.Content as Page;
 
