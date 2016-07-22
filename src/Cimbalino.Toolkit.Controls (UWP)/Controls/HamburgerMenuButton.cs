@@ -116,7 +116,7 @@ namespace Cimbalino.Toolkit.Controls
         /// </summary>
         /// <param name="sourcePageType">The data type of the source page.</param>
         /// <param name="parameter">Any Parameter object passed to the target page for the navigation.</param>
-        public void UpdateCheckedState(Type sourcePageType, object parameter)
+        public virtual void UpdateCheckedState(Type sourcePageType, object parameter)
         {
             this.IsChecked = NavigationSourcePageType == sourcePageType && NavigationParameter == parameter;
         }
