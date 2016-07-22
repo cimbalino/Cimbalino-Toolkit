@@ -42,6 +42,9 @@ namespace Cimbalino.Toolkit.Controls
         private SplitView _rootSplitView;
         private FrameworkElement _observedContainer;
 
+        private object _mostRecentNavigationParameter;
+        private Uri _mostRecentUri;
+
         /// <summary>
         /// Occurs when the internal <see cref="SplitView"/> pane is closing.
         /// </summary>
@@ -328,7 +331,7 @@ namespace Cimbalino.Toolkit.Controls
 
             if (hamburgerMenuButton.NavigationSourcePageType != null && this.CurrentSourcePageType != null)
             {
-                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, new NavigationServiceNavigationEventArgs(NavigationServiceNavigationMode.Forward, this.CurrentSourcePageType, null, null));
+                hamburgerMenuButton.IsChecked = _burgerMenuChecker?.IsActive(hamburgerMenuButton, new NavigationServiceNavigationEventArgs(NavigationServiceNavigationMode.Forward, this.CurrentSourcePageType, _mostRecentNavigationParameter, _mostRecentUri));
             }
         }
 
@@ -424,6 +427,9 @@ namespace Cimbalino.Toolkit.Controls
                 _observedContainer.SizeChanged -= ObservedContainer_SizeChanged;
                 _observedContainer = null;
             }
+
+            _mostRecentNavigationParameter = e.Parameter;
+            _mostRecentNavigationParameter = e.Uri;
 
             var page = e.Content as Page;
 
