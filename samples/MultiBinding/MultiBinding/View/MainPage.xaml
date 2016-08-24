@@ -1,0 +1,39 @@
+﻿<Page x:Class="MultiBinding.View.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:cimbalinoBehaviors="using:Cimbalino.Toolkit.Behaviors"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:local="using:MultiBinding"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:FullNameConverter x:Key="FullNameConverter" />
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="8">
+            <TextBox x:Name="FirstNameTextBox"
+                     Header="First Name"
+                     Text="{Binding Text1,
+                                    Mode=TwoWay}" />
+
+            <TextBox x:Name="LastNametextBox"
+                     Header="Last Name"
+                     Text="{Binding Text2,
+                                    Mode=TwoWay}" />
+
+            <TextBox Header="Full Name">
+                <interactivity:Interaction.Behaviors>
+                    <cimbalinoBehaviors:MultiBindingBehavior Converter="{StaticResource FullNameConverter}"
+                                                             Mode="TwoWay"
+                                                             PropertyName="Text">
+                        <cimbalinoBehaviors:MultiBindingItem Value="{Binding Text, ElementName=FirstNameTextBox, Mode=TwoWay}" />
+                        <cimbalinoBehaviors:MultiBindingItem Value="{Binding Text, ElementName=LastNametextBox, Mode=TwoWay}" />
+                    </cimbalinoBehaviors:MultiBindingBehavior>
+                </interactivity:Interaction.Behaviors>
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</Page>
