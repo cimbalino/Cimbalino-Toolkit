@@ -57,6 +57,21 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Gets the file type
+        /// </summary>
+        public string FileType
+        {
+            get
+            {
+#if PORTABLE
+                return null;
+#else
+                return _storageFile.FileType;
+#endif
+            }
+        }
+
 #if !PORTABLE
         /// <summary>
         /// Initializes a new instance of the <see cref="FilePickerServiceFileResult" /> class.
