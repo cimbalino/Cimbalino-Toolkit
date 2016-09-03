@@ -42,9 +42,9 @@ namespace Cimbalino.Toolkit.Services
 #endif
 
         /// <summary>
-        /// Gets the file name.
+        /// Gets the name of the file including the file name extension.
         /// </summary>
-        /// <value>The file name.</value>
+        /// <value>The name of the file including the file name extension.</value>
         public string FileName
         {
             get
@@ -53,6 +53,22 @@ namespace Cimbalino.Toolkit.Services
                 return null;
 #else
                 return _storageFile.Name;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Gets the type (file name extension) of the file.
+        /// </summary>
+        /// <value>The file name extension of the file.</value>
+        public string FileType
+        {
+            get
+            {
+#if PORTABLE
+                return null;
+#else
+                return _storageFile.FileType;
 #endif
             }
         }
