@@ -42,9 +42,9 @@ namespace Cimbalino.Toolkit.Services
 #endif
 
         /// <summary>
-        /// Gets the file name.
+        /// Gets the name of the file including the file name extension.
         /// </summary>
-        /// <value>The file name.</value>
+        /// <value>The name of the file including the file name extension.</value>
         public string FileName
         {
             get
@@ -58,8 +58,9 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets the file type
+        /// Gets the type (file name extension) of the file.
         /// </summary>
+        /// <value>The file name extension of the file.</value>
         public string FileType
         {
             get
