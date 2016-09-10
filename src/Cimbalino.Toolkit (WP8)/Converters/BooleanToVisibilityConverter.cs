@@ -35,7 +35,17 @@ namespace Cimbalino.Toolkit.Converters
         /// Gets or sets a value indicating whether the return value should be inverted.
         /// </summary>
         /// <value>true if the return value should be inverted; otherwise, false.</value>
-        public bool InvertValue { get; set; }
+        public bool InvertValue
+        {
+            get { return (bool)GetValue(InvertValueProperty); }
+            set { SetValue(InvertValueProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="InvertValue" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty InvertValueProperty =
+            DependencyProperty.Register(nameof(InvertValue), typeof(bool), typeof(BooleanToVisibilityConverter), new PropertyMetadata(false));
 
         /// <summary>
         /// Converts a <see cref="bool"/> value to a <see cref="Visibility"/> value.
