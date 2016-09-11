@@ -56,7 +56,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="value">The value to compare to.</param>
         /// <typeparam name="T">The values type.</typeparam>
         /// <returns>The largest of the two values.</returns>
-        public static T Max<T>(this T currentValue, T value) 
+        public static T Max<T>(this T currentValue, T value)
             where T : IComparable
         {
             if (currentValue.CompareTo(value) < 0)
@@ -74,7 +74,7 @@ namespace Cimbalino.Toolkit.Extensions
         /// <param name="value">The value to compare to.</param>
         /// <typeparam name="T">The values type.</typeparam>
         /// <returns>The smallest of the two values.</returns>
-        public static T Min<T>(this T currentValue, T value) 
+        public static T Min<T>(this T currentValue, T value)
             where T : IComparable
         {
             if (currentValue.CompareTo(value) > 0)
@@ -83,6 +83,63 @@ namespace Cimbalino.Toolkit.Extensions
             }
 
             return currentValue;
+        }
+
+        /// <summary>
+        /// Compares the current instance with another object of the same type and returns a boolean that indicates whether the ternary operation between the two values is true or false.
+        /// </summary>
+        /// <param name="currentValue">The value.</param>
+        /// <param name="comparableOperator">The ternary operator.</param>
+        /// <param name="value">The value to compare to.</param>
+        /// <typeparam name="T">The values type.</typeparam>
+        /// <returns>The bolean result of the ternary operation.</returns>
+        public static bool CompareTo<T>(this T currentValue, ComparableOperator comparableOperator, T value)
+            where T : IComparable
+        {
+            if (currentValue == null)
+            {
+                switch (comparableOperator)
+                {
+                    case ComparableOperator.Equal:
+                    case ComparableOperator.LessThanOrEqual:
+                    case ComparableOperator.GreaterThanOrEqual:
+                        return value == null;
+
+                    case ComparableOperator.NotEqual:
+                    case ComparableOperator.LessThan:
+                    case ComparableOperator.GreaterThan:
+                        return value != null;
+
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(comparableOperator), comparableOperator, null);
+                }
+            }
+
+            var result = currentValue.CompareTo(value);
+
+            switch (comparableOperator)
+            {
+                case ComparableOperator.Equal:
+                    return result == 0;
+
+                case ComparableOperator.NotEqual:
+                    return result != 0;
+
+                case ComparableOperator.LessThan:
+                    return result < 0;
+
+                case ComparableOperator.LessThanOrEqual:
+                    return result <= 0;
+
+                case ComparableOperator.GreaterThan:
+                    return result > 0;
+
+                case ComparableOperator.GreaterThanOrEqual:
+                    return result >= 0;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

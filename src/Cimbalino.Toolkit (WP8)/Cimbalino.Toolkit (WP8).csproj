@@ -119,6 +119,9 @@
     <Compile Include="Converters\BooleanToValueConverterBase.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ColorToBrushConverter.cs" />
+    <Compile Include="Converters\CollectionCountToVisibilityConverter.cs" />
+    <Compile Include="Converters\ComparableToVisibilityConverter.cs" />
+    <Compile Include="Converters\ComparableConverterBase.cs" />
     <Compile Include="Converters\MultiValueConverterBase.cs" />
     <Compile Include="Converters\NegativeBooleanConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />

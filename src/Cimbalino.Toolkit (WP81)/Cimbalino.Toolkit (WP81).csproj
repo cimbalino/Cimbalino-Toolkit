@@ -170,8 +170,17 @@
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\BooleanToVisibilityConverter.cs">
       <Link>Converters\BooleanToVisibilityConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\CollectionCountToVisibilityConverter.cs">
+      <Link>Converters\CollectionCountToVisibilityConverter.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\ColorToBrushConverter.cs">
       <Link>Converters\ColorToBrushConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\ComparableConverterBase.cs">
+      <Link>Converters\ComparableConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\ComparableToVisibilityConverter.cs">
+      <Link>Converters\ComparableToVisibilityConverter.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28WP8%29\Converters\MultiValueConverterBase.cs">
       <Link>Converters\MultiValueConverterBase.cs</Link>
