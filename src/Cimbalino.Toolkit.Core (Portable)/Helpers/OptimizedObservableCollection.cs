@@ -44,7 +44,7 @@ namespace Cimbalino.Toolkit.Helpers
                 {
                     _suppressEvents = value;
 
-                    OnPropertyChanged(new PropertyChangedEventArgs("SuppressEvents"));
+                    OnPropertyChanged(new PropertyChangedEventArgs(nameof(SuppressEvents)));
                 }
             }
         }

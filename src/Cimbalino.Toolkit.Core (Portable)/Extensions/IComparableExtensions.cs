@@ -138,7 +138,7 @@ namespace Cimbalino.Toolkit.Extensions
                     return result >= 0;
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(comparableOperator), comparableOperator, null);
             }
         }
     }
