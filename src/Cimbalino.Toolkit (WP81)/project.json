@@ -1,0 +1,13 @@
+﻿{
+  "dependencies": {
+    "Microsoft.Bcl.Build": "1.0.21",
+    "Microsoft.Bcl.Compression": "3.9.85",
+    "StyleCop.Analyzers": "1.0.0"
+  },
+  "frameworks": {
+    "wp81": {}
+  },
+  "runtimes": {
+    "win": {}
+  }
+}

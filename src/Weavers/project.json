@@ -1,0 +1,11 @@
+﻿{
+  "dependencies": {
+    "FodyCecil": "1.29.4"
+  },
+  "frameworks": {
+    "net45": {}
+  },
+  "runtimes": {
+    "win": {}
+  }
+}

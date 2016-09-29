@@ -1,0 +1,11 @@
+﻿{
+  "dependencies": {
+    "StyleCop.Analyzers": "1.0.0"
+  },
+  "frameworks": {
+    "netcore451": {}
+  },
+  "runtimes": {
+    "win": {}
+  }
+}
