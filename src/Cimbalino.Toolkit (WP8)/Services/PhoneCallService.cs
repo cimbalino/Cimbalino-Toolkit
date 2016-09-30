@@ -92,13 +92,13 @@ namespace Cimbalino.Toolkit.Services
 #endif
 
 #if WINDOWS_APP || WINDOWS_UWP
-        private async Task CallByUri(string phoneNumber, string displayName)
+        private Task CallByUri(string phoneNumber, string displayName)
         {
             var phoneCallUri = new UriBuilder("tel:")
                 .SetPath(phoneNumber)
                 .Uri;
 
-            await Launcher.LaunchUriAsync(phoneCallUri);
+            return Launcher.LaunchUriAsync(phoneCallUri).AsTask();
         }
 #endif
     }

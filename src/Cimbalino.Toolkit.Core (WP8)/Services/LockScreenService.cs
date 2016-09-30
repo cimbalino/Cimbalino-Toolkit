@@ -99,9 +99,9 @@ namespace Cimbalino.Toolkit.Services
             ImageUri = new Uri(LockScreenImageUrl, UriKind.RelativeOrAbsolute);
         }
 #elif WINDOWS_APP
-        public virtual async Task SetLockScreenAsync(Stream stream)
+        public virtual Task SetLockScreenAsync(Stream stream)
         {
-            await LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream());
+            return LockScreen.SetImageStreamAsync(stream.AsRandomAccessStream()).AsTask();
         }
 #elif WINDOWS_UWP
         public virtual async Task SetLockScreenAsync(Stream stream)

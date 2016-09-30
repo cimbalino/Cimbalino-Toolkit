@@ -166,9 +166,9 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="dir">The relative path of the directory to create within the storage.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task CreateDirectoryAsync(string dir)
+        public virtual Task CreateDirectoryAsync(string dir)
         {
-            await StorageFolder.CreateFolderAsync(dir);
+            return StorageFolder.CreateFolderAsync(dir).AsTask();
         }
 
         /// <summary>

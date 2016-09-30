@@ -65,44 +65,44 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the text in the clipboard.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task<string> GetTextAsync()
+        public virtual Task<string> GetTextAsync()
         {
             var clipboard = Clipboard.GetContent();
 
-            return await clipboard.GetTextAsync();
+            return clipboard.GetTextAsync().AsTask();
         }
 
         /// <summary>
         /// Gets the web link in the clipboard.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task<Uri> GetWebLinkAsync()
+        public virtual Task<Uri> GetWebLinkAsync()
         {
             var clipboard = Clipboard.GetContent();
 
-            return await clipboard.GetWebLinkAsync();
+            return clipboard.GetWebLinkAsync().AsTask();
         }
 
         /// <summary>
         /// Gets the HTML text in the clipboard.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task<string> GetHtmlAsync()
+        public virtual Task<string> GetHtmlAsync()
         {
             var clipboard = Clipboard.GetContent();
 
-            return await clipboard.GetHtmlFormatAsync();
+            return clipboard.GetHtmlFormatAsync().AsTask();
         }
 
         /// <summary>
         /// Gets the RTF text in the clipboard.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task<string> GetRtfAsync()
+        public virtual Task<string> GetRtfAsync()
         {
             var clipboard = Clipboard.GetContent();
 
-            return await clipboard.GetRtfAsync();
+            return clipboard.GetRtfAsync().AsTask();
         }
 
         /// <summary>

@@ -14,7 +14,6 @@
 
 using System;
 using System.Threading.Tasks;
-using Cimbalino.Toolkit.Services;
 using Windows.Storage;
 using Windows.System.UserProfile;
 

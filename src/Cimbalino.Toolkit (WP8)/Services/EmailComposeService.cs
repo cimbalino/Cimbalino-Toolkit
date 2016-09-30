@@ -69,9 +69,9 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="subject">The e-mail subject.</param>
         /// <param name="body">The e-mail message body.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             new EmailComposeTask()
             {
                 To = to,
@@ -82,10 +82,7 @@ namespace Cimbalino.Toolkit.Services
             }.Show();
 
             return Task.FromResult(0);
-        }
 #elif WINDOWS_PHONE_APP || WINDOWS_UWP
-        public virtual async Task ShowAsync(string to, string cc, string bcc, string subject, string body)
-        {
             var emailMessage = new EmailMessage
             {
                 Body = body,
@@ -107,11 +104,8 @@ namespace Cimbalino.Toolkit.Services
                 emailMessage.Bcc.Add(new EmailRecipient(bcc));
             }
 
-            await EmailManager.ShowComposeNewEmailAsync(emailMessage);
-        }
+            return EmailManager.ShowComposeNewEmailAsync(emailMessage).AsTask();
 #else
-        public virtual async Task ShowAsync(string to, string cc, string bcc, string subject, string body)
-        {
             var emailUri = new UriBuilder("mailto:")
                 .SetPath(to)
                 .AppendQueryParameterIfValueNotEmpty("cc", cc)
@@ -120,8 +114,8 @@ namespace Cimbalino.Toolkit.Services
                 .AppendQueryParameterIfValueNotEmpty("body", body)
                 .Uri;
 
-            await Launcher.LaunchUriAsync(emailUri);
-        }
+            return Launcher.LaunchUriAsync(emailUri).AsTask();
 #endif
+        }
     }
 }

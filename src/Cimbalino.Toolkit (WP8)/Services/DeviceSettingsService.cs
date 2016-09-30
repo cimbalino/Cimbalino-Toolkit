@@ -511,17 +511,14 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP || WINDOWS_UWP
-        private async Task LaunchUrlAsync(string url)
-        {
-            await Launcher.LaunchUriAsync(new Uri(url, UriKind.Absolute));
-        }
-#else
         private Task LaunchUrlAsync(string url)
         {
+#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP || WINDOWS_UWP
+            return Launcher.LaunchUriAsync(new Uri(url, UriKind.Absolute)).AsTask();
+#else
             return ExceptionHelper.ThrowNotSupported<Task>();
-        }
 #endif
+        }
 
 #if WINDOWS_UWP
         private static string _deviceFamily;

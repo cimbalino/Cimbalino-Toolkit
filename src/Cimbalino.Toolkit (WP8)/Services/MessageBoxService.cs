@@ -36,21 +36,18 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="text">The message to display.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual Task ShowAsync(string text)
         {
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             MessageBox.Show(text);
 
             return Task.FromResult(0);
-        }
 #else
-        public virtual async Task ShowAsync(string text)
-        {
             var message = new MessageDialog(text);
 
-            await message.ShowAsync();
-        }
+            return message.ShowAsync().AsTask();
 #endif
+        }
 
         /// <summary>
         /// Displays a message box that contains the specified text, title bar caption, and an OK button.
@@ -58,21 +55,18 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="text">The message to display.</param>
         /// <param name="caption">The title of the message box.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
         public virtual Task ShowAsync(string text, string caption)
         {
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
             MessageBox.Show(text, caption, MessageBoxButton.OK);
 
             return Task.FromResult(0);
-        }
 #else
-        public virtual async Task ShowAsync(string text, string caption)
-        {
             var message = new MessageDialog(text, caption);
 
-            await message.ShowAsync();
-        }
+            return message.ShowAsync().AsTask();
 #endif
+        }
 
         /// <summary>
         /// Displays a message box that contains the specified text, title bar caption, and response buttons.
