@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Fody": "1.29.4",
+    "Fody": "1.30.0-beta01",
     "StyleCop.Analyzers": "1.0.0"
   },
   "frameworks": {

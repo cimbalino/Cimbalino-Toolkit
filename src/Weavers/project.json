@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "FodyCecil": "1.29.4"
+    "FodyCecil": "1.30.0-beta01"
   },
   "frameworks": {
     "net45": {}
