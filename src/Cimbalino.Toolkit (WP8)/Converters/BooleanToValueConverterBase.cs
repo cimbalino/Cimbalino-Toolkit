@@ -33,7 +33,7 @@ namespace Cimbalino.Toolkit.Converters
         /// <summary>
         /// Gets or sets the value to return if true.
         /// </summary>
-        /// <value>The  value to return if true.</value>
+        /// <value>The value to return if true.</value>
         public T TrueValue
         {
             get { return (T)GetValue(TrueValueProperty); }
@@ -49,7 +49,7 @@ namespace Cimbalino.Toolkit.Converters
         /// <summary>
         /// Gets or sets the value to return if false.
         /// </summary>
-        /// <value>The  value to return if false.</value>
+        /// <value>The value to return if false.</value>
         public T FalseValue
         {
             get { return (T)GetValue(FalseValueProperty); }

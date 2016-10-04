@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="CollectionCountToVisibilityConverter.cs" company="Pedro Lamas">
+// <copyright file="CollectionCountToObjectConverter.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -16,22 +16,20 @@
 using System;
 using System.Collections;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 #else
 using System;
 using System.Collections;
 using System.Globalization;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 #endif
 
 namespace Cimbalino.Toolkit.Converters
 {
     /// <summary>
-    /// An <see cref="IValueConverter"/> which converts a <see cref="IEnumerable"/> value to a <see cref="Visibility"/> value.
+    /// An <see cref="IValueConverter"/> which converts an item collection count to an <see cref="object"/> value.
     /// </summary>
-    public class CollectionCountToVisibilityConverter : ComparableConverterBase<int>
+    public class CollectionCountToObjectConverter : ComparableToValueConverterBase<int, object>
     {
         /// <summary>
         /// Modifies the source data before passing it to the target for display in the UI.
@@ -61,7 +59,7 @@ namespace Cimbalino.Toolkit.Converters
                 }
             }
 
-            return boolValue ? Visibility.Visible : Visibility.Collapsed;
+            return boolValue ? TrueValue : FalseValue;
         }
 
         /// <summary>

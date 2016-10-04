@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="ComparableToVisibilityConverter.cs" company="Pedro Lamas">
+// <copyright file="ComparableToValueConverterBase.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -27,10 +27,45 @@ using Windows.UI.Xaml.Data;
 namespace Cimbalino.Toolkit.Converters
 {
     /// <summary>
-    /// An <see cref="IValueConverter"/> which converts an <see cref="IComparable"/> value to a <see cref="Visibility"/> value.
+    /// An <see cref="IValueConverter"/> abstract implementation which converts an <see cref="IComparable"/> value.
     /// </summary>
-    public class ComparableToVisibilityConverter : ComparableConverterBase<IComparable>
+    /// <typeparam name="TInput">The input <see cref="IComparable"/> type.</typeparam>
+    /// <typeparam name="TOutput">The output type.</typeparam>
+    public class ComparableToValueConverterBase<TInput, TOutput> : ComparableConverterBase<TInput>
+        where TInput : IComparable
     {
+        /// <summary>
+        /// Gets or sets the value to return if true.
+        /// </summary>
+        /// <value>The value to return if true.</value>
+        public TOutput TrueValue
+        {
+            get { return (TOutput)GetValue(TrueValueProperty); }
+            set { SetValue(TrueValueProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="TrueValue" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TrueValueProperty =
+            DependencyProperty.Register(nameof(TrueValue), typeof(TOutput), typeof(ComparableToValueConverterBase<TInput, TOutput>), new PropertyMetadata(default(TOutput)));
+
+        /// <summary>
+        /// Gets or sets the value to return if false.
+        /// </summary>
+        /// <value>The value to return if false.</value>
+        public TOutput FalseValue
+        {
+            get { return (TOutput)GetValue(FalseValueProperty); }
+            set { SetValue(FalseValueProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="FalseValue" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty FalseValueProperty =
+            DependencyProperty.Register(nameof(FalseValue), typeof(TOutput), typeof(ComparableToValueConverterBase<TInput, TOutput>), new PropertyMetadata(default(TOutput)));
+
         /// <summary>
         /// Modifies the source data before passing it to the target for display in the UI.
         /// </summary>
@@ -43,7 +78,7 @@ namespace Cimbalino.Toolkit.Converters
         {
             var comparable = value as IComparable;
 
-            return CompareTo(comparable) ? Visibility.Visible : Visibility.Collapsed;
+            return CompareTo(comparable) ? TrueValue : FalseValue;
         }
 
         /// <summary>
