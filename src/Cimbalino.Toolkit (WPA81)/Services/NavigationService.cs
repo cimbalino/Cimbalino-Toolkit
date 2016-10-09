@@ -15,6 +15,8 @@
 #if WINDOWS_PHONE_APP
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Cimbalino.Toolkit.Controls;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Helpers;
 using Windows.Phone.UI.Input;
@@ -23,6 +25,8 @@ using Windows.UI.Xaml.Controls;
 #elif WINDOWS_UWP
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Cimbalino.Toolkit.Controls;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Helpers;
 using Windows.Phone.UI.Input;
@@ -32,6 +36,7 @@ using Windows.UI.Xaml.Controls;
 #else
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Xaml;
@@ -205,6 +210,48 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail<T>()
+        {
+            return Navigate(typeof(T));
+        }
+
+        /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
+        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail<T>(object parameter)
+        {
+            return Navigate(typeof(T), parameter);
+        }
+
+        /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail(Type type)
+        {
+            return GetDetailFrame()?.Navigate(type) ?? false;
+        }
+
+        /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail(Type type, object parameter)
+        {
+            return GetDetailFrame()?.Navigate(type, parameter) ?? false;
+        }
+
+        /// <summary>
         /// Gets a value indicating whether there is at least one entry in back navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>
@@ -332,6 +379,20 @@ namespace Cimbalino.Toolkit.Services
             return frame;
         }
 
+        private Frame GetDetailFrame()
+        {
+            var detailFrame = (Frame)null;
+
+            var page = GetFrame()?.Content as Page;
+
+            if (page != null)
+            {
+                detailFrame = page.GetVisualDescendents<Frame>().FirstOrDefault();
+            }
+
+            return detailFrame;
+        }
+
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
             CurrentParameter = e.Parameter;
@@ -386,38 +447,57 @@ namespace Cimbalino.Toolkit.Services
 
         private bool HandleBackKeyPress()
         {
+            var handled = (GetDetailFrame() as IMasterDetailFrame)?.HandleBackKeyPress() ?? false;
+
+            if (!handled)
+            {
+                var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+
+                RaiseBackKeyPressed(eventArgs);
+
+                switch (eventArgs.Behavior)
+                {
+                    case NavigationServiceBackKeyPressedBehavior.GoBack:
+                        var frame = GetFrame();
+
+                        if (frame?.CanGoBack ?? false)
+                        {
+                            frame.GoBack();
+                            handled = true;
+                        }
+                        break;
+
+                    case NavigationServiceBackKeyPressedBehavior.HideApp:
+                        break;
+
+                    case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                        handled = true;
+                        Application.Current?.Exit();
+                        break;
+
+                    case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                        handled = true;
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            return handled;
+        }
+
+        private bool HandleDetailBackKeyPress()
+        {
             var handled = false;
 
-            var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+            var detailFrame = GetDetailFrame();
 
-            RaiseBackKeyPressed(eventArgs);
-
-            switch (eventArgs.Behavior)
+            if (detailFrame != null && detailFrame.CanGoBack)
             {
-                case NavigationServiceBackKeyPressedBehavior.GoBack:
-                    var frame = GetFrame();
+                detailFrame.GoBack();
 
-                    if (frame?.CanGoBack ?? false)
-                    {
-                        frame.GoBack();
-                        handled = true;
-                    }
-                    break;
-
-                case NavigationServiceBackKeyPressedBehavior.HideApp:
-                    break;
-
-                case NavigationServiceBackKeyPressedBehavior.ExitApp:
-                    handled = true;
-                    Application.Current?.Exit();
-                    break;
-
-                case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                    handled = true;
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
+                handled = true;
             }
 
             return handled;

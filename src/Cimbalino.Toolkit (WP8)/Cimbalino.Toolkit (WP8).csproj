@@ -113,6 +113,7 @@
     <Compile Include="Behaviors\UpdatePasswordBindingOnPropertyChanged.cs" />
     <Compile Include="Behaviors\UpdateTextBindingOnPropertyChanged.cs" />
     <Compile Include="Controls\ExtendedPageBase.cs" />
+    <Compile Include="Controls\IMasterDetailFrame.cs" />
     <Compile Include="Converters\BooleanToBrushConverter.cs" />
     <Compile Include="Converters\BooleanToIntConverter.cs" />
     <Compile Include="Converters\BooleanToObjectConverter.cs" />

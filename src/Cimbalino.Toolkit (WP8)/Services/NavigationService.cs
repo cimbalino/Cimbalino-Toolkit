@@ -144,6 +144,48 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail<T>()
+        {
+            return ExceptionHelper.ThrowNotSupported<bool>();
+        }
+
+        /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
+        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail<T>(object parameter)
+        {
+            return ExceptionHelper.ThrowNotSupported<bool>();
+        }
+
+        /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail(Type type)
+        {
+            return ExceptionHelper.ThrowNotSupported<bool>();
+        }
+
+        /// <summary>
+        /// Navigates the detail frame to the content specified by the type reference.
+        /// </summary>
+        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
+        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
+        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
+        public bool NavigateDetail(Type type, object parameter)
+        {
+            return ExceptionHelper.ThrowNotSupported<bool>();
+        }
+
+        /// <summary>
         /// Gets a value indicating whether there is at least one entry in back navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>

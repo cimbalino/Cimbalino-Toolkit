@@ -89,7 +89,7 @@ namespace Cimbalino.Toolkit.Controls
 
             base.OnApplyTemplate();
 
-            _menuButton = (Button)GetTemplateChild("MenuButton");
+            _menuButton = (Button)this.GetTemplateChild("MenuButton");
 
             if (_menuButton != null)
             {

@@ -79,7 +79,7 @@ namespace Cimbalino.Toolkit.Controls
         /// The navigation parameter property
         /// </summary>
         public static readonly DependencyProperty NavigationParameterProperty = DependencyProperty.Register(
-            nameof(NavigationParameter), typeof(object), typeof(HamburgerMenuButton), new PropertyMetadata(default(object)));
+            nameof(NavigationParameter), typeof(object), typeof(HamburgerMenuButton), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the navigation parameter.

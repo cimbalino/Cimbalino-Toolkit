@@ -37,6 +37,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          Padding="{TemplateBinding Padding}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -69,15 +77,6 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-
-                        <ContentPresenter x:Name="ContentPresenter"
-                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          AutomationProperties.AccessibilityView="Raw"
-                                          Content="{TemplateBinding Content}"
-                                          ContentTemplate="{TemplateBinding ContentTemplate}"
-                                          ContentTransitions="{TemplateBinding ContentTransitions}"
-                                          Padding="{TemplateBinding Padding}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -96,6 +95,20 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
+
+                        <Border Width="{StaticResource BaseMeasure}" Height="{StaticResource BaseMeasure}">
+                            <ContentPresenter x:Name="IconContentPresenter"
+                                              AutomationProperties.AccessibilityView="Raw"
+                                              Content="{TemplateBinding Icon}"
+                                              Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+
+                        <TextBlock x:Name="ContentPresenter"
+                                   Grid.Column="1"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Style="{StaticResource HamburgerMenuButtonTextBlockStyle}"
+                                   Text="{TemplateBinding Content}"
+                                   Visibility="{TemplateBinding LabelVisibility}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -187,20 +200,6 @@
                                 <VisualState x:Name="IndeterminateDisabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-
-                        <Border Width="{StaticResource BaseMeasure}" Height="{StaticResource BaseMeasure}">
-                            <ContentPresenter x:Name="IconContentPresenter"
-                                              AutomationProperties.AccessibilityView="Raw"
-                                              Content="{TemplateBinding Icon}"
-                                              Foreground="{TemplateBinding Foreground}" />
-                        </Border>
-
-                        <TextBlock x:Name="ContentPresenter"
-                                   Grid.Column="1"
-                                   Foreground="{TemplateBinding Foreground}"
-                                   Style="{StaticResource HamburgerMenuButtonTextBlockStyle}"
-                                   Text="{TemplateBinding Content}"
-                                   Visibility="{TemplateBinding LabelVisibility}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -257,40 +256,6 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="VisualStateGroup">
-                                <VisualState x:Name="VisualStateNarrow">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger x:Name="VisualStateNarrowTrigger" MinWindowWidth="{Binding VisualStateNarrowMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
-                                    </VisualState.StateTriggers>
-                                    <VisualState.Setters>
-                                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay" />
-                                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
-                                    </VisualState.Setters>
-                                </VisualState>
-
-                                <VisualState x:Name="VisualStateNormal">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger x:Name="VisualStateNormalTrigger" MinWindowWidth="{Binding VisualStateNormalMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
-                                    </VisualState.StateTriggers>
-                                    <VisualState.Setters>
-                                        <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay" />
-                                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
-                                    </VisualState.Setters>
-                                </VisualState>
-
-                                <VisualState x:Name="VisualStateWide">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger x:Name="VisualStateWideTrigger" MinWindowWidth="{Binding VisualStateWideMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
-                                    </VisualState.StateTriggers>
-                                    <VisualState.Setters>
-                                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline" />
-                                        <Setter Target="RootSplitView.IsPaneOpen" Value="True" />
-                                    </VisualState.Setters>
-                                </VisualState>
-
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
 
                         <Border Background="{TemplateBinding HeaderBackground}" Child="{TemplateBinding Header}" />
 
@@ -336,6 +301,105 @@
                                                   Padding="{TemplateBinding Padding}" />
                             </Grid>
                         </SplitView>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisualStateGroup">
+                                <VisualState x:Name="VisualStateNarrow">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="{Binding VisualStateNarrowMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay" />
+                                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="VisualStateNormal">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="{Binding VisualStateNormalMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay" />
+                                        <Setter Target="RootSplitView.IsPaneOpen" Value="False" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="VisualStateWide">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="{Binding VisualStateWideMinWidth, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline" />
+                                        <Setter Target="RootSplitView.IsPaneOpen" Value="True" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="controls:MasterDetailFrame">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="MasterLength" Value="480" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:MasterDetailFrame">
+                    <Grid x:Name="RootGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="MasterColumnDefinition" Width="Auto" />
+                            <ColumnDefinition x:Name="DetailColumnDefinition" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border x:Name="MasterBorder"
+                                Width="{TemplateBinding MasterLength}"
+                                Background="{TemplateBinding MasterBackground}"
+                                Child="{TemplateBinding Master}" />
+
+                        <Border x:Name="DetailBorder" Grid.Column="1">
+                            <ContentPresenter x:Name="MainContentPresenter"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Background="{TemplateBinding Background}"
+                                              BorderBrush="{TemplateBinding BorderBrush}"
+                                              BorderThickness="{TemplateBinding BorderThickness}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                                              Padding="{TemplateBinding Padding}" />
+                        </Border>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="DisplayModeStates">
+                                <VisualState x:Name="Default">
+                                    <VisualState.Setters>
+                                        <Setter Target="MasterBorder.(Grid.ColumnSpan)" Value="1" />
+                                        <Setter Target="DetailBorder.(Grid.Column)" Value="1" />
+                                        <Setter Target="DetailBorder.(Grid.ColumnSpan)" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="CompactMaster">
+                                    <VisualState.Setters>
+                                        <Setter Target="MasterBorder.Width" Value="NaN" />
+                                        <Setter Target="MasterBorder.(Grid.ColumnSpan)" Value="2" />
+                                        <Setter Target="DetailBorder.Visibility" Value="Collapsed" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="CompactDetail">
+                                    <VisualState.Setters>
+                                        <Setter Target="MasterBorder.Visibility" Value="Collapsed" />
+                                        <Setter Target="DetailBorder.(Grid.Column)" Value="0" />
+                                        <Setter Target="DetailBorder.(Grid.ColumnSpan)" Value="2" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
