@@ -13,6 +13,8 @@
 // ****************************************************************************
 
 using System;
+using Cimbalino.Toolkit.Services;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -139,6 +141,7 @@ namespace Cimbalino.Toolkit.Controls
 
                 case MasterDetailFrameDisplayMode.Compact:
                     VisualStateManager.GoToState(this, this.CanGoBack ? CompactDetailStateName : CompactMasterStateName, true);
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = this.CanGoBack && NavigationService.HandleWindowBackButton ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
                     break;
 
                 default:

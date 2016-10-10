@@ -53,7 +53,7 @@ namespace Cimbalino.Toolkit.Services
         private readonly object _frameLock = new object();
 
 #if WINDOWS_UWP
-        private readonly bool _handleWindowBackButton;
+        internal static bool HandleWindowBackButton { get; private set; }
 #endif
 
         private Frame _frame;
@@ -138,7 +138,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="handleWindowBackButton">true if the back button visibility will be handled automatically; otherwise, false.</param>
         public NavigationService(bool handleWindowBackButton)
         {
-            _handleWindowBackButton = handleWindowBackButton;
+            HandleWindowBackButton = handleWindowBackButton;
 
             if (handleWindowBackButton)
             {
@@ -428,7 +428,7 @@ namespace Cimbalino.Toolkit.Services
 
         private void SetBackButtonVisibility()
         {
-            if (_handleWindowBackButton)
+            if (HandleWindowBackButton)
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
