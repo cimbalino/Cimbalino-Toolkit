@@ -125,6 +125,17 @@ namespace Cimbalino.Toolkit.Services
         bool NavigateDetail(Type type, object parameter);
 
         /// <summary>
+        /// Navigates to the most recent item in back navigation history.
+        /// </summary>
+        void DetailGoBack();
+
+        /// <summary>
+        /// Gets a value indicating whether there is at least one entry in back navigation history of the detail of a master detail control.
+        /// </summary>
+        /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>
+        bool DetailCanGoBack { get; }
+
+        /// <summary>
         /// Gets a value indicating whether there is at least one entry in back navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>

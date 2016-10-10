@@ -252,6 +252,24 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Navigates to the most recent item in back navigation history.
+        /// </summary>
+        public void DetailGoBack()
+        {
+            if (DetailCanGoBack)
+            {
+                var frame = GetDetailFrame();
+                frame.GoBack();
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether there is at least one entry in back navigation history of the detail of a master detail control.
+        /// </summary>
+        /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>
+        public bool DetailCanGoBack => GetDetailFrame()?.CanGoBack ?? false;
+
+        /// <summary>
         /// Gets a value indicating whether there is at least one entry in back navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>
