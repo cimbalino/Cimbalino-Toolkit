@@ -216,7 +216,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool NavigateDetail<T>()
         {
-            return Navigate(typeof(T));
+            return NavigateDetail(typeof(T));
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool NavigateDetail<T>(object parameter)
         {
-            return Navigate(typeof(T), parameter);
+            return NavigateDetail(typeof(T), parameter);
         }
 
         /// <summary>
