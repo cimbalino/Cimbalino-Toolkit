@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using Cimbalino.Toolkit.Handlers;
 using Cimbalino.Toolkit.Services;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -32,6 +33,11 @@ namespace Cimbalino.Toolkit.Controls
         private const string DefaultStateName = "Default";
         private const string CompactMasterStateName = "CompactMaster";
         private const string CompactDetailStateName = "CompactDetail";
+
+        /// <summary>
+        /// Occurs when [is detail visible changed].
+        /// </summary>
+        public event EventHandler<VisibleDisplayArgs> VisibleDisplayChanged;
 
         /// <summary>
         /// Gets or sets the master.
@@ -105,6 +111,40 @@ namespace Cimbalino.Toolkit.Controls
         }
 
         /// <summary>
+        /// The visible display property
+        /// </summary>
+        public static readonly DependencyProperty VisibleDisplayProperty = DependencyProperty.Register(
+            nameof(VisibleDisplay), typeof(VisibleDisplay), typeof(MasterDetailFrame), new PropertyMetadata(VisibleDisplay.Both, OnVisibleDisplayChanged));
+
+        /// <summary>
+        /// Gets or sets the visible display.
+        /// </summary>
+        /// <value>
+        /// The visible display.
+        /// </value>
+        public VisibleDisplay VisibleDisplay
+        {
+            get { return (VisibleDisplay)GetValue(VisibleDisplayProperty); }
+            set { SetValue(VisibleDisplayProperty, value); }
+        }
+
+        private static void OnVisibleDisplayChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((VisibleDisplay)e.OldValue != (VisibleDisplay)e.NewValue)
+            {
+                (sender as MasterDetailFrame)?.UpdateVisibleDisplay();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the default type of the detail page.
+        /// </summary>
+        /// <value>
+        /// The default type of the detail page.
+        /// </value>
+        public Type DefaultDetailPageType { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MasterDetailFrame" /> class.
         /// </summary>
         public MasterDetailFrame()
@@ -118,7 +158,12 @@ namespace Cimbalino.Toolkit.Controls
 
             this.Navigated += MasterDetailFrame_Navigated;
 
-            this.Navigate(typeof(Page));
+            this.Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        {
+            this.Navigate(DefaultDetailPageType ?? typeof(Page));
         }
 
         /// <summary>
@@ -136,10 +181,12 @@ namespace Cimbalino.Toolkit.Controls
             switch (DisplayMode)
             {
                 case MasterDetailFrameDisplayMode.Normal:
+                    VisibleDisplay = VisibleDisplay.Both;
                     VisualStateManager.GoToState(this, DefaultStateName, true);
                     break;
 
                 case MasterDetailFrameDisplayMode.Compact:
+                    VisibleDisplay = this.CanGoBack ? VisibleDisplay.Detail : VisibleDisplay.Master;
                     VisualStateManager.GoToState(this, this.CanGoBack ? CompactDetailStateName : CompactMasterStateName, true);
                     SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = this.CanGoBack && NavigationService.HandleWindowBackButton ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
                     break;
@@ -147,6 +194,13 @@ namespace Cimbalino.Toolkit.Controls
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void UpdateVisibleDisplay()
+        {
+            var eventHandler = VisibleDisplayChanged;
+            eventHandler?.Invoke(this, new VisibleDisplayArgs(this.VisibleDisplay));
+            System.Diagnostics.Debug.WriteLine(this.VisibleDisplay);
         }
 
         private void MasterDetailFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
