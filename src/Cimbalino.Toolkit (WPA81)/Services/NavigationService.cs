@@ -29,7 +29,6 @@ using System.Linq;
 using Cimbalino.Toolkit.Controls;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Helpers;
-using Windows.Phone.UI.Input;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -126,10 +125,6 @@ namespace Cimbalino.Toolkit.Services
         public NavigationService()
             : this(true)
         {
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
-            {
-                HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-            }
         }
 
         /// <summary>
@@ -418,7 +413,12 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-#if WINDOWS_UWP
+#if WINDOWS_PHONE_APP
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            e.Handled = HandleBackKeyPress();
+        }
+#elif WINDOWS_UWP
         private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
@@ -436,15 +436,6 @@ namespace Cimbalino.Toolkit.Services
 #endif
 
 #if WINDOWS_PHONE_APP || WINDOWS_UWP
-        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
-        {
-            e.Handled = HandleBackKeyPress();
-
-#if WINDOWS_UWP
-            SetBackButtonVisibility();
-#endif
-        }
-
         private bool HandleBackKeyPress()
         {
             var handled = (GetDetailFrame() as IMasterDetailFrame)?.HandleBackKeyPress() ?? false;
@@ -482,22 +473,6 @@ namespace Cimbalino.Toolkit.Services
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-            }
-
-            return handled;
-        }
-
-        private bool HandleDetailBackKeyPress()
-        {
-            var handled = false;
-
-            var detailFrame = GetDetailFrame();
-
-            if (detailFrame != null && detailFrame.CanGoBack)
-            {
-                detailFrame.GoBack();
-
-                handled = true;
             }
 
             return handled;
