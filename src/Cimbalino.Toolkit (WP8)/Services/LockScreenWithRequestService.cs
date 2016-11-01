@@ -65,11 +65,23 @@ namespace Cimbalino.Toolkit.Services
 
             switch (status)
             {
+#pragma warning disable 618
                 case BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity:
                 case BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity:
+#pragma warning restore 618
+#if WINDOWS_UWP
+                case BackgroundAccessStatus.AlwaysAllowed:
+                case BackgroundAccessStatus.AllowedSubjectToSystemPolicy:
+#endif
                     return LockScreenServiceRequestResult.Granted;
 
+#pragma warning disable 618
                 case BackgroundAccessStatus.Denied:
+#pragma warning restore 618
+#if WINDOWS_UWP
+                case BackgroundAccessStatus.DeniedByUser:
+                case BackgroundAccessStatus.DeniedBySystemPolicy:
+#endif
                 case BackgroundAccessStatus.Unspecified:
                     return LockScreenServiceRequestResult.Denied;
 
