@@ -65,6 +65,7 @@
     <Compile Include="Foundation\Point.cs" />
     <Compile Include="Foundation\Rect.cs" />
     <Compile Include="Foundation\Size.cs" />
+    <Compile Include="Handlers\IHandleNavigatingFrom.cs" />
     <Compile Include="Helpers\ApplicationManifest.cs" />
     <Compile Include="Helpers\ApplicationManifestAppNode.cs" />
     <Compile Include="Helpers\ApplicationManifestBackgroundServiceAgentNode.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Services\IPersonalizationService.cs" />
     <Compile Include="Services\LauncherServiceAppInfo.cs" />
     <Compile Include="Services\LockScreenServiceRequestResult.cs" />
+    <Compile Include="Services\NavigationServiceNavigatingCancelEventArgs.cs" />
     <Compile Include="Services\NavigationServiceNavigationEventArgs.cs" />
     <Compile Include="Services\NavigationServiceNavigationMode.cs" />
     <Compile Include="Services\PowerStatusChangedEventArgs.cs" />

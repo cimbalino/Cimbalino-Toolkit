@@ -33,6 +33,15 @@ namespace Cimbalino.Toolkit.Services
 #endif
         }
 
+        public static NavigationServiceNavigatingCancelEventArgs ToNavigationServiceNavigatingCancelEventArgs(this NavigatingCancelEventArgs navigatingCancelEventArgs)
+        {
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
+            return new NavigationServiceNavigatingCancelEventArgs(navigatingCancelEventArgs.NavigationMode.ToNavigationServiceNavigationMode(), null, null, navigatingCancelEventArgs.Uri, navigatingCancelEventArgs.IsCancelable);
+#else
+            return new NavigationServiceNavigatingCancelEventArgs(navigatingCancelEventArgs.NavigationMode.ToNavigationServiceNavigationMode(), navigatingCancelEventArgs.SourcePageType, navigatingCancelEventArgs.Parameter, null, true);
+#endif
+        }
+
         public static NavigationServiceNavigationMode ToNavigationServiceNavigationMode(this NavigationMode navigationMode)
         {
             switch (navigationMode)

@@ -128,6 +128,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\IHandleNavigatedTo.cs">
       <Link>Handlers\IHandleNavigatedTo.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\IHandleNavigatingFrom.cs">
+      <Link>Handlers\IHandleNavigatingFrom.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Helpers\ApplicationManifest.cs">
       <Link>Helpers\ApplicationManifest.cs</Link>
     </Compile>
@@ -283,6 +286,9 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceBackKeyPressedEventArgs.cs">
       <Link>Services\NavigationServiceBackKeyPressedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceNavigatingCancelEventArgs.cs">
+      <Link>Services\NavigationServiceNavigatingCancelEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\NavigationServiceNavigationEventArgs.cs">
       <Link>Services\NavigationServiceNavigationEventArgs.cs</Link>
