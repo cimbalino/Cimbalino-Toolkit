@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Handlers;
 using Cimbalino.Toolkit.Services;
 using Windows.UI.Core;
@@ -116,6 +117,8 @@ namespace Cimbalino.Toolkit.Controls
         public static readonly DependencyProperty VisibleDisplayProperty = DependencyProperty.Register(
             nameof(VisibleDisplay), typeof(VisibleDisplay), typeof(MasterDetailFrame), new PropertyMetadata(VisibleDisplay.Both, OnVisibleDisplayChanged));
 
+        private Frame _frame;
+
         /// <summary>
         /// Gets or sets the visible display.
         /// </summary>
@@ -188,7 +191,7 @@ namespace Cimbalino.Toolkit.Controls
                 case MasterDetailFrameDisplayMode.Compact:
                     VisibleDisplay = this.CanGoBack ? VisibleDisplay.Detail : VisibleDisplay.Master;
                     VisualStateManager.GoToState(this, this.CanGoBack ? CompactDetailStateName : CompactMasterStateName, true);
-                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = this.CanGoBack && NavigationService.HandleWindowBackButton ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = (this.CanGoBack || (this.GetFrame()?.CanGoBack ?? false)) && NavigationService.HandleWindowBackButton ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
                     break;
 
                 default:
@@ -201,6 +204,11 @@ namespace Cimbalino.Toolkit.Controls
             var eventHandler = VisibleDisplayChanged;
             eventHandler?.Invoke(this, new VisibleDisplayArgs(this.VisibleDisplay));
             System.Diagnostics.Debug.WriteLine(this.VisibleDisplay);
+        }
+
+        private Frame GetFrame()
+        {
+            return _frame ?? (_frame = this.GetVisualAncestor<Frame>());
         }
 
         private void MasterDetailFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
