@@ -148,6 +148,12 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\handlers\IHandleNavigatedTo.cs">
       <Link>Handlers\IHandleNavigatedTo.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\VisibleDisplay.cs">
+      <Link>Handlers\VisibleDisplay.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\VisibleDisplayArgs.cs">
+      <Link>Handlers\VisibleDisplayArgs.cs</Link>
+      </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\IHandleNavigatingFrom.cs">
       <Link>Handlers\IHandleNavigatingFrom.cs</Link>
     </Compile>

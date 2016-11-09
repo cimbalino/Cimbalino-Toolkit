@@ -65,6 +65,8 @@
     <Compile Include="Foundation\Point.cs" />
     <Compile Include="Foundation\Rect.cs" />
     <Compile Include="Foundation\Size.cs" />
+    <Compile Include="Handlers\VisibleDisplay.cs" />
+    <Compile Include="Handlers\VisibleDisplayArgs.cs" />
     <Compile Include="Handlers\IHandleNavigatingFrom.cs" />
     <Compile Include="Helpers\ApplicationManifest.cs" />
     <Compile Include="Helpers\ApplicationManifestAppNode.cs" />

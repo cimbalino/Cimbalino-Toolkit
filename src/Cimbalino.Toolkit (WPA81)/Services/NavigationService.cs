@@ -52,7 +52,7 @@ namespace Cimbalino.Toolkit.Services
         private readonly object _frameLock = new object();
 
 #if WINDOWS_UWP
-        private readonly bool _handleWindowBackButton;
+        internal static bool HandleWindowBackButton { get; private set; }
 #endif
 
         private Frame _frame;
@@ -133,7 +133,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="handleWindowBackButton">true if the back button visibility will be handled automatically; otherwise, false.</param>
         public NavigationService(bool handleWindowBackButton)
         {
-            _handleWindowBackButton = handleWindowBackButton;
+            HandleWindowBackButton = handleWindowBackButton;
 
             if (handleWindowBackButton)
             {
@@ -211,7 +211,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool NavigateDetail<T>()
         {
-            return Navigate(typeof(T));
+            return NavigateDetail(typeof(T));
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>true if navigation is not canceled; otherwise, false.</returns>
         public bool NavigateDetail<T>(object parameter)
         {
-            return Navigate(typeof(T), parameter);
+            return NavigateDetail(typeof(T), parameter);
         }
 
         /// <summary>
@@ -245,6 +245,24 @@ namespace Cimbalino.Toolkit.Services
         {
             return GetDetailFrame()?.Navigate(type, parameter) ?? false;
         }
+
+        /// <summary>
+        /// Navigates to the most recent item in back navigation history.
+        /// </summary>
+        public void DetailGoBack()
+        {
+            if (DetailCanGoBack)
+            {
+                var frame = GetDetailFrame();
+                frame.GoBack();
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether there is at least one entry in back navigation history of the detail of a master detail control.
+        /// </summary>
+        /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>
+        public bool DetailCanGoBack => GetDetailFrame()?.CanGoBack ?? false;
 
         /// <summary>
         /// Gets a value indicating whether there is at least one entry in back navigation history.
@@ -428,7 +446,7 @@ namespace Cimbalino.Toolkit.Services
 
         private void SetBackButtonVisibility()
         {
-            if (_handleWindowBackButton)
+            if (HandleWindowBackButton)
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
