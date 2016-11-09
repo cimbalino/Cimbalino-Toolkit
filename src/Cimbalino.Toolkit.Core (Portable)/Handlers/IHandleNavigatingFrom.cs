@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="IHandleNavigatedTo.cs" company="Pedro Lamas">
+// <copyright file="IHandleNavigatingFrom.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -18,15 +18,15 @@ using Cimbalino.Toolkit.Services;
 namespace Cimbalino.Toolkit.Handlers
 {
     /// <summary>
-    /// Interface for when a page is loaded and becomes the current source of a parent frame.
+    /// Interface for when a page is about to be unloaded and no longer the current source of a parent frame.
     /// </summary>
-    public interface IHandleNavigatedTo
+    public interface IHandleNavigatingFrom
     {
         /// <summary>
-        /// Invoked when the page is loaded and becomes the current source of a parent frame.
+        /// Invoked immediately before the page is unloaded and is no longer the current source of a parent frame.
         /// </summary>
         /// <param name="eventArgs">An object that contains the event data.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        Task OnNavigatedToAsync(NavigationServiceNavigationEventArgs eventArgs);
+        Task OnNavigatingFromAsync(NavigationServiceNavigatingCancelEventArgs eventArgs);
     }
 }

@@ -18,11 +18,13 @@ using Cimbalino.Toolkit.Services;
 namespace Cimbalino.Toolkit.Handlers
 {
     /// <summary>
-    /// Interface for when a page has been navigated from
+    /// Interface for when a page is unloaded and is no longer the current source of a parent frame.
     /// </summary>
     public interface IHandleNavigatedFrom
     {
-        /// <summary>Called when a page becomes the active page in a frame.</summary>
+        /// <summary>
+        /// Invoked immediately after the page is unloaded and is no longer the current source of a parent frame.
+        /// </summary>
         /// <param name="eventArgs">An object that contains the event data.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task OnNavigatedFromAsync(NavigationServiceNavigationEventArgs eventArgs);

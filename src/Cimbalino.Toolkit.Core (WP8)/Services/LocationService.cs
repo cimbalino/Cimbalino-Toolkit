@@ -14,10 +14,12 @@
 
 #if WINDOWS_UWP
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 #else
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
 using Windows.Devices.Geolocation;
@@ -170,7 +172,17 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<LocationServicePosition> GetPositionAsync()
         {
-            return GetPositionAsync(LocationServiceAccuracy.Default);
+            return GetPositionAsync(LocationServiceAccuracy.Default, CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public virtual Task<LocationServicePosition> GetPositionAsync(CancellationToken cancellationToken)
+        {
+            return GetPositionAsync(LocationServiceAccuracy.Default, cancellationToken);
         }
 
         /// <summary>
@@ -178,11 +190,23 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         /// <param name="desiredAccuracy">The desired accuracy.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy)
+        public virtual Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy)
+        {
+            return GetPositionAsync(desiredAccuracy, CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
+        /// <param name="desiredAccuracy">The desired accuracy.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public virtual async Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, CancellationToken cancellationToken)
         {
             _geolocator.DesiredAccuracy = desiredAccuracy.ToPositionAccuracy();
 
-            var position = await _geolocator.GetGeopositionAsync();
+            var position = await _geolocator.GetGeopositionAsync()
+                .AsTask(cancellationToken);
 
             return position.Coordinate.ToLocationServicePosition();
         }
@@ -195,7 +219,19 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task<LocationServicePosition> GetPositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
-            return GetPositionAsync(LocationServiceAccuracy.Default, maximumAge, timeout);
+            return GetPositionAsync(LocationServiceAccuracy.Default, maximumAge, timeout, CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
+        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
+        /// <param name="timeout">The timeout.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public virtual Task<LocationServicePosition> GetPositionAsync(TimeSpan maximumAge, TimeSpan timeout, CancellationToken cancellationToken)
+        {
+            return GetPositionAsync(LocationServiceAccuracy.Default, maximumAge, timeout, cancellationToken);
         }
 
         /// <summary>
@@ -205,13 +241,27 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual async Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout)
+        public virtual Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout)
+        {
+            return GetPositionAsync(desiredAccuracy, maximumAge, timeout, CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
+        /// <param name="desiredAccuracy">The desired accuracy.</param>
+        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
+        /// <param name="timeout">The timeout.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        public virtual async Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout, CancellationToken cancellationToken)
         {
             _geolocator.DesiredAccuracy = desiredAccuracy.ToPositionAccuracy();
 
-            var getGeopositionAsyncTask = _geolocator.GetGeopositionAsync(maximumAge, timeout).AsTask();
+            var getGeopositionAsyncTask = _geolocator.GetGeopositionAsync(maximumAge, timeout)
+                .AsTask(cancellationToken);
 
-            var completedTask = await Task.WhenAny(getGeopositionAsyncTask, Task.Delay((int)timeout.TotalMilliseconds + 500)).ConfigureAwait(false);
+            var completedTask = await Task.WhenAny(getGeopositionAsyncTask, Task.Delay((int)timeout.TotalMilliseconds + 500, cancellationToken)).ConfigureAwait(false);
 
             if (completedTask != getGeopositionAsyncTask)
             {

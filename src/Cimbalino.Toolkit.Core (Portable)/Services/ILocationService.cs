@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Cimbalino.Toolkit.Services
@@ -93,9 +94,24 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Starts an asynchronous operation to retrieve the current location.
         /// </summary>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task<LocationServicePosition> GetPositionAsync(CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
         /// <param name="desiredAccuracy">The desired accuracy.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy);
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
+        /// <param name="desiredAccuracy">The desired accuracy.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, CancellationToken cancellationToken);
 
         /// <summary>
         /// Starts an asynchronous operation to retrieve the current location.
@@ -108,11 +124,30 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Starts an asynchronous operation to retrieve the current location.
         /// </summary>
+        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
+        /// <param name="timeout">The timeout.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task<LocationServicePosition> GetPositionAsync(TimeSpan maximumAge, TimeSpan timeout, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
         /// <param name="desiredAccuracy">The desired accuracy.</param>
         /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
         /// <param name="timeout">The timeout.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout);
+
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location.
+        /// </summary>
+        /// <param name="desiredAccuracy">The desired accuracy.</param>
+        /// <param name="maximumAge">The maximum acceptable age of cached location data.</param>
+        /// <param name="timeout">The timeout.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        Task<LocationServicePosition> GetPositionAsync(LocationServiceAccuracy desiredAccuracy, TimeSpan maximumAge, TimeSpan timeout, CancellationToken cancellationToken);
 
         /// <summary>
         /// Requests permission to access location data.
