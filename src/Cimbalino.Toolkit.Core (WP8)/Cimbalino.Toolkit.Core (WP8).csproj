@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\VisibleDisplayArgs.cs">
       <Link>Handlers\VisibleDisplayArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Handlers\IHandleNavigatingFrom.cs">
       <Link>Handlers\IHandleNavigatingFrom.cs</Link>
     </Compile>
