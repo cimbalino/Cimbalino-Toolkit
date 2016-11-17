@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="MasterDetailFrame.cs" company="Pedro Lamas">
+// <copyright file="MasterDetailView.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -20,14 +20,15 @@ using Windows.UI.Xaml.Media;
 namespace Cimbalino.Toolkit.Controls
 {
     /// <summary>
-    /// A master detail frame.
+    /// A master detail control.
     /// </summary>
-    [TemplateVisualState(Name = DisplayModeStatesName, GroupName = DefaultStateName)]
+    [TemplateVisualState(Name = DisplayModeStatesName, GroupName = MasterDetailStateName)]
     [TemplateVisualState(Name = DisplayModeStatesName, GroupName = CompactMasterStateName)]
-    public class MasterDetailFrame : Frame, IMasterDetailFrame
+    [TemplateVisualState(Name = DisplayModeStatesName, GroupName = CompactDetailStateName)]
+    public class MasterDetailView : Control, IMasterDetailView
     {
         private const string DisplayModeStatesName = "DisplayModeStates";
-        private const string DefaultStateName = "Default";
+        private const string MasterDetailStateName = "MasterDetail";
         private const string CompactMasterStateName = "CompactMaster";
         private const string CompactDetailStateName = "CompactDetail";
 
@@ -45,23 +46,23 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="Master" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty MasterProperty =
-            DependencyProperty.Register(nameof(Master), typeof(UIElement), typeof(MasterDetailFrame), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Master), typeof(UIElement), typeof(MasterDetailView), null);
 
         /// <summary>
-        /// Gets or sets the background of the master.
+        /// Gets or sets the detail.
         /// </summary>
-        /// <value>The background of the master.</value>
-        public Brush MasterBackground
+        /// <value>The detail.</value>
+        public UIElement Detail
         {
-            get { return (Brush)GetValue(MasterBackgroundProperty); }
-            set { SetValue(MasterBackgroundProperty, value); }
+            get { return (UIElement)GetValue(DetailProperty); }
+            set { SetValue(DetailProperty, value); }
         }
 
         /// <summary>
-        /// Identifier for the <see cref="MasterBackground" /> dependency property.
+        /// Identifier for the <see cref="Detail" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty MasterBackgroundProperty =
-            DependencyProperty.Register(nameof(MasterBackground), typeof(Brush), typeof(MasterDetailFrame), new PropertyMetadata(null));
+        public static readonly DependencyProperty DetailProperty =
+            DependencyProperty.Register(nameof(Detail), typeof(UIElement), typeof(MasterDetailView), new PropertyMetadata(null, OnPropertyChanged));
 
         /// <summary>
         /// Gets or sets the width of the master.
@@ -77,15 +78,15 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="MasterLength" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty MasterLengthProperty =
-            DependencyProperty.Register(nameof(MasterLength), typeof(double), typeof(MasterDetailFrame), new PropertyMetadata(0));
+            DependencyProperty.Register(nameof(MasterLength), typeof(double), typeof(MasterDetailView), new PropertyMetadata(0));
 
         /// <summary>
         /// Gets or sets the display mode.
         /// </summary>
         /// <value>The display mode.</value>
-        public MasterDetailFrameDisplayMode DisplayMode
+        public MasterDetailViewDisplayMode DisplayMode
         {
-            get { return (MasterDetailFrameDisplayMode)GetValue(DisplayModeProperty); }
+            get { return (MasterDetailViewDisplayMode)GetValue(DisplayModeProperty); }
             set { SetValue(DisplayModeProperty, value); }
         }
 
@@ -93,30 +94,21 @@ namespace Cimbalino.Toolkit.Controls
         /// Identifier for the <see cref="DisplayMode" /> dependency property.
         /// </summary>
         public static readonly DependencyProperty DisplayModeProperty =
-            DependencyProperty.Register(nameof(DisplayMode), typeof(MasterDetailFrameDisplayMode), typeof(MasterDetailFrame), new PropertyMetadata(MasterDetailFrameDisplayMode.Normal, OnDisplayModeChanged));
+            DependencyProperty.Register(nameof(DisplayMode), typeof(MasterDetailViewDisplayMode), typeof(MasterDetailView), new PropertyMetadata(MasterDetailViewDisplayMode.Normal, OnPropertyChanged));
 
-        private static void OnDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var masterDetailFrame = (MasterDetailFrame)d;
+            var masterDetailView = (MasterDetailView)d;
 
-            masterDetailFrame.Update();
+            masterDetailView.Update();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MasterDetailFrame" /> class.
+        /// Initializes a new instance of the <see cref="MasterDetailView" /> class.
         /// </summary>
-        public MasterDetailFrame()
+        public MasterDetailView()
         {
-            DefaultStyleKey = typeof(MasterDetailFrame);
-
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-            {
-                return;
-            }
-
-            this.Navigated += MasterDetailFrame_Navigated;
-
-            this.Navigate(typeof(Page));
+            DefaultStyleKey = typeof(MasterDetailView);
         }
 
         /// <summary>
@@ -133,12 +125,12 @@ namespace Cimbalino.Toolkit.Controls
         {
             switch (DisplayMode)
             {
-                case MasterDetailFrameDisplayMode.Normal:
-                    VisualStateManager.GoToState(this, DefaultStateName, true);
+                case MasterDetailViewDisplayMode.Normal:
+                    VisualStateManager.GoToState(this, MasterDetailStateName, true);
                     break;
 
-                case MasterDetailFrameDisplayMode.Compact:
-                    VisualStateManager.GoToState(this, this.CanGoBack ? CompactDetailStateName : CompactMasterStateName, true);
+                case MasterDetailViewDisplayMode.Compact:
+                    VisualStateManager.GoToState(this, Detail == null ? CompactMasterStateName : CompactDetailStateName, true);
                     break;
 
                 default:
@@ -146,23 +138,13 @@ namespace Cimbalino.Toolkit.Controls
             }
         }
 
-        private void MasterDetailFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
-        {
-            while (this.BackStackDepth > 1)
-            {
-                this.BackStack.RemoveAt(this.BackStackDepth - 1);
-            }
-
-            Update();
-        }
-
-        bool IMasterDetailFrame.HandleBackKeyPress()
+        bool IMasterDetailView.HandleBackKeyPress()
         {
             var handled = false;
 
-            if (DisplayMode == MasterDetailFrameDisplayMode.Compact && this.CanGoBack)
+            if (DisplayMode == MasterDetailViewDisplayMode.Compact && Detail != null)
             {
-                this.GoBack();
+                Detail = null;
 
                 handled = true;
             }

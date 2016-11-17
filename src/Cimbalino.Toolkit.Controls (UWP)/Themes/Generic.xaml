@@ -341,47 +341,31 @@
         </Setter>
     </Style>
 
-    <Style TargetType="controls:MasterDetailFrame">
+    <Style TargetType="controls:MasterDetailView">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="MasterLength" Value="480" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:MasterDetailFrame">
-                    <Grid x:Name="RootGrid">
+                <ControlTemplate TargetType="controls:MasterDetailView">
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="MasterColumnDefinition" Width="Auto" />
-                            <ColumnDefinition x:Name="DetailColumnDefinition" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
                         <Border x:Name="MasterBorder"
                                 Width="{TemplateBinding MasterLength}"
-                                Background="{TemplateBinding MasterBackground}"
                                 Child="{TemplateBinding Master}" />
 
-                        <Border x:Name="DetailBorder" Grid.Column="1">
-                            <ContentPresenter x:Name="MainContentPresenter"
-                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              Background="{TemplateBinding Background}"
-                                              BorderBrush="{TemplateBinding BorderBrush}"
-                                              BorderThickness="{TemplateBinding BorderThickness}"
-                                              Content="{TemplateBinding Content}"
-                                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                                              ContentTransitions="{TemplateBinding ContentTransitions}"
-                                              Padding="{TemplateBinding Padding}" />
-                        </Border>
+                        <Border x:Name="DetailBorder"
+                                Grid.Column="1"
+                                Child="{TemplateBinding Detail}" />
 
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="DisplayModeStates">
-                                <VisualState x:Name="Default">
-                                    <VisualState.Setters>
-                                        <Setter Target="MasterBorder.(Grid.ColumnSpan)" Value="1" />
-                                        <Setter Target="DetailBorder.(Grid.Column)" Value="1" />
-                                        <Setter Target="DetailBorder.(Grid.ColumnSpan)" Value="1" />
-                                    </VisualState.Setters>
-                                </VisualState>
+                                <VisualState x:Name="MasterDetail" />
 
                                 <VisualState x:Name="CompactMaster">
                                     <VisualState.Setters>

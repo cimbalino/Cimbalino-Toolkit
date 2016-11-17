@@ -95,36 +95,6 @@ namespace Cimbalino.Toolkit.Services
         bool Navigate(Type type, object parameter);
 
         /// <summary>
-        /// Navigates the detail frame to the content specified by the type reference.
-        /// </summary>
-        /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
-        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        bool NavigateDetail<T>();
-
-        /// <summary>
-        /// Navigates the detail frame to the content specified by the type reference.
-        /// </summary>
-        /// <typeparam name="T">The page to navigate to, specified as a type reference to its partial class type.</typeparam>
-        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
-        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        bool NavigateDetail<T>(object parameter);
-
-        /// <summary>
-        /// Navigates the detail frame to the content specified by the type reference.
-        /// </summary>
-        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
-        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        bool NavigateDetail(Type type);
-
-        /// <summary>
-        /// Navigates the detail frame to the content specified by the type reference.
-        /// </summary>
-        /// <param name="type">The page to navigate to, specified as a type reference to its partial class type.</param>
-        /// <param name="parameter">The navigation parameter to pass to the target page; must have a basic type (string, char, numeric, or GUID).</param>
-        /// <returns>true if navigation is not canceled; otherwise, false.</returns>
-        bool NavigateDetail(Type type, object parameter);
-
-        /// <summary>
         /// Gets a value indicating whether there is at least one entry in back navigation history.
         /// </summary>
         /// <value>true if there is at least one entry in back navigation history; false if there are no entries in back navigation history.</value>

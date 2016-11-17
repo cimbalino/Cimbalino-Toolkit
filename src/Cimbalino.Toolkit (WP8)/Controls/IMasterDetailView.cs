@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="IMasterDetailFrame.cs" company="Pedro Lamas">
+// <copyright file="IMasterDetailView.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
@@ -17,7 +17,7 @@ namespace Cimbalino.Toolkit.Controls
     /// <summary>
     /// Represents the basic operations for the MasterDetail control.
     /// </summary>
-    public interface IMasterDetailFrame
+    public interface IMasterDetailView
     {
         /// <summary>
         /// Called when the user presses the hardware back button.
