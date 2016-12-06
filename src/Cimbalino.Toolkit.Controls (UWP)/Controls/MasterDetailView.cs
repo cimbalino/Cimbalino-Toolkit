@@ -15,7 +15,7 @@
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Markup;
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -25,6 +25,7 @@ namespace Cimbalino.Toolkit.Controls
     [TemplateVisualState(Name = DisplayModeStatesName, GroupName = MasterDetailStateName)]
     [TemplateVisualState(Name = DisplayModeStatesName, GroupName = CompactMasterStateName)]
     [TemplateVisualState(Name = DisplayModeStatesName, GroupName = CompactDetailStateName)]
+    [ContentProperty(Name = "Master")]
     public class MasterDetailView : Control, IMasterDetailView
     {
         private const string DisplayModeStatesName = "DisplayModeStates";
