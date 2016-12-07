@@ -13,6 +13,7 @@
 // ****************************************************************************
 
 #if WINDOWS_PHONE || WINDOWS_PHONE_81
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Cimbalino.Toolkit.Extensions;
@@ -20,6 +21,7 @@ using Cimbalino.Toolkit.Handlers;
 using Cimbalino.Toolkit.Services;
 using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
 #else
+using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Handlers;
 using Cimbalino.Toolkit.Services;
@@ -44,13 +46,21 @@ namespace Cimbalino.Toolkit.Controls
         {
             base.OnNavigatedFrom(e);
 
-            var viewModel = DataContext as IHandleNavigatedFrom;
+            var handler = DataContext as IHandleNavigatedFrom;
 
-            if (viewModel != null)
+            if (handler != null)
             {
-                await viewModel.OnNavigatedFromAsync(e.ToNavigationServiceNavigationEventArgs());
+                await InvokeHandlerOnNavigatedFromAsync(handler, e.ToNavigationServiceNavigationEventArgs());
             }
         }
+
+        /// <summary>
+        /// Invokes the <see cref="IHandleNavigatedFrom.OnNavigatedFromAsync"/> for the current <see cref="Page.DataContext"/>.
+        /// </summary>
+        /// <param name="handler">The <see cref="IHandleNavigatedFrom"/> instance.</param>
+        /// <param name="e">An object that contains the event data.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        protected virtual Task InvokeHandlerOnNavigatedFromAsync(IHandleNavigatedFrom handler, NavigationServiceNavigationEventArgs e) => handler.OnNavigatedFromAsync(e);
 
         /// <summary>
         /// Invoked immediately before the page is unloaded and is no longer the current source of a parent frame.
@@ -66,9 +76,9 @@ namespace Cimbalino.Toolkit.Controls
             }
             else
             {
-                var viewModel = DataContext as IHandleNavigatingFrom;
+                var handler = DataContext as IHandleNavigatingFrom;
 
-                if (viewModel != null)
+                if (handler != null)
                 {
 #if WINDOWS_PHONE || WINDOWS_PHONE_81
                     if (e.IsCancelable)
@@ -78,10 +88,9 @@ namespace Cimbalino.Toolkit.Controls
 #else
                     e.Cancel = true;
 #endif
-
                     var navigationServiceNavigatingCancelEventArgs = e.ToNavigationServiceNavigatingCancelEventArgs();
 
-                    await viewModel.OnNavigatingFromAsync(navigationServiceNavigatingCancelEventArgs);
+                    await InvokeHandlerOnNavigatingFromAsync(handler, navigationServiceNavigatingCancelEventArgs);
 
                     if (navigationServiceNavigatingCancelEventArgs.IsCancelable && !navigationServiceNavigatingCancelEventArgs.Cancel)
                     {
@@ -90,12 +99,20 @@ namespace Cimbalino.Toolkit.Controls
 #if WINDOWS_PHONE || WINDOWS_PHONE_81
                         this.GetVisualAncestor<Frame>().Navigate(e.Uri);
 #else
-                        this.GetVisualAncestor<Frame>().Navigate(e.SourcePageType, e.Parameter, e.NavigationTransitionInfo);
+                this.GetVisualAncestor<Frame>().Navigate(e.SourcePageType, e.Parameter, e.NavigationTransitionInfo);
 #endif
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// Invokes the <see cref="IHandleNavigatingFrom.OnNavigatingFromAsync"/> for the current <see cref="Page.DataContext"/>.
+        /// </summary>
+        /// <param name="handler">The <see cref="IHandleNavigatingFrom"/> instance.</param>
+        /// <param name="e">An object that contains the event data.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        protected virtual Task InvokeHandlerOnNavigatingFromAsync(IHandleNavigatingFrom handler, NavigationServiceNavigatingCancelEventArgs e) => handler.OnNavigatingFromAsync(e);
 
         /// <summary>
         /// Invoked when the page is loaded and becomes the current source of a parent frame.
@@ -105,12 +122,20 @@ namespace Cimbalino.Toolkit.Controls
         {
             base.OnNavigatedTo(e);
 
-            var viewModel = DataContext as IHandleNavigatedTo;
+            var handler = DataContext as IHandleNavigatedTo;
 
-            if (viewModel != null)
+            if (handler != null)
             {
-                await viewModel.OnNavigatedToAsync(e.ToNavigationServiceNavigationEventArgs());
+                await InvokeHandlerOnNavigatedToAsync(handler, e.ToNavigationServiceNavigationEventArgs());
             }
         }
+
+        /// <summary>
+        /// Invokes the <see cref="IHandleNavigatedTo.OnNavigatedToAsync"/> for the current <see cref="Page.DataContext"/>.
+        /// </summary>
+        /// <param name="handler">The <see cref="IHandleNavigatedTo"/> instance.</param>
+        /// <param name="e">An object that contains the event data.</param>
+        /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
+        protected virtual Task InvokeHandlerOnNavigatedToAsync(IHandleNavigatedTo handler, NavigationServiceNavigationEventArgs e) => handler.OnNavigatedToAsync(e);
     }
 }
