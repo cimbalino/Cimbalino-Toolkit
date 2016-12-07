@@ -129,6 +129,7 @@
     <Compile Include="Controls\HamburgerTitleBar.cs" />
     <Compile Include="Controls\MasterDetailView.cs" />
     <Compile Include="Controls\MasterDetailViewDisplayMode.cs" />
+    <Compile Include="Controls\MasterDetailViewVisiblePane.cs" />
     <Compile Include="Helpers\Hamburger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Cimbalino.Toolkit.Controls.rd.xml" />

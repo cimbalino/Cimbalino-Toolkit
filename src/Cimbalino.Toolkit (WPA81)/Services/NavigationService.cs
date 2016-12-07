@@ -382,58 +382,41 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_PHONE_APP || WINDOWS_UWP
         private bool HandleBackKeyPress()
         {
-            var handled = GetMasterDetailView()?.HandleBackKeyPress() ?? false;
+            var handled = false;
 
-            if (!handled)
+            var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+
+            RaiseBackKeyPressed(eventArgs);
+
+            switch (eventArgs.Behavior)
             {
-                var eventArgs = new NavigationServiceBackKeyPressedEventArgs();
+                case NavigationServiceBackKeyPressedBehavior.GoBack:
+                    var frame = GetFrame();
 
-                RaiseBackKeyPressed(eventArgs);
-
-                switch (eventArgs.Behavior)
-                {
-                    case NavigationServiceBackKeyPressedBehavior.GoBack:
-                        var frame = GetFrame();
-
-                        if (frame?.CanGoBack ?? false)
-                        {
-                            frame.GoBack();
-                            handled = true;
-                        }
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.HideApp:
-                        break;
-
-                    case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                    if (frame?.CanGoBack ?? false)
+                    {
+                        frame.GoBack();
                         handled = true;
-                        Application.Current?.Exit();
-                        break;
+                    }
+                    break;
 
-                    case NavigationServiceBackKeyPressedBehavior.DoNothing:
-                        handled = true;
-                        break;
+                case NavigationServiceBackKeyPressedBehavior.HideApp:
+                    break;
 
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                case NavigationServiceBackKeyPressedBehavior.ExitApp:
+                    handled = true;
+                    Application.Current?.Exit();
+                    break;
+
+                case NavigationServiceBackKeyPressedBehavior.DoNothing:
+                    handled = true;
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             return handled;
-        }
-
-        private IMasterDetailView GetMasterDetailView()
-        {
-            IMasterDetailView masterDetailControl = null;
-
-            var page = GetFrame()?.Content as Page;
-
-            if (page != null)
-            {
-                masterDetailControl = page.GetVisualDescendents<FrameworkElement>().OfType<IMasterDetailView>().FirstOrDefault();
-            }
-
-            return masterDetailControl;
         }
 
         /// <summary>
@@ -442,12 +425,7 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="eventArgs">The event data.</param>
         protected virtual void RaiseBackKeyPressed(NavigationServiceBackKeyPressedEventArgs eventArgs)
         {
-            var eventHandler = BackKeyPressed;
-
-            if (eventHandler != null)
-            {
-                eventHandler(this, eventArgs);
-            }
+            BackKeyPressed?.Invoke(this, eventArgs);
         }
 #endif
 

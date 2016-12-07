@@ -26,7 +26,7 @@ namespace Cimbalino.Toolkit.Controls
     [TemplateVisualState(Name = DisplayModeStatesName, GroupName = CompactMasterStateName)]
     [TemplateVisualState(Name = DisplayModeStatesName, GroupName = CompactDetailStateName)]
     [ContentProperty(Name = "Master")]
-    public class MasterDetailView : Control, IMasterDetailView
+    public class MasterDetailView : Control
     {
         private const string DisplayModeStatesName = "DisplayModeStates";
         private const string MasterDetailStateName = "MasterDetail";
@@ -97,6 +97,22 @@ namespace Cimbalino.Toolkit.Controls
         public static readonly DependencyProperty DisplayModeProperty =
             DependencyProperty.Register(nameof(DisplayMode), typeof(MasterDetailViewDisplayMode), typeof(MasterDetailView), new PropertyMetadata(MasterDetailViewDisplayMode.Normal, OnPropertyChanged));
 
+        /// <summary>
+        /// Gets or sets the compact display mode visible pane.
+        /// </summary>
+        /// <value>The compact display mode visible pane.</value>
+        public MasterDetailViewVisiblePane CompactDisplayModeVisiblePane
+        {
+            get { return (MasterDetailViewVisiblePane)GetValue(CompactDisplayModeVisiblePaneProperty); }
+            set { SetValue(CompactDisplayModeVisiblePaneProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="CompactDisplayModeVisiblePane" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CompactDisplayModeVisiblePaneProperty =
+            DependencyProperty.Register(nameof(CompactDisplayModeVisiblePane), typeof(MasterDetailViewVisiblePane), typeof(MasterDetailView), new PropertyMetadata(MasterDetailViewVisiblePane.Master, OnPropertyChanged));
+
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var masterDetailView = (MasterDetailView)d;
@@ -131,26 +147,12 @@ namespace Cimbalino.Toolkit.Controls
                     break;
 
                 case MasterDetailViewDisplayMode.Compact:
-                    VisualStateManager.GoToState(this, Detail == null ? CompactMasterStateName : CompactDetailStateName, true);
+                    VisualStateManager.GoToState(this, CompactDisplayModeVisiblePane == MasterDetailViewVisiblePane.Master ? CompactMasterStateName : CompactDetailStateName, true);
                     break;
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        bool IMasterDetailView.HandleBackKeyPress()
-        {
-            var handled = false;
-
-            if (DisplayMode == MasterDetailViewDisplayMode.Compact && Detail != null)
-            {
-                Detail = null;
-
-                handled = true;
-            }
-
-            return handled;
         }
     }
 }
