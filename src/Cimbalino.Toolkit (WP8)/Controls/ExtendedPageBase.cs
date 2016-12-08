@@ -14,6 +14,7 @@
 
 #if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Cimbalino.Toolkit.Extensions;
@@ -25,6 +26,7 @@ using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Handlers;
 using Cimbalino.Toolkit.Services;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 #endif
@@ -55,7 +57,7 @@ namespace Cimbalino.Toolkit.Controls
         }
 
         /// <summary>
-        /// Invokes the <see cref="IHandleNavigatedFrom.OnNavigatedFromAsync"/> for the current <see cref="Page.DataContext"/>.
+        /// Invokes the <see cref="IHandleNavigatedFrom.OnNavigatedFromAsync"/> for the current <see cref="FrameworkElement.DataContext"/>.
         /// </summary>
         /// <param name="handler">The <see cref="IHandleNavigatedFrom"/> instance.</param>
         /// <param name="e">An object that contains the event data.</param>
@@ -107,7 +109,7 @@ namespace Cimbalino.Toolkit.Controls
         }
 
         /// <summary>
-        /// Invokes the <see cref="IHandleNavigatingFrom.OnNavigatingFromAsync"/> for the current <see cref="Page.DataContext"/>.
+        /// Invokes the <see cref="IHandleNavigatingFrom.OnNavigatingFromAsync"/> for the current <see cref="FrameworkElement.DataContext"/>.
         /// </summary>
         /// <param name="handler">The <see cref="IHandleNavigatingFrom"/> instance.</param>
         /// <param name="e">An object that contains the event data.</param>
@@ -131,7 +133,7 @@ namespace Cimbalino.Toolkit.Controls
         }
 
         /// <summary>
-        /// Invokes the <see cref="IHandleNavigatedTo.OnNavigatedToAsync"/> for the current <see cref="Page.DataContext"/>.
+        /// Invokes the <see cref="IHandleNavigatedTo.OnNavigatedToAsync"/> for the current <see cref="FrameworkElement.DataContext"/>.
         /// </summary>
         /// <param name="handler">The <see cref="IHandleNavigatedTo"/> instance.</param>
         /// <param name="e">An object that contains the event data.</param>
