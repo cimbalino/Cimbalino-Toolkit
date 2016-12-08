@@ -69,7 +69,7 @@ namespace Cimbalino.Toolkit.Converters
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The bolean result of the ternary operation.</returns>
-        protected bool CompareTo(IComparable value)
+        protected bool CompareTo(T value)
         {
             return CompareWith.CompareTo(CompareMode, value);
         }

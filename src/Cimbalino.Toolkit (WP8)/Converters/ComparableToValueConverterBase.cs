@@ -76,7 +76,7 @@ namespace Cimbalino.Toolkit.Converters
         /// <returns>The value to be passed to the target dependency property.</returns>
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var comparable = value as IComparable;
+            var comparable = (TInput)value;
 
             return CompareTo(comparable) ? TrueValue : FalseValue;
         }
