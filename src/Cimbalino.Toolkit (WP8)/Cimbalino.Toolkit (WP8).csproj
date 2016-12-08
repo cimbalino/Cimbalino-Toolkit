@@ -128,7 +128,9 @@
     <Compile Include="Converters\EmptyStringToObjectConverter.cs" />
     <Compile Include="Converters\MultiValueConverterBase.cs" />
     <Compile Include="Converters\NegativeBooleanConverter.cs" />
+    <Compile Include="Converters\NullToObjectConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\PassthroughConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
     <Compile Include="Converters\StringRegexConverter.cs" />
     <Compile Include="Converters\StringToLowercaseConverter.cs" />
