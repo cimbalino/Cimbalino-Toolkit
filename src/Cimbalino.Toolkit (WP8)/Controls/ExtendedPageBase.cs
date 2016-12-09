@@ -22,10 +22,11 @@ using Cimbalino.Toolkit.Handlers;
 using Cimbalino.Toolkit.Services;
 using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
 #else
+using System;
 using System.Threading.Tasks;
-using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Handlers;
 using Cimbalino.Toolkit.Services;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -99,9 +100,9 @@ namespace Cimbalino.Toolkit.Controls
                         _alreadyPerformedOnNavigatingFrom = true;
 
 #if WINDOWS_PHONE || WINDOWS_PHONE_81
-                        this.GetVisualAncestor<Frame>().Navigate(e.Uri);
+                        Dispatcher.BeginInvoke(() => this.GetVisualAncestor<Frame>().Navigate(e.Uri));
 #else
-                this.GetVisualAncestor<Frame>().Navigate(e.SourcePageType, e.Parameter, e.NavigationTransitionInfo);
+                        await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => this.Frame.Navigate(e.SourcePageType, e.Parameter, e.NavigationTransitionInfo));
 #endif
                     }
                 }
