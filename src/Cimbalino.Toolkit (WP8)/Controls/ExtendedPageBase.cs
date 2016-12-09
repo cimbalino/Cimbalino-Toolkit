@@ -81,30 +81,17 @@ namespace Cimbalino.Toolkit.Controls
             {
                 var handler = DataContext as IHandleNavigatingFrom;
 
-                if (handler != null)
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
+                var shouldCancel = handler != null && e.IsCancelable;
+#else
+                var shouldCancel = handler != null;
+#endif
+
+                if (shouldCancel)
                 {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                    if (e.IsCancelable)
-                    {
-                        e.Cancel = true;
-                    }
-#else
                     e.Cancel = true;
-#endif
-                    var navigationServiceNavigatingCancelEventArgs = e.ToNavigationServiceNavigatingCancelEventArgs();
 
-                    await InvokeHandlerOnNavigatingFromAsync(handler, navigationServiceNavigatingCancelEventArgs);
-
-                    if (navigationServiceNavigatingCancelEventArgs.IsCancelable && !navigationServiceNavigatingCancelEventArgs.Cancel)
-                    {
-                        _alreadyPerformedOnNavigatingFrom = true;
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                        Dispatcher.BeginInvoke(() => this.GetVisualAncestor<Frame>().Navigate(e.Uri));
-#else
-                        await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => this.Frame.Navigate(e.SourcePageType, e.Parameter, e.NavigationTransitionInfo));
-#endif
-                    }
+                    await OnNavigatingFromAsync(e, handler);
                 }
             }
         }
@@ -140,5 +127,49 @@ namespace Cimbalino.Toolkit.Controls
         /// <param name="e">An object that contains the event data.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         protected virtual Task InvokeHandlerOnNavigatedToAsync(IHandleNavigatedTo handler, NavigationServiceNavigationEventArgs e) => handler.OnNavigatedToAsync(e);
+
+        private async Task OnNavigatingFromAsync(NavigatingCancelEventArgs e, IHandleNavigatingFrom handler)
+        {
+            var navigationServiceNavigatingCancelEventArgs = e.ToNavigationServiceNavigatingCancelEventArgs();
+
+            await InvokeHandlerOnNavigatingFromAsync(handler, navigationServiceNavigatingCancelEventArgs);
+
+            if (!navigationServiceNavigatingCancelEventArgs.Cancel)
+            {
+                _alreadyPerformedOnNavigatingFrom = true;
+
+#if WINDOWS_PHONE || WINDOWS_PHONE_81
+                Dispatcher.BeginInvoke(() =>
+                {
+                    var frame = this.GetVisualAncestor<Frame>();
+
+                    switch (e.NavigationMode)
+                    {
+                        case NavigationMode.New:
+                            frame.Navigate(e.Uri);
+                            break;
+#else
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    var frame = this.Frame;
+
+                    switch (e.NavigationMode)
+                    {
+                        case NavigationMode.New:
+                            frame.Navigate(e.SourcePageType, e.Parameter, e.NavigationTransitionInfo);
+                            break;
+#endif
+
+                        case NavigationMode.Back:
+                            frame.GoBack();
+                            break;
+
+                        case NavigationMode.Forward:
+                            frame.GoForward();
+                            break;
+                    }
+                });
+            }
+        }
     }
 }
