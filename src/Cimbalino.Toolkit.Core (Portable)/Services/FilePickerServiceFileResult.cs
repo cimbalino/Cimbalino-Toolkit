@@ -16,6 +16,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 #elif WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.IO;
@@ -50,7 +51,7 @@ namespace Cimbalino.Toolkit.Services
             get
             {
 #if PORTABLE
-                return null;
+                return ExceptionHelper.ThrowNotSupported<string>();
 #else
                 return _storageFile.Name;
 #endif
@@ -66,7 +67,7 @@ namespace Cimbalino.Toolkit.Services
             get
             {
 #if PORTABLE
-                return null;
+                return ExceptionHelper.ThrowNotSupported<string>();
 #else
                 return _storageFile.FileType;
 #endif
@@ -91,7 +92,7 @@ namespace Cimbalino.Toolkit.Services
         public Task<Stream> OpenStreamForReadAsync()
         {
 #if PORTABLE
-            return Task.FromResult((Stream)null);
+            return ExceptionHelper.ThrowNotSupported<Task<Stream>>();
 #else
             return _storageFile.OpenStreamForReadAsync();
 #endif

@@ -15,6 +15,7 @@
 #if PORTABLE
 using System;
 using System.Text;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.Security.Cryptography;
@@ -57,7 +58,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA1Hash(this byte[] input)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new SHA1Managed())
             {
@@ -76,7 +77,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA1Hash(this byte[] input, int offset, int count)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new SHA1Managed())
             {
@@ -93,7 +94,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA256Hash(this byte[] input)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new SHA256Managed())
             {
@@ -112,7 +113,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA256Hash(this byte[] input, int offset, int count)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new SHA256Managed())
             {
@@ -129,7 +130,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeMD5Hash(this byte[] input)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new MD5Managed())
             {
@@ -148,7 +149,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeMD5Hash(this byte[] input, int offset, int count)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new MD5Managed())
             {
@@ -166,7 +167,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA1Hash(this byte[] input, byte[] key)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACSHA1())
             {
@@ -188,7 +189,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA1Hash(this byte[] input, byte[] key, int offset, int count)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACSHA1())
             {
@@ -208,7 +209,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA256Hash(this byte[] input, byte[] key)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACSHA256())
             {
@@ -230,7 +231,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA256Hash(this byte[] input, byte[] key, int offset, int count)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACSHA256())
             {
@@ -250,7 +251,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACMD5Hash(this byte[] input, byte[] key)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACMD5())
             {
@@ -272,7 +273,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACMD5Hash(this byte[] input, byte[] key, int offset, int count)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACMD5())
             {

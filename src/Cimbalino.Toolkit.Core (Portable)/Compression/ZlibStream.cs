@@ -15,6 +15,7 @@
 #if PORTABLE
 using System;
 using System.IO;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using System.IO;
@@ -57,7 +58,9 @@ namespace Cimbalino.Toolkit.Compression
         /// <param name="leaveOpen">true to leave the stream open after disposing the <see cref="ZlibStream"/> object; otherwise, false.</param>
         public ZlibStream(Stream stream, CompressionLevel compressionLevel, bool leaveOpen)
         {
-#if !PORTABLE
+#if PORTABLE
+            ExceptionHelper.ThrowNotSupported();
+#else
             _stream = stream;
             _leaveOpen = leaveOpen;
 
@@ -73,7 +76,9 @@ namespace Cimbalino.Toolkit.Compression
         /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
         public override void Flush()
         {
-#if !PORTABLE
+#if PORTABLE
+            ExceptionHelper.ThrowNotSupported();
+#else
             _deflateStream.Flush();
 #endif
         }
@@ -117,7 +122,9 @@ namespace Cimbalino.Toolkit.Compression
         /// <param name="buffer">An array of bytes. This method copies <paramref name="count"/> bytes from <paramref name="buffer"/> to the current stream. </param><param name="offset">The zero-based byte offset in <paramref name="buffer"/> at which to begin copying bytes to the current stream. </param><param name="count">The number of bytes to be written to the current stream. </param>
         public override void Write(byte[] buffer, int offset, int count)
         {
-#if !PORTABLE
+#if PORTABLE
+            ExceptionHelper.ThrowNotSupported();
+#else
             _deflateStream.Write(buffer, offset, count);
 
             _adler = Adler32.Update(_adler, buffer, offset, count);
@@ -206,11 +213,13 @@ namespace Cimbalino.Toolkit.Compression
         /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
-#if !PORTABLE
+#if PORTABLE
+            ExceptionHelper.ThrowNotSupported();
+#else
             WriteFooter();
-#endif
 
             base.Dispose(disposing);
+#endif
         }
 
 #if !PORTABLE

@@ -15,6 +15,7 @@
 #if PORTABLE
 using System.IO;
 using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
 #else
 using System.IO;
 using System.Security.Cryptography;
@@ -51,7 +52,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA1Hash(this Stream input)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new SHA1Managed())
             {
@@ -68,7 +69,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeSHA256Hash(this Stream input)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new SHA256Managed())
             {
@@ -85,7 +86,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeMD5Hash(this Stream input)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new MD5Managed())
             {
@@ -103,7 +104,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA1Hash(this Stream input, byte[] key)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACSHA1())
             {
@@ -123,7 +124,7 @@ namespace Cimbalino.Toolkit.Extensions
         public static byte[] ComputeHMACSHA256Hash(this Stream input, byte[] key)
         {
 #if PORTABLE
-            return null;
+            return ExceptionHelper.ThrowNotSupported<byte[]>();
 #else
             using (var hash = new HMACSHA256())
             {
