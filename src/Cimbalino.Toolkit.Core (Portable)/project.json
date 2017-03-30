@@ -1,11 +1,13 @@
 ﻿{
+  "supports": {},
   "dependencies": {
-    "StyleCop.Analyzers": "1.0.0"
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+    "NETStandard.Library": "1.6.0",
+    "StyleCop.Analyzers": "1.0.0",
+    "System.ComponentModel": "4.3.0",
+    "System.Net.Requests": "4.3.0"
   },
   "frameworks": {
-    "portable45-net45+win8+wp8+wpa81": {}
-  },
-  "runtimes": {
-    "win": {}
+    "netstandard1.0": {}
   }
 }
