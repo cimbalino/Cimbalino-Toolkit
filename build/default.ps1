@@ -23,7 +23,7 @@ properties {
   $vstest = "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
   
   $configurations = @{
-    "Portable" = @{Suffix = " (Portable)"; Folder="portable-net45+wp8+win8+wpa81"};
+    "Portable" = @{Suffix = " (Portable)"; Folder="netstandard1.0"};
     "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
     "WP81" = @{Suffix = " (WP81)"; Folder="wp81"};
     "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
