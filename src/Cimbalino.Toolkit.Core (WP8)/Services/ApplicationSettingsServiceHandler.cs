@@ -111,9 +111,16 @@ namespace Cimbalino.Toolkit.Services
         {
             var container = GetContainer(key, out key);
 
-            if (container != null && container.Values.ContainsKey(key))
+            if (container != null)
             {
-                container.Values.Remove(key);
+                if (container.Values.ContainsKey(key))
+                {
+                    container.Values.Remove(key);
+                }
+                else if (container.Containers.ContainsKey(key))
+                {
+                    container.DeleteContainer(key);
+                }
             }
         }
 
