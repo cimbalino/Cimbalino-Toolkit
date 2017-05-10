@@ -14,9 +14,9 @@ The toolkit is fully compatible with:
 
 ## NuGet packages ![Latest stable version](https://img.shields.io/nuget/v/Cimbalino.Toolkit.svg?style=flat "Latest stable version")  ![Latest pre-release version](https://img.shields.io/nuget/vpre/Cimbalino.Toolkit.svg?style=flat "Latest pre-release version")
 
-* [Cimbalino.Toolkit.Core](https://www.nuget.org/packages/Cimbalino.Toolkit.Core) - The PCL portion of the toolkit (compatible with background agents)
+* [Cimbalino.Toolkit.Core](https://www.nuget.org/packages/Cimbalino.Toolkit.Core) - The .NET Standard 1.0 compatible portion of the toolkit (compatible with background agents)
 * [Cimbalino.Toolkit](https://www.nuget.org/packages/Cimbalino.Toolkit) - The main component of the toolkit
-* [Cimbalino.Toolkit.Controls](https://www.nuget.org/packages/Cimbalino.Toolkit.Controls) - The controls library of the toolkit
+* [Cimbalino.Toolkit.Controls](https://www.nuget.org/packages/Cimbalino.Toolkit.Controls) - The controls library of the toolkit (currently only compatible with Windows 10 UWP apps)
 
 ## Getting started
 
@@ -30,12 +30,6 @@ The toolkit is fully compatible with:
 * Send a tweet to [@CimbalinoWP](http://twitter.com/CimbalinoWP) with your query!
 
 ## FAQ
-
-### Why do I keep getting NotImplementedExceptions when calling methods from the PCL library?
-
-The toolkit uses the ["Bait and Switch PCL trick"](http://log.paulbetts.org/the-bait-and-switch-pcl-trick/) from Paul Betts to properly support platform implementations, so please **use NuGet to add the packages to ALL your projects and don't add assemblies manually!**
-
-### What about Windows Phone 7.x support?
 
 The Cimbalino Toolkit does not support Windows Phone 7.x, but you can still use the [Cimbalino Windows Phone Toolkit](https://github.com/Cimbalino/Cimbalino-Phone-Toolkit) for that!
 
