@@ -204,7 +204,7 @@ task PublishNuget -depends PackNuGet -description "Publish the NuGet packages to
     else {
       WriteColoredOutput -ForegroundColor Green "Publishing '$nupkg'...`n"
       
-      Exec { .$nuget push "$nupkg" } "Error publishing '$nupkg'"
+      Exec { .$nuget push -source "https://www.nuget.org/api/v2/package" "$nupkg" } "Error publishing '$nupkg'"
     }
   }
 }
