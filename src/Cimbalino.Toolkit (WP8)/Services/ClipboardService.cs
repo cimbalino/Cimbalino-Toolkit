@@ -36,37 +36,37 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value indicating whether the clipboard contains text.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains text.</value>
-        public virtual bool ContainsText { get; } = ExceptionHelper.ThrowNotSupported<bool>();
+        public virtual bool ContainsText => ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains a bitmap.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains a bitmap.</value>
-        public virtual bool ContainsBitmap { get; } = ExceptionHelper.ThrowNotSupported<bool>();
+        public virtual bool ContainsBitmap => ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains HTML text.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains HTML text.</value>
-        public virtual bool ContainsHtml { get; } = ExceptionHelper.ThrowNotSupported<bool>();
+        public virtual bool ContainsHtml => ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains RTF text.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains RTF text.</value>
-        public virtual bool ContainsRtf { get; } = ExceptionHelper.ThrowNotSupported<bool>();
+        public virtual bool ContainsRtf => ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains a web link.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains a web link.</value>
-        public virtual bool ContainsWebLink { get; } = ExceptionHelper.ThrowNotSupported<bool>();
+        public virtual bool ContainsWebLink => ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains an application link.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains an application link.</value>
-        public virtual bool ContainsApplicationLink { get; } = ExceptionHelper.ThrowNotSupported<bool>();
+        public virtual bool ContainsApplicationLink => ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Gets the text in the clipboard.

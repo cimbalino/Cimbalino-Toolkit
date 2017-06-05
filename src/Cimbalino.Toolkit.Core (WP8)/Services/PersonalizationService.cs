@@ -26,7 +26,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value indicating whether this instance is supported.
         /// </summary>
         /// <value>true if this instance is supported; otherwise, false.</value>
-        public virtual bool IsSupported { get; } = ExceptionHelper.ThrowNotSupported<bool>();
+        public virtual bool IsSupported => ExceptionHelper.ThrowNotSupported<bool>();
 
         /// <summary>
         /// Sets the lock screen image.
