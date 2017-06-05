@@ -28,7 +28,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value indicating whether this instance is supported.
         /// </summary>
         /// <value>true if this instance is supported; otherwise, false.</value>
-        public virtual bool IsSupported { get; } = UserProfilePersonalizationSettings.IsSupported();
+        public virtual bool IsSupported => UserProfilePersonalizationSettings.IsSupported();
 
         /// <summary>
         /// Sets the lock screen image.

@@ -29,37 +29,37 @@ namespace Cimbalino.Toolkit.Services
         /// Gets a value indicating whether the clipboard contains text.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains text.</value>
-        public virtual bool ContainsText { get; } = IsTypeInClipboard(StandardDataFormats.Text);
+        public virtual bool ContainsText => IsTypeInClipboard(StandardDataFormats.Text);
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains a bitmap.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains a bitmap.</value>
-        public virtual bool ContainsBitmap { get; } = IsTypeInClipboard(StandardDataFormats.Bitmap);
+        public virtual bool ContainsBitmap => IsTypeInClipboard(StandardDataFormats.Bitmap);
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains HTML text.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains HTML text.</value>
-        public virtual bool ContainsHtml { get; } = IsTypeInClipboard(StandardDataFormats.Html);
+        public virtual bool ContainsHtml => IsTypeInClipboard(StandardDataFormats.Html);
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains RTF text.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains RTF text.</value>
-        public virtual bool ContainsRtf { get; } = IsTypeInClipboard(StandardDataFormats.Rtf);
+        public virtual bool ContainsRtf => IsTypeInClipboard(StandardDataFormats.Rtf);
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains a web link.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains a web link.</value>
-        public virtual bool ContainsWebLink { get; } = IsTypeInClipboard(StandardDataFormats.WebLink);
+        public virtual bool ContainsWebLink => IsTypeInClipboard(StandardDataFormats.WebLink);
 
         /// <summary>
         /// Gets a value indicating whether the clipboard contains an application link.
         /// </summary>
         /// <value>A value indicating whether the clipboard contains an application link.</value>
-        public virtual bool ContainsApplicationLink { get; } = IsTypeInClipboard(StandardDataFormats.ApplicationLink);
+        public virtual bool ContainsApplicationLink => IsTypeInClipboard(StandardDataFormats.ApplicationLink);
 
         /// <summary>
         /// Gets the text in the clipboard.
@@ -211,7 +211,7 @@ namespace Cimbalino.Toolkit.Services
             package.SetBitmap(reference);
         }
 
-        private static bool IsTypeInClipboard(string format)
+        private bool IsTypeInClipboard(string format)
         {
             var content = Clipboard.GetContent();
 

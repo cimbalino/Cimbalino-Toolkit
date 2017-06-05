@@ -523,7 +523,7 @@ namespace Cimbalino.Toolkit.Services
 #if WINDOWS_UWP
         private static string _deviceFamily;
 
-        private static bool IsMobile
+        private bool IsMobile
         {
             get
             {
