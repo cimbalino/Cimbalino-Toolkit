@@ -82,6 +82,23 @@ namespace Cimbalino.Toolkit.Behaviors
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(EnterKeyBehavior), null);
 
+
+        /// <summary>
+        /// Enable or disable handling of already handled KeyDown events. Default is false.
+        /// </summary>
+        public bool AllowHandled
+        {
+            get { return (bool)GetValue(AllowHandledProperty); }
+            set { SetValue(AllowHandledProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="AllowHandled"/> dependency property 
+        /// </summary>
+        public static readonly DependencyProperty AllowHandledProperty =
+            DependencyProperty.Register("AllowHandled", typeof(bool), typeof(EnterKeyBehavior), new PropertyMetadata(false));
+
+
         /// <summary>
         /// Called after the behavior is attached to an AssociatedObject.
         /// </summary>
@@ -90,8 +107,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnAttached()
         {
-            AssociatedObject.KeyDown += AssociatedObjectKeyDown;
-
+            AssociatedObject.AddHandler(UIElement.KeyDownEvent, new KeyEventHandler(AssociatedObjectKeyDown), AllowHandled);
             base.OnAttached();
         }
 
@@ -103,8 +119,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnDetaching()
         {
-            AssociatedObject.KeyDown -= AssociatedObjectKeyDown;
-
+            AssociatedObject.RemoveHandler(UIElement.KeyDownEvent, new KeyEventHandler(AssociatedObjectKeyDown));
             base.OnDetaching();
         }
 
