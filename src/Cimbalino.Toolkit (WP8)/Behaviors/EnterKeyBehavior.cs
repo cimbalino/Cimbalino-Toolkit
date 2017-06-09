@@ -83,6 +83,22 @@ namespace Cimbalino.Toolkit.Behaviors
             DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(EnterKeyBehavior), null);
 
         /// <summary>
+        /// Gets or sets a value indicating whether to also handle already handled KeyDown events. Default is false.
+        /// </summary>
+        /// <value>A value indicating whether to also handle already handled KeyDown events. Default is false.</value>
+        public bool AllowHandledKeyDownEvents
+        {
+            get { return (bool)GetValue(AllowHandledKeyDownEventsProperty); }
+            set { SetValue(AllowHandledKeyDownEventsProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifier for the <see cref="AllowHandledKeyDownEvents" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty AllowHandledKeyDownEventsProperty =
+            DependencyProperty.Register("AllowHandledKeyDownEvents", typeof(bool), typeof(EnterKeyBehavior), null);
+
+        /// <summary>
         /// Called after the behavior is attached to an AssociatedObject.
         /// </summary>
         /// <remarks>
@@ -90,7 +106,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnAttached()
         {
-            AssociatedObject.KeyDown += AssociatedObjectKeyDown;
+            AssociatedObject.AddHandler(UIElement.KeyDownEvent, new KeyEventHandler(AssociatedObjectKeyDown), AllowHandledKeyDownEvents);
 
             base.OnAttached();
         }
@@ -103,7 +119,7 @@ namespace Cimbalino.Toolkit.Behaviors
         /// </remarks>
         protected override void OnDetaching()
         {
-            AssociatedObject.KeyDown -= AssociatedObjectKeyDown;
+            AssociatedObject.RemoveHandler(UIElement.KeyDownEvent, new KeyEventHandler(AssociatedObjectKeyDown));
 
             base.OnDetaching();
         }
