@@ -277,6 +277,24 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
+        /// Removes an entry from the RootFrame's BackStack.
+        /// </summary>
+        /// <param name="type">the <see cref="System.Type"/> the last entry of the BackStack must be to be able to remove the BackEntry.</param>
+        public void RemoveBackEntry(Type type)
+        {
+            if (_frame.BackStack == null || _frame.BackStack.Count < 1)
+            {
+                return;
+            }
+
+            while (_frame.BackStack.Any(e => e.SourcePageType == type))
+            {
+                var entry = _frame.BackStack.First(e => e.SourcePageType == type);
+                _frame.BackStack.Remove(entry);
+            }
+        }
+
+        /// <summary>
         /// Clears the backstack for the frame in its entirety.
         /// </summary>
         public virtual void ClearBackstack()
