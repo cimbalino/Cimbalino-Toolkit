@@ -12,19 +12,11 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using Microsoft.Xna.Framework.GamerServices;
-#else
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -51,16 +43,10 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync(string text, CancellationToken cancellationToken)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            MessageBox.Show(text);
-
-            return Task.FromResult(0);
-#else
             var message = new MessageDialog(text);
 
             return message.ShowAsync()
                 .AsTask(cancellationToken);
-#endif
         }
 
         /// <summary>
@@ -83,16 +69,10 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync(string text, string caption, CancellationToken cancellationToken)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            MessageBox.Show(text, caption, MessageBoxButton.OK);
-
-            return Task.FromResult(0);
-#else
             var message = new MessageDialog(text, caption);
 
             return message.ShowAsync()
                 .AsTask(cancellationToken);
-#endif
         }
 
         /// <summary>
@@ -115,21 +95,6 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="buttons">The captions for message box buttons. The maximum number of buttons is two.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/>.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        public virtual Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons, CancellationToken cancellationToken)
-        {
-            var taskCompletionSource = new TaskCompletionSource<int>();
-
-            Guide.BeginShowMessageBox(caption, text, buttons, 0, MessageBoxIcon.None, ar =>
-            {
-                var buttonIndex = Guide.EndShowMessageBox(ar);
-
-                Deployment.Current.Dispatcher.BeginInvoke(() => taskCompletionSource.SetResult(buttonIndex.GetValueOrDefault(-1)));
-            }, null);
-
-            return taskCompletionSource.Task;
-        }
-#else
         public virtual async Task<int> ShowAsync(string text, string caption, IEnumerable<string> buttons, CancellationToken cancellationToken)
         {
             var message = new MessageDialog(text, caption);
@@ -149,6 +114,5 @@ namespace Cimbalino.Toolkit.Services
 
             return -1;
         }
-#endif
     }
 }

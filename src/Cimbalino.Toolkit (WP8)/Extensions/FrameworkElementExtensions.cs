@@ -12,23 +12,9 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Linq;
-using System.Windows;
-using System.Windows.Interactivity;
-using TriggerBase = System.Windows.Interactivity.TriggerBase;
-using TriggerCollection = System.Windows.Interactivity.TriggerCollection;
-#elif WINDOWS_UWP
 using System.Linq;
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
-
-#else
-using System.Linq;
-using Cimbalino.Toolkit.Behaviors;
-using Microsoft.Xaml.Interactivity;
-using Windows.UI.Xaml;
-#endif
 
 namespace Cimbalino.Toolkit.Extensions
 {
@@ -46,18 +32,6 @@ namespace Cimbalino.Toolkit.Extensions
         {
             return Interaction.GetBehaviors(frameworkElement);
         }
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        /// <summary>
-        /// Returns the <see cref="TriggerCollection"/> associated with the framework element.
-        /// </summary>
-        /// <param name="frameworkElement">The framework element.</param>
-        /// <returns>The <see cref="TriggerCollection"/> associated with the framework element.</returns>
-        public static TriggerCollection GetTriggers(this FrameworkElement frameworkElement)
-        {
-            return Interaction.GetTriggers(frameworkElement);
-        }
-#endif
 
         /// <summary>
         /// Returns the <see cref="Behavior"/> attached to the framework element with the specified type.
@@ -77,26 +51,5 @@ namespace Cimbalino.Toolkit.Extensions
 
             return null;
         }
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        /// <summary>
-        /// Returns the <see cref="TriggerBase"/> attached to the framework element with the specified type.
-        /// </summary>
-        /// <param name="frameworkElement">The framework element.</param>
-        /// <typeparam name="T">The trigger action type.</typeparam>
-        /// <returns>The <see cref="TriggerBase"/> attached to the framework element with the specified type.</returns>
-        public static T GetTrigger<T>(this FrameworkElement frameworkElement)
-            where T : TriggerBase
-        {
-            var triggersCollection = Interaction.GetTriggers(frameworkElement);
-
-            if (triggersCollection != null)
-            {
-                return triggersCollection.OfType<T>().FirstOrDefault();
-            }
-
-            return null;
-        }
-#endif
     }
 }

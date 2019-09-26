@@ -12,24 +12,11 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Threading.Tasks;
-using Microsoft.Phone.Tasks;
-#elif WINDOWS_PHONE_APP
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Calls;
-#elif WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Extensions;
 using Windows.ApplicationModel.Calls;
 using Windows.System;
-#else
-using System;
-using System.Threading.Tasks;
-using Cimbalino.Toolkit.Extensions;
-using Windows.System;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -54,25 +41,6 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="phoneNumber">The phone number.</param>
         /// <param name="displayName">The display name.</param>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        public virtual Task ShowAsync(string phoneNumber, string displayName)
-        {
-            new PhoneCallTask()
-            {
-                PhoneNumber = phoneNumber,
-                DisplayName = displayName
-            }.Show();
-
-            return Task.FromResult(0);
-        }
-#elif WINDOWS_PHONE_APP
-        public virtual Task ShowAsync(string phoneNumber, string displayName)
-        {
-            PhoneCallManager.ShowPhoneCallUI(phoneNumber, displayName);
-            
-            return Task.FromResult(0);
-        }
-#elif WINDOWS_UWP
         public virtual Task ShowAsync(string phoneNumber, string displayName)
         {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.Calls.PhoneCallManager"))
@@ -84,14 +52,7 @@ namespace Cimbalino.Toolkit.Services
 
             return CallByUri(phoneNumber, displayName);
         }
-#else
-        public virtual Task ShowAsync(string phoneNumber, string displayName)
-        {
-            return CallByUri(phoneNumber, displayName);
-        }
-#endif
 
-#if WINDOWS_APP || WINDOWS_UWP
         private Task CallByUri(string phoneNumber, string displayName)
         {
             var phoneCallUri = new UriBuilder("tel:")
@@ -100,6 +61,5 @@ namespace Cimbalino.Toolkit.Services
 
             return Launcher.LaunchUriAsync(phoneCallUri).AsTask();
         }
-#endif
     }
 }

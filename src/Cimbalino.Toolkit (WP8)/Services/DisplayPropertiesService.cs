@@ -12,24 +12,11 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.Windows;
-using Microsoft.Phone.Info;
-using Windows.Graphics.Display;
-using Rect = Cimbalino.Toolkit.Foundation.Rect;
-#elif WINDOWS_UWP
 using System;
 using Cimbalino.Toolkit.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.UI.Xaml;
-#else
-using System;
-using Cimbalino.Toolkit.Foundation;
-using Windows.Graphics.Display;
-using Windows.UI.Xaml;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -42,67 +29,19 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the pixels per logical inch of the current environment.
         /// </summary>
         /// <value>The pixels per logical inch of the current environment.</value>
-        public virtual float LogicalDpi
-        {
-            get
-            {
-#if WINDOWS_PHONE
-                return DisplayProperties.LogicalDpi;
-#elif WINDOWS_PHONE_81
-#pragma warning disable 0618
-                return DisplayProperties.LogicalDpi;
-#pragma warning restore 0618
-#else
-                return DisplayInformation.GetForCurrentView().LogicalDpi;
-#endif
-            }
-        }
+        public virtual float LogicalDpi => DisplayInformation.GetForCurrentView().LogicalDpi;
 
         /// <summary>
         /// Gets the raw dots per inch (DPI) along the x axis of the display monitor.
         /// </summary>
         /// <value>The raw dots per inch (DPI) along the x axis of the display monitor.</value>
-        public virtual float RawDpiX
-        {
-            get
-            {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                object value;
-
-                if (DeviceExtendedProperties.TryGetValue("RawDpiX", out value))
-                {
-                    return (float)(double)value;
-                }
-
-                return 1.0f;
-#else
-                return DisplayInformation.GetForCurrentView().RawDpiX;
-#endif
-            }
-        }
+        public virtual float RawDpiX => DisplayInformation.GetForCurrentView().RawDpiX;
 
         /// <summary>
         /// Gets the raw dots per inch (DPI) along the y axis of the display monitor.
         /// </summary>
         /// <value>The raw dots per inch (DPI) along the y axis of the display monitor.</value>
-        public virtual float RawDpiY
-        {
-            get
-            {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                object value;
-
-                if (DeviceExtendedProperties.TryGetValue("RawDpiY", out value))
-                {
-                    return (float)(double)value;
-                }
-
-                return 1.0f;
-#else
-                return DisplayInformation.GetForCurrentView().RawDpiY;
-#endif
-            }
-        }
+        public virtual float RawDpiY => DisplayInformation.GetForCurrentView().RawDpiY;
 
         /// <summary>
         /// Gets the height and width of the application window, as a Rect value.
@@ -112,13 +51,9 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                return new Rect(0, 0, Application.Current.Host.Content.ActualWidth, Application.Current.Host.Content.ActualHeight);
-#else
                 var bounds = Window.Current.Bounds;
 
                 return new Rect(bounds.X, bounds.Y, bounds.Width, bounds.Height);
-#endif
             }
         }
 
@@ -130,23 +65,10 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                object value;
-
-                if (DeviceExtendedProperties.TryGetValue("PhysicalScreenResolution", out value))
-                {
-                    var size = (Size)value;
-
-                    return new Rect(0, 0, size.Width, size.Height);
-                }
-
-                return Bounds;
-#else
                 var bounds = Bounds;
                 var rawPixelsPerViewPixel = RawPixelsPerViewPixel;
 
                 return new Rect(0, 0, bounds.Width * rawPixelsPerViewPixel, bounds.Height * rawPixelsPerViewPixel);
-#endif
             }
         }
 
@@ -158,7 +80,6 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_UWP
                 if (ApiInformation.IsPropertyPresent("Windows.Graphics.Display.DisplayInformation", "DiagonalSizeInInches"))
                 {
                     var diagonalSizeInInches = DisplayInformation.GetForCurrentView().DiagonalSizeInInches;
@@ -168,7 +89,6 @@ namespace Cimbalino.Toolkit.Services
                         return diagonalSizeInInches.Value;
                     }
                 }
-#endif
 
                 var physicalBounds = PhysicalBounds;
 
@@ -180,18 +100,6 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the number of raw (physical) pixels for each view (layout) pixel.
         /// </summary>
         /// <value>The number of raw (physical) pixels for each view (layout) pixel.</value>
-        public virtual double RawPixelsPerViewPixel
-        {
-            get
-            {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                return 1.0;
-#elif WINDOWS_PHONE_APP || WINDOWS_UWP
-                return DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
-#else
-                return DisplayInformation.GetForCurrentView().LogicalDpi / 96.0;
-#endif
-            }
-        }
+        public virtual double RawPixelsPerViewPixel => DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
     }
 }

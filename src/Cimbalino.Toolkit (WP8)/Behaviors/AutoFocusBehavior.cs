@@ -12,18 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Interactivity;
-using Cimbalino.Toolkit.Extensions;
-using KeyRoutedEventArgs = System.Windows.Input.KeyEventArgs;
-using VirtualKey = System.Windows.Input.Key;
-#else
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,16 +22,13 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-#endif
 
 namespace Cimbalino.Toolkit.Behaviors
 {
     /// <summary>
     /// The behavior that enables automatic control focus.
     /// </summary>
-#if !WINDOWS_PHONE || WINDOWS_PHONE_81
     [TypeConstraint(typeof(FrameworkElement))]
-#endif
     public class AutoFocusBehavior : Behavior<FrameworkElement>
     {
         /// <summary>
@@ -155,20 +140,12 @@ namespace Cimbalino.Toolkit.Behaviors
 
                 if (page != null)
                 {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                    page.Focus();
-#else
                     page.Focus(FocusState.Programmatic);
-#endif
                 }
             }
             else
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                toControl.Focus();
-#else
                 toControl.Focus(FocusState.Programmatic);
-#endif
 
                 if (SelectAllOnFocus)
                 {

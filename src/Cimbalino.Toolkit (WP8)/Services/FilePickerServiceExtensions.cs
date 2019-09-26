@@ -48,18 +48,10 @@ namespace Cimbalino.Toolkit.Services
                     return PickerLocationId.VideosLibrary;
 
                 case FilePickerServiceLocationId.Objects3D:
-#if WINDOWS_UWP
                     return PickerLocationId.Objects3D;
-#else
-                    return PickerLocationId.DocumentsLibrary;
-#endif
 
                 case FilePickerServiceLocationId.Unspecified:
-#if WINDOWS_UWP
                     return PickerLocationId.Unspecified;
-#else
-                    return PickerLocationId.DocumentsLibrary;
-#endif
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(locationId), locationId, null);

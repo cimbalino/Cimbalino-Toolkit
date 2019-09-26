@@ -12,11 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP || WINDOWS_UWP
 using Windows.Phone.ApplicationModel;
-#else
-using Cimbalino.Toolkit.Helpers;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -33,14 +29,11 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_UWP
                 if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.ApplicationModel.ApplicationProfile"))
                 {
                     return ApplicationProfileServiceMode.Unknown;
                 }
-#endif
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP || WINDOWS_UWP
                 switch (ApplicationProfile.Modes)
                 {
                     case ApplicationProfileModes.Default:
@@ -52,9 +45,6 @@ namespace Cimbalino.Toolkit.Services
                     default:
                         return ApplicationProfileServiceMode.Unknown;
                 }
-#else
-                return ExceptionHelper.ThrowNotSupported<ApplicationProfileServiceMode>();
-#endif
             }
         }
     }

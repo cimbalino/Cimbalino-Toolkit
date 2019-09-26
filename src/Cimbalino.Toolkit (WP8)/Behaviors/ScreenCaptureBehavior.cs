@@ -12,28 +12,18 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Interactivity;
-using Microsoft.Phone.Controls;
-using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
-#else
 using Microsoft.Xaml.Interactivity;
 using Windows.ApplicationModel;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-#endif
 
 namespace Cimbalino.Toolkit.Behaviors
 {
     /// <summary>
     /// The behavior that controls the screen capture feature on Windows Phone.
     /// </summary>
-#if !WINDOWS_PHONE || WINDOWS_PHONE_81
     [TypeConstraint(typeof(Page))]
-#endif
     public class ScreenCaptureBehavior : Behavior<Page>
     {
         /// <summary>
@@ -71,26 +61,12 @@ namespace Cimbalino.Toolkit.Behaviors
 
         private void Update()
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            if (DesignerProperties.IsInDesignTool || AssociatedObject == null)
-            {
-                return;
-            }
-
-            var propertyInfo = typeof(PhoneApplicationPage).GetProperty("IsScreenCaptureEnabled");
-
-            if (propertyInfo != null)
-            {
-                propertyInfo.SetValue(AssociatedObject, IsEnabled, null);
-            }
-#else
             if (DesignMode.DesignModeEnabled || AssociatedObject == null)
             {
                 return;
             }
 
             ApplicationView.GetForCurrentView().IsScreenCaptureEnabled = IsEnabled;
-#endif
         }
     }
 }

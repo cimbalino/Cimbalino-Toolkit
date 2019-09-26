@@ -12,12 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
-using System.Windows;
-#else
-using System;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -34,15 +29,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                return RuntimeInformationServiceProfile.WindowsPhoneSilverlight;
-#elif WINDOWS_PHONE_APP
-                return RuntimeInformationServiceProfile.WindowsPhoneApp;
-#elif WINDOWS_APP
-                return RuntimeInformationServiceProfile.WindowsApp;
-#else
                 return RuntimeInformationServiceProfile.UniversalAppPlatform;
-#endif
             }
         }
 
@@ -54,11 +41,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                return Version.Parse(Deployment.Current.RuntimeVersion);
-#else
                 return null;
-#endif
             }
         }
     }

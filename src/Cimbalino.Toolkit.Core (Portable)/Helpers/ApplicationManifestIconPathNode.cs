@@ -12,11 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Xml;
-using Cimbalino.Toolkit.Extensions;
-#endif
-
 namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
@@ -45,18 +40,5 @@ namespace Cimbalino.Toolkit.Helpers
         public string Value { get; set; }
 
         #endregion
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        internal static ApplicationManifestIconPathNode ParseXml(XmlReader reader)
-        {
-            return new ApplicationManifestIconPathNode()
-            {
-                IsRelative = reader.GetAttributeAsBool("IsRelative"),
-                IsResource = reader.GetAttributeAsBool("IsResource"),
-                Value = reader.ReadElementContentAsString()
-            };
-        }
-
-#endif
     }
 }

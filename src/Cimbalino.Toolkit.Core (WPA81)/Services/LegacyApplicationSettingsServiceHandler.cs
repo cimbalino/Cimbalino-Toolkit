@@ -86,12 +86,11 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual async Task<IEnumerable<KeyValuePair<string, object>>> GetValuesAsync()
         {
-#if WINDOWS_UWP
             if (await ApplicationData.Current.LocalFolder.TryGetItemAsync("__ApplicationSettings") == null)
             {
                 return new Dictionary<string, object>();
             }
-#endif
+
             try
             {
                 using (var fileStream = await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("__ApplicationSettings").ConfigureAwait(false))

@@ -29,11 +29,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync()
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
-            var storeUrl = "zune:navigate";
-#else
             var storeUrl = "ms-windows-store:";
-#endif
 
             return Launcher.LaunchUriAsync(new Uri(storeUrl, UriKind.Absolute)).AsTask();
         }
@@ -45,11 +41,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowPublisherAsync(string publisherName)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
-            var storeUrl = "zune:search?publisher=" + Uri.EscapeDataString(publisherName);
-#else
             var storeUrl = "ms-windows-store:Publisher?name=" + Uri.EscapeDataString(publisherName);
-#endif
 
             return Launcher.LaunchUriAsync(new Uri(storeUrl, UriKind.Absolute)).AsTask();
         }
@@ -61,11 +53,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task SearchAsync(string keywords)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
-            var storeUrl = "zune:search?keyword=" + Uri.EscapeDataString(keywords);
-#else
             var storeUrl = "ms-windows-store:Search?query=" + Uri.EscapeDataString(keywords);
-#endif
 
             return Launcher.LaunchUriAsync(new Uri(storeUrl, UriKind.Absolute)).AsTask();
         }
@@ -77,16 +65,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ReviewAsync(string applicationId)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
-            var storeUrl = "zune:reviewapp";
-
-            if (!string.IsNullOrEmpty(applicationId))
-            {
-                storeUrl += "?appid=" + Uri.EscapeDataString(applicationId);
-            }
-#else
             var storeUrl = "ms-windows-store:Review?PFN=" + Uri.EscapeDataString(applicationId);
-#endif
 
             return Launcher.LaunchUriAsync(new Uri(storeUrl, UriKind.Absolute)).AsTask();
         }

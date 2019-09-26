@@ -12,13 +12,8 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Windows.Data;
-using System.Windows.Media;
-#else
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
-#endif
 
 namespace Cimbalino.Toolkit.Converters
 {

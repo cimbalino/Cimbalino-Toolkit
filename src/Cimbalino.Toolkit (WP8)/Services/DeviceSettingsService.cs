@@ -12,21 +12,11 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
-using System;
-using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
-using Windows.System;
-#elif WINDOWS_UWP
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
 using Windows.System;
 using Windows.System.Profile;
-#else
-using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -39,192 +29,91 @@ namespace Cimbalino.Toolkit.Services
         /// Shows the Airplane Mode settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowAirplaneModeSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync(IsMobile ? "ms-settings-airplanemode:" : "ms-settings:network-airplanemode");
-#else
-            return LaunchUrlAsync("ms-settings-airplanemode:");
-#endif
-        }
+        public virtual Task ShowAirplaneModeSettingsAsync() => LaunchUrlAsync(IsMobile ? "ms-settings-airplanemode:" : "ms-settings:network-airplanemode");
 
         /// <summary>
         /// Shows the Bluetooth settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowBluetoothSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync(IsMobile ? "ms-settings-bluetooth:" : "ms-settings:bluetooth");
-#else
-            return LaunchUrlAsync("ms-settings-bluetooth:");
-#endif
-        }
+        public virtual Task ShowBluetoothSettingsAsync() => LaunchUrlAsync(IsMobile ? "ms-settings-bluetooth:" : "ms-settings:bluetooth");
 
         /// <summary>
         /// Shows the Photos+Camera settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowCameraSettingsAsync()
-        {
-            return LaunchUrlAsync("ms-settings-camera:");
-        }
+        public virtual Task ShowCameraSettingsAsync() => LaunchUrlAsync("ms-settings-camera:");
 
         /// <summary>
         /// Shows the Cellular settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowCellularSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:network-cellular");
-#else
-            return LaunchUrlAsync("ms-settings-cellular:");
-#endif
-        }
+        public virtual Task ShowCellularSettingsAsync() => LaunchUrlAsync("ms-settings:network-cellular");
 
         /// <summary>
         /// Shows the Email and Accounts settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowEmailAndAccountsSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:emailandaccounts");
-#else
-            return LaunchUrlAsync("ms-settings-emailandaccounts:");
-#endif
-        }
+        public virtual Task ShowEmailAndAccountsSettingsAsync() => LaunchUrlAsync("ms-settings:emailandaccounts");
 
         /// <summary>
         /// Shows the Location settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowLocationSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings://privacy/location");
-#else
-            return LaunchUrlAsync("ms-settings-location:");
-#endif
-        }
+        public virtual Task ShowLocationSettingsAsync() => LaunchUrlAsync("ms-settings://privacy/location");
 
         /// <summary>
         /// Shows the Lock Screen settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowLockScreenSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:lockscreen");
-#else
-            return LaunchUrlAsync("ms-settings-lock:");
-#endif
-        }
+        public virtual Task ShowLockScreenSettingsAsync() => LaunchUrlAsync("ms-settings:lockscreen");
 
         /// <summary>
         /// Shows the Notifications+Actions settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowNotificationSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:notifications");
-#else
-            return LaunchUrlAsync("ms-settings-notifications:");
-#endif
-        }
+        public virtual Task ShowNotificationSettingsAsync() => LaunchUrlAsync("ms-settings:notifications");
 
         /// <summary>
         /// Shows the Power settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowPowerSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:batterysaver");
-#else
-            return LaunchUrlAsync("ms-settings-power:");
-#endif
-        }
+        public virtual Task ShowPowerSettingsAsync() => LaunchUrlAsync("ms-settings:batterysaver");
 
         /// <summary>
         /// Shows the Screen Rotation settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowScreenRotationSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:screenrotation");
-#else
-            return LaunchUrlAsync("ms-settings-screenrotation:");
-#endif
-        }
+        public virtual Task ShowScreenRotationSettingsAsync() => LaunchUrlAsync("ms-settings:screenrotation");
 
         /// <summary>
         /// Shows the Wi-Fi settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowWiFiSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync(IsMobile ? "ms-settings-wifi:" : "ms-settings:network-wifi");
-#else
-            return LaunchUrlAsync("ms-settings-wifi:");
-#endif
-        }
+        public virtual Task ShowWiFiSettingsAsync() => LaunchUrlAsync(IsMobile ? "ms-settings-wifi:" : "ms-settings:network-wifi");
 
         /// <summary>
         /// Shows the Workplace settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public virtual Task ShowWorkplaceSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync(IsMobile ? "ms-settings-workplace" : "ms-settings:workplace");
-#else
-            return LaunchUrlAsync("ms-settings-workplace:");
-#endif
-        }
+        public virtual Task ShowWorkplaceSettingsAsync() => LaunchUrlAsync(IsMobile ? "ms-settings-workplace" : "ms-settings:workplace");
 
         /// <summary>
         /// Shows the Storage Sense settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowStorageSenseSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:storagesense");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowStorageSenseSettingsAsync() => LaunchUrlAsync("ms-settings:storagesense");
 
         /// <summary>
         /// Shows the Maps settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowMapsSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:maps");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowMapsSettingsAsync() => LaunchUrlAsync("ms-settings:maps");
 
         /// <summary>
         /// Shows the Data Sense settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowDataSenseSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:datausage");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowDataSenseSettingsAsync() => LaunchUrlAsync("ms-settings:datausage");
 
         /// <summary>
         /// Shows the Proxy settings dialog.
@@ -232,16 +121,12 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowProxySettingsAsync()
         {
-#if WINDOWS_UWP
             if (!IsMobile)
             {
                 return LaunchUrlAsync("ms-settings:network-proxy");
             }
 
             return ExceptionHelper.ThrowNotSupported<Task>();
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
         }
 
         /// <summary>
@@ -250,108 +135,55 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowRegionAndLanguageSettingsAsync()
         {
-#if WINDOWS_UWP
             if (!IsMobile)
             {
                 return LaunchUrlAsync("ms-settings:regionlanguage");
             }
 
             return ExceptionHelper.ThrowNotSupported<Task>();
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
         }
 
         /// <summary>
         /// Shows the Webcam settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowWebcamSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-webcam");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowWebcamSettingsAsync() => LaunchUrlAsync("ms-settings:privacy-webcam");
 
         /// <summary>
         /// Shows the Microphone settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowMicrophoneSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-microphone");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowMicrophoneSettingsAsync() => LaunchUrlAsync("ms-settings:privacy-microphone");
 
         /// <summary>
         /// Shows the Custom Devices settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowCustomDevicesSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-customdevices");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowCustomDevicesSettingsAsync() => LaunchUrlAsync("ms-settings:privacy-customdevices");
 
         /// <summary>
         /// Shows the Contact settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowContactsSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-contacts");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowContactsSettingsAsync() => LaunchUrlAsync("ms-settings:privacy-contacts");
 
         /// <summary>
         /// Shows the Calendar settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowCalendarSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-calendar");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowCalendarSettingsAsync() => LaunchUrlAsync("ms-settings:privacy-calendar");
 
         /// <summary>
         /// Shows the Messaging settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowMessagingSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-messaging");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowMessagingSettingsAsync() => LaunchUrlAsync("ms-settings:privacy-messaging");
 
         /// <summary>
         /// Shows the Display settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowDisplaySettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:display");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowDisplaySettingsAsync() => LaunchUrlAsync("ms-settings:display");
 
         /// <summary>
         /// Shows the Connected Devices settings dialog.
@@ -359,30 +191,19 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowConnectedDevicesSettingsAsync()
         {
-#if WINDOWS_UWP
             if (IsMobile)
             {
                 return ExceptionHelper.ThrowNotSupported<Task>();
             }
 
             return LaunchUrlAsync("ms-settings:connecteddevices");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
         }
 
         /// <summary>
         /// Shows the Mouse and Touchpad settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowMouseAndTouchpadSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:mousetouchpad");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowMouseAndTouchpadSettingsAsync() => LaunchUrlAsync("ms-settings:mousetouchpad");
 
         /// <summary>
         /// Shows the Dial-Up settings dialog.
@@ -390,16 +211,12 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowDialUpSettingsAsync()
         {
-#if WINDOWS_UWP
             if (IsMobile)
             {
                 return ExceptionHelper.ThrowNotSupported<Task>();
             }
 
             return LaunchUrlAsync("ms-settings:network-dialup");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
         }
 
         /// <summary>
@@ -408,119 +225,58 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public Task ShowEthernetSettingsAsync()
         {
-#if WINDOWS_UWP
             if (IsMobile)
             {
                 return ExceptionHelper.ThrowNotSupported<Task>();
             }
 
             return LaunchUrlAsync("ms-settings:network-ethernet");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
         }
 
         /// <summary>
         /// Shows the Mobile Hotspot settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowMobileHotspotSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync(IsMobile ? "ms-settings-mobilehotspot:" : "ms-settings:network-mobilehotspot");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowMobileHotspotSettingsAsync() => LaunchUrlAsync(IsMobile ? "ms-settings-mobilehotspot:" : "ms-settings:network-mobilehotspot");
 
         /// <summary>
         /// Shows the Personalization settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowPersonalizationSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:personalization");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowPersonalizationSettingsAsync() => LaunchUrlAsync("ms-settings:personalization");
 
         /// <summary>
         /// Shows the Date and Time settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowDateAndTimeSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:dateandtime");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowDateAndTimeSettingsAsync() => LaunchUrlAsync("ms-settings:dateandtime");
 
         /// <summary>
         /// Shows the Speech settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowSpeechSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:speech");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowSpeechSettingsAsync() => LaunchUrlAsync("ms-settings:speech");
 
         /// <summary>
         /// Shows the Radios settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowRadiosSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-radios");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowRadiosSettingsAsync() => LaunchUrlAsync("ms-settings:privacy-radios");
 
         /// <summary>
         /// Shows the Speech Privacy settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowSpeechPrivacySettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:privacy-speechtyping");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowSpeechPrivacySettingsAsync() => LaunchUrlAsync("ms-settings:privacy-speechtyping");
 
         /// <summary>
         /// Shows the Windows Update settings dialog.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-        public Task ShowWindowsUpdateSettingsAsync()
-        {
-#if WINDOWS_UWP
-            return LaunchUrlAsync("ms-settings:windowsupdate");
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        public Task ShowWindowsUpdateSettingsAsync() => LaunchUrlAsync("ms-settings:windowsupdate");
 
-        private Task LaunchUrlAsync(string url)
-        {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81 || WINDOWS_PHONE_APP || WINDOWS_UWP
-            return Launcher.LaunchUriAsync(new Uri(url, UriKind.Absolute)).AsTask();
-#else
-            return ExceptionHelper.ThrowNotSupported<Task>();
-#endif
-        }
+        private Task LaunchUrlAsync(string url) => Launcher.LaunchUriAsync(new Uri(url, UriKind.Absolute)).AsTask();
 
-#if WINDOWS_UWP
         private static string _deviceFamily;
 
         private bool IsMobile
@@ -535,7 +291,5 @@ namespace Cimbalino.Toolkit.Services
                 return _deviceFamily == "Windows.Mobile";
             }
         }
-#endif
-
     }
 }

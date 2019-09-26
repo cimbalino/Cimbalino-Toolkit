@@ -213,20 +213,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual async Task<bool> DirectoryExistsAsync(string dir)
         {
-#if WINDOWS_APP || WINDOWS_UWP
             return await StorageFolder.TryGetItemAsync(dir) is StorageFolder;
-#else
-            try
-            {
-                var folder = await StorageFolder.GetFolderAsync(dir);
-
-                return folder != null;
-            }
-            catch
-            {
-                return false;
-            }
-#endif
         }
 
         /// <summary>
@@ -236,20 +223,7 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual async Task<bool> FileExistsAsync(string path)
         {
-#if WINDOWS_APP || WINDOWS_UWP
             return await StorageFolder.TryGetItemAsync(path) is StorageFile;
-#else
-            try
-            {
-                var file = await StorageFolder.GetItemAsync(path);
-
-                return file != null;
-            }
-            catch (FileNotFoundException)
-            {
-                return false;
-            }
-#endif
         }
 
         /// <summary>

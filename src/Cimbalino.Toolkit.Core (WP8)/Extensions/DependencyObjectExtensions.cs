@@ -12,17 +12,10 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Media;
-#else
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
-#endif
 
 namespace Cimbalino.Toolkit.Extensions
 {

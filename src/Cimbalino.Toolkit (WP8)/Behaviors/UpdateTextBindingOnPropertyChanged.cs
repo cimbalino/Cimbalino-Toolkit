@@ -12,15 +12,8 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Windows.Controls;
-using System.Windows.Interactivity;
-#elif WINDOWS_UWP
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml.Controls;
-#else
-using Windows.UI.Xaml.Controls;
-#endif
 
 namespace Cimbalino.Toolkit.Behaviors
 {

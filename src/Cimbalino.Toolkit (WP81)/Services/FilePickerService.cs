@@ -12,41 +12,17 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE_81
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Activation;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-#elif WINDOWS_PHONE_APP
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Activation;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-#else
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
     /// <summary>
     /// Represents an implementation of the <see cref="IFilePickerService"/>.
     /// </summary>
-#if !NETFX_CORE
-    [CLSCompliant(false)]
-#endif
     public class FilePickerService : IFilePickerService
     {
         /// <summary>
@@ -58,38 +34,7 @@ namespace Cimbalino.Toolkit.Services
         {
             var filePicker = CreateFileOpenPicker(options);
 
-#if WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
-            var coreApplicationView = CoreApplication.GetCurrentView();
-            var taskCompletionSource = new TaskCompletionSource<StorageFile>();
-
-            TypedEventHandler<CoreApplicationView, IActivatedEventArgs> handler = null;
-
-            handler = (sender, e) =>
-            {
-                coreApplicationView.Activated -= handler;
-
-                var fileOpenPickerContinuationEventArgs = e as FileOpenPickerContinuationEventArgs;
-
-                if (fileOpenPickerContinuationEventArgs != null &&
-                    fileOpenPickerContinuationEventArgs.Kind == ActivationKind.PickFileContinuation &&
-                    fileOpenPickerContinuationEventArgs.Files != null)
-                {
-                    taskCompletionSource.SetResult(fileOpenPickerContinuationEventArgs.Files.FirstOrDefault());
-                }
-                else
-                {
-                    taskCompletionSource.SetResult(null);
-                }
-            };
-
-            coreApplicationView.Activated += handler;
-
-            filePicker.PickSingleFileAndContinue();
-
-            var selectedFile = await taskCompletionSource.Task.ConfigureAwait(false);
-#else
             var selectedFile = await filePicker.PickSingleFileAsync();
-#endif
 
             if (selectedFile != null)
             {
@@ -107,39 +52,7 @@ namespace Cimbalino.Toolkit.Services
         public virtual async Task<IEnumerable<FilePickerServiceFileResult>> PickMultipleFilesAsync(FilePickerServiceOptions options)
         {
             var filePicker = CreateFileOpenPicker(options);
-
-#if WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
-            var coreApplicationView = CoreApplication.GetCurrentView();
-            var taskCompletionSource = new TaskCompletionSource<IReadOnlyList<StorageFile>>();
-
-            TypedEventHandler<CoreApplicationView, IActivatedEventArgs> handler = null;
-
-            handler = (sender, e) =>
-            {
-                coreApplicationView.Activated -= handler;
-
-                var fileOpenPickerContinuationEventArgs = e as FileOpenPickerContinuationEventArgs;
-
-                if (fileOpenPickerContinuationEventArgs != null &&
-                    fileOpenPickerContinuationEventArgs.Kind == ActivationKind.PickFileContinuation &&
-                    fileOpenPickerContinuationEventArgs.Files != null)
-                {
-                    taskCompletionSource.SetResult(fileOpenPickerContinuationEventArgs.Files);
-                }
-                else
-                {
-                    taskCompletionSource.SetResult(null);
-                }
-            };
-
-            coreApplicationView.Activated += handler;
-
-            filePicker.PickMultipleFilesAndContinue();
-
-            var selectedFiles = await taskCompletionSource.Task.ConfigureAwait(false);
-#else
             var selectedFiles = await filePicker.PickMultipleFilesAsync();
-#endif
 
             if (selectedFiles != null && selectedFiles.Count > 0)
             {

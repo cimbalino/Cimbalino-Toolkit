@@ -12,16 +12,8 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using Microsoft.Devices;
-#elif WINDOWS_PHONE_APP || WINDOWS_UWP
 using System;
 using Windows.Phone.Devices.Notification;
-#else
-using System;
-using Cimbalino.Toolkit.Helpers;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -53,18 +45,10 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="duration">The duration (from 0 to 5000 milliseconds) for which the device vibrates.</param>
         public virtual void Vibrate(TimeSpan duration)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            VibrateController.Default.Start(duration);
-#elif WINDOWS_PHONE_APP 
-            VibrationDevice.GetDefault().Vibrate(duration);
-#elif WINDOWS_UWP
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.Devices.Notification.VibrationDevice"))
             {
                 VibrationDevice.GetDefault().Vibrate(duration);
             }
-#else
-            ExceptionHelper.ThrowNotSupported();
-#endif
         }
 
         /// <summary>
@@ -72,18 +56,10 @@ namespace Cimbalino.Toolkit.Services
         /// </summary>
         public virtual void Cancel()
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            VibrateController.Default.Stop();
-#elif WINDOWS_PHONE_APP
-            VibrationDevice.GetDefault().Cancel();
-#elif WINDOWS_UWP
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.Devices.Notification.VibrationDevice"))
             {
                 VibrationDevice.GetDefault().Cancel();
             }
-#else
-            ExceptionHelper.ThrowNotSupported();
-#endif
         }
     }
 }

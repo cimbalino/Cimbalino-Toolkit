@@ -12,11 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Xml;
-using Cimbalino.Toolkit.Extensions;
-#endif
-
 namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
@@ -33,39 +28,5 @@ namespace Cimbalino.Toolkit.Helpers
         public string Name { get; set; }
 
         #endregion
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        internal static ApplicationManifestTaskNodeBase ParseXml(XmlReader reader)
-        {
-            switch (reader.Name)
-            {
-                case "DefaultTask":
-                    var node = new ApplicationManifestDefaultTaskNode()
-                    {
-                        Name = reader.GetAttribute("Name"),
-                        NavigationPage = reader.GetAttribute("NavigationPage")
-                    };
-
-                    reader.Skip();
-
-                    return node;
-
-                case "ExtendedTask":
-                    var node2 = new ApplicationManifestExtendedTaskNode
-                    {
-                        Name = reader.GetAttribute("Name"),
-                        BackgroundServiceAgents = reader.ReadElementContentAsArray(ApplicationManifestBackgroundServiceAgentNode.ParseXml)
-                    };
-
-                    return node2;
-
-                default:
-                    reader.Skip();
-
-                    return null;
-            }
-        }
-
-#endif
     }
 }

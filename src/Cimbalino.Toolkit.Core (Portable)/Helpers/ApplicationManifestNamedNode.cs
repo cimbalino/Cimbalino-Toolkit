@@ -12,10 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Xml;
-#endif
-
 namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
@@ -32,20 +28,5 @@ namespace Cimbalino.Toolkit.Helpers
         public string Name { get; set; }
 
         #endregion
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        internal static ApplicationManifestNamedNode ParseXml(XmlReader reader)
-        {
-            var node = new ApplicationManifestNamedNode()
-            {
-                Name = reader.GetAttribute("Name")
-            };
-
-            reader.Skip();
-
-            return node;
-        }
-
-#endif
     }
 }

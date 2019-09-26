@@ -12,30 +12,19 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Interactivity;
-using KeyRoutedEventArgs = System.Windows.Input.KeyEventArgs;
-using VirtualKey = System.Windows.Input.Key;
-#else
 using System.Windows.Input;
 using Microsoft.Xaml.Interactivity;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-#endif
 
 namespace Cimbalino.Toolkit.Behaviors
 {
     /// <summary>
     /// The behavior that handles the Enter key press to execute a command.
     /// </summary>
-#if !WINDOWS_PHONE || WINDOWS_PHONE_81
     [TypeConstraint(typeof(Control))]
-#endif
     public class EnterKeyBehavior : Behavior<Control>
     {
         /// <summary>

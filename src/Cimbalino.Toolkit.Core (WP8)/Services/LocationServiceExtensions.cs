@@ -78,17 +78,6 @@ namespace Cimbalino.Toolkit.Services
 
         public static LocationServicePosition ToLocationServicePosition(this Geocoordinate coordinate)
         {
-#if WINDOWS_PHONE
-            return new LocationServicePosition(
-                coordinate.Timestamp,
-                coordinate.Latitude,
-                coordinate.Longitude,
-                coordinate.Accuracy,
-                coordinate.Altitude,
-                coordinate.AltitudeAccuracy,
-                coordinate.Heading,
-                coordinate.Speed);
-#else
             var point = coordinate.Point;
             var position = point.Position;
 
@@ -101,7 +90,6 @@ namespace Cimbalino.Toolkit.Services
                 coordinate.AltitudeAccuracy,
                 coordinate.Heading,
                 coordinate.Speed);
-#endif
         }
 
         public static LocationServicePositionChangedEventArgs ToLocationServicePositionChangedEventArgs(this PositionChangedEventArgs eventArgs)
@@ -114,7 +102,6 @@ namespace Cimbalino.Toolkit.Services
             return new LocationServiceStatusChangedEventArgs(eventArgs.Status.ToLocationServiceStatus());
         }
 
-#if WINDOWS_UWP
         public static LocationServiceRequestResult ToLocationServiceRequestResult(this GeolocationAccessStatus status)
         {
             switch (status)
@@ -130,6 +117,5 @@ namespace Cimbalino.Toolkit.Services
                     throw new ArgumentOutOfRangeException(nameof(status), status, null);
             }
         }
-#endif
     }
 }

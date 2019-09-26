@@ -12,17 +12,10 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
-#else
 using System;
 using System.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
-#endif
 
 namespace Cimbalino.Toolkit.Converters
 {

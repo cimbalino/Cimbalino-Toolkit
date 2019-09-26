@@ -12,23 +12,9 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Threading.Tasks;
-using Microsoft.Phone.Tasks;
-#elif WINDOWS_PHONE_APP
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Email;
-#elif WINDOWS_UWP
-using System;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Email;
-#else
-using System;
-using System.Threading.Tasks;
-using Cimbalino.Toolkit.Extensions;
-using Windows.System;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -71,18 +57,6 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync(string to, string cc, string bcc, string subject, string body)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            new EmailComposeTask()
-            {
-                To = to,
-                Cc = cc,
-                Bcc = bcc,
-                Subject = subject,
-                Body = body
-            }.Show();
-
-            return Task.FromResult(0);
-#elif WINDOWS_PHONE_APP || WINDOWS_UWP
             var emailMessage = new EmailMessage
             {
                 Body = body,
@@ -105,17 +79,6 @@ namespace Cimbalino.Toolkit.Services
             }
 
             return EmailManager.ShowComposeNewEmailAsync(emailMessage).AsTask();
-#else
-            var emailUri = new UriBuilder("mailto:")
-                .SetPath(to)
-                .AppendQueryParameterIfValueNotEmpty("cc", cc)
-                .AppendQueryParameterIfValueNotEmpty("bcc", bcc)
-                .AppendQueryParameterIfValueNotEmpty("subject", subject)
-                .AppendQueryParameterIfValueNotEmpty("body", body)
-                .Uri;
-
-            return Launcher.LaunchUriAsync(emailUri).AsTask();
-#endif
         }
     }
 }

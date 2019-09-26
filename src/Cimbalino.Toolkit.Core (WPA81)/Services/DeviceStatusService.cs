@@ -12,20 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE_APP
-using System;
-using Cimbalino.Toolkit.Helpers;
-using Windows.Devices.Input;
-using Windows.Phone.Devices.Power;
-using Windows.Phone.System.Power;
-using Windows.Security.ExchangeActiveSyncProvisioning;
-using Windows.System;
-#elif WINDOWS_APP
-using System;
-using Cimbalino.Toolkit.Helpers;
-using Windows.Devices.Input;
-using Windows.Security.ExchangeActiveSyncProvisioning;
-#else
 using System;
 using Cimbalino.Toolkit.Helpers;
 using Windows.Devices.Input;
@@ -33,7 +19,6 @@ using Windows.Devices.Power;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System;
 using Windows.System.Power;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -53,35 +38,14 @@ namespace Cimbalino.Toolkit.Services
             _easClientDeviceInformation = new EasClientDeviceInformation();
             _keyboardCapabilities = new KeyboardCapabilities();
 
-#if WINDOWS_PHONE_APP
-            Battery.GetDefault().RemainingChargePercentChanged += OnPowerChanged;
-            PowerManager.PowerSavingModeChanged += OnPowerChanged;
-#elif WINDOWS_UWP
             Battery.AggregateBattery.ReportUpdated += OnPowerChanged;
             PowerManager.EnergySaverStatusChanged += OnPowerChanged;
-#endif
         }
 
-#if WINDOWS_APP
-        /// <summary>
-        /// Occurs when the power status has changed
-        /// </summary>
-        public event EventHandler<PowerStatusChangedEventArgs> PowerStatusChanged
-        {
-            add
-            {
-                ExceptionHelper.ThrowNotSupported();
-            }
-            remove
-            {
-            }
-        }
-#else
         /// <summary>
         /// Occurs when the power status has changed
         /// </summary>
         public event EventHandler<PowerStatusChangedEventArgs> PowerStatusChanged;
-#endif
 
         /// <summary>
         /// Gets the memory usage of the current application in bytes.
@@ -91,11 +55,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
                 return (long)MemoryManager.AppMemoryUsage;
-#else
-                return ExceptionHelper.ThrowNotSupported<long>();
-#endif
             }
         }
 
@@ -109,11 +69,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
                 return (long)MemoryManager.AppMemoryUsageLimit;
-#else
-                return ExceptionHelper.ThrowNotSupported<long>();
-#endif
             }
         }
 
@@ -137,11 +93,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _easClientDeviceInformation.SystemFirmwareVersion;
-#else
-                return ExceptionHelper.ThrowNotSupported<string>();
-#endif
             }
         }
 
@@ -153,11 +105,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _easClientDeviceInformation.SystemHardwareVersion;
-#else
-                return ExceptionHelper.ThrowNotSupported<string>();
-#endif
             }
         }
 
@@ -169,11 +117,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _easClientDeviceInformation.SystemManufacturer;
-#else
-                return string.Empty;
-#endif
             }
         }
 
@@ -185,11 +129,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
                 return _easClientDeviceInformation.SystemProductName;
-#else
-                return string.Empty;
-#endif
             }
         }
 
@@ -255,8 +195,6 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_UWP
-
                 var status = PowerManager.BatteryStatus;
                 switch (status)
                 {
@@ -268,9 +206,6 @@ namespace Cimbalino.Toolkit.Services
                     default:
                         return ExceptionHelper.ThrowNotSupported<DeviceStatusServicePowerSource>();
                 }
-#else
-                return ExceptionHelper.ThrowNotSupported<DeviceStatusServicePowerSource>();
-#endif
             }
         }
 
@@ -282,9 +217,6 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP
-                return Battery.GetDefault().RemainingChargePercent;
-#elif WINDOWS_UWP
                 var report = Battery.AggregateBattery.GetReport();
                 if (report.FullChargeCapacityInMilliwattHours.HasValue && report.RemainingCapacityInMilliwattHours.HasValue)
                 {
@@ -292,9 +224,6 @@ namespace Cimbalino.Toolkit.Services
                 }
 
                 return null;
-#else
-                return ExceptionHelper.ThrowNotSupported<int?>();
-#endif
             }
         }
 
@@ -308,17 +237,10 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE_APP
-                return PowerManager.PowerSavingMode == PowerSavingMode.On;
-#elif WINDOWS_UWP
                 return PowerManager.EnergySaverStatus == EnergySaverStatus.On;
-#else
-                return null;
-#endif
             }
         }
 
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
         private void OnPowerChanged(object sender, object o)
         {
             var eventHandler = PowerStatusChanged;
@@ -326,6 +248,5 @@ namespace Cimbalino.Toolkit.Services
 
             eventHandler?.Invoke(this, args);
         }
-#endif
     }
 }

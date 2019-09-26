@@ -12,14 +12,9 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_APP
-using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
-#else
 using System;
 using System.Threading.Tasks;
 using Windows.UI.ViewManagement;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -64,25 +59,12 @@ namespace Cimbalino.Toolkit.Services
         /// Hides the status bar.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_APP
-        public virtual Task HideAsync()
-        {
-            return ExceptionHelper.ThrowNotSupported<Task>();
-        }
-
-        private Task ShowAsync(string text, double value, bool isIndeterminate)
-        {
-            return ExceptionHelper.ThrowNotSupported<Task>();
-        }
-#else
         public virtual async Task HideAsync()
         {
-#if WINDOWS_UWP
             if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 return;
             }
-#endif
 
             var statusBar = StatusBar.GetForCurrentView();
 
@@ -94,12 +76,10 @@ namespace Cimbalino.Toolkit.Services
 
         private async Task ShowAsync(string text, double value, bool isIndeterminate)
         {
-#if WINDOWS_UWP
             if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 return;
             }
-#endif
 
             var statusBar = StatusBar.GetForCurrentView();
 
@@ -111,6 +91,5 @@ namespace Cimbalino.Toolkit.Services
                 await statusBar.ProgressIndicator.ShowAsync();
             }
         }
-#endif
     }
 }

@@ -17,11 +17,6 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
-#elif WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Windows.Storage;
 #else
 using System.IO;
 using System.Threading.Tasks;

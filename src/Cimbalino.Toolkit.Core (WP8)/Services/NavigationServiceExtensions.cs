@@ -12,13 +12,8 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.Windows.Navigation;
-#else
 using System;
 using Windows.UI.Xaml.Navigation;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -26,20 +21,12 @@ namespace Cimbalino.Toolkit.Services
     {
         public static NavigationServiceNavigationEventArgs ToNavigationServiceNavigationEventArgs(this NavigationEventArgs navigationEventArgs)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            return new NavigationServiceNavigationEventArgs(navigationEventArgs.NavigationMode.ToNavigationServiceNavigationMode(), null, null, navigationEventArgs.Uri);
-#else
             return new NavigationServiceNavigationEventArgs(navigationEventArgs.NavigationMode.ToNavigationServiceNavigationMode(), navigationEventArgs.SourcePageType, navigationEventArgs.Parameter, navigationEventArgs.Uri);
-#endif
         }
 
         public static NavigationServiceNavigatingCancelEventArgs ToNavigationServiceNavigatingCancelEventArgs(this NavigatingCancelEventArgs navigatingCancelEventArgs)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            return new NavigationServiceNavigatingCancelEventArgs(navigatingCancelEventArgs.NavigationMode.ToNavigationServiceNavigationMode(), null, null, navigatingCancelEventArgs.Uri, navigatingCancelEventArgs.IsCancelable);
-#else
             return new NavigationServiceNavigatingCancelEventArgs(navigatingCancelEventArgs.NavigationMode.ToNavigationServiceNavigationMode(), navigatingCancelEventArgs.SourcePageType, navigatingCancelEventArgs.Parameter, null, true);
-#endif
         }
 
         public static NavigationServiceNavigationMode ToNavigationServiceNavigationMode(this NavigationMode navigationMode)
@@ -57,11 +44,6 @@ namespace Cimbalino.Toolkit.Services
 
                 case NavigationMode.Refresh:
                     return NavigationServiceNavigationMode.Refresh;
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                case NavigationMode.Reset:
-                    return NavigationServiceNavigationMode.Reset;
-#endif
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(navigationMode), navigationMode, null);

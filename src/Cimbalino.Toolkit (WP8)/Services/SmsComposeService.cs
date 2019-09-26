@@ -12,23 +12,9 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Threading.Tasks;
-using Microsoft.Phone.Tasks;
-#elif WINDOWS_PHONE_APP
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Chat;
-#elif WINDOWS_UWP
-using System;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Chat;
-#else
-using System;
-using System.Threading.Tasks;
-using Cimbalino.Toolkit.Extensions;
-using Windows.System;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -55,15 +41,6 @@ namespace Cimbalino.Toolkit.Services
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
         public virtual Task ShowAsync(string recipient, string body)
         {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-            new SmsComposeTask()
-            {
-                To = recipient,
-                Body = body
-            }.Show();
-
-            return Task.FromResult(0);
-#elif WINDOWS_PHONE_APP || WINDOWS_UWP
             var chatMessage = new ChatMessage
             {
                 Body = body
@@ -75,14 +52,6 @@ namespace Cimbalino.Toolkit.Services
             }
 
             return ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage).AsTask();
-#else
-            var smsUri = new UriBuilder("sms:")
-               .SetPath(recipient)
-               .AppendQueryParameterIfValueNotEmpty("body", body)
-               .Uri;
-
-            return Launcher.LaunchUriAsync(smsUri).AsTask();
-#endif
         }
     }
 }

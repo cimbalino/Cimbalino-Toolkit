@@ -12,35 +12,13 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE_APP
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Cimbalino.Toolkit.Controls;
-using Cimbalino.Toolkit.Extensions;
-using Cimbalino.Toolkit.Helpers;
-using Windows.Phone.UI.Input;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-#elif WINDOWS_UWP
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Cimbalino.Toolkit.Controls;
 using Cimbalino.Toolkit.Extensions;
 using Cimbalino.Toolkit.Helpers;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-#else
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Cimbalino.Toolkit.Extensions;
-using Cimbalino.Toolkit.Helpers;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -51,9 +29,7 @@ namespace Cimbalino.Toolkit.Services
     {
         private readonly object _frameLock = new object();
 
-#if WINDOWS_UWP
         private readonly bool _handleWindowBackButton;
-#endif
 
         private Frame _frame;
 
@@ -65,20 +41,7 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Occurs when the user presses the hardware Back button.
         /// </summary>
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
         public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed;
-#else
-        public event EventHandler<NavigationServiceBackKeyPressedEventArgs> BackKeyPressed
-        {
-            add
-            {
-                ExceptionHelper.ThrowNotSupported();
-            }
-            remove
-            {
-            }
-        }
-#endif
 
         /// <summary>
         /// Gets the uniform resource identifier (URI) of the content that is currently displayed.
@@ -110,15 +73,6 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-#if WINDOWS_PHONE_APP
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NavigationService"/> class.
-        /// </summary>
-        public NavigationService()
-        {
-            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-        }
-#elif WINDOWS_UWP
         /// <summary>
         /// Initializes a new instance of the <see cref="NavigationService"/> class.
         /// </summary>
@@ -140,7 +94,6 @@ namespace Cimbalino.Toolkit.Services
                 SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
             }
         }
-#endif
 
         /// <summary>
         /// Navigates to the content specified by the uniform resource identifier (URI).
@@ -266,9 +219,7 @@ namespace Cimbalino.Toolkit.Services
             {
                 frame.BackStack.RemoveAt(frame.BackStackDepth - 1);
 
-#if WINDOWS_UWP
                 SetBackButtonVisibility();
-#endif
 
                 return true;
             }
@@ -338,9 +289,7 @@ namespace Cimbalino.Toolkit.Services
 
             RaiseNavigated(e.ToNavigationServiceNavigationEventArgs());
 
-#if WINDOWS_UWP
             SetBackButtonVisibility();
-#endif
         }
 
         /// <summary>
@@ -349,20 +298,9 @@ namespace Cimbalino.Toolkit.Services
         /// <param name="eventArgs">The event data.</param>
         protected virtual void RaiseNavigated(NavigationServiceNavigationEventArgs eventArgs)
         {
-            var eventHandler = Navigated;
-
-            if (eventHandler != null)
-            {
-                eventHandler(this, eventArgs);
-            }
+            Navigated?.Invoke(this, eventArgs);
         }
 
-#if WINDOWS_PHONE_APP
-        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
-        {
-            e.Handled = HandleBackKeyPress();
-        }
-#elif WINDOWS_UWP
         private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
             e.Handled = HandleBackKeyPress();
@@ -377,9 +315,7 @@ namespace Cimbalino.Toolkit.Services
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
             }
         }
-#endif
 
-#if WINDOWS_PHONE_APP || WINDOWS_UWP
         private bool HandleBackKeyPress()
         {
             var handled = false;
@@ -427,7 +363,6 @@ namespace Cimbalino.Toolkit.Services
         {
             BackKeyPressed?.Invoke(this, eventArgs);
         }
-#endif
 
         void INavigationService.RegisterFrame(object frame)
         {

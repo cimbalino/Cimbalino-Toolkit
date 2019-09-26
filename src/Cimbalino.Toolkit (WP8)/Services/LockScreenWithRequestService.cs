@@ -12,18 +12,9 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.Threading.Tasks;
-using Windows.Phone.System.UserProfile;
-#elif WINDOWS_PHONE_APP
-using System.Threading.Tasks;
-using Cimbalino.Toolkit.Helpers;
-#else
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -36,29 +27,6 @@ namespace Cimbalino.Toolkit.Services
         /// Sets the current app as the lock screen background image provider.
         /// </summary>
         /// <returns>The <see cref="Task"/> object representing the asynchronous operation.</returns>
-#if WINDOWS_PHONE_APP
-        public override Task<LockScreenServiceRequestResult> RequestAccessAsync()
-        {
-            return ExceptionHelper.ThrowNotSupported<Task<LockScreenServiceRequestResult>>();
-        }
-#elif WINDOWS_PHONE || WINDOWS_PHONE_81
-        public override async Task<LockScreenServiceRequestResult> RequestAccessAsync()
-        {
-            var result = await LockScreenManager.RequestAccessAsync();
-
-            switch (result)
-            {
-                case LockScreenRequestResult.Denied:
-                    return LockScreenServiceRequestResult.Denied;
-
-                case LockScreenRequestResult.Granted:
-                    return LockScreenServiceRequestResult.Granted;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-#else
         public override async Task<LockScreenServiceRequestResult> RequestAccessAsync()
         {
             var status = await BackgroundExecutionManager.RequestAccessAsync();
@@ -69,19 +37,15 @@ namespace Cimbalino.Toolkit.Services
                 case BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity:
                 case BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity:
 #pragma warning restore 618
-#if WINDOWS_UWP
                 case BackgroundAccessStatus.AlwaysAllowed:
                 case BackgroundAccessStatus.AllowedSubjectToSystemPolicy:
-#endif
                     return LockScreenServiceRequestResult.Granted;
 
 #pragma warning disable 618
                 case BackgroundAccessStatus.Denied:
 #pragma warning restore 618
-#if WINDOWS_UWP
                 case BackgroundAccessStatus.DeniedByUser:
                 case BackgroundAccessStatus.DeniedBySystemPolicy:
-#endif
                 case BackgroundAccessStatus.Unspecified:
                     return LockScreenServiceRequestResult.Denied;
 
@@ -89,6 +53,5 @@ namespace Cimbalino.Toolkit.Services
                     throw new ArgumentOutOfRangeException();
             }
         }
-#endif
     }
 }

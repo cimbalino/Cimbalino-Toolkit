@@ -12,13 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.Windows;
-using System.Xml;
-using Cimbalino.Toolkit.Extensions;
-#endif
-
 namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
@@ -26,11 +19,6 @@ namespace Cimbalino.Toolkit.Helpers
     /// </summary>
     public class ApplicationManifest
     {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        private const string AppManifestName = "WMAppManifest.xml";
-
-        private static ApplicationManifest _current;
-#endif
 
         #region Properties
 
@@ -42,24 +30,7 @@ namespace Cimbalino.Toolkit.Helpers
         {
             get
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                if (_current == null)
-                {
-                    var appManifestResourceInfo = Application.GetResourceStream(new Uri(AppManifestName, UriKind.Relative));
-
-                    using (var appManifestStream = appManifestResourceInfo.Stream)
-                    {
-                        using (var reader = XmlReader.Create(appManifestStream, new XmlReaderSettings { IgnoreWhitespace = true, IgnoreComments = true }))
-                        {
-                            _current = ParseXml(reader);
-                        }
-                    }
-                }
-
-                return _current;
-#else
                 return ExceptionHelper.ThrowNotSupported<ApplicationManifest>();
-#endif
             }
         }
 
@@ -94,54 +65,5 @@ namespace Cimbalino.Toolkit.Helpers
         public ApplicationManifestAppNode App { get; set; }
 
         #endregion
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        internal static ApplicationManifest ParseXml(XmlReader reader)
-        {
-            reader.MoveToContent();
-
-            var node = new ApplicationManifest
-            {
-                AppPlatformVersion = reader.GetAttribute("AppPlatformVersion")
-            };
-
-            reader.ReadStartElement();
-
-            while (reader.NodeType != XmlNodeType.EndElement)
-            {
-                switch (reader.Name)
-                {
-                    case "DefaultLanguage":
-                        node.DefaultLanguage = ApplicationManifestLanguageNode.ParseXml(reader);
-
-                        break;
-
-                    case "AppExtra":
-                        node.AppExtras = reader.ReadElementContentAsArray(ApplicationManifestNamedNode.ParseXml);
-
-                        break;
-
-                    case "Languages":
-                        node.Languages = reader.ReadElementContentAsArray(ApplicationManifestLanguageNode.ParseXml);
-
-                        break;
-
-                    case "App":
-                        node.App = ApplicationManifestAppNode.ParseXml(reader);
-
-                        break;
-
-                    default:
-                        reader.Skip();
-
-                        break;
-                }
-            }
-
-            reader.ReadEndElement();
-
-            return node;
-        }
-#endif
     }
 }

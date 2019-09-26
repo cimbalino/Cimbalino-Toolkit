@@ -12,16 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE
-using Cimbalino.Toolkit.Helpers;
-#elif WINDOWS_PHONE_81 || WINDOWS_PHONE_APP
 using Windows.Storage;
-#elif WINDOWS_UWP
-using Windows.Storage;
-#else
-using Cimbalino.Toolkit.Helpers;
-using Windows.Storage;
-#endif
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -30,26 +21,18 @@ namespace Cimbalino.Toolkit.Services
     /// </summary>
     public class ApplicationSettingsService : IApplicationSettingsService
     {
-#if !WINDOWS_PHONE
         private static readonly IApplicationSettingsServiceHandler LocalSettingsServiceHandlerStatic, RoamingSettingsServiceHandlerStatic;
-#endif
 
-#if !WINDOWS_APP
         private static readonly IApplicationSettingsServiceHandler LegacySettingsServiceHandlerStatic;
-#endif
 
         static ApplicationSettingsService()
         {
-#if !WINDOWS_PHONE
             var applicationData = ApplicationData.Current;
 
             LocalSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.LocalSettings);
             RoamingSettingsServiceHandlerStatic = new ApplicationSettingsServiceHandler(applicationData.RoamingSettings);
-#endif
 
-#if !WINDOWS_APP
             LegacySettingsServiceHandlerStatic = new LegacyApplicationSettingsServiceHandler();
-#endif
         }
 
         /// <summary>
@@ -60,11 +43,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE
-                return ExceptionHelper.ThrowNotSupported<IApplicationSettingsServiceHandler>();
-#else
                 return LocalSettingsServiceHandlerStatic;
-#endif
             }
         }
 
@@ -76,11 +55,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if WINDOWS_PHONE
-                return ExceptionHelper.ThrowNotSupported<IApplicationSettingsServiceHandler>();
-#else
                 return RoamingSettingsServiceHandlerStatic;
-#endif
             }
         }
 
@@ -92,11 +67,7 @@ namespace Cimbalino.Toolkit.Services
         {
             get
             {
-#if !WINDOWS_APP
                 return LegacySettingsServiceHandlerStatic;
-#else
-                return ExceptionHelper.ThrowNotSupported<IApplicationSettingsServiceHandler>();
-#endif
             }
         }
     }

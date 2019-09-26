@@ -12,16 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Cimbalino.Toolkit.Extensions;
-using Cimbalino.Toolkit.Handlers;
-using Cimbalino.Toolkit.Services;
-using Page = Microsoft.Phone.Controls.PhoneApplicationPage;
-#else
 using System;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Handlers;
@@ -30,7 +20,6 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-#endif
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -81,11 +70,7 @@ namespace Cimbalino.Toolkit.Controls
             {
                 var handler = DataContext as IHandleNavigatingFrom;
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                var shouldCancel = handler != null && e.IsCancelable;
-#else
                 var shouldCancel = handler != null;
-#endif
 
                 if (shouldCancel)
                 {
@@ -138,17 +123,6 @@ namespace Cimbalino.Toolkit.Controls
             {
                 _alreadyPerformedOnNavigatingFrom = true;
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                Dispatcher.BeginInvoke(() =>
-                {
-                    var frame = this.GetVisualAncestor<Frame>();
-
-                    switch (e.NavigationMode)
-                    {
-                        case NavigationMode.New:
-                            frame.Navigate(e.Uri);
-                            break;
-#else
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
                     var frame = this.Frame;
@@ -158,7 +132,6 @@ namespace Cimbalino.Toolkit.Controls
                         case NavigationMode.New:
                             frame.Navigate(e.SourcePageType, e.Parameter, e.NavigationTransitionInfo);
                             break;
-#endif
 
                         case NavigationMode.Back:
                             frame.GoBack();

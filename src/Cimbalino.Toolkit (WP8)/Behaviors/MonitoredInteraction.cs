@@ -12,15 +12,8 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Interactivity;
-#else
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
-#endif
 
 namespace Cimbalino.Toolkit.Behaviors
 {
@@ -46,13 +39,7 @@ namespace Cimbalino.Toolkit.Behaviors
 
             if (behaviorCollection == null)
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                behaviorCollection = (BehaviorCollection)typeof(BehaviorCollection)
-                    .GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null)
-                    .Invoke(null);
-#else
                 behaviorCollection = new BehaviorCollection();
-#endif
 
                 obj.SetValue(BehaviorsProperty, behaviorCollection);
                 obj.SetValue(Interaction.BehaviorsProperty, behaviorCollection);
@@ -83,13 +70,7 @@ namespace Cimbalino.Toolkit.Behaviors
 
             if (oldBehaviorCollection != null)
             {
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-                var associatedObject = typeof(BehaviorCollection)
-                    .GetProperty("AssociatedObject", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                    .GetValue(oldBehaviorCollection);
-#else
                 var associatedObject = oldBehaviorCollection.AssociatedObject;
-#endif
                 if (associatedObject != null)
                 {
                     oldBehaviorCollection.Detach();

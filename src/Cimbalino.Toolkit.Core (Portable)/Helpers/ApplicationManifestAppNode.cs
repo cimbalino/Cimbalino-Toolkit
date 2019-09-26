@@ -12,11 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Xml;
-using Cimbalino.Toolkit.Extensions;
-#endif
-
 namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
@@ -135,73 +130,5 @@ namespace Cimbalino.Toolkit.Helpers
         public ApplicationManifestTokenNode[] Tokens { get; set; }
 
         #endregion
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        internal static ApplicationManifestAppNode ParseXml(XmlReader reader)
-        {
-            var node = new ApplicationManifestAppNode()
-            {
-                Author = reader.GetAttribute("Author"),
-                BitsPerPixel = reader.GetAttribute("BitsPerPixel"),
-                Description = reader.GetAttribute("Description"),
-                Genre = reader.GetAttribute("Genre"),
-                HasSettings = reader.GetAttributeAsBool("HasSettings"),
-                HubType = reader.GetAttributeAsInt("HubType"),
-                IsBeta = reader.GetAttributeAsBool("IsBeta"),
-                ProductId = reader.GetAttribute("ProductID"),
-                Publisher = reader.GetAttribute("Publisher"),
-                PublisherId = reader.GetAttribute("PublisherID"),
-                Title = reader.GetAttribute("Title"),
-                Version = reader.GetAttribute("Version"),
-            };
-
-            reader.ReadStartElement();
-
-            while (reader.NodeType != XmlNodeType.EndElement)
-            {
-                switch (reader.Name)
-                {
-                    case "IconPath":
-                        node.IconPath = ApplicationManifestIconPathNode.ParseXml(reader);
-
-                        break;
-
-                    case "Capabilities":
-                        node.Capabilities = reader.ReadElementContentAsArray(ApplicationManifestNamedNode.ParseXml);
-
-                        break;
-
-                    case "ScreenResolutions":
-                        node.ScreenResolutions = reader.ReadElementContentAsArray(ApplicationManifestNamedNode.ParseXml);
-
-                        break;
-
-                    case "Requirements":
-                        node.Requirements = reader.ReadElementContentAsArray(ApplicationManifestNamedNode.ParseXml);
-
-                        break;
-
-                    case "Tasks":
-                        node.Tasks = reader.ReadElementContentAsArray(ApplicationManifestTaskNodeBase.ParseXml);
-
-                        break;
-
-                    case "Tokens":
-                        node.Tokens = reader.ReadElementContentAsArray(ApplicationManifestTokenNode.ParseXml);
-
-                        break;
-
-                    default:
-                        reader.Skip();
-
-                        break;
-                }
-            }
-
-            reader.ReadEndElement();
-
-            return node;
-        }
-#endif
     }
 }
