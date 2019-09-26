@@ -24,21 +24,17 @@ properties {
   
   $configurations = @{
     "Portable" = @{Suffix = " (Portable)"; Folder="netstandard1.0"};
-    "WP8" = @{Suffix = " (WP8)"; Folder="wp8"};
-    "WP81" = @{Suffix = " (WP81)"; Folder="wp81"};
-    "WPA81" = @{Suffix = " (WPA81)"; Folder="wpa81"};
-    "Win81" = @{Suffix = " (Win81)"; Folder="win81"};
     "UWP" = @{Suffix = " (UWP)"; Folder="uap10.0"}
   }
   
   $projects = @(
-    @{Name = "Cimbalino.Toolkit"; Configurations = @("WP8", "WP81", "WPA81", "Win81", "UWP")},
-    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "WP8", "WP81", "WPA81", "Win81", "UWP")},
+    @{Name = "Cimbalino.Toolkit"; Configurations = @("UWP")},
+    @{Name = "Cimbalino.Toolkit.Core"; Configurations = @("Portable", "UWP")},
     @{Name = "Cimbalino.Toolkit.Controls"; Configurations = @("UWP")}
   )
 }
 
-Framework "4.6x86"
+Framework "4.7"
 
 task default -depends ?
 

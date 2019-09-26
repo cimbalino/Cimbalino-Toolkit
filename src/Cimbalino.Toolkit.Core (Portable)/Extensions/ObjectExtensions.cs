@@ -12,14 +12,9 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System;
 using System.Linq;
 using System.Reflection;
-#else
-using System.Linq;
-using System.Reflection;
-#endif
 
 namespace Cimbalino.Toolkit.Extensions
 {
@@ -104,39 +99,5 @@ namespace Cimbalino.Toolkit.Extensions
 
             return (TObject)t.GetRuntimeMethod(methodName, argumentTypes).Invoke(obj, args);
         }
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        /// <summary>
-        /// Adds an event handler to an event source.
-        /// </summary>
-        /// <param name="obj">The object.</param>
-        /// <param name="target">The event source.</param>
-        /// <param name="handler">Encapsulation of a method or methods to be invoked when the event is raised by the target.</param>
-        /// <returns>Returns a <see cref="Delegate"/> to the attached event handler.</returns>
-        public static Delegate AddEventHandler(this object obj, string target, Delegate handler)
-        {
-            var t = obj.GetType();
-
-            var eventInfo = t.GetEvent(target);
-            var eventHandler = Delegate.CreateDelegate(eventInfo.EventHandlerType, handler.Target, handler.Method);
-
-            eventInfo.AddEventHandler(obj, eventHandler);
-
-            return eventHandler;
-        }
-
-        /// <summary>
-        /// Removes an event handler from an event source.
-        /// </summary>
-        /// <param name="obj">The object.</param>
-        /// <param name="target">The event source.</param>
-        /// <param name="handler">The delegate to be unhooked from the event source.</param>
-        public static void RemoveEventHandler(this object obj, string target, Delegate handler)
-        {
-            var t = obj.GetType();
-
-            t.GetEvent(target).RemoveEventHandler(obj, handler);
-        }
-#endif
     }
 }

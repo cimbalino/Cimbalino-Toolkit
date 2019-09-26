@@ -493,102 +493,38 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\WindowsStoreServiceAppScreenshotNode.cs">
       <Link>Services\WindowsStoreServiceAppScreenshotNode.cs</Link>
     </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\HashAlgorithmBase.cs">
-      <Link>System\Security\Cryptography\HashAlgorithmBase.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\HmacHashAlgorithmBase.cs">
-      <Link>System\Security\Cryptography\HmacHashAlgorithmBase.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\HMACMD5.cs">
-      <Link>System\Security\Cryptography\HMACMD5.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\HMACSHA1.cs">
-      <Link>System\Security\Cryptography\HMACSHA1.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\HMACSHA256.cs">
-      <Link>System\Security\Cryptography\HMACSHA256.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\MD5Managed.cs">
-      <Link>System\Security\Cryptography\MD5Managed.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\SHA1Managed.cs">
-      <Link>System\Security\Cryptography\SHA1Managed.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28win81%29\system\security\cryptography\SHA256Managed.cs">
-      <Link>System\Security\Cryptography\SHA256Managed.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Compression\CompressionExtensions.cs">
-      <Link>Compression\CompressionExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Extensions\CoreDispatcherExtensions.cs">
-      <Link>Extensions\CoreDispatcherExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\extensions\DependencyObjectExtensions.cs">
-      <Link>Extensions\DependencyObjectExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\extensions\WriteableBitmapExtensions.cs">
-      <Link>Extensions\WriteableBitmapExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Helpers\WeakEventSubscription{T1,T2}.cs">
-      <Link>Helpers\WeakEventSubscription{T1,T2}.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\ApplicationManifestService.cs">
-      <Link>Services\ApplicationManifestService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\ApplicationProfileService.cs">
-      <Link>Services\ApplicationProfileService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\ApplicationSettingsService.cs">
-      <Link>Services\ApplicationSettingsService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\ApplicationSettingsServiceHandler.cs">
-      <Link>Services\ApplicationSettingsServiceHandler.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\DispatcherService.cs">
-      <Link>Services\DispatcherService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\LocationService.cs">
-      <Link>Services\LocationService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\LocationServiceExtensions.cs">
-      <Link>Services\LocationServiceExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\LockScreenService.cs">
-      <Link>Services\LockScreenService.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\NavigationServiceExtensions.cs">
-      <Link>Services\NavigationServiceExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\NetworkInformationService.cs">
-      <Link>Services\NetworkInformationService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\RuntimeInformationService.cs">
-      <Link>Services\RuntimeInformationService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\StorageService.cs">
-      <Link>Services\StorageService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\StorageServiceHandler.cs">
-      <Link>Services\StorageServiceHandler.cs</Link>
-    </Compile>
-    <Compile Include="..\Cimbalino.Toolkit.Core %28WP8%29\Services\StorageServiceStorageType.cs">
-      <Link>Services\StorageServiceStorageType.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wp8%29\services\WindowsPhoneStoreService.cs">
-      <Link>Services\WindowsPhoneStoreService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wpa81%29\extensions\RenderTargetBitmapExtensions.cs">
-      <Link>Extensions\RenderTargetBitmapExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wpa81%29\services\DeviceStatusService.cs">
-      <Link>Services\DeviceStatusService.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wpa81%29\services\LegacyApplicationSettingsServiceHandler.cs">
-      <Link>Services\LegacyApplicationSettingsServiceHandler.cs</Link>
-    </Compile>
-    <Compile Include="..\cimbalino.toolkit.core %28wpa81%29\services\WindowsStoreService.cs">
-      <Link>Services\WindowsStoreService.cs</Link>
-    </Compile>
+    <Compile Include="system\security\cryptography\HashAlgorithmBase.cs"/>
+    <Compile Include="system\security\cryptography\HmacHashAlgorithmBase.cs"/>
+    <Compile Include="system\security\cryptography\HMACMD5.cs"/>
+    <Compile Include="system\security\cryptography\HMACSHA1.cs"/>
+    <Compile Include="system\security\cryptography\HMACSHA256.cs"/>
+    <Compile Include="system\security\cryptography\MD5Managed.cs"/>
+    <Compile Include="system\security\cryptography\SHA1Managed.cs"/>
+    <Compile Include="system\security\cryptography\SHA256Managed.cs"/>
+    <Compile Include="Compression\CompressionExtensions.cs"/>
+    <Compile Include="Extensions\CoreDispatcherExtensions.cs"/>
+    <Compile Include="extensions\DependencyObjectExtensions.cs"/>
+    <Compile Include="extensions\WriteableBitmapExtensions.cs"/>
+    <Compile Include="Helpers\WeakEventSubscription{T1,T2}.cs"/>
+    <Compile Include="services\ApplicationManifestService.cs"/>
+    <Compile Include="services\ApplicationProfileService.cs"/>
+    <Compile Include="services\ApplicationSettingsService.cs"/>
+    <Compile Include="services\ApplicationSettingsServiceHandler.cs"/>
+    <Compile Include="Services\DispatcherService.cs"/>
+    <Compile Include="services\LocationService.cs"/>
+    <Compile Include="services\LocationServiceExtensions.cs"/>
+    <Compile Include="Services\LockScreenService.cs"/>
+    <Compile Include="Services\NavigationServiceExtensions.cs"/>
+    <Compile Include="services\NetworkInformationService.cs"/>
+    <Compile Include="services\RuntimeInformationService.cs"/>
+    <Compile Include="services\StorageService.cs"/>
+    <Compile Include="services\StorageServiceHandler.cs"/>
+    <Compile Include="Services\StorageServiceStorageType.cs"/>
+    <Compile Include="services\WindowsPhoneStoreService.cs"/>
+    <Compile Include="extensions\RenderTargetBitmapExtensions.cs"/>
+    <Compile Include="services\DeviceStatusService.cs"/>
+    <Compile Include="services\LegacyApplicationSettingsServiceHandler.cs"/>
+    <Compile Include="services\WindowsStoreService.cs"/>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PersonalizationService.cs" />
   </ItemGroup>

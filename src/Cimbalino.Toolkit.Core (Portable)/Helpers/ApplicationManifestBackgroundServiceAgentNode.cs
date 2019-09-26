@@ -12,12 +12,7 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
 using System.Diagnostics.CodeAnalysis;
-using System.Xml;
-#else
-using System.Diagnostics.CodeAnalysis;
-#endif
 
 namespace Cimbalino.Toolkit.Helpers
 {
@@ -54,22 +49,5 @@ namespace Cimbalino.Toolkit.Helpers
         public string Type { get; set; }
 
         #endregion
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        internal static ApplicationManifestBackgroundServiceAgentNode ParseXml(XmlReader reader)
-        {
-            var node = new ApplicationManifestBackgroundServiceAgentNode()
-            {
-                Specifier = reader.GetAttribute("Specifier"),
-                Name = reader.GetAttribute("Name"),
-                Source = reader.GetAttribute("Source"),
-                Type = reader.GetAttribute("Type")
-            };
-
-            reader.Skip();
-
-            return node;
-        }
-#endif
     }
 }

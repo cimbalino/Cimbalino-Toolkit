@@ -12,10 +12,6 @@
 // </license>
 // ****************************************************************************
 
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-using System.Xml;
-#endif
-
 namespace Cimbalino.Toolkit.Helpers
 {
     /// <summary>
@@ -38,21 +34,5 @@ namespace Cimbalino.Toolkit.Helpers
         public string TaskName { get; set; }
 
         #endregion
-
-#if WINDOWS_PHONE || WINDOWS_PHONE_81
-        internal static ApplicationManifestTokenNode ParseXml(XmlReader reader)
-        {
-            var node = new ApplicationManifestTokenNode()
-            {
-                TokenId = reader.GetAttribute("TokenID"),
-                TaskName = reader.GetAttribute("TaskName")
-            };
-
-            reader.Skip();
-
-            return node;
-        }
-
-#endif
     }
 }
