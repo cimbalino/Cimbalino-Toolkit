@@ -7,12 +7,11 @@
     <AssemblyName>Cimbalino.Toolkit.Core</AssemblyName>
     <Version>2.5.2</Version>
 
-    <UseUwpMetaPackage>true</UseUwpMetaPackage>
+    <DocumentationFile>bin\Release\Cimbalino.Toolkit.Core.xml</DocumentationFile>
 
+    <UseUwpMetaPackage>true</UseUwpMetaPackage>
     <UseWindowsDesktopSdk>true</UseWindowsDesktopSdk>
     <UseWindowsMobileSdk>true</UseWindowsMobileSdk>
-
-    <DocumentationFile>bin\Release\Cimbalino.Toolkit.Core.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

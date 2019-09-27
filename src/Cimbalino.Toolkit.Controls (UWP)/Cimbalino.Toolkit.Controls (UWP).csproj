@@ -3,14 +3,13 @@
   <PropertyGroup>
     <TargetFramework>uap10.0.16299</TargetFramework>
 
-    <Description>Cimbalino Toolkit Controls</Description>
+    <Description>Cimbalino Toolkit</Description>
     <AssemblyName>Cimbalino.Toolkit.Controls</AssemblyName>
     <Version>2.5.2</Version>
 
-    <UseUwpMetaPackage>true</UseUwpMetaPackage>
-
     <DocumentationFile>bin\Release\Cimbalino.Toolkit.Controls.xml</DocumentationFile>
 
+    <UseUwpMetaPackage>true</UseUwpMetaPackage>
     <UseWindowsDesktopSdk>true</UseWindowsDesktopSdk>
     <UseWindowsMobileSdk>true</UseWindowsMobileSdk>
   </PropertyGroup>
