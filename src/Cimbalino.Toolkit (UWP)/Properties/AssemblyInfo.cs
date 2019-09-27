@@ -12,21 +12,8 @@
 // </license>
 // ****************************************************************************
 
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
-[assembly: AssemblyTitle("Cimbalino.Toolkit")]
-[assembly: AssemblyDescription("Cimbalino Toolkit")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Pedro Lamas")]
-[assembly: AssemblyProduct("Cimbalino.Toolkit")]
-[assembly: AssemblyCopyright("Copyright © Pedro Lamas 2014")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-[assembly: AssemblyVersion("2.5.2.0")]
-[assembly: AssemblyFileVersion("2.5.2.0")]
 
 [assembly: ComVisible(false)]
 [assembly: InternalsVisibleTo("Cimbalino.Toolkit.Controls")]
