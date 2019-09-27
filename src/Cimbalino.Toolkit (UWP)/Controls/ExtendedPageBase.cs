@@ -24,7 +24,7 @@ using Windows.UI.Xaml.Navigation;
 namespace Cimbalino.Toolkit.Controls
 {
     /// <summary>
-    /// An extended base page for apps using Cimbalino
+    /// An extended base page for apps using Cimbalino.
     /// </summary>
     public abstract class ExtendedPageBase : Page
     {

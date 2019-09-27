@@ -27,6 +27,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// The app was set as the lock screen background provider.
         /// </summary>
-        Granted
+        Granted,
     }
 }

@@ -76,7 +76,7 @@ namespace Cimbalino.Toolkit.Controls
             DependencyProperty.Register(nameof(NavigationSourcePageType), typeof(Type), typeof(HamburgerMenuButton), new PropertyMetadata(null));
 
         /// <summary>
-        /// The navigation parameter property
+        /// The navigation parameter property.
         /// </summary>
         public static readonly DependencyProperty NavigationParameterProperty = DependencyProperty.Register(
             nameof(NavigationParameter), typeof(object), typeof(HamburgerMenuButton), new PropertyMetadata(null));

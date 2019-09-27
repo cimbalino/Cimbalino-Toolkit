@@ -67,6 +67,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// An unspecified location.
         /// </summary>
-        Unspecified
+        Unspecified,
     }
 }

@@ -177,7 +177,7 @@ namespace Cimbalino.Toolkit.Behaviors
                 Source = Items,
                 Converter = Converter,
                 ConverterParameter = ConverterParameter,
-                Mode = Mode
+                Mode = Mode,
             };
 
             BindingOperations.SetBinding(AssociatedObject, targetDependencyProperty, binding);

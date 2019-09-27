@@ -56,7 +56,7 @@ namespace Cimbalino.Toolkit.Extensions
         {
             var propertySet = new BitmapPropertySet
             {
-                { "ImageQuality", new BitmapTypedValue(quality, PropertyType.Single) }
+                { "ImageQuality", new BitmapTypedValue(quality, PropertyType.Single) },
             };
 
             var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, outputStream.AsRandomAccessStream(), propertySet);

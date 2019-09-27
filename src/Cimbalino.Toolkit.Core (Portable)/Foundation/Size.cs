@@ -24,7 +24,7 @@ namespace Cimbalino.Toolkit.Foundation
         private static readonly Size EmptySize = new Size()
         {
             _width = double.NegativeInfinity,
-            _height = double.NegativeInfinity
+            _height = double.NegativeInfinity,
         };
 
         private double _width, _height;

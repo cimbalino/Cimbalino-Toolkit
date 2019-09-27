@@ -210,9 +210,9 @@ namespace Cimbalino.Toolkit.Services
         }
 
         /// <summary>
-        /// Gets the a value indicating the percent of the battery remaining on the device
+        /// Gets the a value indicating the percent of the battery remaining on the device.
         /// </summary>
-        /// <value>null if the platform can't report this, otherwise, the battery percentage</value>
+        /// <value>null if the platform can't report this, otherwise, the battery percentage.</value>
         public virtual int? RemainingChargePercent
         {
             get
@@ -231,7 +231,7 @@ namespace Cimbalino.Toolkit.Services
         /// Gets the value indicating if the device is in power saver mode.
         /// </summary>
         /// <value>
-        /// Null if the platform can't report this, otherwise [true] if in power saver mode
+        /// Null if the platform can't report this, otherwise [true] if in power saver mode.
         /// </value>
         public virtual bool? IsInPowerSaverMode
         {

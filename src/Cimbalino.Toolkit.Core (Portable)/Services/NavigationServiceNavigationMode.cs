@@ -42,6 +42,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Navigation is to reset the current page (perhaps with same data).
         /// </summary>
-        Reset = 4
+        Reset = 4,
     }
 }

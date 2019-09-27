@@ -27,6 +27,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Permission to access location was granted.
         /// </summary>
-        Allowed
+        Allowed,
     }
 }

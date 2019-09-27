@@ -32,6 +32,6 @@ namespace Cimbalino.Toolkit.Compression
         /// <summary>
         /// No compression should be performed on the file.
         /// </summary>
-        NoCompression
+        NoCompression,
     }
 }

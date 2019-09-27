@@ -26,7 +26,7 @@ namespace Cimbalino.Toolkit.Foundation
             _x = double.PositiveInfinity,
             _y = double.PositiveInfinity,
             _width = double.NegativeInfinity,
-            _height = double.NegativeInfinity
+            _height = double.NegativeInfinity,
         };
 
         private double _x, _y, _width, _height;

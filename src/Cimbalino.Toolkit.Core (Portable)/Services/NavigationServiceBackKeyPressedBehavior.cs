@@ -37,6 +37,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Do nothing.
         /// </summary>
-        DoNothing
+        DoNothing,
     }
 }

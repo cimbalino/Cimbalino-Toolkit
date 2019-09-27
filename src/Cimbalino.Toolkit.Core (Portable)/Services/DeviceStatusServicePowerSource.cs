@@ -27,6 +27,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// The device is plugged in to an external power source, such as being docked to a computer or connected to a power supply.
         /// </summary>
-        External
+        External,
     }
 }

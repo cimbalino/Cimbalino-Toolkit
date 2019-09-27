@@ -43,7 +43,7 @@ namespace Cimbalino.Toolkit.Services
         {
             var chatMessage = new ChatMessage
             {
-                Body = body
+                Body = body,
             };
 
             if (!string.IsNullOrEmpty(recipient))

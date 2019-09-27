@@ -49,6 +49,6 @@ namespace Cimbalino.Toolkit.Extensions
         /// <summary>
         /// Specifies a greater than or equal operator.
         /// </summary>
-        GreaterThanOrEqual
+        GreaterThanOrEqual,
     }
 }

@@ -37,6 +37,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Universal Application Runtime.
         /// </summary>
-        UniversalAppPlatform
+        UniversalAppPlatform,
     }
 }

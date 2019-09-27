@@ -27,6 +27,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Deliver the most accurate report possible. This includes using services that might charge money, or consuming higher levels of battery power or connection bandwidth. An accuracy level of High may degrade system performance and should be used only when necessary.
         /// </summary>
-        High
+        High,
     }
 }

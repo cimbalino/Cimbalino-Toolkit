@@ -42,7 +42,7 @@ namespace Cimbalino.Toolkit.Services
             return new WindowsPhoneStoreServiceAppContentNode
             {
                 Type = reader.GetAttribute("type"),
-                Text = reader.ReadElementContentAsString()
+                Text = reader.ReadElementContentAsString(),
             };
         }
     }

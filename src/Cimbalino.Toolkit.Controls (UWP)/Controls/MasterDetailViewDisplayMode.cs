@@ -27,6 +27,6 @@ namespace Cimbalino.Toolkit.Controls
         /// <summary>
         /// Compact display mode.
         /// </summary>
-        Compact
+        Compact,
     }
 }

@@ -12,7 +12,6 @@
 // </license>
 // ****************************************************************************
 
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cimbalino.Toolkit.Helpers;
@@ -22,7 +21,6 @@ namespace Cimbalino.Toolkit.Services
     /// <summary>
     /// Represents an implementation of the <see cref="IFilePickerService"/>.
     /// </summary>
-    [CLSCompliant(false)]
     public class FilePickerService : IFilePickerService
     {
         /// <summary>

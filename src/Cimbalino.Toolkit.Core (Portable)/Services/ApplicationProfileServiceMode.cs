@@ -32,6 +32,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// The application is running under kids corner.
         /// </summary>
-        KidsCorner
+        KidsCorner,
     }
 }

@@ -27,6 +27,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// A set of thumbnail images.
         /// </summary>
-        Thumbnail
+        Thumbnail,
     }
 }

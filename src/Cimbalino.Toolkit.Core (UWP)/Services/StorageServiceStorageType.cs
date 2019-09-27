@@ -42,6 +42,6 @@ namespace Cimbalino.Toolkit.Services
         /// <summary>
         /// Package storage.
         /// </summary>
-        Package
+        Package,
     }
 }

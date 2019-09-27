@@ -60,7 +60,7 @@ namespace Cimbalino.Toolkit.Services
             var emailMessage = new EmailMessage
             {
                 Body = body,
-                Subject = subject
+                Subject = subject,
             };
 
             if (!string.IsNullOrEmpty(to))

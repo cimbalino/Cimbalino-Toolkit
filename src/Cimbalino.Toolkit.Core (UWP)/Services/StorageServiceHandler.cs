@@ -39,7 +39,7 @@ namespace Cimbalino.Toolkit.Services
         protected readonly StorageFolder StorageFolder;
 
         /// <summary>
-        /// The storage type
+        /// The storage type.
         /// </summary>
         private readonly StorageServiceStorageType _storageType;
 

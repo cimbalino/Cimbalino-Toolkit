@@ -19,7 +19,6 @@ namespace Cimbalino.Toolkit.Helpers
     /// </summary>
     public class ApplicationManifest
     {
-
         #region Properties
 
         /// <summary>

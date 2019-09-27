@@ -27,6 +27,6 @@ namespace Cimbalino.Toolkit.Controls
         /// <summary>
         /// Detail is visible.
         /// </summary>
-        Detail
+        Detail,
     }
 }
