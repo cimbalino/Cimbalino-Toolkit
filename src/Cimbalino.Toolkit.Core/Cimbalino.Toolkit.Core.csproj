@@ -1,0 +1,19 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;uap10.0.16299</TargetFrameworks>
+    
+    <Description>Cimbalino Toolkit</Description>
+    <AssemblyName>Cimbalino.Toolkit.Core</AssemblyName>
+    <Version>2.5.2</Version>
+
+    <DocumentationFile>bin\Release\Cimbalino.Toolkit.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsUwpProject)' == 'true'">
+    <UseUwpMetaPackage>true</UseUwpMetaPackage>
+    <UseWindowsDesktopSdk>true</UseWindowsDesktopSdk>
+    <UseWindowsMobileSdk>true</UseWindowsMobileSdk>
+  </PropertyGroup>
+
+</Project>

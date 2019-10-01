@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFramework>uap10.0.16299</TargetFramework>
+    <TargetFrameworks>uap10.0.16299</TargetFrameworks>
 
     <Description>Cimbalino Toolkit</Description>
     <AssemblyName>Cimbalino.Toolkit</AssemblyName>
@@ -16,8 +16,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed" Version="2.0.1" />
-
-    <ProjectReference Include="..\Cimbalino.Toolkit.Core (UWP)\Cimbalino.Toolkit.Core (UWP).csproj" />
+    
+    <ProjectReference Include="..\Cimbalino.Toolkit.Core\Cimbalino.Toolkit.Core.csproj" />
   </ItemGroup>
 
 </Project>

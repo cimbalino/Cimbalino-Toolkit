@@ -19,3 +19,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(true)]
 [assembly: InternalsVisibleTo("Cimbalino.Toolkit")]
+[assembly: InternalsVisibleTo("Cimbalino.Toolkit.Controls")]

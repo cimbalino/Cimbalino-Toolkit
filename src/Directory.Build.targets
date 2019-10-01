@@ -1,6 +1,15 @@
 <Project>
+  <ItemGroup>
+    <Compile Remove="**\*.uwp.cs" />
+    <Compile Remove="**\*.portable.cs" />
+    <EmbeddedResource Remove="Properties\*.rd.xml" />
+    <None Include="**\*.uwp.cs" />
+    <None Include="**\*.portable.cs" />
+    <None Include="Properties\*.rd.xml" />
+  </ItemGroup>
+
   <Choose>
-    <When Condition="'$(TargetFramework)' == 'uap10.0' or '$(TargetFramework)' == 'uap10.0.16299' or '$(TargetFramework)' == 'native' or '$(TargetFramework)' == 'net461'">
+    <When Condition="'$(IsUwpProject)' == 'true'">
       <!-- UAP versions for uap10.0 where TPMV isn't implied -->
       <PropertyGroup>
         <TargetPlatformVersion>10.0.$(DefaultTargetPlatformVersion).0</TargetPlatformVersion>
@@ -15,6 +24,15 @@
         <SDKReference Condition="'$(UseWindowsMobileSdk)' == 'true' " Include="WindowsMobile, Version=$(TargetPlatformVersion)">
           <Name>Windows Mobile Extensions for the UWP</Name>
         </SDKReference>
+
+        <Compile Include="**\*.uwp.cs" />
+        <EmbeddedResource Include="Properties\*.rd.xml" />
+      </ItemGroup>
+    </When>
+    
+    <When Condition="'$(IsPortableProject)' == 'true'">
+      <ItemGroup>
+        <Compile Include="**\*.portable.cs" />
       </ItemGroup>
     </When>
   </Choose>

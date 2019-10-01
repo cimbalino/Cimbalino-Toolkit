@@ -15,8 +15,8 @@
 
     <RootNamespace>Cimbalino.Toolkit</RootNamespace>
 
-    <IsPortableProject>$(MSBuildProjectName.Contains('Portable'))</IsPortableProject>
-    <IsUwpProject>$(MSBuildProjectName.Contains('Uwp'))</IsUwpProject>
+    <IsPortableProject>$(TargetFramework.StartsWith('netstandard'))</IsPortableProject>
+    <IsUwpProject>$(TargetFramework.StartsWith('uap'))</IsUwpProject>
 
     <DefaultTargetPlatformVersion>17763</DefaultTargetPlatformVersion>
     <DefaultTargetPlatformMinVersion>16299</DefaultTargetPlatformMinVersion>
@@ -34,11 +34,10 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.0.26" PrivateAssets="all" />
 
-    <EmbeddedResource Include="**\*.rd.xml" />
+    <!--<EmbeddedResource Include="**\*.rd.xml" />
     <Page Include="**\*.xaml" Exclude="**\bin\**\*.xaml;**\obj\**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
-    <Compile Update="**\*.xaml.cs" DependentUpon="%(Filename)" />
+    <Compile Update="**\*.xaml.cs" DependentUpon="%(Filename)" />-->
   </ItemGroup>
-
 
   <!--<PropertyGroup>
     <SignAssembly Condition="'$(SignAssembly)' == '' and '$(IsUwpProject)' != 'true'" >true</SignAssembly>
