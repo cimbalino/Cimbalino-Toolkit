@@ -10,7 +10,7 @@
     <DocumentationFile>bin\Release\Cimbalino.Toolkit.Core.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(IsUwpProject)' == 'true'">
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('uap'))">
     <UseUwpMetaPackage>true</UseUwpMetaPackage>
     <UseWindowsDesktopSdk>true</UseWindowsDesktopSdk>
     <UseWindowsMobileSdk>true</UseWindowsMobileSdk>

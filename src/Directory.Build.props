@@ -15,9 +15,6 @@
 
     <RootNamespace>Cimbalino.Toolkit</RootNamespace>
 
-    <IsPortableProject>$(TargetFramework.StartsWith('netstandard'))</IsPortableProject>
-    <IsUwpProject>$(TargetFramework.StartsWith('uap'))</IsUwpProject>
-
     <DefaultTargetPlatformVersion>17763</DefaultTargetPlatformVersion>
     <DefaultTargetPlatformMinVersion>16299</DefaultTargetPlatformMinVersion>
     <!--<PackageOutputPath>$(MSBuildThisFileDirectory)bin\nupkg</PackageOutputPath>-->
@@ -34,29 +31,10 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" />
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.0.26" PrivateAssets="all" />
 
-    <!--<EmbeddedResource Include="**\*.rd.xml" />
+    <EmbeddedResource Include="**\*.rd.xml" />
     <Page Include="**\*.xaml" Exclude="**\bin\**\*.xaml;**\obj\**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
-    <Compile Update="**\*.xaml.cs" DependentUpon="%(Filename)" />-->
+    <Compile Update="**\*.xaml.cs" DependentUpon="%(Filename)" />
   </ItemGroup>
-
-  <!--<PropertyGroup>
-    <SignAssembly Condition="'$(SignAssembly)' == '' and '$(IsUwpProject)' != 'true'" >true</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)toolkit.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>-->
-
-  <Choose>
-    <When Condition="'$(IsUwpProject)' == 'true'">
-      <PropertyGroup>
-        <GenerateLibraryLayout>true</GenerateLibraryLayout>
-        <DefineConstants>$(DefineConstants);NETFX_CORE;WINDOWS_UWP</DefineConstants>
-      </PropertyGroup>
-    </When>
-    <When Condition="'$(IsPortableProject)' == 'true'">
-      <PropertyGroup>
-        <DefineConstants>$(DefineConstants);PORTABLE</DefineConstants>
-      </PropertyGroup>
-    </When>
-  </Choose>
 
   <Choose>
     <When Condition="'$(SourceLinkEnabled)' != 'false'">
@@ -75,9 +53,9 @@
     </When>
   </Choose>
 
-  <!--<ItemGroup>
+  <ItemGroup>
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json">
       <Link>stylecop.json</Link>
     </AdditionalFiles>
-  </ItemGroup>-->
+  </ItemGroup>
 </Project>

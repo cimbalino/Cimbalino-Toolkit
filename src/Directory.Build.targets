@@ -1,41 +1,38 @@
 <Project>
-  <ItemGroup>
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
+    <DefineConstants>$(DefineConstants);NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+
+    <TargetPlatformVersion>10.0.$(DefaultTargetPlatformVersion).0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.$(DefaultTargetPlatformMinVersion).0</TargetPlatformMinVersion>
+
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+    <DefineConstants>$(DefineConstants);NETSTANDARD;PORTABLE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" !$(TargetFramework.StartsWith('uap')) ">
     <Compile Remove="**\*.uwp.cs" />
-    <Compile Remove="**\*.portable.cs" />
-    <EmbeddedResource Remove="Properties\*.rd.xml" />
+    <EmbeddedResource Remove="**\*.rd.xml" />
     <None Include="**\*.uwp.cs" />
-    <None Include="**\*.portable.cs" />
-    <None Include="Properties\*.rd.xml" />
+    <None Include="**\*.rd.xml" />
   </ItemGroup>
 
-  <Choose>
-    <When Condition="'$(IsUwpProject)' == 'true'">
-      <!-- UAP versions for uap10.0 where TPMV isn't implied -->
-      <PropertyGroup>
-        <TargetPlatformVersion>10.0.$(DefaultTargetPlatformVersion).0</TargetPlatformVersion>
-        <TargetPlatformMinVersion>10.0.$(DefaultTargetPlatformMinVersion).0</TargetPlatformMinVersion>
-        <DebugType>Full</DebugType>
-      </PropertyGroup>
+  <ItemGroup Condition=" !$(TargetFramework.StartsWith('netstandard')) ">
+    <Compile Remove="**\*.portable.cs" />
+    <None Include="**\*.portable.cs" />
+  </ItemGroup>
 
-      <ItemGroup>
-        <SDKReference Condition="'$(UseWindowsDesktopSdk)' == 'true' " Include="WindowsDesktop, Version=$(TargetPlatformVersion)">
-          <Name>Windows Desktop Extensions for the UWP</Name>
-        </SDKReference>
-        <SDKReference Condition="'$(UseWindowsMobileSdk)' == 'true' " Include="WindowsMobile, Version=$(TargetPlatformVersion)">
-          <Name>Windows Mobile Extensions for the UWP</Name>
-        </SDKReference>
-
-        <Compile Include="**\*.uwp.cs" />
-        <EmbeddedResource Include="Properties\*.rd.xml" />
-      </ItemGroup>
-    </When>
-    
-    <When Condition="'$(IsPortableProject)' == 'true'">
-      <ItemGroup>
-        <Compile Include="**\*.portable.cs" />
-      </ItemGroup>
-    </When>
-  </Choose>
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
+    <SDKReference Condition=" '$(UseWindowsDesktopSdk)' == 'true' " Include="WindowsDesktop, Version=$(TargetPlatformVersion)">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Condition=" '$(UseWindowsMobileSdk)' == 'true' " Include="WindowsMobile, Version=$(TargetPlatformVersion)">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
 
   <!--<Target Name="AddCommitHashToAssemblyAttributes" BeforeTargets="GetAssemblyAttributes">
     <ItemGroup>

@@ -12,11 +12,18 @@
 // </license>
 // ****************************************************************************
 
+#if NETFX_CORE
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+#else
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+#endif
 
 [assembly: ComVisible(false)]
+#if !NETFX_CORE
 [assembly: CLSCompliant(true)]
+#endif
 [assembly: InternalsVisibleTo("Cimbalino.Toolkit")]
 [assembly: InternalsVisibleTo("Cimbalino.Toolkit.Controls")]
