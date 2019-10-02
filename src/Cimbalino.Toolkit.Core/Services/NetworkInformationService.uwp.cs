@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="NetworkInformationService.cs" company="Pedro Lamas">
+// <copyright file="NetworkInformationService.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

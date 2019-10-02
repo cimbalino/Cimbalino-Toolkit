@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="NavigationServiceExtensions.cs" company="Pedro Lamas">
+// <copyright file="NavigationServiceExtensions.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

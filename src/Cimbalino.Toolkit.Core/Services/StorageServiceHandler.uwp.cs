@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="StorageServiceHandler.cs" company="Pedro Lamas">
+// <copyright file="StorageServiceHandler.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

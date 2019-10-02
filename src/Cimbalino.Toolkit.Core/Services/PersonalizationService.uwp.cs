@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="PersonalizationService.cs" company="Pedro Lamas">
+// <copyright file="PersonalizationService.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

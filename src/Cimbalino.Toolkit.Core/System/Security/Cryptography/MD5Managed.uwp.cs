@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="MD5Managed.cs" company="Pedro Lamas">
+// <copyright file="MD5Managed.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

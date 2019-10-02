@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="LockScreenService.cs" company="Pedro Lamas">
+// <copyright file="LockScreenService.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

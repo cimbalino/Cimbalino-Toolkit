@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="CompressionExtensions.cs" company="Pedro Lamas">
+// <copyright file="CompressionExtensions.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

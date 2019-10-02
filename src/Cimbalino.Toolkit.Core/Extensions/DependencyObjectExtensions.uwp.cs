@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="DependencyObjectExtensions.cs" company="Pedro Lamas">
+// <copyright file="DependencyObjectExtensions.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

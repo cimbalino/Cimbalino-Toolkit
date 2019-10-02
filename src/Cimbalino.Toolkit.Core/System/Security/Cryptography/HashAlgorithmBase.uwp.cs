@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="HashAlgorithmBase.cs" company="Pedro Lamas">
+// <copyright file="HashAlgorithmBase.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

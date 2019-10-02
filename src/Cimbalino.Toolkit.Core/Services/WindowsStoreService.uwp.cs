@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="WindowsStoreService.cs" company="Pedro Lamas">
+// <copyright file="WindowsStoreService.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

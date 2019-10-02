@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="ApplicationSettingsService.cs" company="Pedro Lamas">
+// <copyright file="ApplicationSettingsService.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

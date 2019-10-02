@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="DeviceStatusService.cs" company="Pedro Lamas">
+// <copyright file="DeviceStatusService.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="LocationServiceExtensions.cs" company="Pedro Lamas">
+// <copyright file="LocationServiceExtensions.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

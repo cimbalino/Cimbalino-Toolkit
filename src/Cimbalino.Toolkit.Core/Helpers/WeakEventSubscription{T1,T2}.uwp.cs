@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="WeakEventSubscription{T1,T2}.cs" company="Pedro Lamas">
+// <copyright file="WeakEventSubscription{T1,T2}.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************

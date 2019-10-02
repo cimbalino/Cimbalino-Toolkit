@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="RuntimeInformationService.cs" company="Pedro Lamas">
+// <copyright file="RuntimeInformationService.uwp.cs" company="Pedro Lamas">
 // Copyright © Pedro Lamas 2014
 // </copyright>
 // ****************************************************************************
