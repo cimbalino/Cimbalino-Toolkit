@@ -1,7 +1,6 @@
 <Project>
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
     <DefineConstants>$(DefineConstants);NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
 
     <TargetPlatformVersion>10.0.$(DefaultTargetPlatformVersion).0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.$(DefaultTargetPlatformMinVersion).0</TargetPlatformMinVersion>
@@ -10,7 +9,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
-    <DefineConstants>$(DefineConstants);NETSTANDARD;PORTABLE</DefineConstants>
+    <!--<DefineConstants>$(DefineConstants);NETSTANDARD;PORTABLE</DefineConstants>-->
+    <DefineConstants>$(DefineConstants);NETSTANDARD;PORTABLE;__WASM__</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('xamarinios')) ">
+    <DefineConstants>$(DefineConstants);XAMARIN;IOS;PORTABLE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('monoandroid')) ">
+    <DefineConstants>$(DefineConstants);XAMARIN;ANDROID;PORTABLE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup Condition=" !$(TargetFramework.StartsWith('uap')) ">
